@@ -2,7 +2,7 @@ import React from "react";
 
 interface DreamsLogoProps {
   className?: string;
-  showText?: boolean;
+  showText?: boolean | "responsive";
 }
 
 export const DreamsLogo: React.FC<DreamsLogoProps> = ({
@@ -10,7 +10,7 @@ export const DreamsLogo: React.FC<DreamsLogoProps> = ({
   showText = true,
 }) => {
   return (
-    <div className={`flex items-center gap-2.5 select-none ${className}`}>
+    <div className={`flex items-center gap-2 select-none shrink-0 ${className}`}>
       {/* High-fidelity vector mark matching reference design */}
       <div className="relative w-8 h-8 shrink-0 flex items-center justify-center">
         <svg
@@ -53,12 +53,23 @@ export const DreamsLogo: React.FC<DreamsLogoProps> = ({
         </svg>
       </div>
 
-      {showText && (
+      {showText === true && (
         <div className="flex items-baseline tracking-tight">
-          <span className="text-[17px] font-bold text-slate-900 dark:text-white tracking-tight">
-            Dreams
+          <span className="text-[16px] sm:text-[17px] font-extrabold text-slate-900 dark:text-white tracking-tight">
+            NEXORA
           </span>
-          <span className="text-[17px] font-semibold text-slate-800 dark:text-slate-200 ml-1.5 uppercase text-sm tracking-wider">
+          <span className="text-[16px] sm:text-[17px] font-semibold text-teal-600 dark:text-teal-400 ml-1 uppercase text-xs sm:text-sm tracking-wider">
+            ERP
+          </span>
+        </div>
+      )}
+
+      {showText === "responsive" && (
+        <div className="hidden min-[420px]:flex items-baseline tracking-tight">
+          <span className="text-[16px] sm:text-[17px] font-extrabold text-slate-900 dark:text-white tracking-tight">
+            NEXORA
+          </span>
+          <span className="text-[16px] sm:text-[17px] font-semibold text-teal-600 dark:text-teal-400 ml-1 uppercase text-xs sm:text-sm tracking-wider">
             ERP
           </span>
         </div>
@@ -67,4 +78,5 @@ export const DreamsLogo: React.FC<DreamsLogoProps> = ({
   );
 };
 
+export const NexoraLogo = DreamsLogo;
 export default DreamsLogo;

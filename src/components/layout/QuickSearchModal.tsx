@@ -126,7 +126,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
               ↵
             </kbd>
           </div>
-          <span>Dreams ERP Global Search</span>
+          <span>NEXORA ERP Global Search</span>
         </div>
       </div>
     </div>

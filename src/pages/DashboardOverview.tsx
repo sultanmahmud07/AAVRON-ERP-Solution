@@ -896,7 +896,7 @@ export const DashboardOverview: React.FC = () => {
 
       {/* 5. Footer */}
       <footer className="pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
-        <p>2026 © Dreams ERP. All Rights Reserved</p>
+        <p>2026 © NEXORA ERP. All Rights Reserved</p>
         <div className="flex items-center gap-4">
           <button onClick={() => toast.info("Privacy Policy")} className="hover:text-slate-600 dark:hover:text-slate-200">
             Privacy Policy

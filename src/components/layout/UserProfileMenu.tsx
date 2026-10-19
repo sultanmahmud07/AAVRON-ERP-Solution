@@ -7,6 +7,8 @@ import {
   Lock,
   LogOut,
   ChevronDown,
+  Mail,
+  Languages,
 } from "lucide-react";
 import jamieAvatar from "@/assets/images/default/jamie_anderson.jpg";
 import { toast } from "sonner";
@@ -48,11 +50,12 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="group flex items-center gap-2 p-0.5 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-teal-500/30"
+        className="group flex items-center gap-1.5 p-0.5 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-teal-500/30 shrink-0"
         aria-expanded={isOpen}
         aria-haspopup="true"
+        title="User Profile Menu"
       >
-        <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-slate-200 dark:ring-slate-700 hover:ring-teal-500 transition-all">
+        <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden ring-2 ring-slate-200 dark:ring-slate-700 hover:ring-teal-500 transition-all">
           <img
             src={jamieAvatar}
             alt="Jamie Anderson"
@@ -63,19 +66,27 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
         </div>
         {!compact && (
           <ChevronDown
-            className={`w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-200 ${
+            className={`w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-200 hidden md:block ${
               isOpen ? "rotate-180" : ""
             }`}
           />
         )}
       </button>
 
-      {/* Dropdown Card - Exact Match with reference_design/profile_menu.png */}
+      {/* Backdrop for mobile */}
       {isOpen && (
-        <div className="absolute right-0 mt-2.5 w-64 rounded-2xl bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 py-3 z-50 transform transition-all duration-200 origin-top-right animate-in fade-in zoom-in-95">
+        <div
+          className="sm:hidden fixed inset-0 z-40 bg-slate-900/30 backdrop-blur-2xs"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Dropdown Card - Mobile Safe Positioning */}
+      {isOpen && (
+        <div className="fixed sm:absolute right-3 sm:right-0 top-[60px] sm:top-full mt-2 w-[calc(100vw-24px)] sm:w-64 max-w-[280px] rounded-2xl bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 py-3 z-50 transform transition-all duration-200 origin-top-right animate-in fade-in zoom-in-95">
           {/* Profile Header */}
           <div className="flex items-center gap-3.5 px-4 pb-3 border-b border-slate-100 dark:border-slate-800">
-            <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-teal-500/30">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-teal-500/30">
               <img
                 src={jamieAvatar}
                 alt="Jamie Anderson"
@@ -83,7 +94,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
               />
             </div>
             <div className="min-w-0">
-              <h4 className="text-[15px] font-bold text-slate-900 dark:text-white leading-tight truncate">
+              <h4 className="text-[14px] sm:text-[15px] font-bold text-slate-900 dark:text-white leading-tight truncate">
                 Jamie Anderson
               </h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">
@@ -96,7 +107,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
           <div className="py-1.5 space-y-0.5">
             <button
               onClick={() => handleAction("View Profile")}
-              className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
+              className="w-full flex items-center gap-3 px-4 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
             >
               <User className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
               <span>View Profile</span>
@@ -104,7 +115,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
 
             <button
               onClick={() => handleAction("Edit Profile")}
-              className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
+              className="w-full flex items-center gap-3 px-4 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
             >
               <UserPen className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
               <span>Edit Profile</span>
@@ -112,7 +123,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
 
             <button
               onClick={() => handleAction("Settings")}
-              className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
+              className="w-full flex items-center gap-3 px-4 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
             >
               <Settings className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
               <span>Settings</span>
@@ -120,11 +131,30 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
 
             <button
               onClick={() => handleAction("Support Tickets")}
-              className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
+              className="w-full flex items-center gap-3 px-4 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
             >
               <LifeBuoy className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
               <span>Support Tickets</span>
             </button>
+
+            {/* Mobile shortcuts for Messages & Language */}
+            <div className="sm:hidden pt-1 border-t border-slate-100 dark:border-slate-800/80">
+              <button
+                onClick={() => handleAction("Messages Hub")}
+                className="w-full flex items-center gap-3 px-4 py-2 text-xs text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
+              >
+                <Mail className="w-4 h-4 text-emerald-500" />
+                <span>Messages (2 New)</span>
+              </button>
+
+              <button
+                onClick={() => handleAction("Change Language")}
+                className="w-full flex items-center gap-3 px-4 py-2 text-xs text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
+              >
+                <Languages className="w-4 h-4 text-sky-500" />
+                <span>Language (English US)</span>
+              </button>
+            </div>
           </div>
 
           {/* Divider */}
@@ -134,7 +164,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
           <div className="py-1 space-y-0.5">
             <button
               onClick={() => handleAction("Screen Locked")}
-              className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
+              className="w-full flex items-center gap-3 px-4 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors font-medium text-left"
             >
               <Lock className="w-4 h-4 text-slate-400" />
               <span>Lock Screen</span>
@@ -142,7 +172,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
 
             <button
               onClick={() => handleAction("Logged Out")}
-              className="w-full flex items-center gap-3 px-4 py-2 text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/20 transition-colors font-medium text-left"
+              className="w-full flex items-center gap-3 px-4 py-2 text-xs sm:text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/20 transition-colors font-medium text-left"
             >
               <LogOut className="w-4 h-4 text-rose-600" />
               <span>Log Out</span>

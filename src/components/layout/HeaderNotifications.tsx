@@ -51,22 +51,31 @@ export const HeaderNotifications: React.FC = () => {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181a24] text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center justify-center transition-all shadow-xs hover:border-slate-300 dark:hover:border-slate-700"
+        className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181a24] text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center justify-center transition-all shadow-xs hover:border-slate-300 dark:hover:border-slate-700 shrink-0"
         title="Notifications"
         aria-label="Notifications"
       >
-        <Bell className="w-4 h-4" />
+        <Bell className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         {unreadCount > 0 && (
           <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white dark:ring-[#181a24]"></span>
         )}
       </button>
 
+      {/* Backdrop for mobile */}
       {isOpen && (
-        <div className="absolute right-0 mt-2.5 w-80 sm:w-96 rounded-2xl bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 p-3 z-50 animate-in fade-in zoom-in-95">
+        <div
+          className="sm:hidden fixed inset-0 z-40 bg-slate-900/30 backdrop-blur-2xs"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Dropdown Card */}
+      {isOpen && (
+        <div className="fixed sm:absolute right-3 sm:right-0 top-[60px] sm:top-full mt-2 w-[calc(100vw-24px)] sm:w-96 max-w-sm rounded-2xl bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 p-3 z-50 animate-in fade-in zoom-in-95">
           <div className="flex items-center justify-between pb-2.5 px-2 border-b border-slate-100 dark:border-slate-800">
             <div>
-              <h4 className="text-sm font-bold text-slate-900 dark:text-white">Notifications</h4>
-              <p className="text-xs text-slate-500">2 urgent alerts pending</p>
+              <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Notifications</h4>
+              <p className="text-[11px] text-slate-500">2 urgent alerts pending</p>
             </div>
             {unreadCount > 0 && (
               <button
@@ -74,7 +83,7 @@ export const HeaderNotifications: React.FC = () => {
                   setUnreadCount(0);
                   toast.success("All notifications marked as read");
                 }}
-                className="flex items-center gap-1 text-xs text-teal-600 dark:text-teal-400 font-semibold hover:underline"
+                className="flex items-center gap-1 text-[11px] text-teal-600 dark:text-teal-400 font-semibold hover:underline"
               >
                 <CheckCheck className="w-3.5 h-3.5" />
                 Mark all read
@@ -82,7 +91,7 @@ export const HeaderNotifications: React.FC = () => {
             )}
           </div>
 
-          <div className="divide-y divide-slate-100 dark:divide-slate-800/60 max-h-80 overflow-y-auto my-1">
+          <div className="divide-y divide-slate-100 dark:divide-slate-800/60 max-h-72 overflow-y-auto my-1">
             {notifications.map((n) => {
               const Icon = n.icon;
               return (
@@ -92,7 +101,7 @@ export const HeaderNotifications: React.FC = () => {
                     toast.info(`Opening ${n.title}`);
                     setIsOpen(false);
                   }}
-                  className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                  className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
                 >
                   <div className={`w-8 h-8 rounded-lg ${n.color} flex items-center justify-center shrink-0 mt-0.5`}>
                     <Icon className="w-4 h-4" />

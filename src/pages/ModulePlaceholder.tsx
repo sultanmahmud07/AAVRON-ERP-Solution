@@ -99,7 +99,7 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
             {displayTitle}
           </h1>
           <p className="text-xs text-slate-500 mt-0.5">
-            {description || `Manage, inspect, and analyze ${displayTitle.toLowerCase()} data for Dreams ERP.`}
+            {description || `Manage, inspect, and analyze ${displayTitle.toLowerCase()} data for NEXORA ERP.`}
           </p>
         </div>
 
