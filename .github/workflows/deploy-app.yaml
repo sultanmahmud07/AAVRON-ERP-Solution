@@ -1,0 +1,70 @@
+name: Deploy React Dashboard on EC2
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install Dependencies
+        run: npm install --frozen-lockfile
+      # ✅ CRITICAL FIX: Create the .env file BEFORE running the build!
+      - name: Create .env file for Vite
+        run: |
+          cat << 'EOF' > .env
+          ${{ secrets.DASHBOARD_ENVS }}
+          EOF
+      - name: Build React Project
+        run: npm run build
+
+      # Configure SSH Safely
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          cat << 'EOF' > ~/.ssh/id_rsa
+          ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          EOF
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
+      # Deploy to EC2
+      - name: Deploy to EC2
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+        run: |
+          # 1. Create a specific directory for the React dashboard
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $EC2_USER@$EC2_HOST "mkdir -p ~/topline-roofing-dashboard"
+
+          # 3. Copy files to EC2 instance
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            --exclude='.github' \
+            . $EC2_USER@$EC2_HOST:~/topline-roofing-dashboard/
+
+          # 4. Execute deployment commands safely
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $EC2_USER@$EC2_HOST << 'EOF'
+            # Load your Node environment
+            export PATH=$HOME/.local/share/fnm:$PATH
+            eval "`fnm env`"
+            
+            cd ~/topline-roofing-dashboard
+            
+            # Use PM2's built-in 'serve' command with the --spa flag for React/Vite routing!
+            pm2 restart topline-roofing-dashboard || pm2 serve dist 3001 --name "topline-roofing-dashboard" --spa
+            
+            pm2 save
+          EOF
