@@ -51,7 +51,7 @@ const CreateProduct = () => {
   const [createProduct, { isLoading: isSubmitting }] = useAddProductMutation();
   const { data: categoryData, isLoading: isLoadingCategories } = useGetAllCategoriesQuery(undefined);
   const categories = categoryData?.data || [];
-  
+
   // 2. Separate State for Files
   const [galleryFiles, setGalleryFiles] = useState<File[]>([]);
   const [featureFiles, setFeatureFiles] = useState<File[]>([]);
@@ -144,7 +144,7 @@ const CreateProduct = () => {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-        
+
         {/* Basic Information */}
         <Card>
           <CardHeader>

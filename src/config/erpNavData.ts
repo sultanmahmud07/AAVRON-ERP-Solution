@@ -1,7 +1,6 @@
 import {
   LayoutDashboard,
   AppWindow,
-  Box,
   Package,
   Mail,
   Triangle,
@@ -67,17 +66,6 @@ export const erpNavSections: NavSection[] = [
         title: "Dashboard",
         icon: LayoutDashboard,
         url: "/",
-        subItems: [
-          { title: "HRM Dashboard", url: "/" },
-          { title: "Inventory Dashboard", url: "/dashboard/inventory" },
-          { title: "CRM Dashboard", url: "/dashboard/crm" },
-          { title: "POS Dashboard", url: "/dashboard/pos" },
-          { title: "Finance Dashboard", url: "/dashboard/finance" },
-          { title: "Sales Dashboard", url: "/dashboard/sales" },
-          { title: "Procurement Dashboard", url: "/dashboard/procurement" },
-          { title: "Project Dashboard", url: "/dashboard/project" },
-          { title: "Support Dashboard", url: "/dashboard/support" },
-        ],
       },
       {
         title: "Applications",
@@ -91,17 +79,6 @@ export const erpNavSections: NavSection[] = [
           { title: "To Do List", url: "/apps/todo" },
         ],
       },
-      {
-        title: "Layouts",
-        icon: Box,
-        subItems: [
-          { title: "Default Layout", url: "/" },
-          { title: "Mini Sidebar", url: "/layouts/mini" },
-          { title: "Detached", url: "/layouts/detached" },
-          { title: "Horizontal", url: "/layouts/horizontal" },
-          { title: "Boxed", url: "/layouts/boxed" },
-        ],
-      },
     ],
   },
   {
@@ -110,7 +87,7 @@ export const erpNavSections: NavSection[] = [
       { title: "Products", icon: Package, url: "/inventory/products" },
       { title: "Categories", icon: Mail, url: "/inventory/categories" },
       { title: "Brands", icon: Triangle, url: "/inventory/brands" },
-      { title: "Units", icon: Compass, url: "/inventory/units" },
+      { title: "Variants / Units", icon: Compass, url: "/inventory/units" },
       { title: "Inventory", icon: Boxes, url: "/inventory/stock-list" },
       { title: "Suppliers", icon: Users, url: "/inventory/suppliers" },
       { title: "Warehouse", icon: Home, url: "/inventory/warehouse" },

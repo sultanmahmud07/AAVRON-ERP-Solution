@@ -1,10 +1,7 @@
+import CreateProduct from "@/components/modules/Product/CreateProduct";
 
 const EditProduct = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <CreateProduct />;
+};
 
-export default EditProduct
+export default EditProduct;

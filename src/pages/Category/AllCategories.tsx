@@ -1,8 +1,7 @@
+import CategoryList from "@/components/modules/Category/CategoryList";
 
 const AllCategories = () => {
-  return (
-    <div>all category</div>
-  )
-}
+  return <CategoryList />;
+};
 
-export default AllCategories
+export default AllCategories;

@@ -4,6 +4,12 @@ import DashboardOverview from "@/pages/DashboardOverview";
 import UnitsPage from "@/pages/inventory/UnitsPage";
 import ModulePlaceholder from "@/pages/ModulePlaceholder";
 
+import Products from "@/pages/Product/Products";
+import AddProduct from "@/pages/Product/AddProduct";
+import EditProduct from "@/pages/Product/EditProduct";
+import AllCategories from "@/pages/Category/AllCategories";
+import BrandsPage from "@/pages/Brand/BrandsPage";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +31,35 @@ export const router = createBrowserRouter([
 
       // Inventory routes
       {
+        path: "inventory/products",
+        Component: Products,
+      },
+      {
+        path: "inventory/products/add",
+        Component: AddProduct,
+      },
+      {
+        path: "inventory/products/edit/:id",
+        Component: EditProduct,
+      },
+      {
+        path: "inventory/categories",
+        Component: AllCategories,
+      },
+      {
+        path: "inventory/brands",
+        Component: BrandsPage,
+      },
+      {
         path: "inventory/units",
+        Component: UnitsPage,
+      },
+      {
+        path: "inventory/variants",
+        Component: UnitsPage,
+      },
+      {
+        path: "inventory/attributes",
         Component: UnitsPage,
       },
       {
