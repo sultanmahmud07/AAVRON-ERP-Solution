@@ -27,6 +27,30 @@ export const initialCustomers: CustomerItem[] = [
     createdAt: "2026-01-20",
   },
   {
+    id: "#ORD0021",
+    code: "#ORD0021",
+    name: "Akkas Ali",
+    email: "akkas.ali@example.com",
+    phone: "01745968975",
+    country: "Bangladesh",
+    address: "Mirpur-10, Dhaka",
+    status: "Active",
+    avatarColor: "bg-emerald-600",
+    createdAt: "2026-01-21",
+  },
+  {
+    id: "#ORD0001",
+    code: "#ORD0001",
+    name: "Walking Customer",
+    email: "walking@customer.com",
+    phone: "0000000000",
+    country: "Bangladesh",
+    address: "Counter Sales",
+    status: "Active",
+    avatarColor: "bg-blue-600",
+    createdAt: "2026-01-01",
+  },
+  {
     id: "#ORD0019",
     code: "#ORD0019",
     name: "Gabriella White",
@@ -160,10 +184,23 @@ export function getStoredCustomers(): CustomerItem[] {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initialCustomers));
       return initialCustomers;
     }
-    const parsed = JSON.parse(raw);
+    const parsed: CustomerItem[] = JSON.parse(raw);
     if (!Array.isArray(parsed) || parsed.length === 0) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initialCustomers));
       return initialCustomers;
+    }
+    // Merge any missing initial customers (e.g. Akkas Ali)
+    const existingNames = new Set(parsed.map((c) => c.name.toLowerCase()));
+    let hasNew = false;
+    for (const init of initialCustomers) {
+      if (!existingNames.has(init.name.toLowerCase())) {
+        parsed.unshift(init);
+        existingNames.add(init.name.toLowerCase());
+        hasNew = true;
+      }
+    }
+    if (hasNew) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
     }
     return parsed;
   } catch {

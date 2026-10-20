@@ -37,6 +37,7 @@ import {
   Calendar,
   UserPlus,
   ShieldCheck,
+  ShoppingCart,
 } from "lucide-react";
 
 export interface NavSubItem {
@@ -105,15 +106,12 @@ export const erpNavSections: NavSection[] = [
   {
     sectionTitle: "Sales",
     items: [
+      { title: "POS System", icon: ShoppingCart, url: "/sales/pos" },
       { title: "Customers", icon: Contact, url: "/sales/customers" },
       { title: "Sales Orders", icon: Layers, url: "/sales/orders" },
-      { title: "Recurring Invoices", icon: FileText, url: "/sales/recurring-invoices" },
-      { title: "Invoice Templates", icon: FileCode, url: "/sales/invoice-templates" },
-      { title: "Credit Notes", icon: Banknote, url: "/sales/credit-notes" },
       { title: "Sales Quotes", icon: FileCheck, url: "/sales/quotes" },
       { title: "Cash Sales", icon: Wallet, url: "/sales/cash-sales" },
       { title: "Refunds", icon: CircleDollarSign, url: "/sales/refunds" },
-      { title: "Delivery Notes", icon: Truck, url: "/sales/delivery-notes" },
       { title: "Sales Analytics", icon: BarChart2, url: "/sales/analytics" },
     ],
   },

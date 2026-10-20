@@ -13,6 +13,9 @@ import SuppliersPage from "@/pages/inventory/SuppliersPage";
 import WarehousePage from "@/pages/inventory/WarehousePage";
 import InventoryPage from "@/pages/inventory/InventoryPage";
 import CustomersPage from "@/pages/sales/CustomersPage";
+import SalesOrdersPage from "@/pages/sales/SalesOrdersPage";
+import SalesOrderPreviewPage from "@/pages/sales/SalesOrderPreviewPage";
+import POSPage from "@/pages/sales/POSPage";
 
 export const router = createBrowserRouter([
   {
@@ -101,6 +104,26 @@ export const router = createBrowserRouter([
         Component: CustomersPage,
       },
       {
+        path: "sales/pos",
+        Component: POSPage,
+      },
+      {
+        path: "sales/orders",
+        Component: SalesOrdersPage,
+      },
+      {
+        path: "sales/orders/:orderId",
+        Component: SalesOrderPreviewPage,
+      },
+      {
+        path: "sales/orders/preview/:orderId",
+        Component: SalesOrderPreviewPage,
+      },
+      {
+        path: "sales/order-preview/:orderId",
+        Component: SalesOrderPreviewPage,
+      },
+      {
         path: "sales/:section",
         Component: ModulePlaceholder,
       },
@@ -147,5 +170,5 @@ export const router = createBrowserRouter([
         Component: DashboardOverview,
       },
     ],
-  },
+  }
 ]);
