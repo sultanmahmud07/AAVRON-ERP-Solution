@@ -32,7 +32,7 @@ export const DashboardLayout: React.FC = () => {
         />
 
         {/* Page Main Content */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-7 max-w-[1720px] w-full mx-auto">
+        <main className="flex-1 p-2 sm:p-3 lg:p-5 max-w-[1720px] w-full mx-auto">
           <Outlet />
         </main>
       </div>

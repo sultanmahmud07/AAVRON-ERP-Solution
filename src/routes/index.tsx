@@ -9,6 +9,10 @@ import AddProduct from "@/pages/Product/AddProduct";
 import EditProduct from "@/pages/Product/EditProduct";
 import AllCategories from "@/pages/Category/AllCategories";
 import BrandsPage from "@/pages/Brand/BrandsPage";
+import SuppliersPage from "@/pages/inventory/SuppliersPage";
+import WarehousePage from "@/pages/inventory/WarehousePage";
+import InventoryPage from "@/pages/inventory/InventoryPage";
+import CustomersPage from "@/pages/sales/CustomersPage";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +67,22 @@ export const router = createBrowserRouter([
         Component: UnitsPage,
       },
       {
+        path: "inventory/stock-list",
+        Component: InventoryPage,
+      },
+      {
+        path: "inventory/inventory",
+        Component: InventoryPage,
+      },
+      {
+        path: "inventory/suppliers",
+        Component: SuppliersPage,
+      },
+      {
+        path: "inventory/warehouse",
+        Component: WarehousePage,
+      },
+      {
         path: "inventory/:section",
         Component: ModulePlaceholder,
       },
@@ -72,6 +92,14 @@ export const router = createBrowserRouter([
       },
 
       // Sales routes
+      {
+        path: "sales/customers",
+        Component: CustomersPage,
+      },
+      {
+        path: "customers",
+        Component: CustomersPage,
+      },
       {
         path: "sales/:section",
         Component: ModulePlaceholder,
