@@ -40,6 +40,7 @@ import UserManagementPage from "@/pages/system/UserManagementPage";
 import RolesPermissionsPage from "@/pages/system/RolesPermissionsPage";
 import DeleteRequestsPage from "@/pages/system/DeleteRequestsPage";
 import SettingsPage from "@/pages/system/SettingsPage";
+import BranchPage from "@/pages/system/BranchPage";
 import ManageQuotesPage from "@/pages/sales/ManageQuotesPage";
 import CreateQuotePage from "@/pages/sales/CreateQuotePage";
 import RefundsPage from "@/pages/sales/RefundsPage";
@@ -451,6 +452,22 @@ export const router = createBrowserRouter([
       {
         path: "system/delete-requests",
         Component: DeleteRequestsPage,
+      },
+      {
+        path: "system/branch",
+        Component: BranchPage,
+      },
+      {
+        path: "system/branches",
+        Component: BranchPage,
+      },
+      {
+        path: "settings/branch",
+        Component: BranchPage,
+      },
+      {
+        path: "settings/branches",
+        Component: BranchPage,
       },
       {
         path: "system/settings",

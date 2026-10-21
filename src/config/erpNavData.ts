@@ -27,6 +27,7 @@ import {
   PieChart,
   UserCircle,
   Building,
+  Building2,
   UserCog,
   CalendarCheck,
   CalendarDays,
@@ -211,6 +212,7 @@ export const erpNavSections: NavSection[] = [
       { title: "User Management", icon: User, url: "/system/users" },
       { title: "Roles & Permissions", icon: Layers, url: "/system/roles" },
       { title: "Delete Requests", icon: SettingsGear, url: "/system/delete-requests" },
+      { title: "Branch", icon: Building2, url: "/system/branch" },
       {
         title: "Settings",
         icon: ClipboardList,

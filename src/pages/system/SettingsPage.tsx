@@ -13,7 +13,7 @@ import {
 import { toast } from "sonner";
 
 export const SettingsPage: React.FC = () => {
-  const { tab = "integrations" } = useParams<{ tab?: string }>();
+  const { tab = "general" } = useParams<{ tab?: string }>();
   const navigate = useNavigate();
 
   const validTabs = ["general", "security", "notifications", "integrations"];
