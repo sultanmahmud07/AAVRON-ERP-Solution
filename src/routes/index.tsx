@@ -23,6 +23,10 @@ import PurchaseDetailsPage from "@/pages/purchase/PurchaseDetailsPage";
 import PurchaseReturnPage from "@/pages/purchase/PurchaseReturnPage";
 import ExpensesPage from "@/pages/finance/ExpensesPage";
 import ExpenseCategoryPage from "@/pages/finance/ExpenseCategoryPage";
+import PaymentsPage from "@/pages/finance/PaymentsPage";
+import BudgetingPage from "@/pages/finance/BudgetingPage";
+import TaxesPage from "@/pages/finance/TaxesPage";
+import FinanceReportsPage from "@/pages/finance/FinanceReportsPage";
 import ChartOfAccountsPage from "@/pages/accounting/ChartOfAccountsPage";
 import BalanceAdjustmentPage from "@/pages/accounting/BalanceAdjustmentPage";
 import BalanceTransferPage from "@/pages/accounting/BalanceTransferPage";
@@ -305,11 +309,27 @@ export const router = createBrowserRouter([
         Component: ExpenseCategoryPage,
       },
       {
-        path: "finance/:section",
-        Component: ModulePlaceholder,
+        path: "finance/payments",
+        Component: PaymentsPage,
+      },
+      {
+        path: "finance/budgeting",
+        Component: BudgetingPage,
+      },
+      {
+        path: "finance/taxes",
+        Component: TaxesPage,
+      },
+      {
+        path: "finance/reports",
+        Component: FinanceReportsPage,
       },
       {
         path: "finance/reports/:reportType",
+        Component: FinanceReportsPage,
+      },
+      {
+        path: "finance/:section",
         Component: ModulePlaceholder,
       },
 
