@@ -11,17 +11,14 @@ import {
   ExternalLink,
   Contact,
   Layers,
-  FileText,
-  FileCode,
   Banknote,
   FileCheck,
   Wallet,
   CircleDollarSign,
-  Truck,
   BarChart2,
   ClipboardList,
-  FileX,
-  PackageCheck,
+  PlusCircle,
+  RotateCcw,
   Receipt,
   ListFilter,
   CreditCard,
@@ -38,6 +35,7 @@ import {
   UserPlus,
   ShieldCheck,
   ShoppingCart,
+  LucideIcon,
 } from "lucide-react";
 
 export interface NavSubItem {
@@ -49,7 +47,7 @@ export interface NavSubItem {
 export interface NavItem {
   title: string;
   url?: string;
-  icon: any;
+  icon: LucideIcon;
   badge?: string;
   subItems?: NavSubItem[];
 }
@@ -118,11 +116,9 @@ export const erpNavSections: NavSection[] = [
   {
     sectionTitle: "Purchase",
     items: [
-      { title: "Purchases", icon: ClipboardList, url: "/purchase/list" },
-      { title: "Purchase Orders", icon: FileCheck, url: "/purchase/orders" },
-      { title: "Purchase Return", icon: FileX, url: "/purchase/returns" },
-      { title: "Vendors", icon: Users, url: "/purchase/vendors" },
-      { title: "Procurement Analytics", icon: PackageCheck, url: "/purchase/analytics" },
+      { title: "Add purchase", icon: PlusCircle, url: "/purchase/add" },
+      { title: "Manage purchase", icon: ClipboardList, url: "/purchase/manage" },
+      { title: "Purchase return", icon: RotateCcw, url: "/purchase/returns" },
     ],
   },
   {

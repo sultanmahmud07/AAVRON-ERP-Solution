@@ -16,6 +16,10 @@ import CustomersPage from "@/pages/sales/CustomersPage";
 import SalesOrdersPage from "@/pages/sales/SalesOrdersPage";
 import SalesOrderPreviewPage from "@/pages/sales/SalesOrderPreviewPage";
 import POSPage from "@/pages/sales/POSPage";
+import AddPurchasePage from "@/pages/purchase/AddPurchasePage";
+import ManagePurchasePage from "@/pages/purchase/ManagePurchasePage";
+import PurchaseDetailsPage from "@/pages/purchase/PurchaseDetailsPage";
+import PurchaseReturnPage from "@/pages/purchase/PurchaseReturnPage";
 
 export const router = createBrowserRouter([
   {
@@ -129,6 +133,38 @@ export const router = createBrowserRouter([
       },
 
       // Purchase routes
+      {
+        path: "purchase/add",
+        Component: AddPurchasePage,
+      },
+      {
+        path: "purchase/create",
+        Component: AddPurchasePage,
+      },
+      {
+        path: "purchase/manage",
+        Component: ManagePurchasePage,
+      },
+      {
+        path: "purchase/list",
+        Component: ManagePurchasePage,
+      },
+      {
+        path: "purchase/orders",
+        Component: ManagePurchasePage,
+      },
+      {
+        path: "purchase/details/:id",
+        Component: PurchaseDetailsPage,
+      },
+      {
+        path: "purchase/preview/:id",
+        Component: PurchaseDetailsPage,
+      },
+      {
+        path: "purchase/returns",
+        Component: PurchaseReturnPage,
+      },
       {
         path: "purchase/:section",
         Component: ModulePlaceholder,

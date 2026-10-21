@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router";
 import {
-  ArrowLeft,
   Search,
   LayoutGrid,
   Headphones,
@@ -17,9 +16,6 @@ import {
   X,
   Printer,
   CheckCircle2,
-  Bell,
-  Mail,
-  Languages,
   UserPlus,
   ExternalLink,
   CreditCard,
@@ -29,7 +25,6 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { toast } from "sonner";
-import ModeToggler from "@/components/layout/ModeToggler";
 import {
   POSProduct,
   POSCartItem,
@@ -57,7 +52,6 @@ export default function POSSystem() {
   // Filter & Search states
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [topSearch, setTopSearch] = useState("");
 
   // Customers & Date state
   const [customers, setCustomers] = useState<CustomerItem[]>([]);
@@ -130,7 +124,7 @@ export default function POSSystem() {
     return INITIAL_POS_PRODUCTS.filter((prod) => {
       const matchCat =
         selectedCategory === "all" || prod.category === selectedCategory;
-      const q = (searchQuery || topSearch).toLowerCase().trim();
+      const q = searchQuery.toLowerCase().trim();
       const matchSearch =
         !q ||
         prod.name.toLowerCase().includes(q) ||
@@ -138,7 +132,7 @@ export default function POSSystem() {
         prod.category.toLowerCase().includes(q);
       return matchCat && matchSearch;
     });
-  }, [selectedCategory, searchQuery, topSearch]);
+  }, [selectedCategory, searchQuery]);
 
   // Active customer object
   const activeCustomer = useMemo(() => {
@@ -567,15 +561,43 @@ export default function POSSystem() {
               </p>
             </div>
 
-            {/* Trash Clear Button */}
-            <button
-              onClick={clearCart}
-              disabled={cartItems.length === 0}
-              className="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition disabled:opacity-40"
-              title="Clear Cart"
-            >
-              <Trash2 className="w-4 h-4" />
-            </button>
+            <div className="flex items-center gap-2">
+              {/* Currency Selector Toggle */}
+              <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-semibold">
+                <button
+                  type="button"
+                  onClick={() => setCurrency("$")}
+                  className={`px-2 py-0.5 rounded-md transition ${
+                    currency === "$"
+                      ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-white shadow-2xs font-bold"
+                      : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+                  }`}
+                >
+                  $
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCurrency("৳")}
+                  className={`px-2 py-0.5 rounded-md transition ${
+                    currency === "৳"
+                      ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-white shadow-2xs font-bold"
+                      : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+                  }`}
+                >
+                  ৳
+                </button>
+              </div>
+
+              {/* Trash Clear Button */}
+              <button
+                onClick={clearCart}
+                disabled={cartItems.length === 0}
+                className="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition disabled:opacity-40"
+                title="Clear Cart"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
           {/* Scrollable Middle Content: Customer Info + Product Added + Tax/Shipping + Calculations */}
