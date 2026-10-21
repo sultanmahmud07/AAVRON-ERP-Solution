@@ -51,6 +51,14 @@ import DepartmentsPage from "@/pages/hrm/DepartmentsPage";
 import DesignationsPage from "@/pages/hrm/DesignationsPage";
 import LeavesPage from "@/pages/hrm/LeavesPage";
 import LeaveTypesPage from "@/pages/hrm/LeaveTypesPage";
+import HolidaysPage from "@/pages/hrm/HolidaysPage";
+import PayrollPage from "@/pages/hrm/PayrollPage";
+import AddPayrollPage from "@/pages/hrm/AddPayrollPage";
+import RecruitmentPage from "@/pages/hrm/RecruitmentPage";
+import AddJobRequisitionPage from "@/pages/hrm/AddJobRequisitionPage";
+import PerformanceAppraisalPage from "@/pages/hrm/PerformanceAppraisalPage";
+import TrainingPage from "@/pages/hrm/TrainingPage";
+import HRAnalyticsPage from "@/pages/hrm/HRAnalyticsPage";
 
 export const router = createBrowserRouter([
   {
@@ -458,6 +466,38 @@ export const router = createBrowserRouter([
         Component: LeaveTypesPage,
       },
       {
+        path: "hrm/holidays",
+        Component: HolidaysPage,
+      },
+      {
+        path: "holidays",
+        Component: HolidaysPage,
+      },
+      {
+        path: "hrm/payroll",
+        Component: PayrollPage,
+      },
+      {
+        path: "hrm/payroll/add",
+        Component: AddPayrollPage,
+      },
+      {
+        path: "hrm/payroll/edit/:id",
+        Component: AddPayrollPage,
+      },
+      {
+        path: "payroll",
+        Component: PayrollPage,
+      },
+      {
+        path: "payroll/add",
+        Component: AddPayrollPage,
+      },
+      {
+        path: "payroll/edit/:id",
+        Component: AddPayrollPage,
+      },
+      {
         path: "employees",
         Component: EmployeesPage,
       },
@@ -484,6 +524,74 @@ export const router = createBrowserRouter([
       {
         path: "leave-types",
         Component: LeaveTypesPage,
+      },
+      {
+        path: "hrm/recruitment",
+        Component: RecruitmentPage,
+      },
+      {
+        path: "hrm/recruitment/add",
+        Component: AddJobRequisitionPage,
+      },
+      {
+        path: "hrm/recruitment/edit/:id",
+        Component: AddJobRequisitionPage,
+      },
+      {
+        path: "recruitment",
+        Component: RecruitmentPage,
+      },
+      {
+        path: "recruitment/add",
+        Component: AddJobRequisitionPage,
+      },
+      {
+        path: "recruitment/edit/:id",
+        Component: AddJobRequisitionPage,
+      },
+      {
+        path: "hrm/performance",
+        Component: PerformanceAppraisalPage,
+      },
+      {
+        path: "hrm/performance-appraisal",
+        Component: PerformanceAppraisalPage,
+      },
+      {
+        path: "performance",
+        Component: PerformanceAppraisalPage,
+      },
+      {
+        path: "performance-appraisal",
+        Component: PerformanceAppraisalPage,
+      },
+      {
+        path: "hrm/training",
+        Component: TrainingPage,
+      },
+      {
+        path: "hrm/training-development",
+        Component: TrainingPage,
+      },
+      {
+        path: "training",
+        Component: TrainingPage,
+      },
+      {
+        path: "hrm/analytics",
+        Component: HRAnalyticsPage,
+      },
+      {
+        path: "hrm/hr-analytics",
+        Component: HRAnalyticsPage,
+      },
+      {
+        path: "analytics",
+        Component: HRAnalyticsPage,
+      },
+      {
+        path: "hr-analytics",
+        Component: HRAnalyticsPage,
       },
       {
         path: "hrm/:section",
