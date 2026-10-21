@@ -25,10 +25,10 @@ export const DreamsSidebar: React.FC<DreamsSidebarProps> = ({
     Dashboard: true,
   });
 
-  const toggleMenu = (title: string) => {
+  const toggleMenu = (title: string, currentOpen: boolean) => {
     setOpenMenus((prev) => ({
       ...prev,
-      [title]: !prev[title],
+      [title]: !currentOpen,
     }));
   };
 
@@ -84,15 +84,15 @@ export const DreamsSidebar: React.FC<DreamsSidebarProps> = ({
               {section.items.map((item, itemIdx) => {
                 const Icon = item.icon;
                 const hasSub = Boolean(item.subItems && item.subItems.length > 0);
-                const isMenuOpen = Boolean(openMenus[item.title]);
                 const active = isItemActive(item);
+                const isMenuOpen = openMenus[item.title] !== undefined ? openMenus[item.title] : active;
 
                 // If item has sub-items
                 if (hasSub) {
                   return (
                     <div key={itemIdx} className="space-y-1">
                       <button
-                        onClick={() => toggleMenu(item.title)}
+                        onClick={() => toggleMenu(item.title, isMenuOpen)}
                         className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-sm transition-all text-left ${
                           active
                             ? "bg-slate-900 text-white dark:bg-[#1e222e] dark:text-white shadow-xs"

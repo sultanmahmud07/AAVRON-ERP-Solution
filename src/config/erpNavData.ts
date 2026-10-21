@@ -36,6 +36,16 @@ import {
   ShieldCheck,
   ShoppingCart,
   LucideIcon,
+  Landmark,
+  SlidersHorizontal,
+  ArrowRightLeft,
+  History,
+  UserCheck,
+  Truck,
+  Box,
+  Tags,
+  User,
+  Settings as SettingsGear,
 } from "lucide-react";
 
 export interface NavSubItem {
@@ -122,6 +132,13 @@ export const erpNavSections: NavSection[] = [
     ],
   },
   {
+    sectionTitle: "Due Management",
+    items: [
+      { title: "Customer Due", icon: UserCheck, url: "/due/customer-due" },
+      { title: "Supplier Due", icon: Truck, url: "/due/supplier-due" },
+    ],
+  },
+  {
     sectionTitle: "Finance",
     items: [
       { title: "Expenses", icon: Receipt, url: "/finance/expenses" },
@@ -140,6 +157,23 @@ export const erpNavSections: NavSection[] = [
           { title: "Tax Report", url: "/finance/reports/tax" },
         ],
       },
+    ],
+  },
+  {
+    sectionTitle: "Accounting",
+    items: [
+      { title: "Chart of Accounts", icon: Landmark, url: "/accounting/chart-of-accounts" },
+      { title: "Balance Adjustment", icon: SlidersHorizontal, url: "/accounting/balance-adjustment" },
+      { title: "Balance Transfer", icon: ArrowRightLeft, url: "/accounting/balance-transfer" },
+      { title: "Transaction History", icon: History, url: "/accounting/transaction-history" },
+    ],
+  },
+  {
+    sectionTitle: "Asset Management",
+    items: [
+      { title: "Assets", icon: Box, url: "/assets" },
+      { title: "Assignments", icon: UserCheck, url: "/assets/assignments" },
+      { title: "Asset Types", icon: Tags, url: "/assets/types" },
     ],
   },
   {
@@ -162,6 +196,24 @@ export const erpNavSections: NavSection[] = [
       { title: "Payroll", icon: Banknote, url: "/hrm/payroll" },
       { title: "Recruitment", icon: UserPlus, url: "/hrm/recruitment" },
       { title: "Performance & Appraisal", icon: ShieldCheck, url: "/hrm/performance" },
+    ],
+  },
+  {
+    sectionTitle: "System",
+    items: [
+      { title: "User Management", icon: User, url: "/system/users" },
+      { title: "Roles & Permissions", icon: Layers, url: "/system/roles" },
+      { title: "Delete Requests", icon: SettingsGear, url: "/system/delete-requests" },
+      {
+        title: "Settings",
+        icon: ClipboardList,
+        subItems: [
+          { title: "General", url: "/system/settings/general" },
+          { title: "Security", url: "/system/settings/security" },
+          { title: "Notifications", url: "/system/settings/notifications" },
+          { title: "Integrations", url: "/system/settings/integrations" },
+        ],
+      },
     ],
   },
 ];

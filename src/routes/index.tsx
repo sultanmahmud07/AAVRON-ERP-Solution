@@ -22,6 +22,19 @@ import PurchaseDetailsPage from "@/pages/purchase/PurchaseDetailsPage";
 import PurchaseReturnPage from "@/pages/purchase/PurchaseReturnPage";
 import ExpensesPage from "@/pages/finance/ExpensesPage";
 import ExpenseCategoryPage from "@/pages/finance/ExpenseCategoryPage";
+import ChartOfAccountsPage from "@/pages/accounting/ChartOfAccountsPage";
+import BalanceAdjustmentPage from "@/pages/accounting/BalanceAdjustmentPage";
+import BalanceTransferPage from "@/pages/accounting/BalanceTransferPage";
+import TransactionHistoryPage from "@/pages/accounting/TransactionHistoryPage";
+import CustomerDuePage from "@/pages/due/CustomerDuePage";
+import SupplierDuePage from "@/pages/due/SupplierDuePage";
+import AssetsPage from "@/pages/asset/AssetsPage";
+import AssignmentsPage from "@/pages/asset/AssignmentsPage";
+import AssetTypesPage from "@/pages/asset/AssetTypesPage";
+import UserManagementPage from "@/pages/system/UserManagementPage";
+import RolesPermissionsPage from "@/pages/system/RolesPermissionsPage";
+import DeleteRequestsPage from "@/pages/system/DeleteRequestsPage";
+import SettingsPage from "@/pages/system/SettingsPage";
 
 export const router = createBrowserRouter([
   {
@@ -172,6 +185,48 @@ export const router = createBrowserRouter([
         Component: ModulePlaceholder,
       },
 
+      // Due Management routes
+      {
+        path: "due/customer",
+        Component: CustomerDuePage,
+      },
+      {
+        path: "due/customer-due",
+        Component: CustomerDuePage,
+      },
+      {
+        path: "due/customers",
+        Component: CustomerDuePage,
+      },
+      {
+        path: "due/supplier",
+        Component: SupplierDuePage,
+      },
+      {
+        path: "due/supplier-due",
+        Component: SupplierDuePage,
+      },
+      {
+        path: "due/suppliers",
+        Component: SupplierDuePage,
+      },
+      {
+        path: "due-management/customer-due",
+        Component: CustomerDuePage,
+      },
+      {
+        path: "due-management/supplier-due",
+        Component: SupplierDuePage,
+      },
+      {
+        path: "due-management/:section",
+        Component: ModulePlaceholder,
+      },
+      {
+        path: "due/:section",
+        Component: ModulePlaceholder,
+      },
+
       // Finance routes
       {
         path: "finance/expenses",
@@ -198,6 +253,90 @@ export const router = createBrowserRouter([
         Component: ModulePlaceholder,
       },
 
+      // Accounting routes
+      {
+        path: "accounting/chart-of-accounts",
+        Component: ChartOfAccountsPage,
+      },
+      {
+        path: "accounting/accounts",
+        Component: ChartOfAccountsPage,
+      },
+      {
+        path: "accounting/create-account",
+        Component: ChartOfAccountsPage,
+      },
+      {
+        path: "accounting/balance-adjustment",
+        Component: BalanceAdjustmentPage,
+      },
+      {
+        path: "accounting/adjustments",
+        Component: BalanceAdjustmentPage,
+      },
+      {
+        path: "accounting/balance-transfer",
+        Component: BalanceTransferPage,
+      },
+      {
+        path: "accounting/transfers",
+        Component: BalanceTransferPage,
+      },
+      {
+        path: "accounting/transaction-history",
+        Component: TransactionHistoryPage,
+      },
+      {
+        path: "accounting/transactions",
+        Component: TransactionHistoryPage,
+      },
+      {
+        path: "accounting/:section",
+        Component: ModulePlaceholder,
+      },
+
+      // Asset Management routes
+      {
+        path: "assets",
+        Component: AssetsPage,
+      },
+      {
+        path: "assets/list",
+        Component: AssetsPage,
+      },
+      {
+        path: "assets/all",
+        Component: AssetsPage,
+      },
+      {
+        path: "assets/types",
+        Component: AssetTypesPage,
+      },
+      {
+        path: "assets/categories",
+        Component: AssetTypesPage,
+      },
+      {
+        path: "assets/asset-types",
+        Component: AssetTypesPage,
+      },
+      {
+        path: "assets/assignments",
+        Component: AssignmentsPage,
+      },
+      {
+        path: "assets/assignment",
+        Component: AssignmentsPage,
+      },
+      {
+        path: "assignments",
+        Component: AssignmentsPage,
+      },
+      {
+        path: "assets/:section",
+        Component: ModulePlaceholder,
+      },
+
       // HRM routes
       {
         path: "hrm/:section",
@@ -206,6 +345,40 @@ export const router = createBrowserRouter([
       {
         path: "hrm/leave/:leaveType",
         Component: ModulePlaceholder,
+      },
+
+      // System routes
+      {
+        path: "system/users",
+        Component: UserManagementPage,
+      },
+      {
+        path: "system/user-management",
+        Component: UserManagementPage,
+      },
+      {
+        path: "system/roles",
+        Component: RolesPermissionsPage,
+      },
+      {
+        path: "system/roles-permissions",
+        Component: RolesPermissionsPage,
+      },
+      {
+        path: "system/permissions",
+        Component: RolesPermissionsPage,
+      },
+      {
+        path: "system/delete-requests",
+        Component: DeleteRequestsPage,
+      },
+      {
+        path: "system/settings",
+        Component: SettingsPage,
+      },
+      {
+        path: "system/settings/:tab",
+        Component: SettingsPage,
       },
 
       // Applications & Layouts
