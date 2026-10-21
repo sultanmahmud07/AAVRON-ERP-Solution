@@ -193,26 +193,7 @@ export default function SalesOrderList() {
 
   // Modal Handlers
   const handleOpenAddModal = () => {
-    setEditingOrder(null);
-    setCustomerName("");
-    setCustomerCompany("");
-    setCustomerEmail("");
-    setCustomerPhone("");
-    setCustomerAddress("");
-    setOrderDate(
-      new Date().toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
-    );
-    setDeliveryDate("28 Oct 2026");
-    setPaymentMethod("Credit Card");
-    setReference("For Purchase");
-    setOrderStatus("Delivered");
-    setPaymentStatus("Paid");
-    setLineItems([{ description: "VoltX Charger", model: "VX-CH-01", qty: 1, rate: 1000 }]);
-    setIsModalOpen(true);
+    navigate("/sales/new");
   };
 
   const handleOpenEditModal = (order: SalesOrder) => {
@@ -468,7 +449,7 @@ export default function SalesOrderList() {
           {/* + Add New Button */}
           <button
             onClick={handleOpenAddModal}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-md shadow-2xs transition dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#0c6760] hover:bg-[#09544e] rounded-md shadow-2xs transition cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             Add New

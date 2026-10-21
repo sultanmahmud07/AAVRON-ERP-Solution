@@ -16,6 +16,7 @@ import CustomersPage from "@/pages/sales/CustomersPage";
 import SalesOrdersPage from "@/pages/sales/SalesOrdersPage";
 import SalesOrderPreviewPage from "@/pages/sales/SalesOrderPreviewPage";
 import POSPage from "@/pages/sales/POSPage";
+import NewSalePage from "@/pages/sales/NewSalePage";
 import AddPurchasePage from "@/pages/purchase/AddPurchasePage";
 import ManagePurchasePage from "@/pages/purchase/ManagePurchasePage";
 import PurchaseDetailsPage from "@/pages/purchase/PurchaseDetailsPage";
@@ -35,6 +36,10 @@ import UserManagementPage from "@/pages/system/UserManagementPage";
 import RolesPermissionsPage from "@/pages/system/RolesPermissionsPage";
 import DeleteRequestsPage from "@/pages/system/DeleteRequestsPage";
 import SettingsPage from "@/pages/system/SettingsPage";
+import ManageQuotesPage from "@/pages/sales/ManageQuotesPage";
+import CreateQuotePage from "@/pages/sales/CreateQuotePage";
+import RefundsPage from "@/pages/sales/RefundsPage";
+import SalesAnalyticsPage from "@/pages/sales/SalesAnalyticsPage";
 
 export const router = createBrowserRouter([
   {
@@ -115,6 +120,14 @@ export const router = createBrowserRouter([
 
       // Sales routes
       {
+        path: "sales/new",
+        Component: NewSalePage,
+      },
+      {
+        path: "sales/add",
+        Component: NewSalePage,
+      },
+      {
         path: "sales/customers",
         Component: CustomersPage,
       },
@@ -141,6 +154,53 @@ export const router = createBrowserRouter([
       {
         path: "sales/order-preview/:orderId",
         Component: SalesOrderPreviewPage,
+      },
+      // Sales Quotations
+      {
+        path: "sales/quotes",
+        Component: ManageQuotesPage,
+      },
+      {
+        path: "sales/quotes/manage",
+        Component: ManageQuotesPage,
+      },
+      {
+        path: "sales/quotes/create",
+        Component: CreateQuotePage,
+      },
+      {
+        path: "sales/quotes/new",
+        Component: CreateQuotePage,
+      },
+      {
+        path: "sales/quotes/edit/:quoteId",
+        Component: CreateQuotePage,
+      },
+      {
+        path: "sales/quotes/convert/:quoteId",
+        Component: CreateQuotePage,
+      },
+      // Refunds & Returns routes
+      {
+        path: "sales/refunds",
+        Component: RefundsPage,
+      },
+      {
+        path: "sales/returns",
+        Component: RefundsPage,
+      },
+      {
+        path: "refunds",
+        Component: RefundsPage,
+      },
+      // Sales Analytics route
+      {
+        path: "sales/analytics",
+        Component: SalesAnalyticsPage,
+      },
+      {
+        path: "analytics/sales",
+        Component: SalesAnalyticsPage,
       },
       {
         path: "sales/:section",

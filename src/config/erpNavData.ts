@@ -13,7 +13,6 @@ import {
   Layers,
   Banknote,
   FileCheck,
-  Wallet,
   CircleDollarSign,
   BarChart2,
   ClipboardList,
@@ -114,11 +113,18 @@ export const erpNavSections: NavSection[] = [
   {
     sectionTitle: "Sales",
     items: [
+      { title: "New Sale", icon: PlusCircle, url: "/sales/new" },
+      { title: "Sales Orders", icon: Layers, url: "/sales/orders" },
       { title: "POS System", icon: ShoppingCart, url: "/sales/pos" },
       { title: "Customers", icon: Contact, url: "/sales/customers" },
-      { title: "Sales Orders", icon: Layers, url: "/sales/orders" },
-      { title: "Sales Quotes", icon: FileCheck, url: "/sales/quotes" },
-      { title: "Cash Sales", icon: Wallet, url: "/sales/cash-sales" },
+      {
+        title: "Sales Quotes",
+        icon: FileCheck,
+        subItems: [
+          { title: "Create Quote", url: "/sales/quotes/create" },
+          { title: "Manage Quotes", url: "/sales/quotes" },
+        ],
+      },
       { title: "Refunds", icon: CircleDollarSign, url: "/sales/refunds" },
       { title: "Sales Analytics", icon: BarChart2, url: "/sales/analytics" },
     ],
@@ -171,7 +177,7 @@ export const erpNavSections: NavSection[] = [
   {
     sectionTitle: "Asset Management",
     items: [
-      { title: "Assets", icon: Box, url: "/assets" },
+      { title: "Assets", icon: Box, url: "/assets/manage" },
       { title: "Assignments", icon: UserCheck, url: "/assets/assignments" },
       { title: "Asset Types", icon: Tags, url: "/assets/types" },
     ],

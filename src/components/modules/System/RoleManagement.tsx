@@ -272,7 +272,7 @@ export default function RoleManagement() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => window.print()}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-xs"
             title="Print"
           >
             <Printer className="w-3.5 h-3.5 text-slate-500" />
@@ -281,7 +281,7 @@ export default function RoleManagement() {
 
           <button
             onClick={handleExportCSV}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-xs"
             title="Export"
           >
             <Download className="w-3.5 h-3.5 text-slate-500" />
@@ -301,7 +301,7 @@ export default function RoleManagement() {
       </div>
 
       {/* Main Table Container Card (Matching Image 5) */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
         {/* Filter Toolbar matching Image 1, 2, 5 */}
         <div className="p-3.5 sm:p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
           {/* Left: Search input & Date Range */}
@@ -316,7 +316,7 @@ export default function RoleManagement() {
                   setCurrentPage(1);
                 }}
                 placeholder="Search"
-                className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760] transition-all"
+                className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760] transition-all"
               />
               <Search className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2" />
             </div>
@@ -324,7 +324,7 @@ export default function RoleManagement() {
             {/* Date Range Button */}
             <button
               onClick={() => toast.info("Filter date range: Showing all roles")}
-              className="inline-flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors"
+              className="inline-flex items-center gap-2 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             >
               <Calendar className="w-3.5 h-3.5 text-slate-400" />
               <span>01 Jan 26 to 20 Jan 26</span>
@@ -337,7 +337,7 @@ export default function RoleManagement() {
             <div className="relative">
               <button
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="inline-flex items-center gap-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors"
+                className="inline-flex items-center gap-1.5 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 <Filter className="w-3.5 h-3.5 text-slate-400" />
                 <span>Filter</span>
@@ -345,7 +345,7 @@ export default function RoleManagement() {
               </button>
 
               {isFilterOpen && (
-                <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-2.5 z-20 space-y-2 text-xs">
+                <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-2.5 z-20 space-y-2 text-xs">
                   <div>
                     <label className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
                       Status
@@ -356,7 +356,7 @@ export default function RoleManagement() {
                         setStatusFilter(e.target.value);
                         setIsFilterOpen(false);
                       }}
-                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 text-xs"
+                      className="w-full bg-slate-50 dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 text-xs text-slate-800 dark:text-slate-200"
                     >
                       <option value="all">All Statuses</option>
                       <option value="Active">Active Only</option>
@@ -371,7 +371,7 @@ export default function RoleManagement() {
             <div className="relative">
               <button
                 onClick={() => setIsSortOpen(!isSortOpen)}
-                className="inline-flex items-center gap-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors"
+                className="inline-flex items-center gap-1.5 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />
                 <span>Sort By</span>
@@ -379,13 +379,13 @@ export default function RoleManagement() {
               </button>
 
               {isSortOpen && (
-                <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-1.5 z-20 text-xs space-y-1">
+                <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-1.5 z-20 text-xs space-y-1">
                   <button
                     onClick={() => {
                       setSortBy("date");
                       setIsSortOpen(false);
                     }}
-                    className="w-full text-left px-2 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+                    className="w-full text-left px-2 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300"
                   >
                     Created Date
                   </button>
@@ -394,7 +394,7 @@ export default function RoleManagement() {
                       setSortBy("name");
                       setIsSortOpen(false);
                     }}
-                    className="w-full text-left px-2 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+                    className="w-full text-left px-2 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300"
                   >
                     Role Name
                   </button>
@@ -405,7 +405,7 @@ export default function RoleManagement() {
             {/* View Mode */}
             <button
               onClick={() => toast.info("List view is active")}
-              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 shadow-2xs"
+              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-2xs"
               title="Toggle View"
             >
               <LayoutGrid className="w-3.5 h-3.5 text-slate-500" />
@@ -419,7 +419,7 @@ export default function RoleManagement() {
                 setSortBy("date");
                 toast.success("Filters reset");
               }}
-              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 shadow-2xs"
+              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-2xs"
               title="Reset Filters"
             >
               <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
@@ -432,7 +432,7 @@ export default function RoleManagement() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="border-b border-slate-200/80 dark:border-slate-800 text-[11px] font-bold text-slate-700 dark:text-slate-300">
+              <tr className="border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/40 text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                 <th className="py-3 px-4 min-w-[200px]">Role</th>
                 <th className="py-3 px-4 min-w-[140px]">Created On</th>
                 <th className="py-3 px-4 min-w-[100px]">Status</th>
@@ -458,7 +458,7 @@ export default function RoleManagement() {
                   return (
                     <tr
                       key={item.id}
-                      className="hover:bg-slate-50/60 dark:hover:bg-slate-800/30 transition-colors"
+                      className="hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition-colors"
                     >
                       {/* Role */}
                       <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white text-xs">
@@ -495,21 +495,21 @@ export default function RoleManagement() {
                             onClick={() =>
                               setOpenActionId(isActionOpen ? null : item.id)
                             }
-                            className="p-1 rounded-md border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                            className="p-1 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                             title="Actions"
                           >
                             <MoreVertical className="w-3.5 h-3.5" />
                           </button>
 
                           {isActionOpen && (
-                            <div className="absolute right-4 mt-1 w-32 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-30 text-xs">
+                            <div className="absolute right-4 mt-1 w-32 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-lg shadow-lg py-1 z-30 text-xs">
                               {/* Edit */}
                               <button
                                 onClick={() => {
                                   setOpenActionId(null);
                                   handleOpenEditRole(item);
                                 }}
-                                className="w-full text-left px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center gap-1.5"
+                                className="w-full text-left px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-200 flex items-center gap-1.5"
                               >
                                 <Edit2 className="w-3 h-3 text-slate-400" />
                                 Edit
@@ -521,7 +521,7 @@ export default function RoleManagement() {
                                   setOpenActionId(null);
                                   handleOpenPermissions(item);
                                 }}
-                                className="w-full text-left px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center gap-1.5"
+                                className="w-full text-left px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-200 flex items-center gap-1.5"
                               >
                                 <ShieldCheck className="w-3 h-3 text-slate-400" />
                                 Permission
@@ -562,7 +562,7 @@ export default function RoleManagement() {
                 setPageSize(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 focus:outline-hidden focus:ring-1 focus:ring-[#0c6760] cursor-pointer"
+              className="bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 focus:outline-hidden focus:ring-1 focus:ring-[#0c6760] cursor-pointer"
             >
               <option value={10}>10 / Pages</option>
               <option value={25}>25 / Pages</option>
@@ -587,7 +587,7 @@ export default function RoleManagement() {
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage <= 1}
-              className="p-1.5 rounded-md border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="p-1.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               title="Previous"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
@@ -595,7 +595,7 @@ export default function RoleManagement() {
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage >= totalPages}
-              className="p-1.5 rounded-md border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="p-1.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               title="Next"
             >
               <ChevronRight className="w-3.5 h-3.5" />
@@ -607,8 +607,8 @@ export default function RoleManagement() {
       {/* ======================= MODAL 1: ADD / EDIT ROLE ======================= */}
       {isRoleModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden">
-            <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden">
+            <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#0c6760] dark:text-teal-400">
                   {editingRole ? "Update Role" : "New Security Role"}
@@ -635,7 +635,7 @@ export default function RoleManagement() {
                   value={formRoleName}
                   onChange={(e) => setFormRoleName(e.target.value)}
                   placeholder="e.g. Inventory Officer, Sales Lead..."
-                  className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                   required
                 />
               </div>
@@ -649,7 +649,7 @@ export default function RoleManagement() {
                   onChange={(e) => setFormRoleDescription(e.target.value)}
                   rows={3}
                   placeholder="Responsibilities and permission scopes for this role..."
-                  className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760] resize-none"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760] resize-none"
                 />
               </div>
 
@@ -660,14 +660,14 @@ export default function RoleManagement() {
                 <select
                   value={formRoleStatus}
                   onChange={(e) => setFormRoleStatus(e.target.value as "Active" | "Inactive")}
-                  className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                 >
                   <option value="Active">Active</option>
                   <option value="Inactive">Inactive</option>
                 </select>
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-2 border-t border-slate-100 dark:border-slate-800">
+              <div className="pt-2 flex items-center justify-end gap-2 border-t border-slate-100 dark:border-slate-800/80">
                 <button
                   type="button"
                   onClick={() => setIsRoleModalOpen(false)}
@@ -691,9 +691,9 @@ export default function RoleManagement() {
       {/* ======================= MODAL 2: PERMISSIONS MATRIX MODAL ======================= */}
       {activePermRole && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
             {/* Header */}
-            <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#0c6760] dark:text-teal-400">
                   Granular Access Control
@@ -711,7 +711,7 @@ export default function RoleManagement() {
             </div>
 
             {/* Quick Actions */}
-            <div className="px-5 py-2.5 bg-slate-50 dark:bg-slate-850 border-b border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs">
+            <div className="px-5 py-2.5 bg-slate-50 dark:bg-[#12141c] border-b border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs">
               <span className="text-slate-500 dark:text-slate-400">
                 Grant or restrict modules for this security profile
               </span>
@@ -727,7 +727,7 @@ export default function RoleManagement() {
                 <button
                   type="button"
                   onClick={() => handleToggleAllGlobal(false)}
-                  className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-200/70 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-300/80 transition-colors"
+                  className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-white dark:bg-[#181b24] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 >
                   <Square className="w-3 h-3 inline mr-1" />
                   Clear All
@@ -739,7 +739,7 @@ export default function RoleManagement() {
             <div className="overflow-y-auto p-4 sm:p-5">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+                  <tr className="border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/40 text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     <th className="py-2.5 px-3">Module</th>
                     <th className="py-2.5 px-3 text-center">View</th>
                     <th className="py-2.5 px-3 text-center">Create</th>
@@ -749,7 +749,7 @@ export default function RoleManagement() {
                     <th className="py-2.5 px-3 text-center">All</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
                   {SYSTEM_MODULES.map((mod) => {
                     const p = rolePermissions[mod] || {
                       view: false,
@@ -760,7 +760,7 @@ export default function RoleManagement() {
                     };
                     const isAll = p.view && p.create && p.edit && p.delete && p.export;
                     return (
-                      <tr key={mod} className="hover:bg-slate-50/50 dark:hover:bg-slate-850">
+                      <tr key={mod} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition-colors">
                         <td className="py-2.5 px-3 font-semibold text-slate-800 dark:text-slate-200">
                           {mod}
                         </td>
@@ -811,7 +811,7 @@ export default function RoleManagement() {
                             className={`px-2 py-0.5 rounded text-[10px] font-bold transition-colors ${
                               isAll
                                 ? "bg-[#0c6760] text-white"
-                                : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200"
+                                : "bg-slate-100 dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700"
                             }`}
                           >
                             {isAll ? "Full" : "Toggle"}
@@ -825,7 +825,7 @@ export default function RoleManagement() {
             </div>
 
             {/* Footer */}
-            <div className="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end gap-2 bg-slate-50/50 dark:bg-slate-850/50">
+            <div className="p-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-end gap-2 bg-slate-50/50 dark:bg-[#181b24]">
               <button
                 type="button"
                 onClick={() => setActivePermRole(null)}
@@ -849,7 +849,7 @@ export default function RoleManagement() {
       {/* ======================= MODAL 3: DELETE ROLE CONFIRMATION ======================= */}
       {deletingRole && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-sm shadow-2xl p-5 text-center space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-sm shadow-2xl p-5 text-center space-y-4">
             <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-500 flex items-center justify-center mx-auto">
               <Trash2 className="w-6 h-6" />
             </div>

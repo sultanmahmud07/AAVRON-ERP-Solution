@@ -39,6 +39,18 @@ export const initialCustomers: CustomerItem[] = [
     createdAt: "2026-01-21",
   },
   {
+    id: "#ORD0022",
+    code: "#ORD0022",
+    name: "Abul Hasnat",
+    email: "abul.hasnat@example.com",
+    phone: "0158459632",
+    country: "Bangladesh",
+    address: "Gulshan-1, Dhaka",
+    status: "Active",
+    avatarColor: "bg-amber-600",
+    createdAt: "2026-09-12",
+  },
+  {
     id: "#ORD0001",
     code: "#ORD0001",
     name: "Walking Customer",

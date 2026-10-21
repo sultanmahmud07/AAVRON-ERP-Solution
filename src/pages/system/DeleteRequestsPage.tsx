@@ -99,7 +99,7 @@ export const DeleteRequestsPage: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => window.print()}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-xs"
             title="Print"
           >
             <Printer className="w-3.5 h-3.5 text-slate-500" />
@@ -108,7 +108,7 @@ export const DeleteRequestsPage: React.FC = () => {
 
           <button
             onClick={handleExportCSV}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-xs"
             title="Export"
           >
             <Download className="w-3.5 h-3.5 text-slate-500" />
@@ -118,7 +118,7 @@ export const DeleteRequestsPage: React.FC = () => {
       </div>
 
       {/* Main Table Card */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
         {/* Toolbar */}
         <div className="p-3.5 sm:p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2.5 flex-1">
@@ -128,12 +128,12 @@ export const DeleteRequestsPage: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by user, email, reason..."
-                className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
               />
               <Search className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2" />
             </div>
 
-            <div className="inline-flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300">
+            <div className="inline-flex items-center gap-2 bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300">
               <Calendar className="w-3.5 h-3.5 text-slate-400" />
               <span>All Requests</span>
             </div>
@@ -143,7 +143,7 @@ export const DeleteRequestsPage: React.FC = () => {
             <div className="relative">
               <button
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="inline-flex items-center gap-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 transition-colors"
+                className="inline-flex items-center gap-1.5 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 <Filter className="w-3.5 h-3.5 text-slate-400" />
                 <span>Filter</span>
@@ -151,13 +151,13 @@ export const DeleteRequestsPage: React.FC = () => {
               </button>
 
               {isFilterOpen && (
-                <div className="absolute right-0 mt-1 w-40 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-2 z-20 space-y-1 text-xs">
+                <div className="absolute right-0 mt-1 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-2 z-20 space-y-1 text-xs">
                   <button
                     onClick={() => {
                       setStatusFilter("all");
                       setIsFilterOpen(false);
                     }}
-                    className="w-full text-left px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 font-medium"
+                    className="w-full text-left px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 font-medium text-slate-700 dark:text-slate-200"
                   >
                     All Statuses
                   </button>
@@ -166,7 +166,7 @@ export const DeleteRequestsPage: React.FC = () => {
                       setStatusFilter("Pending");
                       setIsFilterOpen(false);
                     }}
-                    className="w-full text-left px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-amber-600"
+                    className="w-full text-left px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-amber-600 dark:text-amber-400"
                   >
                     Pending
                   </button>
@@ -175,7 +175,7 @@ export const DeleteRequestsPage: React.FC = () => {
                       setStatusFilter("Approved");
                       setIsFilterOpen(false);
                     }}
-                    className="w-full text-left px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-emerald-600"
+                    className="w-full text-left px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400"
                   >
                     Approved
                   </button>
@@ -184,7 +184,7 @@ export const DeleteRequestsPage: React.FC = () => {
                       setStatusFilter("Rejected");
                       setIsFilterOpen(false);
                     }}
-                    className="w-full text-left px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-rose-600"
+                    className="w-full text-left px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-rose-600 dark:text-rose-400"
                   >
                     Rejected
                   </button>
@@ -198,7 +198,7 @@ export const DeleteRequestsPage: React.FC = () => {
                 setStatusFilter("all");
                 toast.success("Filters reset");
               }}
-              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50"
+              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               title="Reset Filters"
             >
               <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
@@ -210,7 +210,7 @@ export const DeleteRequestsPage: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="border-b border-slate-200/80 dark:border-slate-800 text-[11px] font-bold text-slate-700 dark:text-slate-300">
+              <tr className="border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/40 text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                 <th className="py-3 px-4 min-w-[180px]">User</th>
                 <th className="py-3 px-4 min-w-[160px]">Email</th>
                 <th className="py-3 px-4 min-w-[120px]">Department</th>
@@ -232,7 +232,7 @@ export const DeleteRequestsPage: React.FC = () => {
                 </tr>
               ) : (
                 filteredRequests.map((item) => (
-                  <tr key={item.id} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/30">
+                  <tr key={item.id} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition-colors">
                     <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">
                       {item.userName}
                     </td>
@@ -252,10 +252,10 @@ export const DeleteRequestsPage: React.FC = () => {
                       <span
                         className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${
                           item.status === "Approved"
-                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200"
+                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50"
                             : item.status === "Rejected"
-                            ? "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200"
-                            : "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200"
+                            ? "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/50"
+                            : "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50"
                         }`}
                       >
                         {item.status}
@@ -274,7 +274,7 @@ export const DeleteRequestsPage: React.FC = () => {
                           </button>
                           <button
                             onClick={() => handleReject(item.id, item.userName)}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold rounded-md bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 transition-colors"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold rounded-md bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/30 dark:hover:bg-rose-950/50 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900/50 transition-colors"
                             title="Reject Request"
                           >
                             <XCircle className="w-3 h-3" />
