@@ -20,6 +20,8 @@ import AddPurchasePage from "@/pages/purchase/AddPurchasePage";
 import ManagePurchasePage from "@/pages/purchase/ManagePurchasePage";
 import PurchaseDetailsPage from "@/pages/purchase/PurchaseDetailsPage";
 import PurchaseReturnPage from "@/pages/purchase/PurchaseReturnPage";
+import ExpensesPage from "@/pages/finance/ExpensesPage";
+import ExpenseCategoryPage from "@/pages/finance/ExpenseCategoryPage";
 
 export const router = createBrowserRouter([
   {
@@ -171,6 +173,22 @@ export const router = createBrowserRouter([
       },
 
       // Finance routes
+      {
+        path: "finance/expenses",
+        Component: ExpensesPage,
+      },
+      {
+        path: "finance/expense-list",
+        Component: ExpensesPage,
+      },
+      {
+        path: "finance/expense-category",
+        Component: ExpenseCategoryPage,
+      },
+      {
+        path: "finance/expense-categories",
+        Component: ExpenseCategoryPage,
+      },
       {
         path: "finance/:section",
         Component: ModulePlaceholder,
