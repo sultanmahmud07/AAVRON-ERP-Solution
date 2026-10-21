@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import {
   Search,
   Filter,
@@ -13,17 +13,8 @@ import {
   Eye,
   Radio,
   BarChart3,
-  Users,
-  Briefcase,
-  AlertCircle,
   X,
   Calendar,
-  Clock,
-  Phone,
-  Video,
-  MapPin,
-  CheckCircle2,
-  MoveRight,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -32,7 +23,6 @@ import {
   getStoredDepartments,
   JobRequisitionItem,
   getStoredPipeline,
-  saveStoredPipeline,
   addStoredPipelineCandidate,
   updateStoredPipelineStage,
   CandidatePipelineItem,
@@ -41,7 +31,6 @@ import {
   deleteStoredInterview,
   InterviewItem,
   getStoredOffers,
-  addStoredOffer,
   deleteStoredOffer,
   OfferItem,
   getStoredOnboarding,
@@ -204,12 +193,12 @@ export default function JobList() {
     badgeCount: number;
     badgeClass: string;
   }[] = [
-    { key: "Applied", title: "Applied", badgeCount: 12, badgeClass: "bg-sky-50 text-sky-600 dark:bg-sky-950/50 dark:text-sky-400" },
-    { key: "Screening", title: "Screening", badgeCount: 8, badgeClass: "bg-amber-50 text-amber-600 dark:bg-amber-950/50 dark:text-amber-400" },
-    { key: "Interview", title: "Interview", badgeCount: 5, badgeClass: "bg-orange-50 text-orange-600 dark:bg-orange-950/50 dark:text-orange-400" },
-    { key: "Offer", title: "Offer", badgeCount: 3, badgeClass: "bg-purple-50 text-purple-600 dark:bg-purple-950/50 dark:text-purple-400" },
-    { key: "Hired", title: "Hired", badgeCount: 2, badgeClass: "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-400" },
-  ];
+      { key: "Applied", title: "Applied", badgeCount: 12, badgeClass: "bg-sky-50 text-sky-600 dark:bg-sky-950/50 dark:text-sky-400" },
+      { key: "Screening", title: "Screening", badgeCount: 8, badgeClass: "bg-amber-50 text-amber-600 dark:bg-amber-950/50 dark:text-amber-400" },
+      { key: "Interview", title: "Interview", badgeCount: 5, badgeClass: "bg-orange-50 text-orange-600 dark:bg-orange-950/50 dark:text-orange-400" },
+      { key: "Offer", title: "Offer", badgeCount: 3, badgeClass: "bg-purple-50 text-purple-600 dark:bg-purple-950/50 dark:text-purple-400" },
+      { key: "Hired", title: "Hired", badgeCount: 2, badgeClass: "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-400" },
+    ];
 
   // Action handlers
   const handlePrint = () => window.print();
@@ -389,11 +378,10 @@ export default function JobList() {
                   setSearchQuery("");
                   setStatusFilter("all");
                 }}
-                className={`py-3 px-1 text-sm font-medium border-b-2 transition-colors duration-150 ${
-                  isActive
+                className={`py-3 px-1 text-sm font-medium border-b-2 transition-colors duration-150 ${isActive
                     ? "border-[#0c6760] text-[#0c6760] dark:border-[#0c6760] dark:text-[#0c6760]"
                     : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                }`}
+                  }`}
               >
                 {tab}
               </button>
@@ -496,13 +484,12 @@ export default function JobList() {
                     <td className="py-3.5 px-4 font-medium text-slate-700 dark:text-slate-300">{item.applicants}</td>
                     <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">{item.posted}</td>
                     <td className="py-3.5 px-4">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
-                        item.status === "Open"
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${item.status === "Open"
                           ? "bg-emerald-50 text-emerald-700 border-emerald-200/60 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/40"
                           : item.status === "On Hold"
-                          ? "bg-amber-50 text-amber-700 border-amber-200/60 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-800/40"
-                          : "bg-rose-50 text-rose-700 border-rose-200/60 dark:bg-rose-950/40 dark:text-rose-400 dark:border-rose-800/40"
-                      }`}>
+                            ? "bg-amber-50 text-amber-700 border-amber-200/60 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-800/40"
+                            : "bg-rose-50 text-rose-700 border-rose-200/60 dark:bg-rose-950/40 dark:text-rose-400 dark:border-rose-800/40"
+                        }`}>
                         {item.status}
                       </span>
                     </td>
@@ -660,13 +647,12 @@ export default function JobList() {
                     <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">{item.dateTime}</td>
                     <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">{item.type}</td>
                     <td className="py-3.5 px-4">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
-                        item.status === "Scheduled"
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${item.status === "Scheduled"
                           ? "bg-sky-50 text-sky-700 border-sky-200/60 dark:bg-sky-950/40 dark:text-sky-400 dark:border-sky-800/40"
                           : item.status === "Completed"
-                          ? "bg-emerald-50 text-emerald-700 border-emerald-200/60 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/40"
-                          : "bg-rose-50 text-rose-700 border-rose-200/60 dark:bg-rose-950/40 dark:text-rose-400 dark:border-rose-800/40"
-                      }`}>
+                            ? "bg-emerald-50 text-emerald-700 border-emerald-200/60 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/40"
+                            : "bg-rose-50 text-rose-700 border-rose-200/60 dark:bg-rose-950/40 dark:text-rose-400 dark:border-rose-800/40"
+                        }`}>
                         {item.status}
                       </span>
                     </td>
@@ -745,15 +731,14 @@ export default function JobList() {
                     <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">{item.issued}</td>
                     <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">{item.expires}</td>
                     <td className="py-3.5 px-4">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
-                        item.status === "Accepted"
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${item.status === "Accepted"
                           ? "bg-emerald-50 text-emerald-700 border-emerald-200/60 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/40"
                           : item.status === "Pending"
-                          ? "bg-amber-50 text-amber-700 border-amber-200/60 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-800/40"
-                          : item.status === "Rejected"
-                          ? "bg-rose-50 text-rose-700 border-rose-200/60 dark:bg-rose-950/40 dark:text-rose-400 dark:border-rose-800/40"
-                          : "bg-red-50 text-red-700 border-red-200/60 dark:bg-red-950/40 dark:text-red-400 dark:border-red-800/40"
-                      }`}>
+                            ? "bg-amber-50 text-amber-700 border-amber-200/60 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-800/40"
+                            : item.status === "Rejected"
+                              ? "bg-rose-50 text-rose-700 border-rose-200/60 dark:bg-rose-950/40 dark:text-rose-400 dark:border-rose-800/40"
+                              : "bg-red-50 text-red-700 border-red-200/60 dark:bg-red-950/40 dark:text-red-400 dark:border-red-800/40"
+                        }`}>
                         {item.status}
                       </span>
                     </td>
@@ -828,8 +813,8 @@ export default function JobList() {
                     item.progress >= 70
                       ? "bg-[#0c6760]"
                       : item.progress >= 30
-                      ? "bg-sky-500"
-                      : "bg-amber-500";
+                        ? "bg-sky-500"
+                        : "bg-amber-500";
 
                   return (
                     <tr key={item.id} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/30 transition-colors">
@@ -846,13 +831,12 @@ export default function JobList() {
                         </div>
                       </td>
                       <td className="py-3.5 px-4">
-                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
-                          item.status === "Completed"
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${item.status === "Completed"
                             ? "bg-emerald-50 text-emerald-700 border-emerald-200/60 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/40"
                             : item.status === "In Progress"
-                            ? "bg-amber-50 text-amber-700 border-amber-200/60 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-800/40"
-                            : "bg-sky-50 text-sky-700 border-sky-200/60 dark:bg-sky-950/40 dark:text-sky-400 dark:border-sky-800/40"
-                        }`}>
+                              ? "bg-amber-50 text-amber-700 border-amber-200/60 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-800/40"
+                              : "bg-sky-50 text-sky-700 border-sky-200/60 dark:bg-sky-950/40 dark:text-sky-400 dark:border-sky-800/40"
+                          }`}>
                           {item.status}
                         </span>
                       </td>
