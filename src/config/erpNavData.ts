@@ -195,9 +195,8 @@ export const erpNavSections: NavSection[] = [
         title: "Leave",
         icon: CalendarDays,
         subItems: [
-          { title: "Leave Requests", url: "/hrm/leave/requests" },
-          { title: "Leave Types", url: "/hrm/leave/types" },
-          { title: "Leave Balance", url: "/hrm/leave/balance" },
+          { title: "Leaves", url: "/hrm/leaves" },
+          { title: "Leave Types", url: "/hrm/leave-types" },
         ],
       },
       { title: "Holidays", icon: Calendar, url: "/hrm/holidays" },

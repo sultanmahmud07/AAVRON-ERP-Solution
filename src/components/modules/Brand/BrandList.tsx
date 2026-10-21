@@ -2,13 +2,11 @@ import React, { useState, useEffect, useMemo } from "react";
 import {
   Printer,
   Download,
-  Plus,
   Search,
   ArrowUpDown,
   RotateCw,
   Edit2,
   Trash2,
-  X,
   ChevronLeft,
   ChevronRight,
   AlertCircle,
@@ -344,9 +342,8 @@ export default function BrandList() {
                             setSortBy("default");
                             setIsSortOpen(false);
                           }}
-                          className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                            sortBy === "default" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                          }`}
+                          className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "default" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                            }`}
                         >
                           Default
                         </button>
@@ -355,9 +352,8 @@ export default function BrandList() {
                             setSortBy("name-asc");
                             setIsSortOpen(false);
                           }}
-                          className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                            sortBy === "name-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                          }`}
+                          className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "name-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                            }`}
                         >
                           Brand Name (A-Z)
                         </button>
@@ -366,9 +362,8 @@ export default function BrandList() {
                             setSortBy("name-desc");
                             setIsSortOpen(false);
                           }}
-                          className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                            sortBy === "name-desc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                          }`}
+                          className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "name-desc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                            }`}
                         >
                           Brand Name (Z-A)
                         </button>
@@ -377,9 +372,8 @@ export default function BrandList() {
                             setSortBy("products-desc");
                             setIsSortOpen(false);
                           }}
-                          className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                            sortBy === "products-desc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                          }`}
+                          className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "products-desc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                            }`}
                         >
                           Products (High to Low)
                         </button>
@@ -518,11 +512,10 @@ export default function BrandList() {
                   <button
                     key={p}
                     onClick={() => setCurrentPage(p)}
-                    className={`w-7 h-7 rounded-lg text-xs font-bold flex items-center justify-center cursor-pointer transition-colors ${
-                      currentPage === p
+                    className={`w-7 h-7 rounded-lg text-xs font-bold flex items-center justify-center cursor-pointer transition-colors ${currentPage === p
                         ? "bg-[#0c6760] text-white shadow-xs"
                         : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60"
-                    }`}
+                      }`}
                   >
                     {p}
                   </button>

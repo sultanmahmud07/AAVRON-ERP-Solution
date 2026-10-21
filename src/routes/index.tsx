@@ -45,6 +45,12 @@ import ManageQuotesPage from "@/pages/sales/ManageQuotesPage";
 import CreateQuotePage from "@/pages/sales/CreateQuotePage";
 import RefundsPage from "@/pages/sales/RefundsPage";
 import SalesAnalyticsPage from "@/pages/sales/SalesAnalyticsPage";
+import EmployeesPage from "@/pages/hrm/EmployeesPage";
+import AddEmployeePage from "@/pages/hrm/AddEmployeePage";
+import DepartmentsPage from "@/pages/hrm/DepartmentsPage";
+import DesignationsPage from "@/pages/hrm/DesignationsPage";
+import LeavesPage from "@/pages/hrm/LeavesPage";
+import LeaveTypesPage from "@/pages/hrm/LeaveTypesPage";
 
 export const router = createBrowserRouter([
   {
@@ -419,6 +425,66 @@ export const router = createBrowserRouter([
       },
 
       // HRM routes
+      {
+        path: "hrm/employees",
+        Component: EmployeesPage,
+      },
+      {
+        path: "hrm/employees/add",
+        Component: AddEmployeePage,
+      },
+      {
+        path: "hrm/employees/edit/:id",
+        Component: AddEmployeePage,
+      },
+      {
+        path: "hrm/departments",
+        Component: DepartmentsPage,
+      },
+      {
+        path: "hrm/designations",
+        Component: DesignationsPage,
+      },
+      {
+        path: "hrm/leaves",
+        Component: LeavesPage,
+      },
+      {
+        path: "hrm/leave-types",
+        Component: LeaveTypesPage,
+      },
+      {
+        path: "hrm/leave/types",
+        Component: LeaveTypesPage,
+      },
+      {
+        path: "employees",
+        Component: EmployeesPage,
+      },
+      {
+        path: "employees/add",
+        Component: AddEmployeePage,
+      },
+      {
+        path: "departments",
+        Component: DepartmentsPage,
+      },
+      {
+        path: "designations",
+        Component: DesignationsPage,
+      },
+      {
+        path: "leave",
+        Component: LeavesPage,
+      },
+      {
+        path: "leaves",
+        Component: LeavesPage,
+      },
+      {
+        path: "leave-types",
+        Component: LeaveTypesPage,
+      },
       {
         path: "hrm/:section",
         Component: ModulePlaceholder,
