@@ -2187,6 +2187,442 @@ export const DEFAULT_DEPARTMENT_ANALYTICS: DepartmentAnalyticsItem[] = [
   },
 ];
 
+// ==========================================
+// RECRUITMENT TABS: PIPELINE, INTERVIEWS, OFFERS, ONBOARDING
+// ==========================================
+
+export interface CandidatePipelineItem {
+  id: string;
+  name: string;
+  role: string;
+  stage: "Applied" | "Screening" | "Interview" | "Offer" | "Hired";
+}
+
+export const PIPELINE_STORAGE_KEY = "nexora_hrm_pipeline";
+
+export const DEFAULT_PIPELINE: CandidatePipelineItem[] = [
+  { id: "pipe-1", name: "John Smith", role: "Senior React Dev", stage: "Applied" },
+  { id: "pipe-2", name: "Jane Doe", role: "UX Designer", stage: "Applied" },
+  { id: "pipe-3", name: "Mike Johnson", role: "DevOps Engineer", stage: "Applied" },
+  { id: "pipe-4", name: "Sarah Williams", role: "Sales Executive", stage: "Screening" },
+  { id: "pipe-5", name: "David Brown", role: "Marketing Lead", stage: "Screening" },
+  { id: "pipe-6", name: "Emma Wilson", role: "HR Specialist", stage: "Interview" },
+  { id: "pipe-7", name: "Tom Anderson", role: "Financial Analyst", stage: "Interview" },
+  { id: "pipe-8", name: "Lisa Garcia", role: "Senior React Dev", stage: "Offer" },
+  { id: "pipe-9", name: "Robert Lee", role: "UX Designer", stage: "Hired" },
+];
+
+export function getStoredPipeline(): CandidatePipelineItem[] {
+  if (typeof window === "undefined") return DEFAULT_PIPELINE;
+  const raw = localStorage.getItem(PIPELINE_STORAGE_KEY);
+  if (!raw) {
+    localStorage.setItem(PIPELINE_STORAGE_KEY, JSON.stringify(DEFAULT_PIPELINE));
+    return DEFAULT_PIPELINE;
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_PIPELINE;
+  } catch {
+    return DEFAULT_PIPELINE;
+  }
+}
+
+export function saveStoredPipeline(pipeline: CandidatePipelineItem[]): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(PIPELINE_STORAGE_KEY, JSON.stringify(pipeline));
+  window.dispatchEvent(new Event("nexora_pipeline_updated"));
+}
+
+export function addStoredPipelineCandidate(name: string, role: string, stage: CandidatePipelineItem["stage"] = "Applied"): CandidatePipelineItem {
+  const list = getStoredPipeline();
+  const newItem: CandidatePipelineItem = {
+    id: `pipe-${Date.now()}`,
+    name,
+    role,
+    stage,
+  };
+  const updated = [...list, newItem];
+  saveStoredPipeline(updated);
+  return newItem;
+}
+
+export function updateStoredPipelineStage(id: string, stage: CandidatePipelineItem["stage"]): void {
+  const list = getStoredPipeline();
+  const updated = list.map((item) => (item.id === id ? { ...item, stage } : item));
+  saveStoredPipeline(updated);
+}
+
+// ------------------------------------------
+// INTERVIEWS
+// ------------------------------------------
+
+export interface InterviewItem {
+  id: string;
+  candidate: string;
+  position: string;
+  interviewer: string;
+  dateTime: string;
+  type: "Video Call" | "On-site" | "Phone Call";
+  status: "Scheduled" | "Completed" | "Cancelled";
+}
+
+export const INTERVIEWS_STORAGE_KEY = "nexora_hrm_interviews";
+
+export const DEFAULT_INTERVIEWS: InterviewItem[] = [
+  {
+    id: "int-1",
+    candidate: "John Smith",
+    position: "Senior React Dev",
+    interviewer: "Ethan Walker",
+    dateTime: "25 May 2026, 10:00 AM",
+    type: "Video Call",
+    status: "Scheduled",
+  },
+  {
+    id: "int-2",
+    candidate: "Jane Doe",
+    position: "UX Designer",
+    interviewer: "Madison Clark",
+    dateTime: "23 May 2026, 2:00 PM",
+    type: "On-site",
+    status: "Completed",
+  },
+  {
+    id: "int-3",
+    candidate: "Mike Johnson",
+    position: "DevOps Engineer",
+    interviewer: "Daniel Roberts",
+    dateTime: "28 May 2026, 11:00 AM",
+    type: "Video Call",
+    status: "Scheduled",
+  },
+  {
+    id: "int-4",
+    candidate: "Sarah Williams",
+    position: "Sales Executive",
+    interviewer: "Chloe Mitchell",
+    dateTime: "20 May 2026, 3:30 PM",
+    type: "Phone Call",
+    status: "Completed",
+  },
+  {
+    id: "int-5",
+    candidate: "Emma Wilson",
+    position: "HR Specialist",
+    interviewer: "Avery Thompson",
+    dateTime: "30 May 2026, 9:00 AM",
+    type: "On-site",
+    status: "Scheduled",
+  },
+  {
+    id: "int-6",
+    candidate: "Tom Anderson",
+    position: "Financial Analyst",
+    interviewer: "Benjamin Wright",
+    dateTime: "18 May 2026, 1:00 PM",
+    type: "Video Call",
+    status: "Cancelled",
+  },
+  {
+    id: "int-7",
+    candidate: "Lisa Garcia",
+    position: "Senior React Dev",
+    interviewer: "James Harris",
+    dateTime: "15 May 2026, 4:00 PM",
+    type: "Video Call",
+    status: "Completed",
+  },
+];
+
+export function getStoredInterviews(): InterviewItem[] {
+  if (typeof window === "undefined") return DEFAULT_INTERVIEWS;
+  const raw = localStorage.getItem(INTERVIEWS_STORAGE_KEY);
+  if (!raw) {
+    localStorage.setItem(INTERVIEWS_STORAGE_KEY, JSON.stringify(DEFAULT_INTERVIEWS));
+    return DEFAULT_INTERVIEWS;
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_INTERVIEWS;
+  } catch {
+    return DEFAULT_INTERVIEWS;
+  }
+}
+
+export function saveStoredInterviews(interviews: InterviewItem[]): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(INTERVIEWS_STORAGE_KEY, JSON.stringify(interviews));
+  window.dispatchEvent(new Event("nexora_interviews_updated"));
+}
+
+export function addStoredInterview(data: Partial<InterviewItem>): InterviewItem {
+  const list = getStoredInterviews();
+  const newItem: InterviewItem = {
+    id: `int-${Date.now()}`,
+    candidate: data.candidate || "New Candidate",
+    position: data.position || "Developer",
+    interviewer: data.interviewer || "Ethan Walker",
+    dateTime: data.dateTime || "25 May 2026, 10:00 AM",
+    type: data.type || "Video Call",
+    status: data.status || "Scheduled",
+  };
+  const updated = [newItem, ...list];
+  saveStoredInterviews(updated);
+  return newItem;
+}
+
+export function deleteStoredInterview(id: string): boolean {
+  const list = getStoredInterviews();
+  const filtered = list.filter((i) => i.id !== id);
+  if (filtered.length !== list.length) {
+    saveStoredInterviews(filtered);
+    return true;
+  }
+  return false;
+}
+
+// ------------------------------------------
+// OFFERS
+// ------------------------------------------
+
+export interface OfferItem {
+  id: string;
+  offerId: string;
+  candidate: string;
+  position: string;
+  salary: string;
+  issued: string;
+  expires: string;
+  status: "Accepted" | "Pending" | "Rejected" | "Expired";
+}
+
+export const OFFERS_STORAGE_KEY = "nexora_hrm_offers";
+
+export const DEFAULT_OFFERS: OfferItem[] = [
+  {
+    id: "off-1",
+    offerId: "#OFF0020",
+    candidate: "Lisa Garcia",
+    position: "Senior React Dev",
+    salary: "$95,000",
+    issued: "11 May 2026",
+    expires: "25 May 2026",
+    status: "Accepted",
+  },
+  {
+    id: "off-2",
+    offerId: "#OFF0019",
+    candidate: "Jane Doe",
+    position: "UX Designer",
+    salary: "$75,000",
+    issued: "05 May 2026",
+    expires: "20 May 2026",
+    status: "Pending",
+  },
+  {
+    id: "off-3",
+    offerId: "#OFF0018",
+    candidate: "Robert Lee",
+    position: "UX Designer",
+    salary: "$72,000",
+    issued: "27 Apr 2026",
+    expires: "11 May 2026",
+    status: "Accepted",
+  },
+  {
+    id: "off-4",
+    offerId: "#OFF0017",
+    candidate: "Sarah Williams",
+    position: "Sales Executive",
+    salary: "$58,000",
+    issued: "16 Apr 2026",
+    expires: "30 Apr 2026",
+    status: "Rejected",
+  },
+  {
+    id: "off-5",
+    offerId: "#OFF0016",
+    candidate: "David Brown",
+    position: "Marketing Lead",
+    salary: "$82,000",
+    issued: "25 Mar 2026",
+    expires: "08 Apr 2026",
+    status: "Expired",
+  },
+  {
+    id: "off-6",
+    offerId: "#OFF0015",
+    candidate: "Mike Johnson",
+    position: "DevOps Engineer",
+    salary: "$88,000",
+    issued: "12 Mar 2026",
+    expires: "26 Mar 2026",
+    status: "Accepted",
+  },
+];
+
+export function getStoredOffers(): OfferItem[] {
+  if (typeof window === "undefined") return DEFAULT_OFFERS;
+  const raw = localStorage.getItem(OFFERS_STORAGE_KEY);
+  if (!raw) {
+    localStorage.setItem(OFFERS_STORAGE_KEY, JSON.stringify(DEFAULT_OFFERS));
+    return DEFAULT_OFFERS;
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_OFFERS;
+  } catch {
+    return DEFAULT_OFFERS;
+  }
+}
+
+export function saveStoredOffers(offers: OfferItem[]): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(OFFERS_STORAGE_KEY, JSON.stringify(offers));
+  window.dispatchEvent(new Event("nexora_offers_updated"));
+}
+
+export function addStoredOffer(data: Partial<OfferItem>): OfferItem {
+  const list = getStoredOffers();
+  const nextNum = list.length + 21;
+  const offerId = data.offerId || `#OFF00${nextNum}`;
+  const newItem: OfferItem = {
+    id: `off-${Date.now()}`,
+    offerId,
+    candidate: data.candidate || "Candidate",
+    position: data.position || "Engineer",
+    salary: data.salary || "$75,000",
+    issued: data.issued || "11 May 2026",
+    expires: data.expires || "25 May 2026",
+    status: data.status || "Pending",
+  };
+  const updated = [newItem, ...list];
+  saveStoredOffers(updated);
+  return newItem;
+}
+
+export function deleteStoredOffer(id: string): boolean {
+  const list = getStoredOffers();
+  const filtered = list.filter((o) => o.id !== id);
+  if (filtered.length !== list.length) {
+    saveStoredOffers(filtered);
+    return true;
+  }
+  return false;
+}
+
+// ------------------------------------------
+// ONBOARDING
+// ------------------------------------------
+
+export interface OnboardingItem {
+  id: string;
+  employee: string;
+  position: string;
+  startDate: string;
+  buddy: string;
+  progress: number;
+  status: "In Progress" | "Completed" | "Just Started";
+}
+
+export const ONBOARDING_STORAGE_KEY = "nexora_hrm_onboarding";
+
+export const DEFAULT_ONBOARDING: OnboardingItem[] = [
+  {
+    id: "onb-1",
+    employee: "Lisa Garcia",
+    position: "Senior React Dev",
+    startDate: "25 May 2026",
+    buddy: "Ethan Walker",
+    progress: 75,
+    status: "In Progress",
+  },
+  {
+    id: "onb-2",
+    employee: "Robert Lee",
+    position: "UX Designer",
+    startDate: "11 May 2026",
+    buddy: "Madison Clark",
+    progress: 100,
+    status: "Completed",
+  },
+  {
+    id: "onb-3",
+    employee: "Mike Johnson",
+    position: "DevOps Engineer",
+    startDate: "26 Mar 2026",
+    buddy: "Daniel Roberts",
+    progress: 100,
+    status: "Completed",
+  },
+  {
+    id: "onb-4",
+    employee: "Sophia Kim",
+    position: "Product Manager",
+    startDate: "01 Jun 2026",
+    buddy: "Avery Thompson",
+    progress: 30,
+    status: "Just Started",
+  },
+  {
+    id: "onb-5",
+    employee: "Marcus Chen",
+    position: "Backend Developer",
+    startDate: "15 Jun 2026",
+    buddy: "James Harris",
+    progress: 10,
+    status: "Just Started",
+  },
+];
+
+export function getStoredOnboarding(): OnboardingItem[] {
+  if (typeof window === "undefined") return DEFAULT_ONBOARDING;
+  const raw = localStorage.getItem(ONBOARDING_STORAGE_KEY);
+  if (!raw) {
+    localStorage.setItem(ONBOARDING_STORAGE_KEY, JSON.stringify(DEFAULT_ONBOARDING));
+    return DEFAULT_ONBOARDING;
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_ONBOARDING;
+  } catch {
+    return DEFAULT_ONBOARDING;
+  }
+}
+
+export function saveStoredOnboarding(onboarding: OnboardingItem[]): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(ONBOARDING_STORAGE_KEY, JSON.stringify(onboarding));
+  window.dispatchEvent(new Event("nexora_onboarding_updated"));
+}
+
+export function addStoredOnboarding(data: Partial<OnboardingItem>): OnboardingItem {
+  const list = getStoredOnboarding();
+  const newItem: OnboardingItem = {
+    id: `onb-${Date.now()}`,
+    employee: data.employee || "Employee",
+    position: data.position || "Specialist",
+    startDate: data.startDate || "01 Jun 2026",
+    buddy: data.buddy || "Ethan Walker",
+    progress: data.progress ?? 10,
+    status: data.status || "Just Started",
+  };
+  const updated = [newItem, ...list];
+  saveStoredOnboarding(updated);
+  return newItem;
+}
+
+export function deleteStoredOnboarding(id: string): boolean {
+  const list = getStoredOnboarding();
+  const filtered = list.filter((o) => o.id !== id);
+  if (filtered.length !== list.length) {
+    saveStoredOnboarding(filtered);
+    return true;
+  }
+  return false;
+}
+
+
 
 
 

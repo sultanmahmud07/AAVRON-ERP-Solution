@@ -11,10 +11,10 @@ import { Input } from "@/components/ui/input";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { IApiError } from "@/types";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router"; 
+import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 // Updated Lucide icons for the new design
-import { Eye, EyeOff, LogIn, Mail, Lock } from "lucide-react"; 
+import { Eye, EyeOff, LogIn, Mail, Lock } from "lucide-react";
 
 export function LoginForm({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -23,7 +23,7 @@ export function LoginForm({
 }: React.HTMLAttributes<HTMLDivElement>) {
   const navigate = useNavigate();
   const form = useForm({});
-  
+
   const [showPassword, setShowPassword] = useState(false);
   const [login, { isLoading }] = useLoginMutation();
 
@@ -32,7 +32,7 @@ export function LoginForm({
       const res = await login(data).unwrap();
       if (res.success) {
         toast.success("Logged in successfully");
-       navigate("/");
+        navigate("/");
       }
     } catch (err) {
       const error = err as IApiError;
@@ -42,8 +42,8 @@ export function LoginForm({
   };
 
   return (
-    <div 
-      className="flex flex-col items-center w-full bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[22px] p-8 md:p-10" 
+    <div
+      className="flex flex-col items-center w-full bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[22px] p-8 md:p-10"
       {...props}
     >
       {/* Top Icon */}
@@ -63,7 +63,7 @@ export function LoginForm({
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
-          
+
           {/* Email Field */}
           <FormField
             control={form.control}
@@ -97,7 +97,7 @@ export function LoginForm({
                   <div className="relative flex items-center">
                     <Lock className="absolute left-4 w-5 h-5 text-gray-400" />
                     <Input
-                      type={showPassword ? "text" : "password"} 
+                      type={showPassword ? "text" : "password"}
                       placeholder="Password"
                       className="pl-12 text-black pr-12 h-14 bg-[#F4F4F5] hover:bg-[#E4E4E7] border-transparent focus:bg-white focus:border-gray-300 focus-visible:ring-2 focus-visible:ring-gray-200 rounded-xl transition-colors text-base"
                       {...field}
@@ -132,8 +132,8 @@ export function LoginForm({
           </div>
 
           {/* Submit Button */}
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full h-14 bg-[linear-gradient(135deg,#4fc3ff_0%,#0c7ac3_100%)] text-white font-medium text-base rounded-xl transition-all duration-300"
             disabled={isLoading}
           >

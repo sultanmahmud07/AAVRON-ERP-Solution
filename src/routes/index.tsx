@@ -59,6 +59,11 @@ import AddJobRequisitionPage from "@/pages/hrm/AddJobRequisitionPage";
 import PerformanceAppraisalPage from "@/pages/hrm/PerformanceAppraisalPage";
 import TrainingPage from "@/pages/hrm/TrainingPage";
 import HRAnalyticsPage from "@/pages/hrm/HRAnalyticsPage";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
+import ForgotPassword from "@/pages/ForgotPassword";
+import ResetPassword from "@/pages/ResetPassword";
+import Unauthorized from "@/pages/Unauthorized";
 
 export const router = createBrowserRouter([
   {
@@ -668,5 +673,25 @@ export const router = createBrowserRouter([
         Component: DashboardOverview,
       },
     ],
-  }
+  },
+  {
+    path: "/login",
+    Component: Login,
+  },
+  {
+    path: "/register",
+    Component: Register,
+  },
+  {
+    path: "/forgot-password",
+    Component: ForgotPassword,
+  },
+  {
+    path: "/reset-password",
+    Component: ResetPassword,
+  },
+  {
+    path: "/unauthorized",
+    Component: Unauthorized,
+  },
 ]);

@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 import jamieAvatar from "@/assets/images/default/jamie_anderson.jpg";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
+import { useAppDispatch } from "@/redux/hook";
+import { authApi, useLogoutMutation } from "@/redux/features/auth/auth.api";
 
 interface UserProfileMenuProps {
   compact?: boolean;
@@ -21,6 +24,9 @@ interface UserProfileMenuProps {
 export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const [logout] = useLogoutMutation();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -39,6 +45,21 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  const handleLogout = async () => {
+    setIsOpen(false);
+    try {
+      await logout(undefined).unwrap();
+    } catch (e) {
+      console.warn("Logout request completed or handled:", e);
+    }
+    dispatch(authApi.util.resetApiState());
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    sessionStorage.clear();
+    toast.success("Logged out successfully");
+    navigate("/login");
+  };
 
   const handleAction = (label: string) => {
     setIsOpen(false);
@@ -171,8 +192,8 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
             </button>
 
             <button
-              onClick={() => handleAction("Logged Out")}
-              className="w-full flex items-center gap-3 px-4 py-2 text-xs sm:text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/20 transition-colors font-medium text-left"
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 px-4 py-2 text-xs sm:text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/20 transition-colors font-medium text-left cursor-pointer"
             >
               <LogOut className="w-4 h-4 text-rose-600" />
               <span>Log Out</span>
