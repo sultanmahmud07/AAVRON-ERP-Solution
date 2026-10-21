@@ -109,9 +109,9 @@ export default function AttributeList() {
 
   return (
     <div className="w-full space-y-6 pb-12">
-      {/* Top Header Title matching Reference Image */}
+      {/* Top Header Title matching Theme */}
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-[#4338ca] dark:text-indigo-400 tracking-tight">
+        <h1 className="text-xl sm:text-2xl font-bold text-[#0c6760] dark:text-teal-400 tracking-tight">
           Manage Attributes
         </h1>
       </div>
@@ -122,13 +122,13 @@ export default function AttributeList() {
             LEFT COLUMN: CREATE / EDIT ATTRIBUTE CARD (lg:col-span-4)
             ========================================================================= */}
         <div className="lg:col-span-4">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-100 dark:border-slate-800/80 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 shadow-xs space-y-5">
             {/* Header: Title and "New" badge */}
             <div className="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800/60">
               <h2 className="text-base font-bold text-slate-900 dark:text-white">
                 {editingAttr ? "Edit Attribute" : "Create Attribute"}
               </h2>
-              <span className="px-3 py-0.5 rounded-full text-xs font-medium border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 bg-transparent">
+              <span className="px-3 py-0.5 rounded-full text-xs font-medium border border-[#0c6760]/30 text-[#0c6760] dark:text-teal-400 bg-[#0c6760]/5 dark:bg-[#0c6760]/10">
                 New
               </span>
             </div>
@@ -145,7 +145,7 @@ export default function AttributeList() {
                   onChange={(e) => setAttrName(e.target.value)}
                   placeholder="e.g. Color"
                   required
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400/30 text-xs transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
                 />
               </div>
 
@@ -157,7 +157,7 @@ export default function AttributeList() {
                 <select
                   value={attrStatus}
                   onChange={(e) => setAttrStatus(e.target.value as any)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400/30 text-xs transition-all cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
                 >
                   <option value="Active">Active</option>
                   <option value="Inactive">Inactive</option>
@@ -168,7 +168,7 @@ export default function AttributeList() {
               <div className="flex items-center gap-2 pt-2">
                 <button
                   type="submit"
-                  className="py-2.5 px-6 rounded-lg bg-[#4338ca] hover:bg-[#3730a3] text-white font-medium text-xs shadow-xs transition-colors cursor-pointer"
+                  className="py-2.5 px-6 rounded-lg bg-[#0c6760] hover:bg-[#09544e] text-white font-medium text-xs shadow-xs transition-colors cursor-pointer"
                 >
                   {editingAttr ? "Update Attribute" : "Save Attribute"}
                 </button>
@@ -194,13 +194,13 @@ export default function AttributeList() {
             RIGHT COLUMN: MANAGE ATTRIBUTES TABLE CARD (lg:col-span-8)
             ========================================================================= */}
         <div className="lg:col-span-8">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-100 dark:border-slate-800/80 rounded-2xl shadow-xs overflow-hidden">
-            {/* Header: Title and "2 Attributes" badge */}
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-xs overflow-hidden">
+            {/* Header: Title and "X Attributes" badge */}
             <div className="p-4 sm:p-5 flex items-center justify-between border-b border-slate-100 dark:border-slate-800/60">
               <h2 className="text-base font-bold text-slate-900 dark:text-white">
                 Manage Attributes
               </h2>
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#eef2ff] dark:bg-indigo-950/40 text-[#6366f1] dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/40">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#0c6760]/10 dark:bg-[#0c6760]/20 text-[#0c6760] dark:text-teal-400 border border-[#0c6760]/30 dark:border-[#0c6760]/40">
                 {attributes.length} Attributes
               </span>
             </div>
@@ -241,7 +241,7 @@ export default function AttributeList() {
                             {visibleOptions.map((opt, oIdx) => (
                               <span
                                 key={oIdx}
-                                className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300"
+                                className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60"
                               >
                                 {opt}
                               </span>
@@ -277,14 +277,14 @@ export default function AttributeList() {
                         {/* Direct Action Buttons: Edit, Delete, and Plus (Add Options) */}
                         <td className="py-4 px-4 text-center">
                           <div className="flex items-center justify-center gap-2">
-                            {/* Purple Edit Button */}
+                            {/* Teal Theme Edit Button */}
                             <button
                               onClick={() => {
                                 setEditingAttr(attr);
                                 setAttrName(attr.name);
                                 setAttrStatus(attr.status);
                               }}
-                              className="w-7 h-7 rounded-full bg-[#eef2ff] hover:bg-[#e0e7ff] dark:bg-indigo-950/40 text-[#6366f1] transition-colors flex items-center justify-center cursor-pointer shadow-2xs"
+                              className="w-7 h-7 rounded-full bg-[#0c6760]/10 hover:bg-[#0c6760]/20 dark:bg-[#0c6760]/20 text-[#0c6760] dark:text-teal-400 transition-colors flex items-center justify-center cursor-pointer shadow-2xs"
                               title="Edit Attribute"
                             >
                               <Edit2 className="w-3.5 h-3.5" />
@@ -327,7 +327,7 @@ export default function AttributeList() {
           <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-5">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <Tag className="w-4 h-4 text-indigo-500" />
+                <Tag className="w-4 h-4 text-[#0c6760] dark:text-teal-400" />
                 <h3 className="text-base font-bold text-slate-900 dark:text-white">
                   Options for {optionModalAttr.name}
                 </h3>
@@ -380,11 +380,11 @@ export default function AttributeList() {
                   value={newOptionValue}
                   onChange={(e) => setNewOptionValue(e.target.value)}
                   placeholder="e.g. XL or Navy Blue"
-                  className="flex-1 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400/30 text-xs transition-all"
+                  className="flex-1 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl bg-[#4338ca] hover:bg-[#3730a3] text-white text-xs font-semibold shadow-xs cursor-pointer transition-colors"
+                  className="px-4 py-2 rounded-xl bg-[#0c6760] hover:bg-[#09544e] text-white text-xs font-semibold shadow-xs cursor-pointer transition-colors"
                 >
                   Add
                 </button>
@@ -395,7 +395,7 @@ export default function AttributeList() {
               <button
                 type="button"
                 onClick={() => setOptionModalAttr(null)}
-                className="px-5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 text-white text-xs font-semibold transition-colors cursor-pointer"
+                className="px-5 py-2 rounded-xl bg-[#0c6760] hover:bg-[#09544e] text-white text-xs font-semibold transition-colors cursor-pointer"
               >
                 Done
               </button>

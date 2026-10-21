@@ -530,7 +530,7 @@ export default function CreateQuotation({ initialMode }: CreateQuotationProps) {
       });
       toast.success(`Quotation "${newQ.quotationNumber}" created successfully!`);
     }
-    navigate("/sales/quotes");
+    navigate("/sales/quotes/list");
   };
 
   // Convert Quotation To Live Invoice
@@ -654,7 +654,7 @@ export default function CreateQuotation({ initialMode }: CreateQuotationProps) {
         <div>
           <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
             <Link
-              to="/sales/quotes"
+              to="/sales/quotes/list"
               className="hover:text-[#0c6760] dark:hover:text-teal-400 transition-colors"
             >
               Sales Quotes
@@ -682,8 +682,8 @@ export default function CreateQuotation({ initialMode }: CreateQuotationProps) {
               type="button"
               onClick={() => setCurrencySymbol("৳")}
               className={`px-3 py-1 rounded-lg font-bold transition-all ${currencySymbol === "৳"
-                  ? "bg-[#0c6760] text-white shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                ? "bg-[#0c6760] text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
             >
               BDT (৳)
@@ -692,8 +692,8 @@ export default function CreateQuotation({ initialMode }: CreateQuotationProps) {
               type="button"
               onClick={() => setCurrencySymbol("$")}
               className={`px-3 py-1 rounded-lg font-bold transition-all ${currencySymbol === "$"
-                  ? "bg-[#0c6760] text-white shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                ? "bg-[#0c6760] text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
             >
               USD ($)
@@ -702,7 +702,7 @@ export default function CreateQuotation({ initialMode }: CreateQuotationProps) {
 
           {/* Manage Quotations button matching Image 2 top right */}
           <Link
-            to="/sales/quotes"
+            to="/sales/quotes/list"
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-[#0c6760] hover:bg-[#09544e] text-white shadow-xs transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -1366,8 +1366,8 @@ export default function CreateQuotation({ initialMode }: CreateQuotationProps) {
                     type="button"
                     onClick={() => setInvoiceViewMode("default")}
                     className={`px-3 py-1 rounded-md font-bold transition cursor-pointer ${invoiceViewMode === "default"
-                        ? "bg-[#0c6760] text-white shadow-xs"
-                        : "text-slate-600 dark:text-slate-300"
+                      ? "bg-[#0c6760] text-white shadow-xs"
+                      : "text-slate-600 dark:text-slate-300"
                       }`}
                   >
                     Default
@@ -1376,8 +1376,8 @@ export default function CreateQuotation({ initialMode }: CreateQuotationProps) {
                     type="button"
                     onClick={() => setInvoiceViewMode("pos")}
                     className={`px-3 py-1 rounded-md font-bold transition flex items-center gap-1 cursor-pointer ${invoiceViewMode === "pos"
-                        ? "bg-[#0c6760] text-white shadow-xs"
-                        : "text-slate-600 dark:text-slate-300"
+                      ? "bg-[#0c6760] text-white shadow-xs"
+                      : "text-slate-600 dark:text-slate-300"
                       }`}
                   >
                     POS
@@ -1427,7 +1427,7 @@ export default function CreateQuotation({ initialMode }: CreateQuotationProps) {
                   type="button"
                   onClick={() => {
                     setConvertedOrder(null);
-                    navigate("/sales/quotes");
+                    navigate("/sales/quotes/list");
                   }}
                   className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold cursor-pointer"
                 >

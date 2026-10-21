@@ -166,7 +166,7 @@ export const router = createBrowserRouter([
         Component: ManageQuotesPage,
       },
       {
-        path: "sales/quotes/manage",
+        path: "sales/quotes/list",
         Component: ManageQuotesPage,
       },
       {

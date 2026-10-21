@@ -123,7 +123,7 @@ export const erpNavSections: NavSection[] = [
         icon: FileCheck,
         subItems: [
           { title: "Create Quote", url: "/sales/quotes/create" },
-          { title: "Manage Quotes", url: "/sales/quotes" },
+          { title: "Manage Quotes", url: "/sales/quotes/list" },
         ],
       },
       { title: "Refunds", icon: CircleDollarSign, url: "/sales/refunds" },
