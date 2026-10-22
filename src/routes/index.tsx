@@ -64,11 +64,13 @@ import Register from "@/pages/Register";
 import ForgotPassword from "@/pages/ForgotPassword";
 import ResetPassword from "@/pages/ResetPassword";
 import Unauthorized from "@/pages/Unauthorized";
+import { withAuth } from "@/utils/withAuth";
+import { role } from "@/constants/role";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: DashboardLayout,
+    Component: withAuth(DashboardLayout, [role.superAdmin, role.admin]),
     children: [
       {
         index: true,

@@ -35,7 +35,7 @@ export function LoginForm({
     try {
       const res = await login(data).unwrap();
       if (res?.success || res?.data) {
-        toast.success("Logged in successfully");
+        toast.success(res?.message || "Logged in successfully");
         navigate("/");
       }
     } catch (err) {

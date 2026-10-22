@@ -35,6 +35,7 @@ export const DashboardLayout: React.FC = () => {
         <main className="flex-1 p-2 sm:p-3 lg:p-5 max-w-[1720px] w-full mx-auto">
           <Outlet />
         </main>
+        <footer>This is footer</footer>
       </div>
     </div>
   );

@@ -1,6 +1,14 @@
 import { LoginForm } from "@/components/modules/Authentication/LoginForm";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { Navigate } from "react-router";
 
 export default function Login() {
+  const { data, isLoading } = useUserInfoQuery(undefined);
+
+  // If already logged in with valid cookie session, redirect to dashboard
+  if (!isLoading && data?.data?.email) {
+    return <Navigate to="/" replace />;
+  }
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-[#2b7462] bg-gradient-to-br from-[#246756] via-[#2b7462] to-[#1f5749] p-4 sm:p-6 overflow-hidden">
       {/* Subtle atmospheric ambient glow */}
