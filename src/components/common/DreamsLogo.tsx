@@ -3,21 +3,41 @@ import React from "react";
 interface DreamsLogoProps {
   className?: string;
   showText?: boolean | "responsive";
+  title?: string;
+  subtitle?: string;
+  size?: "sm" | "md" | "lg";
 }
 
 export const DreamsLogo: React.FC<DreamsLogoProps> = ({
   className = "",
   showText = true,
+  title,
+  subtitle,
+  size = "md",
 }) => {
+  const iconSizeClasses = {
+    sm: "w-6 h-6",
+    md: "w-8 h-8",
+    lg: "w-10 h-10",
+  }[size];
+
+  const titleSizeClasses = {
+    sm: "text-sm",
+    md: "text-[16px] sm:text-[17px]",
+    lg: "text-xl sm:text-2xl",
+  }[size];
+  const mainTitle = title || "NEXORA";
+  const subTitle = subtitle !== undefined ? subtitle : "ERP";
+
   return (
-    <div className={`flex items-center gap-2 select-none shrink-0 ${className}`}>
+    <div className={`flex items-center gap-2.5 select-none shrink-0 ${className}`}>
       {/* High-fidelity vector mark matching reference design */}
-      <div className="relative w-8 h-8 shrink-0 flex items-center justify-center">
+      <div className={`relative ${iconSizeClasses} shrink-0 flex items-center justify-center`}>
         <svg
           viewBox="0 0 36 36"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-8 h-8"
+          className="w-full h-full"
         >
           {/* Hexagon outline segments */}
           <path
@@ -54,24 +74,28 @@ export const DreamsLogo: React.FC<DreamsLogoProps> = ({
       </div>
 
       {showText === true && (
-        <div className="flex items-baseline tracking-tight">
-          <span className="text-[16px] sm:text-[17px] font-extrabold text-slate-900 dark:text-white tracking-tight">
-            NEXORA
+        <div className="flex items-baseline tracking-tight gap-1.5">
+          <span className={`${titleSizeClasses} font-extrabold text-slate-900 dark:text-white tracking-tight`}>
+            {mainTitle}
           </span>
-          <span className="text-[16px] sm:text-[17px] font-semibold text-teal-600 dark:text-teal-400 ml-1 uppercase text-xs sm:text-sm tracking-wider">
-            ERP
-          </span>
+          {subTitle && (
+            <span className={`${titleSizeClasses} font-bold text-slate-900 dark:text-teal-400 tracking-wider`}>
+              {subTitle}
+            </span>
+          )}
         </div>
       )}
 
       {showText === "responsive" && (
-        <div className="hidden min-[420px]:flex items-baseline tracking-tight">
-          <span className="text-[16px] sm:text-[17px] font-extrabold text-slate-900 dark:text-white tracking-tight">
-            NEXORA
+        <div className="hidden min-[420px]:flex items-baseline tracking-tight gap-1.5">
+          <span className={`${titleSizeClasses} font-extrabold text-slate-900 dark:text-white tracking-tight`}>
+            {mainTitle}
           </span>
-          <span className="text-[16px] sm:text-[17px] font-semibold text-teal-600 dark:text-teal-400 ml-1 uppercase text-xs sm:text-sm tracking-wider">
-            ERP
-          </span>
+          {subTitle && (
+            <span className={`${titleSizeClasses} font-bold text-slate-900 dark:text-teal-400 tracking-wider`}>
+              {subTitle}
+            </span>
+          )}
         </div>
       )}
     </div>

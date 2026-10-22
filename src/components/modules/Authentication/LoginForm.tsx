@@ -13,74 +13,81 @@ import { IApiError } from "@/types";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
-// Updated Lucide icons for the new design
-import { Eye, EyeOff, LogIn, Mail, Lock } from "lucide-react";
+import { Eye, EyeOff, Lock, RotateCw } from "lucide-react";
+import DreamsLogo from "@/components/common/DreamsLogo";
 
 export function LoginForm({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   const navigate = useNavigate();
-  const form = useForm({});
-
   const [showPassword, setShowPassword] = useState(false);
   const [login, { isLoading }] = useLoginMutation();
+
+  const form = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       const res = await login(data).unwrap();
-      if (res.success) {
+      if (res?.success || res?.data) {
         toast.success("Logged in successfully");
         navigate("/");
       }
     } catch (err) {
       const error = err as IApiError;
-      console.log(err)
-      toast.error(`${error.data.message}`);
+      console.warn("Login API error:", err);
+      const errorMsg = error?.data?.message || "Invalid credentials or backend unreachable";
+      toast.error(errorMsg);
     }
   };
 
   return (
     <div
-      className="flex flex-col items-center w-full bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[22px] p-8 md:p-10"
+      className={`w-full bg-white dark:bg-[#181b24] shadow-2xl shadow-emerald-950/20 rounded p-7 sm:p-10 border border-slate-100/50 dark:border-slate-800 transition-all ${className || ""}`}
       {...props}
     >
-      {/* Top Icon */}
-      <div className="w-14 h-14 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center mb-6">
-        <LogIn className="w-6 h-6 text-gray-800" />
-      </div>
+      {/* Brand Logo & Header */}
+      <div className="flex flex-col items-center text-center">
+        <DreamsLogo
+          title="NEXORA"
+          subtitle="ERP"
+          size="lg"
+          showText={true}
+          className="justify-center scale-105"
+        />
 
-      {/* Header Text */}
-      <div className="flex flex-col gap-2 text-center mb-8 w-full">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
-          Sign in with email
+        <h1 className="text-[25px] sm:text-[27px] font-bold text-slate-800 dark:text-white mt-4 tracking-tight">
+          Welcome Back!
         </h1>
-        <p className="text-sm text-gray-500 leading-relaxed max-w-[280px] mx-auto">
-          Make a new doc to bring your words, data, and teams together. For free
+        <p className="text-[13px] sm:text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 mb-7 font-normal">
+          Sign in to your NEXORA ERP account
         </p>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
-
-          {/* Email Field */}
+          {/* Email Address Field */}
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="space-y-1.5">
+                <label className="block text-left text-[13px] font-semibold text-slate-800 dark:text-slate-200">
+                  Email Address
+                </label>
                 <FormControl>
-                  <div className="relative flex items-center">
-                    <Mail className="absolute left-4 w-5 h-5 text-gray-400" />
-                    <Input
-                      type="email"
-                      placeholder="Email"
-                      className="pl-12 text-black h-14 bg-[#F4F4F5] hover:bg-[#E4E4E7] border-transparent focus:bg-white focus:border-gray-300 focus-visible:ring-2 focus-visible:ring-gray-200 rounded-xl transition-colors text-base"
-                      {...field}
-                      value={field.value || ""}
-                    />
-                  </div>
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="h-11 px-3.5 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 rounded text-slate-900 dark:text-white placeholder:text-slate-400 text-sm focus-visible:ring-2 focus-visible:ring-teal-600/25 focus-visible:border-teal-600 transition-all"
+                    {...field}
+                    value={field.value || ""}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -92,26 +99,39 @@ export function LoginForm({
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="text-[13px] font-semibold text-slate-800 dark:text-slate-200">
+                    Password
+                  </label>
+                  <Link
+                    to="/forgot-password"
+                    className="text-[13px] font-semibold text-[#2D7A68] dark:text-teal-400 hover:text-teal-700 hover:underline transition-colors"
+                  >
+                    Forgot Password?
+                  </Link>
+                </div>
                 <FormControl>
                   <div className="relative flex items-center">
-                    <Lock className="absolute left-4 w-5 h-5 text-gray-400" />
+                    <Lock className="absolute left-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
                     <Input
                       type={showPassword ? "text" : "password"}
-                      placeholder="Password"
-                      className="pl-12 text-black pr-12 h-14 bg-[#F4F4F5] hover:bg-[#E4E4E7] border-transparent focus:bg-white focus:border-gray-300 focus-visible:ring-2 focus-visible:ring-gray-200 rounded-xl transition-colors text-base"
+                      placeholder="••••••••••••"
+                      className="pl-10 pr-10 h-11 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 rounded text-slate-900 dark:text-white placeholder:text-slate-400 text-sm focus-visible:ring-2 focus-visible:ring-teal-600/25 focus-visible:border-teal-600 transition-all tracking-wider"
                       {...field}
                       value={field.value || ""}
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                      className="absolute right-3.5 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                      title={showPassword ? "Hide password" : "Show password"}
+                      aria-label={showPassword ? "Hide password" : "Show password"}
                     >
                       {showPassword ? (
-                        <EyeOff size={20} />
+                        <EyeOff className="w-4 h-4" />
                       ) : (
-                        <Eye size={20} />
+                        <Eye className="w-4 h-4" />
                       )}
                     </button>
                   </div>
@@ -121,23 +141,20 @@ export function LoginForm({
             )}
           />
 
-          {/* Forgot Password Link */}
-          <div className="flex justify-end w-full pt-1 pb-2">
-            <Link
-              to="/forgot-password"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Forgot password?
-            </Link>
-          </div>
-
-          {/* Submit Button */}
+          {/* Sign In Button: dark mode themed with rich teal/emerald accent */}
           <Button
             type="submit"
-            className="w-full h-14 bg-[linear-gradient(135deg,#4fc3ff_0%,#0c7ac3_100%)] text-white font-medium text-base rounded-xl transition-all duration-300"
+            className="w-full h-11 mt-6 bg-[#202938] hover:bg-[#141b25] text-white dark:bg-teal-600 dark:hover:bg-teal-500 dark:text-white dark:shadow-lg dark:shadow-teal-950/40 active:scale-[0.99] font-bold text-[14px] rounded transition-all shadow-sm cursor-pointer disabled:opacity-50"
             disabled={isLoading}
           >
-            {isLoading ? "Signing in..." : "Get Started"}
+            {isLoading ? (
+              <span className="inline-flex items-center gap-2">
+                <RotateCw className="w-4 h-4 animate-spin" />
+                Signing In...
+              </span>
+            ) : (
+              "Sign In"
+            )}
           </Button>
         </form>
       </Form>

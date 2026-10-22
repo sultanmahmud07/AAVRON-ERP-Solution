@@ -13,19 +13,22 @@ import { IApiError } from "@/types";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Link, useNavigate, useSearchParams } from "react-router";
-// Updated icons for setting a new password
-import { Lock, Eye, EyeOff, KeyRound, ArrowLeft } from "lucide-react";
+import { Lock, Eye, EyeOff, ArrowLeft, RotateCw } from "lucide-react";
+import DreamsLogo from "@/components/common/DreamsLogo";
 
 export function ResetForm({
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       className,
       ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-      const form = useForm({});
+      const form = useForm({
+            defaultValues: {
+                  password: "",
+                  confirmPassword: "",
+            },
+      });
       const navigate = useNavigate();
       const [searchParams] = useSearchParams();
 
-      // Usually, the email link contains a token like: /reset-password?token=abc123xyz
       const token = searchParams.get("token");
       const id = searchParams.get("id");
 
@@ -35,78 +38,82 @@ export function ResetForm({
       const [reset, { isLoading }] = useResetPasswordMutation();
 
       const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-            // Basic validation to ensure passwords match
             if (data.password !== data.confirmPassword) {
                   toast.error("Passwords do not match");
                   return;
             }
 
             try {
-                  // Pass the new password and the token to your API
                   const res = await reset({
                         password: data.password,
                         id: id,
-                        token: token
+                        token: token,
                   }).unwrap();
 
                   if (res.success) {
                         toast.success("Password reset successfully");
                         form.reset();
-                        navigate("/login"); // Send them to login so they can use the new password
+                        navigate("/login");
                   }
             } catch (err) {
                   const error = err as IApiError;
-                  console.log(err);
+                  console.warn("Reset password error:", err);
                   toast.error(error?.data?.message || "Failed to reset password");
             }
       };
 
       return (
             <div
-                  className="flex flex-col items-center w-full bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[32px] p-8 md:p-10"
+                  className={`w-full bg-white dark:bg-[#181b24] shadow-2xl shadow-emerald-950/20 rounded-2xl p-7 sm:p-10 border border-slate-100/50 dark:border-slate-800 transition-all ${className || ""}`}
                   {...props}
             >
-                  {/* Top Icon */}
-                  <div className="w-14 h-14 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center mb-6">
-                        <KeyRound className="w-6 h-6 text-gray-800" />
-                  </div>
+                  {/* Brand Logo & Header */}
+                  <div className="flex flex-col items-center text-center">
+                        <DreamsLogo
+                              title="NEXORA"
+                              subtitle="ERP"
+                              size="lg"
+                              showText={true}
+                              className="justify-center scale-105"
+                        />
 
-                  {/* Header Text */}
-                  <div className="flex flex-col gap-2 text-center mb-8 w-full">
-                        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
-                              Set new password
+                        <h1 className="text-[25px] sm:text-[27px] font-bold text-slate-800 dark:text-white mt-4 tracking-tight">
+                              Set New Password
                         </h1>
-                        <p className="text-sm text-gray-500 leading-relaxed max-w-[280px] mx-auto">
-                              Your new password must be different from previously used passwords.
+                        <p className="text-[13px] sm:text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 mb-7 font-normal text-center max-w-[340px]">
+                              Your new password must be secure and different from previously used passwords.
                         </p>
                   </div>
 
                   <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
-
                               {/* New Password Field */}
                               <FormField
                                     control={form.control}
                                     name="password"
                                     render={({ field }) => (
-                                          <FormItem>
+                                          <FormItem className="space-y-1.5">
+                                                <label className="block text-left text-[13px] font-semibold text-slate-800 dark:text-slate-200">
+                                                      New Password
+                                                </label>
                                                 <FormControl>
                                                       <div className="relative flex items-center">
-                                                            <Lock className="absolute left-4 w-5 h-5 text-gray-400" />
+                                                            <Lock className="absolute left-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
                                                             <Input
                                                                   type={showPassword ? "text" : "password"}
-                                                                  placeholder="New password"
+                                                                  placeholder="••••••••••••"
                                                                   required
-                                                                  className="pl-12 pr-12 text-black h-14 bg-[#F4F4F5] hover:bg-[#E4E4E7] border-transparent focus:bg-white focus:border-gray-300 focus-visible:ring-2 focus-visible:ring-gray-200 rounded-xl transition-colors text-base"
+                                                                  className="pl-10 pr-10 h-11 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 rounded-lg text-slate-900 dark:text-white placeholder:text-slate-400 text-sm focus-visible:ring-2 focus-visible:ring-teal-600/25 focus-visible:border-teal-600 transition-all tracking-wider"
                                                                   {...field}
                                                                   value={field.value || ""}
                                                             />
                                                             <button
                                                                   type="button"
                                                                   onClick={() => setShowPassword(!showPassword)}
-                                                                  className="absolute right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                                                                  className="absolute right-3.5 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                                                                  title={showPassword ? "Hide password" : "Show password"}
                                                             >
-                                                                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                                                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                                             </button>
                                                       </div>
                                                 </FormControl>
@@ -120,24 +127,28 @@ export function ResetForm({
                                     control={form.control}
                                     name="confirmPassword"
                                     render={({ field }) => (
-                                          <FormItem>
+                                          <FormItem className="space-y-1.5">
+                                                <label className="block text-left text-[13px] font-semibold text-slate-800 dark:text-slate-200">
+                                                      Confirm New Password
+                                                </label>
                                                 <FormControl>
                                                       <div className="relative flex items-center">
-                                                            <Lock className="absolute left-4 w-5 h-5 text-gray-400" />
+                                                            <Lock className="absolute left-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
                                                             <Input
                                                                   type={showConfirmPassword ? "text" : "password"}
-                                                                  placeholder="Confirm new password"
+                                                                  placeholder="••••••••••••"
                                                                   required
-                                                                  className="pl-12 pr-12 text-black h-14 bg-[#F4F4F5] hover:bg-[#E4E4E7] border-transparent focus:bg-white focus:border-gray-300 focus-visible:ring-2 focus-visible:ring-gray-200 rounded-xl transition-colors text-base"
+                                                                  className="pl-10 pr-10 h-11 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 rounded-lg text-slate-900 dark:text-white placeholder:text-slate-400 text-sm focus-visible:ring-2 focus-visible:ring-teal-600/25 focus-visible:border-teal-600 transition-all tracking-wider"
                                                                   {...field}
                                                                   value={field.value || ""}
                                                             />
                                                             <button
                                                                   type="button"
                                                                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                                                  className="absolute right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                                                                  className="absolute right-3.5 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                                                                  title={showConfirmPassword ? "Hide password" : "Show password"}
                                                             >
-                                                                  {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                                                  {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                                             </button>
                                                       </div>
                                                 </FormControl>
@@ -149,22 +160,29 @@ export function ResetForm({
                               {/* Submit Button */}
                               <Button
                                     type="submit"
-                                    className="w-full h-14 mt-4 bg-[#1C1C1E] hover:bg-black text-white font-medium text-base rounded-xl transition-all duration-300"
+                                    className="w-full h-11 mt-6 bg-[#202938] hover:bg-[#141b25] text-white dark:bg-teal-600 dark:hover:bg-teal-500 dark:text-white dark:shadow-lg dark:shadow-teal-950/40 active:scale-[0.99] font-bold text-[14px] rounded-lg transition-all shadow-sm cursor-pointer disabled:opacity-50"
                                     disabled={isLoading}
                               >
-                                    {isLoading ? "Resetting..." : "Reset Password"}
+                                    {isLoading ? (
+                                          <span className="inline-flex items-center gap-2">
+                                                <RotateCw className="w-4 h-4 animate-spin" />
+                                                Resetting...
+                                          </span>
+                                    ) : (
+                                          "Reset Password"
+                                    )}
                               </Button>
                         </form>
                   </Form>
 
                   {/* Back to Login Link */}
-                  <div className="mt-8 text-center text-sm">
+                  <div className="mt-7 text-center">
                         <Link
                               to="/login"
-                              className="flex items-center justify-center gap-2 font-medium text-gray-500 hover:text-gray-900 transition-colors"
+                              className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#2D7A68] dark:text-teal-400 hover:text-teal-700 hover:underline transition-colors cursor-pointer"
                         >
                               <ArrowLeft className="w-4 h-4" />
-                              Back to log in
+                              Back to Sign In
                         </Link>
                   </div>
             </div>

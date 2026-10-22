@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { NavLink, useLocation } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import {
   ChevronDown,
   ChevronRight,
@@ -7,9 +7,14 @@ import {
   PanelLeft,
   Search,
   X,
+  LogOut,
+  RotateCw,
 } from "lucide-react";
 import DreamsLogo from "../common/DreamsLogo";
 import { erpNavSections, NavItem, NavSection } from "@/config/erpNavData";
+import { toast } from "sonner";
+import { useAppDispatch } from "@/redux/hook";
+import { authApi, useLogoutMutation } from "@/redux/features/auth/auth.api";
 
 interface DreamsSidebarProps {
   isOpen: boolean;
@@ -25,9 +30,34 @@ export const DreamsSidebar: React.FC<DreamsSidebarProps> = ({
   onMobileClose,
 }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const [logout] = useLogoutMutation();
 
   // Menu Search Query
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Logout modal state
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      await logout(undefined).unwrap();
+    } catch (e) {
+      console.warn("Logout request completed or handled:", e);
+    }
+    dispatch(authApi.util.resetApiState());
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    sessionStorage.clear();
+    toast.success("Logged out successfully");
+    setIsLoggingOut(false);
+    setShowLogoutModal(false);
+    if (window.innerWidth < 1024) onMobileClose();
+    navigate("/login");
+  };
 
   // Keep track of which accordion items are open
   // Default open "Dashboard"
@@ -309,6 +339,35 @@ export const DreamsSidebar: React.FC<DreamsSidebarProps> = ({
             </div>
           ))
         )}
+
+        {/* Logout Menu Item (Scrolls naturally with the menu) */}
+        <div className="pt-3 pb-2 border-t border-slate-200/80 dark:border-slate-800/80">
+          {isOpen ? (
+            <button
+              type="button"
+              onClick={() => setShowLogoutModal(true)}
+              className="w-full flex items-center justify-between px-3 py-2 rounded text-[13.5px] font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all cursor-pointer group"
+              title="Log Out"
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <LogOut className="w-[17px] h-[17px] shrink-0 text-rose-600 dark:text-rose-400 group-hover:scale-105 transition-transform" />
+                <span className="truncate">Log Out</span>
+              </div>
+            </button>
+          ) : (
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowLogoutModal(true)}
+                className="p-2 rounded text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all cursor-pointer group"
+                title="Log Out"
+                aria-label="Log Out"
+              >
+                <LogOut className="w-[18px] h-[18px] group-hover:scale-105 transition-transform" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -334,6 +393,56 @@ export const DreamsSidebar: React.FC<DreamsSidebarProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             {sidebarContent}
+          </div>
+        </div>
+      )}
+
+      {/* Logout Confirmation Modal */}
+      {showLogoutModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-100">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-2xl max-w-sm w-full p-6 space-y-4 animate-in zoom-in-95 duration-150">
+            <div className="flex items-start gap-3.5">
+              <div className="p-3 bg-rose-50 dark:bg-rose-950/40 text-rose-600 rounded-full shrink-0">
+                <LogOut className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  Confirm Logout
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Are you sure you want to log out of your session? You will need to sign in again to access your account.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <button
+                type="button"
+                onClick={() => setShowLogoutModal(false)}
+                disabled={isLoggingOut}
+                className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleLogout}
+                disabled={isLoggingOut}
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-rose-600 hover:bg-rose-700 rounded-lg transition-colors shadow-sm cursor-pointer disabled:opacity-50"
+              >
+                {isLoggingOut ? (
+                  <>
+                    <RotateCw className="w-3.5 h-3.5 animate-spin" />
+                    Logging out...
+                  </>
+                ) : (
+                  <>
+                    <LogOut className="w-3.5 h-3.5" />
+                    Log Out
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -11,16 +11,19 @@ import { useForgotPasswordMutation } from "@/redux/features/auth/auth.api";
 import { IApiError } from "@/types";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { Link } from "react-router"; 
-// Updated icons for password reset context
-import { Mail, KeyRound, ArrowLeft } from "lucide-react"; 
+import { Link } from "react-router";
+import { Mail, ArrowLeft, RotateCw } from "lucide-react";
+import DreamsLogo from "@/components/common/DreamsLogo";
 
 export function ForgotForm({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const form = useForm({});
+  const form = useForm({
+    defaultValues: {
+      email: "",
+    },
+  });
   const [forgot, { isLoading }] = useForgotPasswordMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -28,52 +31,57 @@ export function ForgotForm({
       const res = await forgot(data).unwrap();
       if (res.success) {
         toast.success("Password reset email sent successfully");
-        form.reset(); // Clear the form after success
+        form.reset();
       }
     } catch (err) {
       const error = err as IApiError;
-      console.log(err);
+      console.warn("Forgot password error:", err);
       toast.error(error?.data?.message || "Failed to send reset link");
     }
   };
 
   return (
-    <div 
-      className="flex flex-col items-center w-full bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl p-8 md:p-10" 
+    <div
+      className={`w-full bg-white dark:bg-[#181b24] shadow-2xl shadow-emerald-950/20 rounded p-7 sm:p-10 border border-slate-100/50 dark:border-slate-800 transition-all ${className || ""}`}
       {...props}
     >
-      {/* Top Icon */}
-      <div className="w-14 h-14 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center mb-6">
-        <KeyRound className="w-6 h-6 text-gray-800" />
-      </div>
+      {/* Brand Logo & Header */}
+      <div className="flex flex-col items-center text-center">
+        <DreamsLogo
+          title="NEXORA"
+          subtitle="ERP"
+          size="lg"
+          showText={true}
+          className="justify-center scale-105"
+        />
 
-      {/* Header Text */}
-      <div className="flex flex-col gap-2 text-center mb-8 w-full">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
+        <h1 className="text-[25px] sm:text-[27px] font-bold text-slate-800 dark:text-white mt-4 tracking-tight">
           Forgot Password?
         </h1>
-        <p className="text-sm text-gray-500 leading-relaxed max-w-[280px] mx-auto">
-          No worries, we'll send you reset instructions to your email.
+        <p className="text-[13px] sm:text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 mb-7 font-normal text-center max-w-[340px]">
+          Enter your registered email address and we will send you password reset instructions.
         </p>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-5">
-          
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
           {/* Email Field */}
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="space-y-1.5">
+                <label className="block text-left text-[13px] font-semibold text-slate-800 dark:text-slate-200">
+                  Email Address
+                </label>
                 <FormControl>
                   <div className="relative flex items-center">
-                    <Mail className="absolute left-4 w-5 h-5 text-gray-400" />
+                    <Mail className="absolute left-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
                     <Input
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder="Enter your registered email"
                       required
-                      className="pl-12 text-black h-14 bg-[#F4F4F5] hover:bg-[#E4E4E7] border-transparent focus:bg-white focus:border-gray-300 focus-visible:ring-2 focus-visible:ring-gray-200 rounded-xl transition-colors text-base"
+                      className="pl-10 pr-3.5 h-11 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 rounded text-slate-900 dark:text-white placeholder:text-slate-400 text-sm focus-visible:ring-2 focus-visible:ring-teal-600/25 focus-visible:border-teal-600 transition-all"
                       {...field}
                       value={field.value || ""}
                     />
@@ -85,24 +93,31 @@ export function ForgotForm({
           />
 
           {/* Submit Button */}
-          <Button 
-            type="submit" 
-            className="w-full h-14 mt-2 bg-[#1C1C1E] hover:bg-black text-white font-medium text-base rounded-xl transition-all duration-300"
+          <Button
+            type="submit"
+            className="w-full h-11 mt-6 bg-[#202938] hover:bg-[#141b25] text-white dark:bg-teal-600 dark:hover:bg-teal-500 dark:text-white dark:shadow-lg dark:shadow-teal-950/40 active:scale-[0.99] font-bold text-[14px] rounded transition-all shadow-sm cursor-pointer disabled:opacity-50"
             disabled={isLoading}
           >
-            {isLoading ? "Sending link..." : "Send Reset Link"}
+            {isLoading ? (
+              <span className="inline-flex items-center gap-2">
+                <RotateCw className="w-4 h-4 animate-spin" />
+                Sending Link...
+              </span>
+            ) : (
+              "Send Reset Link"
+            )}
           </Button>
         </form>
       </Form>
 
       {/* Back to Login Link */}
-      <div className="mt-8 text-center text-sm">
-        <Link 
-          to="/login" 
-          className="flex items-center justify-center gap-2 font-medium text-gray-500 hover:text-gray-900 transition-colors"
+      <div className="mt-7 text-center">
+        <Link
+          to="/login"
+          className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#2D7A68] dark:text-teal-400 hover:text-teal-700 hover:underline transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to log in
+          Back to Sign In
         </Link>
       </div>
     </div>

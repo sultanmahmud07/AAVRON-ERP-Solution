@@ -1,31 +1,16 @@
 import { LoginForm } from "@/components/modules/Authentication/LoginForm";
-import logoDark from "../assets/images/logo/logo.png";
+
 export default function Login() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-gradient-to-b from-[#A5D6F7] via-[#D0EBFB] to-white p-4 overflow-hidden">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-[#2b7462] bg-gradient-to-br from-[#246756] via-[#2b7462] to-[#1f5749] p-4 sm:p-6 overflow-hidden">
+      {/* Subtle atmospheric ambient glow */}
+      <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 rounded-full bg-emerald-400/10 blur-3xl"></div>
+      <div className="pointer-events-none absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-teal-300/10 blur-3xl"></div>
 
-      {/* Top Left Logo (Ebolt) */}
-      <div className="absolute top-6 left-6 flex items-center gap-2 font-bold text-gray-900 text-xl">
-        <img
-          src={logoDark}
-          alt="DropX Logo"
-          width={200}
-          height={100}
-          className="w-32"
-        />
-      </div>
-
-      {/* Decorative background circles (optional, to mimic the faint lines in the image) */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-[600px] w-[600px] rounded-full border border-white/20"></div>
-        <div className="absolute h-[800px] w-[800px] rounded-full border border-white/20"></div>
-      </div>
-
-      {/* Centered Form Container */}
-      <div className="relative z-10 w-full max-w-[420px]">
+      {/* Centered Card */}
+      <div className="relative z-10 w-full max-w-[460px]">
         <LoginForm />
       </div>
-
     </div>
   );
 }
