@@ -1,3 +1,12 @@
+export interface ProductVariantItem {
+  id: string;
+  optionName: string;
+  purchasePrice: number;
+  salePrice: number;
+  quantity: number;
+  status?: "In Stock" | "Low Stock" | "No Stock";
+}
+
 export interface ProductItem {
   id: string;
   code?: string;
@@ -5,7 +14,9 @@ export interface ProductItem {
   sku: string;
   barcode: string;
   category: string;
+  subcategory?: string;
   brand: string;
+  model?: string;
   unit: string;
   quantity: number;
   status: "In Stock" | "Low Stock" | "No Stock";
@@ -13,7 +24,16 @@ export interface ProductItem {
   purchasePrice: number;
   costPrice?: number;
   reorderLevel?: number;
+  alertQuantity?: number;
   taxRate?: string;
+  taxType?: string;
+  expiryDate?: string;
+  warrantyType?: string;
+  warrantyPeriod?: string;
+  warehouse?: string;
+  section?: string;
+  subsection?: string;
+  variants?: ProductVariantItem[];
   description?: string;
   image: string;
   activeStatus?: "Active" | "Inactive";
@@ -273,11 +293,21 @@ export const addStoredProduct = (
   const code = `#CLO${String(nextNum).padStart(3, "0")}`;
 
   const qty = Number(product.quantity) || 0;
-  const reorder = Number(product.reorderLevel) || 5;
+  const alertThreshold =
+    product.alertQuantity !== undefined
+      ? Number(product.alertQuantity)
+      : product.reorderLevel !== undefined
+      ? Number(product.reorderLevel)
+      : 5;
+  const reorder =
+    product.reorderLevel !== undefined
+      ? Number(product.reorderLevel)
+      : alertThreshold;
+
   let computedStatus: "In Stock" | "Low Stock" | "No Stock" = "In Stock";
   if (qty <= 0) {
     computedStatus = "No Stock";
-  } else if (qty <= reorder) {
+  } else if (qty <= alertThreshold) {
     computedStatus = "Low Stock";
   }
 
@@ -298,6 +328,7 @@ export const addStoredProduct = (
     purchasePrice: Number(product.purchasePrice) || Number(product.costPrice) || 0,
     costPrice: Number(product.costPrice) || Number(product.purchasePrice) || 0,
     reorderLevel: reorder,
+    alertQuantity: alertThreshold,
     taxRate: product.taxRate || "5% VAT",
     unit: product.unit || "Piece",
     createdAt: new Date().toISOString(),
@@ -318,12 +349,19 @@ export const updateStoredProduct = (
 
   const item = current[index];
   const newQty = updates.quantity !== undefined ? Number(updates.quantity) : item.quantity;
-  const reorder = updates.reorderLevel !== undefined ? Number(updates.reorderLevel) : (item.reorderLevel || 5);
+  const alertThreshold =
+    updates.alertQuantity !== undefined
+      ? Number(updates.alertQuantity)
+      : item.alertQuantity !== undefined
+      ? Number(item.alertQuantity)
+      : updates.reorderLevel !== undefined
+      ? Number(updates.reorderLevel)
+      : item.reorderLevel || 5;
 
   let computedStatus: "In Stock" | "Low Stock" | "No Stock" = item.status;
   if (newQty <= 0) {
     computedStatus = "No Stock";
-  } else if (newQty <= reorder) {
+  } else if (newQty <= alertThreshold) {
     computedStatus = "Low Stock";
   } else {
     computedStatus = "In Stock";

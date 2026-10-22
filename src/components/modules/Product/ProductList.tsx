@@ -334,7 +334,7 @@ export default function ProductList() {
 
           {/* + Add New Button */}
           <Link
-            to="/inventory/products/add"
+            to="/inventory/product/add"
             className="flex items-center gap-2 px-4 py-2 rounded-md bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 text-white font-semibold text-xs shadow-xs transition-colors cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />

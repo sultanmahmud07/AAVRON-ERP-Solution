@@ -95,7 +95,15 @@ export const erpNavSections: NavSection[] = [
   {
     sectionTitle: "Inventory",
     items: [
-      { title: "Products", icon: Package, url: "/inventory/products" },
+      {
+        title: "Products",
+        icon: Package,
+        url: "/inventory/products",
+        subItems: [
+          { title: "Product List", url: "/inventory/products" },
+          { title: "Create Product", url: "/inventory/product/add" },
+        ],
+      },
       { title: "Categories", icon: Mail, url: "/inventory/categories" },
       { title: "Brands", icon: Triangle, url: "/inventory/brands" },
       { title: "Variants / Units", icon: Compass, url: "/inventory/units" },

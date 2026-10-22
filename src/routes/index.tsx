@@ -58,6 +58,7 @@ import RecruitmentPage from "@/pages/hrm/RecruitmentPage";
 import AddJobRequisitionPage from "@/pages/hrm/AddJobRequisitionPage";
 import PerformanceAppraisalPage from "@/pages/hrm/PerformanceAppraisalPage";
 import TrainingPage from "@/pages/hrm/TrainingPage";
+import AttendancePage from "@/pages/hrm/AttendancePage";
 import HRAnalyticsPage from "@/pages/hrm/HRAnalyticsPage";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
@@ -92,11 +93,19 @@ export const router = createBrowserRouter([
         Component: Products,
       },
       {
-        path: "inventory/products/add",
+        path: "inventory/product/add",
+        Component: AddProduct,
+      },
+      {
+        path: "product/add",
         Component: AddProduct,
       },
       {
         path: "inventory/products/edit/:id",
+        Component: EditProduct,
+      },
+      {
+        path: "products/edit/:id",
         Component: EditProduct,
       },
       {
@@ -479,6 +488,14 @@ export const router = createBrowserRouter([
       {
         path: "holidays",
         Component: HolidaysPage,
+      },
+      {
+        path: "hrm/attendance",
+        Component: AttendancePage,
+      },
+      {
+        path: "attendance",
+        Component: AttendancePage,
       },
       {
         path: "hrm/payroll",
