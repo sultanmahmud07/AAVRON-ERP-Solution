@@ -329,7 +329,7 @@ export default function ExpensesList() {
       </div>
 
       {/* ===================== 2. MAIN TABLE CARD (Exact Reference Image 1) ===================== */}
-      <div className="bg-white dark:bg-[#181b24] rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
         {/* Table Top Controls Bar (Search + Date Range + Action Controls) */}
         <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Left: Search Box & Date Range Filter */}
@@ -388,11 +388,10 @@ export default function ExpensesList() {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilterBar(!showFilterBar)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition ${
-                showFilterBar
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition ${showFilterBar
                   ? "bg-indigo-50 border-indigo-200 text-indigo-600 dark:bg-indigo-950/40 dark:border-indigo-800 dark:text-indigo-300"
                   : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              }`}
+                }`}
             >
               <Filter className="w-3.5 h-3.5" />
               <span>Filter</span>
@@ -414,11 +413,10 @@ export default function ExpensesList() {
                       setSortBy("default");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "default"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "default"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Default
                   </button>
@@ -427,11 +425,10 @@ export default function ExpensesList() {
                       setSortBy("amount-desc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "amount-desc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "amount-desc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Amount (High to Low)
                   </button>
@@ -440,11 +437,10 @@ export default function ExpensesList() {
                       setSortBy("amount-asc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "amount-asc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "amount-asc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Amount (Low to High)
                   </button>
@@ -453,11 +449,10 @@ export default function ExpensesList() {
                       setSortBy("date-desc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "date-desc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "date-desc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Date (Newest First)
                   </button>
@@ -466,11 +461,10 @@ export default function ExpensesList() {
                       setSortBy("name-asc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "name-asc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "name-asc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Name (A to Z)
                   </button>
@@ -657,7 +651,7 @@ export default function ExpensesList() {
       {/* ===================== EDIT EXPENSE MODAL (Exact Layout of Reference Image 2) ===================== */}
       {editingExpense && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-lg p-6 sm:p-7 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-lg p-6 sm:p-7 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-150">
             {/* Modal Header */}
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">
@@ -782,7 +776,7 @@ export default function ExpensesList() {
       {/* ===================== ADD NEW EXPENSE MODAL ===================== */}
       {isAddModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-lg p-6 sm:p-7 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-lg p-6 sm:p-7 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">
                 Add New Expense
@@ -916,7 +910,7 @@ export default function ExpensesList() {
       {/* ===================== DELETE CONFIRMATION MODAL ===================== */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-sm p-6 shadow-2xl space-y-4 text-center animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-sm p-6 shadow-2xl space-y-4 text-center animate-in fade-in zoom-in-95 duration-150">
             <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/60 text-rose-500 flex items-center justify-center mx-auto">
               <Trash2 className="w-6 h-6" />
             </div>

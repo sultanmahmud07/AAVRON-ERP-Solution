@@ -37,7 +37,7 @@ export const CompanySelector: React.FC = () => {
       {/* Pill button matching reference design */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181a24] hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all shadow-xs text-left"
+        className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181a24] hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all shadow-xs text-left"
         aria-expanded={isOpen}
         title={`Active Workspace: ${selected.name}`}
       >
@@ -62,7 +62,7 @@ export const CompanySelector: React.FC = () => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="fixed sm:absolute left-3 sm:left-0 top-[60px] sm:top-full mt-2 w-[calc(100vw-24px)] sm:w-64 max-w-xs rounded-2xl bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 p-2 z-50 animate-in fade-in zoom-in-95">
+        <div className="fixed sm:absolute left-3 sm:left-0 top-[60px] sm:top-full mt-2 w-[calc(100vw-24px)] sm:w-64 max-w-xs rounded-md bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 p-2 z-50 animate-in fade-in zoom-in-95">
           <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
             Select Company / Branch
           </div>
@@ -78,11 +78,10 @@ export const CompanySelector: React.FC = () => {
                     setIsOpen(false);
                     toast.success(`Switched active workspace to ${comp.name}`);
                   }}
-                  className={`w-full flex items-center justify-between p-2 rounded-xl text-left transition-all ${
-                    isSelected
-                      ? "bg-teal-50 dark:bg-teal-950/40 text-teal-900 dark:text-teal-200"
-                      : "hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300"
-                  }`}
+                  className={`w-full flex items-center justify-between p-2 rounded-md text-left transition-all ${isSelected
+                    ? "bg-teal-50 dark:bg-teal-950/40 text-teal-900 dark:text-teal-200"
+                    : "hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300"
+                    }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
                     <div className={`w-7 h-7 rounded-lg ${comp.iconBg} text-white flex items-center justify-center shrink-0`}>
@@ -105,7 +104,7 @@ export const CompanySelector: React.FC = () => {
                 setIsOpen(false);
                 toast.info("Create new company branch modal");
               }}
-              className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30 rounded-xl transition-colors"
+              className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30 rounded-md transition-colors"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Add New Company Branch</span>

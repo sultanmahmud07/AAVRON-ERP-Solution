@@ -336,7 +336,7 @@ export default function FinanceReportView() {
         <div className="space-y-6">
           {/* Top KPI Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Total Operating Expenses</span>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1">
                 {formatAmount(totalExpenseAmount)}
@@ -347,7 +347,7 @@ export default function FinanceReportView() {
               </div>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Paid Direct Overheads</span>
               <p className="text-2xl font-bold text-emerald-600 mt-1">
                 {formatAmount(Math.round(totalExpenseAmount * 0.88))}
@@ -355,7 +355,7 @@ export default function FinanceReportView() {
               <span className="text-xs text-gray-400 mt-1 block">88% settled invoices</span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Pending Approvals</span>
               <p className="text-2xl font-bold text-amber-600 mt-1">
                 {formatAmount(Math.round(totalExpenseAmount * 0.12))}
@@ -363,7 +363,7 @@ export default function FinanceReportView() {
               <span className="text-xs text-gray-400 mt-1 block">3 supplier bills in queue</span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Top Cost Center</span>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1">
                 Rent & Logistics
@@ -374,7 +374,7 @@ export default function FinanceReportView() {
 
           {/* Expense Category Breakdown Bars */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+            <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md p-5 shadow-sm">
               <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Expense Distribution by Category
               </h3>
@@ -399,7 +399,7 @@ export default function FinanceReportView() {
             </div>
 
             {/* Payment Method Breakdown */}
-            <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+            <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md p-5 shadow-sm">
               <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Payment Channel Summary
               </h3>
@@ -460,7 +460,7 @@ export default function FinanceReportView() {
       {activeReport === "income-summary" && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Gross Sales Revenue</span>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1">
                 {formatAmount(totalIncomeAmount)}
@@ -471,7 +471,7 @@ export default function FinanceReportView() {
               </div>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Total Fulfilled Orders</span>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1">
                 1,570
@@ -479,7 +479,7 @@ export default function FinanceReportView() {
               <span className="text-xs text-gray-400 mt-1 block">Avg. ticket: {formatAmount(170)}</span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Direct Invoiced B2B</span>
               <p className="text-2xl font-bold text-[#0c6760] mt-1">
                 {formatAmount(67900)}
@@ -487,7 +487,7 @@ export default function FinanceReportView() {
               <span className="text-xs text-gray-400 mt-1 block">Wholesale retailer network</span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Realized Collections</span>
               <p className="text-2xl font-bold text-emerald-600 mt-1">
                 98.2%
@@ -497,7 +497,7 @@ export default function FinanceReportView() {
           </div>
 
           {/* Revenue by Apparel Category */}
-          <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+          <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md p-5 shadow-sm">
             <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-4">
               Revenue Breakdown by Category
             </h3>
@@ -556,7 +556,7 @@ export default function FinanceReportView() {
       {activeReport === "profit-loss" && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Gross Profit (After COGS)</span>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1">
                 {formatAmount(grossProfit)}
@@ -566,7 +566,7 @@ export default function FinanceReportView() {
               </span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Operating Overheads</span>
               <p className="text-2xl font-bold text-rose-600 mt-1">
                 {formatAmount(totalExpenseAmount)}
@@ -574,7 +574,7 @@ export default function FinanceReportView() {
               <span className="text-xs text-gray-400 mt-1 block">Facilities, payroll, marketing</span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-[#0c6760]/30 dark:border-[#0c6760]/40 rounded-xl shadow-sm bg-[#0c6760]/5">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-[#0c6760]/30 dark:border-[#0c6760]/40 rounded-md shadow-sm bg-[#0c6760]/5">
               <span className="text-xs font-semibold text-[#0c6760] dark:text-teal-400">
                 Net Profit (EBITDA)
               </span>
@@ -588,7 +588,7 @@ export default function FinanceReportView() {
           </div>
 
           {/* Detailed Statement Table */}
-          <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm">
+          <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md overflow-hidden shadow-sm">
             <div className="p-4 border-b border-gray-100 dark:border-gray-800">
               <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">
                 Income Statement ({periodFilter})
@@ -644,7 +644,7 @@ export default function FinanceReportView() {
       {activeReport === "income-vs-expense" && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+            <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md p-5 shadow-sm">
               <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Monthly Comparison (H1 2026)
               </h3>
@@ -687,7 +687,7 @@ export default function FinanceReportView() {
             </div>
 
             {/* Net Cash Flow Summary */}
-            <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm flex flex-col justify-between">
+            <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md p-5 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-3">
                   Cash Flow Equilibrium
@@ -696,7 +696,7 @@ export default function FinanceReportView() {
                   For Q2 2026, total income exceeds operational overheads by a solid 53%, providing substantial runway for warehouse expansion and inventory scaling.
                 </p>
 
-                <div className="p-4 bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-xl space-y-2 mb-4">
+                <div className="p-4 bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-md space-y-2 mb-4">
                   <div className="flex justify-between text-xs font-semibold text-emerald-900 dark:text-emerald-200">
                     <span>Cash Inflow Efficiency</span>
                     <span>1.84x Inflow/Outflow</span>
@@ -723,7 +723,7 @@ export default function FinanceReportView() {
       {activeReport === "tax-summary" && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Total Output Tax (Collected)</span>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1">
                 {formatAmount(Math.round(totalIncomeAmount * 0.12))}
@@ -731,7 +731,7 @@ export default function FinanceReportView() {
               <span className="text-xs text-gray-400 mt-1 block">GST / VAT charged on sales</span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Input Tax Credit (ITC)</span>
               <p className="text-2xl font-bold text-emerald-600 mt-1">
                 {formatAmount(Math.round(totalExpenseAmount * 0.08))}
@@ -739,7 +739,7 @@ export default function FinanceReportView() {
               <span className="text-xs text-gray-400 mt-1 block">Claimable on vendor purchases</span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Net Tax Payable</span>
               <p className="text-2xl font-bold text-amber-600 mt-1">
                 {formatAmount(Math.round(totalIncomeAmount * 0.12 - totalExpenseAmount * 0.08))}
@@ -747,7 +747,7 @@ export default function FinanceReportView() {
               <span className="text-xs text-gray-400 mt-1 block">Due by 20th of next month</span>
             </div>
 
-            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm">
+            <div className="p-4 bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md shadow-sm">
               <span className="text-xs font-medium text-gray-500">Filing Status</span>
               <p className="text-2xl font-bold text-emerald-600 mt-1">
                 Compliant
@@ -757,7 +757,7 @@ export default function FinanceReportView() {
           </div>
 
           {/* Active Tax Rates Table */}
-          <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm">
+          <div className="bg-white dark:bg-[#181b24] border border-gray-200 dark:border-gray-800 rounded-md overflow-hidden shadow-sm">
             <div className="p-4 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
               <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">
                 Registered Tax Codes & Liability

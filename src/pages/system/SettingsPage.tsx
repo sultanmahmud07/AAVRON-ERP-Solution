@@ -136,11 +136,10 @@ export const SettingsPage: React.FC = () => {
       <div className="flex items-center gap-1 border-b border-slate-200/80 dark:border-slate-800 pb-px overflow-x-auto text-xs font-semibold">
         <button
           onClick={() => navigate("/system/settings/general")}
-          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 transition-all whitespace-nowrap ${
-            activeTab === "general"
-              ? "border-[#0c6760] text-[#0c6760] dark:text-teal-400 font-bold"
-              : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
-          }`}
+          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 transition-all whitespace-nowrap ${activeTab === "general"
+            ? "border-[#0c6760] text-[#0c6760] dark:text-teal-400 font-bold"
+            : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
+            }`}
         >
           <Sliders className="w-4 h-4" />
           <span>General</span>
@@ -148,11 +147,10 @@ export const SettingsPage: React.FC = () => {
 
         <button
           onClick={() => navigate("/system/settings/security")}
-          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 transition-all whitespace-nowrap ${
-            activeTab === "security"
-              ? "border-[#0c6760] text-[#0c6760] dark:text-teal-400 font-bold"
-              : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
-          }`}
+          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 transition-all whitespace-nowrap ${activeTab === "security"
+            ? "border-[#0c6760] text-[#0c6760] dark:text-teal-400 font-bold"
+            : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
+            }`}
         >
           <Shield className="w-4 h-4" />
           <span>Security</span>
@@ -160,11 +158,10 @@ export const SettingsPage: React.FC = () => {
 
         <button
           onClick={() => navigate("/system/settings/notifications")}
-          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 transition-all whitespace-nowrap ${
-            activeTab === "notifications"
-              ? "border-[#0c6760] text-[#0c6760] dark:text-teal-400 font-bold"
-              : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
-          }`}
+          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 transition-all whitespace-nowrap ${activeTab === "notifications"
+            ? "border-[#0c6760] text-[#0c6760] dark:text-teal-400 font-bold"
+            : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
+            }`}
         >
           <Bell className="w-4 h-4" />
           <span>Notifications</span>
@@ -172,11 +169,10 @@ export const SettingsPage: React.FC = () => {
 
         <button
           onClick={() => navigate("/system/settings/integrations")}
-          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 transition-all whitespace-nowrap ${
-            activeTab === "integrations"
-              ? "border-[#0c6760] text-[#0c6760] dark:text-teal-400 font-bold"
-              : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
-          }`}
+          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 transition-all whitespace-nowrap ${activeTab === "integrations"
+            ? "border-[#0c6760] text-[#0c6760] dark:text-teal-400 font-bold"
+            : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
+            }`}
         >
           <Blocks className="w-4 h-4" />
           <span>Integrations</span>
@@ -185,7 +181,7 @@ export const SettingsPage: React.FC = () => {
 
       {/* Tab 1: General */}
       {activeTab === "general" && (
-        <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 sm:p-6 space-y-6 shadow-xs max-w-4xl">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 sm:p-6 space-y-6 shadow-xs max-w-4xl">
           <div className="space-y-1">
             <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Building className="w-4 h-4 text-[#0c6760]" />
@@ -270,7 +266,7 @@ export const SettingsPage: React.FC = () => {
 
       {/* Tab 2: Security */}
       {activeTab === "security" && (
-        <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 sm:p-6 space-y-6 shadow-xs max-w-4xl">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 sm:p-6 space-y-6 shadow-xs max-w-4xl">
           <div className="space-y-1">
             <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Lock className="w-4 h-4 text-[#0c6760]" />
@@ -282,7 +278,7 @@ export const SettingsPage: React.FC = () => {
           </div>
 
           <div className="space-y-4 text-xs">
-            <div className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-[#12141c]">
+            <div className="flex items-center justify-between p-3.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-[#12141c]">
               <div>
                 <p className="font-bold text-slate-800 dark:text-slate-200">
                   Enforce Two-Factor Authentication (2FA)
@@ -325,7 +321,7 @@ export const SettingsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-[#12141c]">
+            <div className="flex items-center justify-between p-3.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-[#12141c]">
               <div>
                 <p className="font-bold text-slate-800 dark:text-slate-200">
                   Require Special Characters & Numbers
@@ -347,7 +343,7 @@ export const SettingsPage: React.FC = () => {
 
       {/* Tab 3: Notifications */}
       {activeTab === "notifications" && (
-        <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 sm:p-6 space-y-6 shadow-xs max-w-4xl">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 sm:p-6 space-y-6 shadow-xs max-w-4xl">
           <div className="space-y-1">
             <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Mail className="w-4 h-4 text-[#0c6760]" />
@@ -359,7 +355,7 @@ export const SettingsPage: React.FC = () => {
           </div>
 
           <div className="space-y-3 text-xs">
-            <div className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-[#12141c]/50">
+            <div className="flex items-center justify-between p-3.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-[#12141c]/50">
               <div>
                 <p className="font-bold text-slate-800 dark:text-slate-200">
                   Daily Accounting & Cashflow Summary Email
@@ -376,7 +372,7 @@ export const SettingsPage: React.FC = () => {
               />
             </div>
 
-            <div className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-[#12141c]/50">
+            <div className="flex items-center justify-between p-3.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-[#12141c]/50">
               <div>
                 <p className="font-bold text-slate-800 dark:text-slate-200">
                   Inventory Low Stock & Reorder Triggers
@@ -393,7 +389,7 @@ export const SettingsPage: React.FC = () => {
               />
             </div>
 
-            <div className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-[#12141c]/50">
+            <div className="flex items-center justify-between p-3.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-[#12141c]/50">
               <div>
                 <p className="font-bold text-slate-800 dark:text-slate-200">
                   Purchase Order Approval Requests
@@ -410,7 +406,7 @@ export const SettingsPage: React.FC = () => {
               />
             </div>
 
-            <div className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-[#12141c]/50">
+            <div className="flex items-center justify-between p-3.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-[#12141c]/50">
               <div>
                 <p className="font-bold text-slate-800 dark:text-slate-200">
                   Broadcast System Maintenance Announcements
@@ -449,21 +445,20 @@ export const SettingsPage: React.FC = () => {
             {integrations.map((item) => (
               <div
                 key={item.id}
-                className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-all"
+                className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-all"
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div
-                      className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-base ${item.iconColor}`}
+                      className={`w-10 h-10 rounded-md flex items-center justify-center font-bold text-base ${item.iconColor}`}
                     >
                       <Blocks className="w-5 h-5" />
                     </div>
                     <span
-                      className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${
-                        item.connected
-                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50"
-                          : "bg-slate-100 dark:bg-[#12141c] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700"
-                      }`}
+                      className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${item.connected
+                        ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50"
+                        : "bg-slate-100 dark:bg-[#12141c] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700"
+                        }`}
                     >
                       {item.connected ? "Active" : "Disconnected"}
                     </span>
@@ -486,11 +481,10 @@ export const SettingsPage: React.FC = () => {
                   </span>
                   <button
                     onClick={() => handleToggleIntegration(item.id)}
-                    className={`px-3 py-1 text-xs font-semibold rounded-lg transition-colors cursor-pointer ${
-                      item.connected
-                        ? "bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/30 dark:hover:bg-rose-950/50 text-rose-600 dark:text-rose-400 border border-rose-200/80 dark:border-rose-900/50"
-                        : "bg-[#0c6760] hover:bg-[#09544e] text-white shadow-xs"
-                    }`}
+                    className={`px-3 py-1 text-xs font-semibold rounded-lg transition-colors cursor-pointer ${item.connected
+                      ? "bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/30 dark:hover:bg-rose-950/50 text-rose-600 dark:text-rose-400 border border-rose-200/80 dark:border-rose-900/50"
+                      : "bg-[#0c6760] hover:bg-[#09544e] text-white shadow-xs"
+                      }`}
                   >
                     {item.connected ? "Disconnect" : "Connect"}
                   </button>

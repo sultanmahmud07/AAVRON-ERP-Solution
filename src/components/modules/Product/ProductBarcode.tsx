@@ -144,7 +144,7 @@ export const ProductBarcode: React.FC<ProductBarcodeProps> = ({
       </div>
 
       {/* Card 1: Configuration Controls matching reference image */}
-      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 shadow-xs space-y-6">
+      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-6 shadow-xs space-y-6">
         {/* Product Title & SKU */}
         <div>
           <h2 className="text-base font-bold text-slate-900 dark:text-white">
@@ -165,7 +165,7 @@ export const ProductBarcode: React.FC<ProductBarcodeProps> = ({
             <select
               value={stickerSize}
               onChange={(e) => setStickerSize(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-800 dark:text-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-slate-400/50"
+              className="w-full px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-800 dark:text-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-slate-400/50"
             >
               <option value="45 × 35 mm">45 × 35 mm</option>
               <option value="50 × 30 mm">50 × 30 mm</option>
@@ -242,7 +242,7 @@ export const ProductBarcode: React.FC<ProductBarcodeProps> = ({
                 max={500}
                 value={copies}
                 onChange={(e) => setCopies(Math.max(1, Number(e.target.value) || 1))}
-                className="w-full px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-800 dark:text-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-slate-400/50"
+                className="w-full px-3 py-1.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-800 dark:text-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-slate-400/50"
               />
             </div>
 
@@ -251,14 +251,14 @@ export const ProductBarcode: React.FC<ProductBarcodeProps> = ({
               <button
                 type="button"
                 onClick={handleGenerate}
-                className="w-full py-2 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                className="w-full py-2 px-3 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5"
               >
                 <span>Generate</span>
               </button>
               <button
                 type="button"
                 onClick={handlePrint}
-                className="w-full py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5 border border-slate-200 dark:border-slate-700"
+                className="w-full py-2 px-3 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5 border border-slate-200 dark:border-slate-700"
               >
                 <Printer className="w-3.5 h-3.5" />
                 <span>Print</span>
@@ -269,7 +269,7 @@ export const ProductBarcode: React.FC<ProductBarcodeProps> = ({
       </div>
 
       {/* Card 2: Live Preview Card matching reference image */}
-      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 shadow-xs space-y-4">
+      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-6 shadow-xs space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-bold text-slate-800 dark:text-slate-200">
             Live preview
@@ -280,7 +280,7 @@ export const ProductBarcode: React.FC<ProductBarcodeProps> = ({
         </div>
 
         {/* Live Preview Canvas Area */}
-        <div className="bg-slate-50/70 dark:bg-slate-900/40 rounded-xl p-8 border border-slate-100 dark:border-slate-800 flex items-center justify-center min-h-[220px]">
+        <div className="bg-slate-50/70 dark:bg-slate-900/40 rounded-md p-8 border border-slate-100 dark:border-slate-800 flex items-center justify-center min-h-[220px]">
           {isGenerated ? (
             <div ref={printAreaRef}>
               {stickerElement}

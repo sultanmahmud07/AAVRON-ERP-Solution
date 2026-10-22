@@ -252,7 +252,7 @@ export default function AssetList() {
       </div>
 
       {/* Main Table Container Card (Matching Products Theme) */}
-      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
         {/* Filter Toolbar matching Products Theme */}
         <div className="p-3.5 sm:p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
           {/* Left: Search input & Date Range */}
@@ -296,7 +296,7 @@ export default function AssetList() {
               </button>
 
               {isFilterOpen && (
-                <div className="absolute right-0 mt-1 w-48 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-2 z-20 space-y-2 text-xs">
+                <div className="absolute right-0 mt-1 w-48 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg p-2 z-20 space-y-2 text-xs">
                   <div>
                     <label className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
                       Status
@@ -330,7 +330,7 @@ export default function AssetList() {
               </button>
 
               {isSortOpen && (
-                <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-1.5 z-20 text-xs space-y-1">
+                <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg p-1.5 z-20 text-xs space-y-1">
                   <button
                     onClick={() => {
                       setSortBy("date");
@@ -467,11 +467,10 @@ export default function AssetList() {
                       {/* 8. Status */}
                       <td className="py-3 px-4">
                         <span
-                          className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${
-                            item.status === "Active"
-                              ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
-                              : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60"
-                          }`}
+                          className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${item.status === "Active"
+                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
+                            : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60"
+                            }`}
                         >
                           {item.status}
                         </span>
@@ -548,11 +547,10 @@ export default function AssetList() {
               <button
                 key={pg}
                 onClick={() => setCurrentPage(pg)}
-                className={`w-7 h-7 rounded-md text-xs font-bold transition-all ${
-                  currentPage === pg
-                    ? "bg-[#0c6760] text-white shadow-xs"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                className={`w-7 h-7 rounded-md text-xs font-bold transition-all ${currentPage === pg
+                  ? "bg-[#0c6760] text-white shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
               >
                 {pg}
               </button>
@@ -580,7 +578,7 @@ export default function AssetList() {
       {/* ======================= MODAL: ADD / EDIT ASSET ======================= */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-lg shadow-2xl overflow-hidden">
             <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#0c6760] dark:text-teal-400">
@@ -734,7 +732,7 @@ export default function AssetList() {
       {/* ======================= MODAL: DELETE ASSET ======================= */}
       {deletingAsset && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-sm shadow-2xl p-5 text-center space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-sm shadow-2xl p-5 text-center space-y-4">
             <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-500 flex items-center justify-center mx-auto">
               <Trash2 className="w-6 h-6" />
             </div>

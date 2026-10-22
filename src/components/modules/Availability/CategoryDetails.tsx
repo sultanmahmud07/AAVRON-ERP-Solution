@@ -5,15 +5,15 @@ import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils/getDateFormater";
 import { useGetCategoryDetailsQuery } from "@/redux/features/category/category.api";
 import Loader from "@/pages/Spinner";
-import { 
-  ArrowLeft, 
-  CalendarDays, 
-  Edit, 
-  Eye, 
-  EyeOff, 
-  Hash, 
-  ImageIcon, 
-  Link as LinkIcon 
+import {
+  ArrowLeft,
+  CalendarDays,
+  Edit,
+  Eye,
+  EyeOff,
+  Hash,
+  ImageIcon,
+  Link as LinkIcon
 } from "lucide-react";
 
 const CategoryDetails = () => {
@@ -45,17 +45,17 @@ const CategoryDetails = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
-      
+
       {/* Top Navigation & Actions */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-        <Link 
-          to="/categories" 
+        <Link
+          to="/categories"
           className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Categories
         </Link>
-        
+
         <Link to={`/category/edit/${category.slug}`}>
           <Button className="bg-primary hover:bg-secondary cursor-pointer text-white">
             <Edit className="w-4 h-4 mr-2" />
@@ -66,10 +66,10 @@ const CategoryDetails = () => {
 
       {/* Split Layout Container */}
       <div className="flex flex-col lg:flex-row gap-8 items-start">
-        
+
         {/* ================= LEFT SIDE: THUMBNAIL ================= */}
         <div className="w-full lg:w-1/3 sticky top-6">
-          <Card className="overflow-hidden border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl">
+          <Card className="overflow-hidden border-gray-100 dark:border-zinc-800 shadow-sm rounded-md">
             <div className="aspect-square bg-gray-50 dark:bg-zinc-900 flex items-center justify-center p-4">
               {category.thumbnail ? (
                 <img
@@ -89,7 +89,7 @@ const CategoryDetails = () => {
 
         {/* ================= RIGHT SIDE: DETAILS ================= */}
         <div className="w-full lg:w-2/3 flex flex-col gap-6">
-          
+
           {/* Main Info Header */}
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-3 flex-wrap">
@@ -109,7 +109,7 @@ const CategoryDetails = () => {
           </div>
 
           {/* Description Card */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md">
             <CardHeader className="pb-3 border-b border-gray-100 dark:border-zinc-800/50">
               <CardTitle className="text-lg">Description</CardTitle>
             </CardHeader>
@@ -121,13 +121,13 @@ const CategoryDetails = () => {
           </Card>
 
           {/* Meta Data Grid */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md">
             <CardHeader className="pb-3 border-b border-gray-100 dark:border-zinc-800/50">
               <CardTitle className="text-lg">Category Metadata</CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-6">
-                
+
                 {/* Slug */}
                 <div className="flex gap-3">
                   <div className="mt-0.5 p-2.5 bg-gray-50 dark:bg-zinc-900 rounded-lg text-gray-500 h-fit">

@@ -127,7 +127,7 @@ export default function FollowUpList() {
   const totalLeads = data?.meta?.total || 0;
 
   return (
-    <div className="w-full h-full bg-white dark:bg-zinc-950 p-3 md:p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800/50">
+    <div className="w-full h-full bg-white dark:bg-zinc-950 p-3 md:p-5 rounded-md shadow-sm border border-gray-100 dark:border-zinc-800/50">
 
       {/* Header & Controls */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3.5 mb-4">
@@ -146,7 +146,7 @@ export default function FollowUpList() {
           <div className="relative w-full sm:w-[260px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
-              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-10 md:h-11 rounded-xl border-gray-200 dark:border-zinc-800 focus-visible:ring-amber-500 text-sm"
+              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-10 md:h-11 rounded-md border-gray-200 dark:border-zinc-800 focus-visible:ring-amber-500 text-sm"
               type="text"
               placeholder="Search lead name, phone..."
               value={searchTerm}
@@ -156,7 +156,7 @@ export default function FollowUpList() {
 
           {/* Sort Dropdown */}
           <Select onValueChange={handleSortChange} value={sortOrder}>
-            <SelectTrigger className="w-full sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-10 md:h-11 rounded-xl border-gray-200 dark:border-zinc-800 focus:ring-amber-500 text-sm">
+            <SelectTrigger className="w-full sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-10 md:h-11 rounded-md border-gray-200 dark:border-zinc-800 focus:ring-amber-500 text-sm">
               <SelectValue placeholder="Sort order" />
             </SelectTrigger>
             <SelectContent>
@@ -171,7 +171,7 @@ export default function FollowUpList() {
       </div>
 
       {/* Notice Banner */}
-      <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 rounded-xl p-3 md:p-3.5 mb-4 flex items-start gap-2.5">
+      <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 rounded-md p-3 md:p-3.5 mb-4 flex items-start gap-2.5">
         <AlertTriangle className="w-4 h-4 md:w-5 md:h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
         <div className="text-xs md:text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
           <strong>Lead Capture Active:</strong> Every visitor who fills in their contact info is captured here immediately. You can call or email them right away to lock in their inspection date.
@@ -185,7 +185,7 @@ export default function FollowUpList() {
             key={tab.value}
             onClick={() => handleTabChange(tab.value)}
             className={cn(
-              "px-3.5 py-1.5 md:px-4 md:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all border",
+              "px-3.5 py-1.5 md:px-4 md:py-2 rounded-md text-xs font-bold whitespace-nowrap transition-all border",
               statusFilter === tab.value
                 ? "bg-amber-500 text-white border-amber-500 shadow-sm"
                 : "bg-gray-50 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-zinc-800 hover:bg-gray-100 dark:hover:bg-zinc-800"
@@ -207,7 +207,7 @@ export default function FollowUpList() {
           {/* ================= 1. MOBILE CARD VIEW (< md) ================= */}
           <div className="block md:hidden space-y-3.5">
             {data?.data?.length === 0 ? (
-              <div className="text-center py-12 bg-gray-50/50 dark:bg-zinc-900/30 rounded-2xl border border-gray-200 dark:border-zinc-800 p-6 text-gray-500">
+              <div className="text-center py-12 bg-gray-50/50 dark:bg-zinc-900/30 rounded-md border border-gray-200 dark:border-zinc-800 p-6 text-gray-500">
                 <UserCheck className="w-10 h-10 text-gray-400 mx-auto mb-2" />
                 <p className="font-semibold text-base text-gray-800 dark:text-gray-200">No follow-up leads</p>
                 <p className="text-xs text-gray-400 mt-1">All prospective clients are up to date!</p>
@@ -216,7 +216,7 @@ export default function FollowUpList() {
               data?.data.map((lead: IInspection) => (
                 <div
                   key={lead._id}
-                  className="bg-gray-50/40 dark:bg-zinc-900/40 border border-gray-200 dark:border-zinc-800 rounded-2xl p-4 shadow-sm hover:border-amber-500/40 transition-all space-y-3.5"
+                  className="bg-gray-50/40 dark:bg-zinc-900/40 border border-gray-200 dark:border-zinc-800 rounded-md p-4 shadow-sm hover:border-amber-500/40 transition-all space-y-3.5"
                 >
                   {/* Top Header: Lead Name, Service & Status */}
                   <div className="flex items-start justify-between gap-2">
@@ -252,14 +252,14 @@ export default function FollowUpList() {
                   <div className="grid grid-cols-2 gap-2 pt-0.5">
                     <a
                       href={`tel:${lead.phone}`}
-                      className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-emerald-600 active:bg-emerald-700 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors"
+                      className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-md bg-emerald-600 active:bg-emerald-700 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors"
                     >
                       <Phone className="w-3.5 h-3.5 shrink-0" />
                       <span className="truncate">Call {lead.phone}</span>
                     </a>
                     <a
                       href={`mailto:${lead.email}`}
-                      className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-sky-600 active:bg-sky-700 hover:bg-sky-700 text-white font-bold text-xs shadow-sm transition-colors"
+                      className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-md bg-sky-600 active:bg-sky-700 hover:bg-sky-700 text-white font-bold text-xs shadow-sm transition-colors"
                     >
                       <Mail className="w-3.5 h-3.5 shrink-0" />
                       <span className="truncate">Email Lead</span>
@@ -267,7 +267,7 @@ export default function FollowUpList() {
                   </div>
 
                   {/* Property Location */}
-                  <div className="flex items-start gap-2 bg-white dark:bg-zinc-900 p-2.5 rounded-xl border border-gray-100 dark:border-zinc-800/80 text-xs">
+                  <div className="flex items-start gap-2 bg-white dark:bg-zinc-900 p-2.5 rounded-md border border-gray-100 dark:border-zinc-800/80 text-xs">
                     <MapPin className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
                     <div className="space-y-0.5 min-w-0">
                       <p className="font-semibold text-gray-900 dark:text-gray-100 truncate">{lead.address}</p>
@@ -324,7 +324,7 @@ export default function FollowUpList() {
                     <div className="flex items-center gap-1.5">
                       <Link
                         to={`/inspection/view/${lead._id}`}
-                        className="p-2 rounded-xl text-gray-600 dark:text-gray-400 hover:text-primary hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors"
+                        className="p-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-primary hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors"
                         title="View Full Details"
                       >
                         <EyeIcon className="w-4 h-4" />
@@ -342,7 +342,7 @@ export default function FollowUpList() {
           </div>
 
           {/* ================= 2. DESKTOP TABLE VIEW (>= md) ================= */}
-          <div className="hidden md:block rounded-xl border border-gray-200 dark:border-zinc-800 overflow-x-auto">
+          <div className="hidden md:block rounded-md border border-gray-200 dark:border-zinc-800 overflow-x-auto">
             <Table className="w-full min-w-[950px]">
               <TableHeader className="bg-gray-50/50 dark:bg-zinc-900/50">
                 <TableRow>
@@ -523,7 +523,7 @@ export default function FollowUpList() {
                   className={
                     currentPage === 1
                       ? "pointer-events-none opacity-50"
-                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl"
+                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md"
                   }
                 />
               </PaginationItem>
@@ -533,7 +533,7 @@ export default function FollowUpList() {
                     <PaginationItem key={page} onClick={() => setCurrentPage(page)}>
                       <PaginationLink
                         className={cn(
-                          "cursor-pointer rounded-xl transition-colors",
+                          "cursor-pointer rounded-md transition-colors",
                           currentPage === page
                             ? "bg-amber-500 text-white hover:bg-amber-600 hover:text-white border-transparent"
                             : "hover:bg-gray-100 dark:hover:bg-zinc-800"
@@ -552,7 +552,7 @@ export default function FollowUpList() {
                   className={
                     currentPage === totalPage
                       ? "pointer-events-none opacity-50"
-                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl"
+                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md"
                   }
                 />
               </PaginationItem>

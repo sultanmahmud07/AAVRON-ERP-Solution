@@ -87,9 +87,8 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
         </div>
         {!compact && (
           <ChevronDown
-            className={`w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-200 hidden md:block ${
-              isOpen ? "rotate-180" : ""
-            }`}
+            className={`w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-200 hidden md:block ${isOpen ? "rotate-180" : ""
+              }`}
           />
         )}
       </button>
@@ -104,7 +103,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({ compact = fals
 
       {/* Dropdown Card - Mobile Safe Positioning */}
       {isOpen && (
-        <div className="fixed sm:absolute right-3 sm:right-0 top-[60px] sm:top-full mt-2 w-[calc(100vw-24px)] sm:w-64 max-w-[280px] rounded-2xl bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 py-3 z-50 transform transition-all duration-200 origin-top-right animate-in fade-in zoom-in-95">
+        <div className="fixed sm:absolute right-3 sm:right-0 top-[60px] sm:top-full mt-2 w-[calc(100vw-24px)] sm:w-64 max-w-[280px] rounded-md bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 py-3 z-50 transform transition-all duration-200 origin-top-right animate-in fade-in zoom-in-95">
           {/* Profile Header */}
           <div className="flex items-center gap-3.5 px-4 pb-3 border-b border-slate-100 dark:border-slate-800">
             <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-teal-500/30">

@@ -217,7 +217,7 @@ export default function AssetTypeList() {
       </div>
 
       {/* Main Table Container Card (Matching Image 1 & 3 layout) */}
-      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
         {/* Filter Toolbar matching Image 1 */}
         <div className="p-3.5 sm:p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
           {/* Left: Search input & Date Range */}
@@ -261,7 +261,7 @@ export default function AssetTypeList() {
               </button>
 
               {isFilterOpen && (
-                <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-2.5 z-20 space-y-2 text-xs">
+                <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg p-2.5 z-20 space-y-2 text-xs">
                   <div>
                     <label className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
                       Status
@@ -295,7 +295,7 @@ export default function AssetTypeList() {
               </button>
 
               {isSortOpen && (
-                <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-1.5 z-20 text-xs space-y-1">
+                <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg p-1.5 z-20 text-xs space-y-1">
                   <button
                     onClick={() => {
                       setSortBy("name");
@@ -402,11 +402,10 @@ export default function AssetTypeList() {
                       {/* Status */}
                       <td className="py-3 px-4">
                         <span
-                          className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${
-                            item.status === "Active"
-                              ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
-                              : "bg-slate-100 dark:bg-[#12141c] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700"
-                          }`}
+                          className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${item.status === "Active"
+                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
+                            : "bg-slate-100 dark:bg-[#12141c] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700"
+                            }`}
                         >
                           {item.status}
                         </span>
@@ -483,11 +482,10 @@ export default function AssetTypeList() {
               <button
                 key={pg}
                 onClick={() => setCurrentPage(pg)}
-                className={`w-7 h-7 rounded-md text-xs font-bold transition-all ${
-                  currentPage === pg
-                    ? "bg-[#0c6760] text-white shadow-xs"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                className={`w-7 h-7 rounded-md text-xs font-bold transition-all ${currentPage === pg
+                  ? "bg-[#0c6760] text-white shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
               >
                 {pg}
               </button>
@@ -515,7 +513,7 @@ export default function AssetTypeList() {
       {/* ======================= MODAL: ADD / EDIT ASSET TYPE ======================= */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-md shadow-2xl overflow-hidden">
             <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#0c6760] dark:text-teal-400">
@@ -599,7 +597,7 @@ export default function AssetTypeList() {
       {/* ======================= MODAL: DELETE CONFIRMATION ======================= */}
       {deletingType && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-sm shadow-2xl p-5 text-center space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-sm shadow-2xl p-5 text-center space-y-4">
             <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-500 flex items-center justify-center mx-auto">
               <Trash2 className="w-6 h-6" />
             </div>

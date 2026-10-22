@@ -187,7 +187,7 @@ export default function AddJobRequisition() {
         {/* Left Column (Span 2) */}
         <div className="lg:col-span-2 space-y-6">
           {/* Card 1: Requisition Details */}
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-xl p-5 shadow-sm space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 shadow-sm space-y-4">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white">Requisition Details</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -367,7 +367,7 @@ export default function AddJobRequisition() {
           </div>
 
           {/* Card 2: Job Description */}
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-xl p-5 shadow-sm space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 shadow-sm space-y-4">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white">Job Description</h2>
 
             <div className="space-y-4">
@@ -406,7 +406,7 @@ export default function AddJobRequisition() {
         {/* Right Column (Span 1) matching Reference Image 2 */}
         <div className="space-y-6">
           {/* Card 1: Priority */}
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-xl p-5 shadow-sm space-y-3">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 shadow-sm space-y-3">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white">Priority</h2>
             <select
               value={priority}
@@ -421,7 +421,7 @@ export default function AddJobRequisition() {
           </div>
 
           {/* Card 2: Status */}
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-xl p-5 shadow-sm space-y-3">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 shadow-sm space-y-3">
             <h2 className="text-sm font-bold text-slate-900 dark:text-white">Status</h2>
             <select
               value={status}

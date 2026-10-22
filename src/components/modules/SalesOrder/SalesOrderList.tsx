@@ -212,11 +212,11 @@ export default function SalesOrderList() {
     setLineItems(
       order.items.length > 0
         ? order.items.map((i) => ({
-            description: i.description,
-            model: i.model || "",
-            qty: i.qty,
-            rate: i.rate,
-          }))
+          description: i.description,
+          model: i.model || "",
+          qty: i.qty,
+          rate: i.rate,
+        }))
         : [{ description: "General Item", model: "GEN-01", qty: 1, rate: order.totalAmount }]
     );
     setIsModalOpen(true);
@@ -420,9 +420,8 @@ export default function SalesOrderList() {
               <Download className="w-3.5 h-3.5" />
               Export
               <ChevronRight
-                className={`w-3.5 h-3.5 transform transition-transform ${
-                  isExportOpen ? "rotate-90" : ""
-                }`}
+                className={`w-3.5 h-3.5 transform transition-transform ${isExportOpen ? "rotate-90" : ""
+                  }`}
               />
             </button>
             {isExportOpen && (
@@ -460,7 +459,7 @@ export default function SalesOrderList() {
       {/* 2. Four KPI Metric Cards (Information from Image 1 styled to match Image 3) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Invoices */}
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-xl p-4 shadow-2xs flex items-center justify-between">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 shadow-2xs flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Total Invoices
@@ -472,13 +471,13 @@ export default function SalesOrderList() {
               ${summaryMetrics.totalAmount.toLocaleString()}
             </div>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-500 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-md bg-amber-50 dark:bg-amber-950/40 text-amber-500 flex items-center justify-center shrink-0">
             <FileText className="w-5 h-5" />
           </div>
         </div>
 
         {/* Paid Invoices */}
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-xl p-4 shadow-2xs flex items-center justify-between">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 shadow-2xs flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Paid Invoices
@@ -490,13 +489,13 @@ export default function SalesOrderList() {
               ${summaryMetrics.paidAmount.toLocaleString()}
             </div>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-md bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
             <CheckCircle2 className="w-5 h-5" />
           </div>
         </div>
 
         {/* Unpaid Invoices */}
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-xl p-4 shadow-2xs flex items-center justify-between">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 shadow-2xs flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Unpaid Invoices
@@ -508,13 +507,13 @@ export default function SalesOrderList() {
               ${summaryMetrics.unpaidAmount.toLocaleString()}
             </div>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-md bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
             <AlertCircle className="w-5 h-5" />
           </div>
         </div>
 
         {/* Partial Paid Invoices */}
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-xl p-4 shadow-2xs flex items-center justify-between">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 shadow-2xs flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Partial Paid Invoices
@@ -526,14 +525,14 @@ export default function SalesOrderList() {
               ${summaryMetrics.partialAmount.toLocaleString()}
             </div>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 text-amber-500 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-md bg-amber-50/70 dark:bg-amber-950/30 text-amber-500 flex items-center justify-center shrink-0">
             <Clock className="w-5 h-5" />
           </div>
         </div>
       </div>
 
       {/* 3. Main Table Card (Exact Styling of Image 3) */}
-      <div className="bg-white dark:bg-[#181b24] rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
         {/* Table Top Controls Bar */}
         <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Left: Search Box & Date Range Filter */}
@@ -595,11 +594,10 @@ export default function SalesOrderList() {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilterBar(!showFilterBar)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition ${
-                showFilterBar
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition ${showFilterBar
                   ? "bg-indigo-50 border-indigo-200 text-indigo-600 dark:bg-indigo-950/40 dark:border-indigo-800 dark:text-indigo-300"
                   : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              }`}
+                }`}
             >
               <Filter className="w-3.5 h-3.5" />
               Filter
@@ -621,11 +619,10 @@ export default function SalesOrderList() {
                       setSortBy("default");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "default"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "default"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Default
                   </button>
@@ -634,11 +631,10 @@ export default function SalesOrderList() {
                       setSortBy("amount-desc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "amount-desc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "amount-desc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Amount (High to Low)
                   </button>
@@ -647,11 +643,10 @@ export default function SalesOrderList() {
                       setSortBy("amount-asc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "amount-asc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "amount-asc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Amount (Low to High)
                   </button>
@@ -660,11 +655,10 @@ export default function SalesOrderList() {
                       setSortBy("customer-asc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "customer-asc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "customer-asc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Customer (A - Z)
                   </button>
@@ -673,11 +667,10 @@ export default function SalesOrderList() {
                       setSortBy("date-desc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "date-desc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "date-desc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Date (Newest First)
                   </button>
@@ -958,11 +951,10 @@ export default function SalesOrderList() {
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`w-7 h-7 rounded text-xs font-medium transition ${
-                  currentPage === page
+                className={`w-7 h-7 rounded text-xs font-medium transition ${currentPage === page
                     ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-semibold border-slate-900 dark:border-white"
                     : "border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 bg-white dark:bg-[#181b24]"
-                }`}
+                  }`}
               >
                 {page}
               </button>
@@ -979,15 +971,10 @@ export default function SalesOrderList() {
         </div>
       </div>
 
-      {/* Footer Copyright */}
-      <div className="text-center text-xs text-slate-400 py-4">
-        2026 © Dreams ERP. All Rights Reserved
-      </div>
-
       {/* Add / Edit Sales Order Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in overflow-y-auto">
-          <div className="bg-white dark:bg-[#181b24] rounded-xl max-w-2xl w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-8 animate-scale-up">
+          <div className="bg-white dark:bg-[#181b24] rounded-md max-w-2xl w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-8 animate-scale-up">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -1258,7 +1245,7 @@ export default function SalesOrderList() {
       {/* Delete Confirmation Modal */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-[#181b24] rounded-xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4">
+          <div className="bg-white dark:bg-[#181b24] rounded-md max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4">
             <div className="w-12 h-12 rounded-full bg-red-100 text-red-600 dark:bg-red-950/50 dark:text-red-400 mx-auto flex items-center justify-center">
               <AlertCircle className="w-6 h-6" />
             </div>

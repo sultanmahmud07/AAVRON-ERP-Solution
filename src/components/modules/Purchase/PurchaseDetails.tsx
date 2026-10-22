@@ -103,7 +103,7 @@ export default function PurchaseDetails() {
       {/* ===================== INVOICE CARD (Exact Layout of Reference Image 3) ===================== */}
       <div
         ref={printAreaRef}
-        className="bg-white dark:bg-[#181b24] rounded-xl border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-10 shadow-2xs space-y-8"
+        className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-10 shadow-2xs space-y-8"
       >
         {/* Top Header: Dreams ERP Logo (Left) vs PURCHASE ORDER Header (Right) */}
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
@@ -131,11 +131,10 @@ export default function PurchaseDetails() {
             </p>
             <div className="pt-1">
               <span
-                className={`inline-block px-2.5 py-0.5 rounded text-[11px] font-semibold ${
-                  purchase.status === "Received" || purchase.paymentStatus === "Paid"
+                className={`inline-block px-2.5 py-0.5 rounded text-[11px] font-semibold ${purchase.status === "Received" || purchase.paymentStatus === "Paid"
                     ? "bg-[#e8f8ee] text-[#16a34a] dark:bg-emerald-950/40 dark:text-emerald-400"
                     : "bg-[#fff8eb] text-[#d97706] dark:bg-amber-950/40 dark:text-amber-400"
-                }`}
+                  }`}
               >
                 {purchase.status === "Received" ? "Received" : "Pending"}
               </span>
@@ -287,11 +286,10 @@ export default function PurchaseDetails() {
             <div className="flex items-center justify-between pt-1">
               <span className="font-medium text-slate-600 dark:text-slate-400">Due Balance</span>
               <span
-                className={`font-bold font-mono ${
-                  purchase.dueAmount > 0
+                className={`font-bold font-mono ${purchase.dueAmount > 0
                     ? "text-rose-600 dark:text-rose-400"
                     : "text-slate-400 dark:text-slate-500"
-                }`}
+                  }`}
               >
                 {formatMoney(purchase.dueAmount)}
               </span>

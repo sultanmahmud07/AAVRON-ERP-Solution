@@ -64,7 +64,7 @@ export function ResetForm({
 
       return (
             <div
-                  className={`w-full bg-white dark:bg-[#181b24] shadow-2xl shadow-emerald-950/20 rounded-2xl p-7 sm:p-10 border border-slate-100/50 dark:border-slate-800 transition-all ${className || ""}`}
+                  className={`w-full bg-white dark:bg-[#181b24] shadow-2xl shadow-emerald-950/20 rounded-md p-7 sm:p-10 border border-slate-100/50 dark:border-slate-800 transition-all ${className || ""}`}
                   {...props}
             >
                   {/* Brand Logo & Header */}

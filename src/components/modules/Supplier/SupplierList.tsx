@@ -321,9 +321,8 @@ export default function SupplierList() {
               <Download className="w-3.5 h-3.5" />
               Export
               <ChevronRight
-                className={`w-3.5 h-3.5 transform transition-transform ${
-                  isExportOpen ? "rotate-90" : ""
-                }`}
+                className={`w-3.5 h-3.5 transform transition-transform ${isExportOpen ? "rotate-90" : ""
+                  }`}
               />
             </button>
             {isExportOpen && (
@@ -359,7 +358,7 @@ export default function SupplierList() {
       </div>
 
       {/* Main Table Card */}
-      <div className="bg-white dark:bg-[#181b24] rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
         {/* Table Top Controls Bar */}
         <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Search Box */}
@@ -382,11 +381,10 @@ export default function SupplierList() {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilterBar(!showFilterBar)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition ${
-                showFilterBar
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition ${showFilterBar
                   ? "bg-indigo-50 border-indigo-200 text-indigo-600 dark:bg-indigo-950/40 dark:border-indigo-800 dark:text-indigo-300"
                   : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              }`}
+                }`}
             >
               <Filter className="w-3.5 h-3.5" />
               Filter
@@ -408,11 +406,10 @@ export default function SupplierList() {
                       setSortBy("default");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "default"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "default"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Default
                   </button>
@@ -421,11 +418,10 @@ export default function SupplierList() {
                       setSortBy("name-asc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "name-asc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "name-asc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Name (A - Z)
                   </button>
@@ -434,11 +430,10 @@ export default function SupplierList() {
                       setSortBy("name-desc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "name-desc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "name-desc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Name (Z - A)
                   </button>
@@ -447,11 +442,10 @@ export default function SupplierList() {
                       setSortBy("country-asc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "country-asc"
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "country-asc"
                         ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
                         : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Country (A - Z)
                   </button>
@@ -597,11 +591,10 @@ export default function SupplierList() {
                     {/* Status Badge */}
                     <td className="py-3.5 px-4">
                       <span
-                        className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium ${
-                          supplier.status === "Active"
+                        className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium ${supplier.status === "Active"
                             ? "bg-[#e8f8ee] text-[#16a34a] dark:bg-emerald-950/40 dark:text-emerald-400"
                             : "bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400"
-                        }`}
+                          }`}
                       >
                         {supplier.status}
                       </span>
@@ -682,11 +675,10 @@ export default function SupplierList() {
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`w-7 h-7 rounded text-xs font-medium transition ${
-                  currentPage === page
+                className={`w-7 h-7 rounded text-xs font-medium transition ${currentPage === page
                     ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-semibold border-slate-900 dark:border-white"
                     : "border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 bg-white dark:bg-[#181b24]"
-                }`}
+                  }`}
               >
                 {page}
               </button>
@@ -703,15 +695,10 @@ export default function SupplierList() {
         </div>
       </div>
 
-      {/* Footer Copyright matching reference design */}
-      <div className="text-center text-xs text-slate-400 py-4">
-        2026 © Dreams ERP. All Rights Reserved
-      </div>
-
       {/* Add / Edit Supplier Modal matching Reference Image 2 */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-[#181b24] rounded-xl max-w-lg w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-scale-up">
+          <div className="bg-white dark:bg-[#181b24] rounded-md max-w-lg w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-scale-up">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -824,7 +811,7 @@ export default function SupplierList() {
       {/* Delete Confirmation Modal */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-[#181b24] rounded-xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4">
+          <div className="bg-white dark:bg-[#181b24] rounded-md max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4">
             <div className="w-12 h-12 rounded-full bg-red-100 text-red-600 dark:bg-red-950/50 dark:text-red-400 mx-auto flex items-center justify-center">
               <AlertCircle className="w-6 h-6" />
             </div>

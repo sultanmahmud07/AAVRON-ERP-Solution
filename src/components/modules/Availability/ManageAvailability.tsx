@@ -462,7 +462,7 @@ export default function ManageAvailability() {
 
         {/* Global Settings */}
         <div className="flex items-center gap-3 w-full md:w-auto">
-          <div className="flex items-center justify-between gap-2 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl px-3 py-1.5 w-full md:w-auto shadow-sm">
+          <div className="flex items-center justify-between gap-2 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-md px-3 py-1.5 w-full md:w-auto shadow-sm">
             <div className="flex w-full items-center gap-2">
               <Globe className="w-4 h-4 text-gray-500 shrink-0" />
               <Select value={timezone} onValueChange={setTimezone}>
@@ -489,7 +489,7 @@ export default function ManageAvailability() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
 
         {/* ================= LEFT: INTERACTIVE CALENDAR ================= */}
-        <Card className="lg:col-span-5 border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden lg:sticky top-6">
+        <Card className="lg:col-span-5 border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden lg:sticky top-6">
           <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800 py-4">
             <div className="flex items-center justify-between">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
@@ -567,7 +567,7 @@ export default function ManageAvailability() {
                     onClick={() => toggleDateSelection(date)}
                     disabled={isPast}
                     className={cn(
-                      "w-8 h-8 md:w-10 md:h-10 flex flex-col items-center justify-center rounded-xl text-xs md:text-sm font-semibold transition-all relative group",
+                      "w-8 h-8 md:w-10 md:h-10 flex flex-col items-center justify-center rounded-md text-xs md:text-sm font-semibold transition-all relative group",
                       isPast && "text-gray-300 dark:text-zinc-700 cursor-not-allowed",
                       !isPast && !selected && "hover:bg-gray-100 dark:hover:bg-zinc-800 text-gray-700 dark:text-gray-300",
                       selected && "bg-[#1BAE70] text-white shadow-sm hover:bg-[#16965f]",
@@ -619,7 +619,7 @@ export default function ManageAvailability() {
         <div className="lg:col-span-7 flex flex-col gap-6">
 
           {/* Month Banner & Info */}
-          <div className="bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+          <div className="bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40 rounded-md p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
             <div className="flex items-start gap-3">
               <Clock className="w-5 h-5 text-[#1BAE70] mt-0.5 shrink-0" />
               <div>
@@ -674,7 +674,7 @@ export default function ManageAvailability() {
                 return (
                   <Card
                     key={dateStr}
-                    className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden transition-all hover:border-gray-200 dark:hover:border-zinc-700"
+                    className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden transition-all hover:border-gray-200 dark:hover:border-zinc-700"
                   >
                     {/* Date Card Header */}
                     <CardHeader className="bg-gray-50/60 dark:bg-zinc-900/60 border-b border-gray-100 dark:border-zinc-800 py-3 px-4 md:px-5 flex flex-row items-center justify-between gap-2">
@@ -754,7 +754,7 @@ export default function ManageAvailability() {
 
                       {/* Empty Warning */}
                       {selectedSlotsForDay.length === 0 && (
-                        <div className="flex items-center gap-2 text-amber-600 dark:text-amber-500 text-xs bg-amber-50 dark:bg-amber-950/30 p-2.5 rounded-xl border border-amber-200 dark:border-amber-900/50">
+                        <div className="flex items-center gap-2 text-amber-600 dark:text-amber-500 text-xs bg-amber-50 dark:bg-amber-950/30 p-2.5 rounded-md border border-amber-200 dark:border-amber-900/50">
                           <AlertCircle className="w-4 h-4 shrink-0" />
                           <span>No slots are enabled for this day. Users will not be able to book.</span>
                         </div>
@@ -773,7 +773,7 @@ export default function ManageAvailability() {
                               onClick={() => !isBooked && toggleTimeSlot(dateStr, slot)}
                               disabled={isBooked}
                               className={cn(
-                                "py-2.5 px-3 rounded-xl text-xs md:text-sm font-semibold border-2 transition-all duration-150 flex items-center justify-center relative",
+                                "py-2.5 px-3 rounded-md text-xs md:text-sm font-semibold border-2 transition-all duration-150 flex items-center justify-center relative",
                                 isBooked
                                   ? "border-red-200 bg-red-50/60 text-red-500 cursor-not-allowed dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-400 shadow-none"
                                   : isActive
@@ -802,7 +802,7 @@ export default function ManageAvailability() {
 
           {/* Sticky Bottom Publishing Action Bar */}
           {sortedSelectedDates.length > 0 && (
-            <div className="sticky bottom-4 z-10 flex items-center justify-between p-3.5 md:p-4 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border border-gray-200 dark:border-zinc-800 rounded-2xl shadow-xl">
+            <div className="sticky bottom-4 z-10 flex items-center justify-between p-3.5 md:p-4 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border border-gray-200 dark:border-zinc-800 rounded-md shadow-xl">
               <div className="hidden sm:flex flex-col">
                 <span className="text-sm font-bold text-gray-900 dark:text-white">
                   {sortedSelectedDates.length} Date(s) Scheduled
@@ -815,7 +815,7 @@ export default function ManageAvailability() {
               <Button
                 size="lg"
                 onClick={handleSaveAvailability}
-                className="w-full sm:w-auto bg-[#1BAE70] hover:bg-[#16965f] text-white px-8 h-11 rounded-xl font-bold shadow-md transition-all active:scale-98"
+                className="w-full sm:w-auto bg-[#1BAE70] hover:bg-[#16965f] text-white px-8 h-11 rounded-md font-bold shadow-md transition-all active:scale-98"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -832,7 +832,7 @@ export default function ManageAvailability() {
 
       {/* Modal for adding custom slot */}
       <Dialog open={isAddSlotModalOpen} onOpenChange={setIsAddSlotModalOpen}>
-        <DialogContent className="sm:max-w-md rounded-2xl">
+        <DialogContent className="sm:max-w-md rounded-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Clock className="w-5 h-5 text-[#1BAE70]" />
@@ -851,7 +851,7 @@ export default function ManageAvailability() {
                 type="time"
                 value={newSlotTime}
                 onChange={(e) => setNewSlotTime(e.target.value)}
-                className="rounded-xl h-11"
+                className="rounded-md h-11"
               />
               <p className="text-xs text-gray-500">
                 Display Preview: <strong className="text-gray-800 dark:text-gray-200">{formatTimeDisplay(newSlotTime)}</strong>
@@ -860,10 +860,10 @@ export default function ManageAvailability() {
           </div>
 
           <DialogFooter className="flex gap-2 sm:gap-0">
-            <Button variant="outline" onClick={() => setIsAddSlotModalOpen(false)} className="rounded-xl">
+            <Button variant="outline" onClick={() => setIsAddSlotModalOpen(false)} className="rounded-md">
               Cancel
             </Button>
-            <Button onClick={handleAddCustomSlot} className="bg-[#1BAE70] hover:bg-[#16965f] text-white rounded-xl">
+            <Button onClick={handleAddCustomSlot} className="bg-[#1BAE70] hover:bg-[#16965f] text-white rounded-md">
               Add Slot
             </Button>
           </DialogFooter>

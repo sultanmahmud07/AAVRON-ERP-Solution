@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Outlet } from "react-router";
 import DreamsSidebar from "./DreamsSidebar";
 import DashboardHeader from "./DashboardHeader";
+import DashboardFooter from "./DashboardFooter";
 
 export const DashboardLayout: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -35,7 +36,9 @@ export const DashboardLayout: React.FC = () => {
         <main className="flex-1 p-2 sm:p-3 lg:p-5 max-w-[1720px] w-full mx-auto">
           <Outlet />
         </main>
-        <footer>This is footer</footer>
+
+        {/* Common ERP Footer */}
+        <DashboardFooter />
       </div>
     </div>
   );

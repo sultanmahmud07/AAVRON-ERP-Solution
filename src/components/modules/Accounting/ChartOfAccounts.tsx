@@ -181,7 +181,7 @@ export default function ChartOfAccounts() {
   if (viewMode === "create" || viewMode === "edit") {
     return (
       <div className="w-full space-y-4 text-slate-900 dark:text-slate-100">
-        <div className="bg-white dark:bg-[#181b24] rounded-xl border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-8 shadow-2xs space-y-6">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-8 shadow-2xs space-y-6">
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
@@ -331,7 +331,7 @@ export default function ChartOfAccounts() {
       {/* ===================== 4 SUMMARY STAT CARDS (Exact Reference Image 1) ===================== */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Balance */}
-        <div className="bg-white dark:bg-[#181b24] p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs flex items-center justify-between">
+        <div className="bg-white dark:bg-[#181b24] p-5 rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs flex items-center justify-between">
           <div>
             <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
               Total Balance
@@ -340,13 +340,13 @@ export default function ChartOfAccounts() {
               {formatTaka(metrics.total)}
             </span>
           </div>
-          <div className="w-11 h-11 rounded-2xl bg-[#e8f8ee] dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 text-xl shadow-2xs">
+          <div className="w-11 h-11 rounded-md bg-[#e8f8ee] dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 text-xl shadow-2xs">
             💸
           </div>
         </div>
 
         {/* Cash Balance */}
-        <div className="bg-white dark:bg-[#181b24] p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs flex items-center justify-between">
+        <div className="bg-white dark:bg-[#181b24] p-5 rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs flex items-center justify-between">
           <div>
             <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
               Cash Balance
@@ -355,13 +355,13 @@ export default function ChartOfAccounts() {
               {formatTaka(metrics.cash)}
             </span>
           </div>
-          <div className="w-11 h-11 rounded-2xl bg-[#e8f8ee] dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 text-xl shadow-2xs">
+          <div className="w-11 h-11 rounded-md bg-[#e8f8ee] dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 text-xl shadow-2xs">
             💵
           </div>
         </div>
 
         {/* Bank Balance */}
-        <div className="bg-white dark:bg-[#181b24] p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs flex items-center justify-between">
+        <div className="bg-white dark:bg-[#181b24] p-5 rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs flex items-center justify-between">
           <div>
             <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
               Bank Balance
@@ -370,13 +370,13 @@ export default function ChartOfAccounts() {
               {formatTaka(metrics.bank)}
             </span>
           </div>
-          <div className="w-11 h-11 rounded-2xl bg-[#f0f4ff] dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 text-xl shadow-2xs">
+          <div className="w-11 h-11 rounded-md bg-[#f0f4ff] dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 text-xl shadow-2xs">
             🏦
           </div>
         </div>
 
         {/* MFS Balance */}
-        <div className="bg-white dark:bg-[#181b24] p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs flex items-center justify-between">
+        <div className="bg-white dark:bg-[#181b24] p-5 rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs flex items-center justify-between">
           <div>
             <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
               MFS Balance
@@ -385,14 +385,14 @@ export default function ChartOfAccounts() {
               {formatTaka(metrics.mfs)}
             </span>
           </div>
-          <div className="w-11 h-11 rounded-2xl bg-[#fbf0ff] dark:bg-purple-950/50 flex items-center justify-center text-purple-600 text-xl shadow-2xs">
+          <div className="w-11 h-11 rounded-md bg-[#fbf0ff] dark:bg-purple-950/50 flex items-center justify-center text-purple-600 text-xl shadow-2xs">
             📲
           </div>
         </div>
       </div>
 
       {/* ===================== MAIN TABLE CARD (Exact Reference Image 1) ===================== */}
-      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
         {/* Table Top Controls Bar */}
         <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-3">
@@ -517,11 +517,10 @@ export default function ChartOfAccounts() {
                     </td>
                     <td className="py-3 px-4 text-center">
                       <span
-                        className={`inline-block px-2.5 py-0.5 rounded text-[11px] font-semibold ${
-                          acc.status === "Active"
-                            ? "bg-[#e8f8ee] text-[#16a34a] dark:bg-emerald-950/40 dark:text-emerald-400"
-                            : "bg-[#fee2e2] text-[#dc2626] dark:bg-rose-950/40 dark:text-rose-400"
-                        }`}
+                        className={`inline-block px-2.5 py-0.5 rounded text-[11px] font-semibold ${acc.status === "Active"
+                          ? "bg-[#e8f8ee] text-[#16a34a] dark:bg-emerald-950/40 dark:text-emerald-400"
+                          : "bg-[#fee2e2] text-[#dc2626] dark:bg-rose-950/40 dark:text-rose-400"
+                          }`}
                       >
                         {acc.status}
                       </span>

@@ -400,7 +400,7 @@ export const DreamsSidebar: React.FC<DreamsSidebarProps> = ({
       {/* Logout Confirmation Modal */}
       {showLogoutModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-100">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-2xl max-w-sm w-full p-6 space-y-4 animate-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-2xl max-w-sm w-full p-6 space-y-4 animate-in zoom-in-95 duration-150">
             <div className="flex items-start gap-3.5">
               <div className="p-3 bg-rose-50 dark:bg-rose-950/40 text-rose-600 rounded-full shrink-0">
                 <LogOut className="w-5 h-5" />

@@ -21,7 +21,7 @@ const UserDetails = () => {
 
   return (
     <div className="w-full md:max-w-3xl mx-auto md:p-6">
-      <Card className="shadow-xl rounded-2xl border">
+      <Card className="shadow-xl rounded-md border">
         {/* Header */}
         <CardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <CardTitle className="text-2xl font-bold">User Details</CardTitle>

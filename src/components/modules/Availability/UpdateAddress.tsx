@@ -139,7 +139,7 @@ const UpdateAddress = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white dark:bg-zinc-950 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800/50 flex flex-col gap-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white dark:bg-zinc-950 p-6 md:p-8 rounded-md shadow-sm border border-gray-100 dark:border-zinc-800/50 flex flex-col gap-6">
 
           {/* Street Address */}
           <FormField
@@ -149,7 +149,7 @@ const UpdateAddress = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
               <FormItem>
                 <FormLabel className="text-gray-700 dark:text-gray-300 font-medium">Street Address</FormLabel>
                 <FormControl>
-                  <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl" placeholder="e.g. 123 Dallas Parkway" {...field} />
+                  <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md" placeholder="e.g. 123 Dallas Parkway" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -165,7 +165,7 @@ const UpdateAddress = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                 <FormItem>
                   <FormLabel className="text-gray-700 dark:text-gray-300 font-medium">City</FormLabel>
                   <FormControl>
-                    <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl" placeholder="e.g. Dallas" {...field} />
+                    <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md" placeholder="e.g. Dallas" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -182,7 +182,7 @@ const UpdateAddress = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   <FormItem>
                     <FormLabel className="text-gray-700 dark:text-gray-300 font-medium">State</FormLabel>
                     <FormControl>
-                      <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl" placeholder="e.g. Texas" {...field} />
+                      <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md" placeholder="e.g. Texas" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -197,7 +197,7 @@ const UpdateAddress = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   <FormItem>
                     <FormLabel className="text-gray-700 dark:text-gray-300 font-medium">ZIP Code</FormLabel>
                     <FormControl>
-                      <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl" placeholder="e.g. 75201" {...field} />
+                      <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md" placeholder="e.g. 75201" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -216,7 +216,7 @@ const UpdateAddress = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   <FormLabel className="text-gray-700 dark:text-gray-300 font-medium">Location Type</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl">
+                      <SelectTrigger className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md">
                         <SelectValue placeholder="Select location type" />
                       </SelectTrigger>
                     </FormControl>
@@ -235,7 +235,7 @@ const UpdateAddress = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
           <div className="mt-6 pt-6 border-t border-gray-100 dark:border-zinc-800">
             <Button
               type="submit"
-              className="w-full md:w-auto px-10 h-12 bg-primary hover:bg-[#16965f] cursor-pointer text-white rounded-xl font-medium text-base transition-all"
+              className="w-full md:w-auto px-10 h-12 bg-primary hover:bg-[#16965f] cursor-pointer text-white rounded-md font-medium text-base transition-all"
               disabled={isSubmitting}
             >
               {isSubmitting ? (

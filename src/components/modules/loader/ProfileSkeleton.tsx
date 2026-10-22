@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const Skeleton = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "animate-pulse rounded-md bg-gray-200 dark:bg-zinc-800", 
+      "animate-pulse rounded-md bg-gray-200 dark:bg-zinc-800",
       className
     )}
     {...props}
@@ -15,7 +15,7 @@ const Skeleton = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>)
 const ProfileSkeleton = () => {
   return (
     <div className="w-full p-4 md:p-6 lg:p-8 max-w-7xl mx-auto">
-      
+
       {/* === Page Header Skeleton === */}
       <div className="space-y-2 mb-8">
         <Skeleton className="h-8 w-56 md:w-64" /> {/* Account Settings Title */}
@@ -23,19 +23,19 @@ const ProfileSkeleton = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start w-full">
-        
+
         {/* ================= LEFT COLUMN: PROFILE & DETAILS ================= */}
         <div className="lg:col-span-1 flex flex-col gap-6">
-          
+
           {/* User Profile Card */}
-          <div className="border border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 p-8 flex flex-col items-center justify-center text-center">
+          <div className="border border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 p-8 flex flex-col items-center justify-center text-center">
             {/* Avatar */}
             <Skeleton className="h-28 w-28 rounded-full mb-5" />
-            
+
             {/* Name and Email */}
             <Skeleton className="h-6 w-40 mb-2.5" />
             <Skeleton className="h-4 w-48 mb-6" />
-            
+
             {/* Badges (Role & Status) */}
             <div className="flex items-center justify-center gap-3">
               <Skeleton className="h-6 w-28 rounded-full" />
@@ -44,9 +44,9 @@ const ProfileSkeleton = () => {
           </div>
 
           {/* Account Details Card */}
-          <div className="border border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 p-6">
+          <div className="border border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 p-6">
             <Skeleton className="h-5 w-36 mb-6" /> {/* Card Title */}
-            
+
             <div className="space-y-4">
               {/* Detail Row 1 */}
               <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-zinc-800/50">
@@ -56,7 +56,7 @@ const ProfileSkeleton = () => {
                 </div>
                 <Skeleton className="h-4 w-20" />
               </div>
-              
+
               {/* Detail Row 2 */}
               <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-zinc-800/50">
                 <div className="flex items-center gap-2">
@@ -65,7 +65,7 @@ const ProfileSkeleton = () => {
                 </div>
                 <Skeleton className="h-4 w-24" />
               </div>
-              
+
               {/* Detail Row 3 */}
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
@@ -81,9 +81,9 @@ const ProfileSkeleton = () => {
 
         {/* ================= RIGHT COLUMN: SECURITY PREFERENCES ================= */}
         <div className="lg:col-span-2">
-          
-          <div className="border border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 p-6 md:p-8">
-            
+
+          <div className="border border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 p-6 md:p-8">
+
             {/* Card Header */}
             <div className="mb-8">
               <Skeleton className="h-6 w-56 mb-2" />
@@ -92,30 +92,30 @@ const ProfileSkeleton = () => {
 
             {/* Form Fields */}
             <div className="space-y-6 max-w-2xl">
-              
+
               {/* Current Password */}
               <div className="space-y-2.5">
                 <Skeleton className="h-4 w-32" />
-                <Skeleton className="h-12 w-full rounded-xl" />
+                <Skeleton className="h-12 w-full rounded-md" />
               </div>
-              
+
               {/* New Password */}
               <div className="space-y-2.5">
                 <Skeleton className="h-4 w-28" />
-                <Skeleton className="h-12 w-full rounded-xl" />
+                <Skeleton className="h-12 w-full rounded-md" />
               </div>
-              
+
               {/* Confirm Password */}
               <div className="space-y-2.5">
                 <Skeleton className="h-4 w-40" />
-                <Skeleton className="h-12 w-full rounded-xl" />
+                <Skeleton className="h-12 w-full rounded-md" />
               </div>
 
             </div>
 
             {/* Update Password Button */}
             <div className="mt-8">
-              <Skeleton className="h-11 w-40 rounded-xl" />
+              <Skeleton className="h-11 w-40 rounded-md" />
             </div>
 
           </div>

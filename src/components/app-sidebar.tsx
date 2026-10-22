@@ -68,7 +68,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       <NavLink
                         to={subItem.url}
                         className={({ isActive }) =>
-                          `group relative flex  items-center w-full px-4 py-3 rounded-xl font-medium overflow-hidden transition-all duration-300 ease-out ${isActive
+                          `group relative flex  items-center w-full px-4 py-3 rounded-md font-medium overflow-hidden transition-all duration-300 ease-out ${isActive
                             ? "text-white shadow-black/5"
                             : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                           }`
@@ -79,7 +79,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             {/* 1. Animated Background Shape */}
                             {/* Slides in from the left when active, creating a smooth fill effect */}
                             <div
-                              className={`absolute inset-0 bg-[linear-gradient(135deg,#4fc3ff_0%,#0c7ac3_100%)] rounded-xl transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-0 ${isActive ? "translate-x-0 scale-100" : "-translate-x-full scale-95 opacity-0"
+                              className={`absolute inset-0 bg-[linear-gradient(135deg,#4fc3ff_0%,#0c7ac3_100%)] rounded-md transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-0 ${isActive ? "translate-x-0 scale-100" : "-translate-x-full scale-95 opacity-0"
                                 }`}
                             />
 

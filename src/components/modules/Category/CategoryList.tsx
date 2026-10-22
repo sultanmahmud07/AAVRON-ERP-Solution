@@ -152,7 +152,7 @@ export default function CategoryList() {
       </div>
 
       {/* Top Bar: Full-width Rounded Card with Pill Tabs */}
-      <div className="bg-white dark:bg-[#181b24] p-3 sm:p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3">
+      <div className="bg-white dark:bg-[#181b24] p-3 sm:p-3.5 rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3">
         {/* Tab 1: Categories */}
         <button
           onClick={() => {
@@ -161,20 +161,18 @@ export default function CategoryList() {
             setCatName("");
             setCatStatus("Active");
           }}
-          className={`flex items-center gap-2.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-            activeTab === "categories"
-              ? "bg-[#0c6760]/10 dark:bg-[#0c6760]/20 text-[#0c6760] dark:text-teal-400 border border-[#0c6760]/30 dark:border-[#0c6760]/50 shadow-xs"
-              : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
-          }`}
+          className={`flex items-center gap-2.5 px-4 py-2 rounded-md text-xs font-semibold transition-all cursor-pointer ${activeTab === "categories"
+            ? "bg-[#0c6760]/10 dark:bg-[#0c6760]/20 text-[#0c6760] dark:text-teal-400 border border-[#0c6760]/30 dark:border-[#0c6760]/50 shadow-xs"
+            : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+            }`}
         >
           <Package className="w-4 h-4" />
           <span>Categories</span>
           <span
-            className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
-              activeTab === "categories"
-                ? "bg-[#0c6760] text-white"
-                : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700"
-            }`}
+            className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${activeTab === "categories"
+              ? "bg-[#0c6760] text-white"
+              : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700"
+              }`}
           >
             {categories.length}
           </span>
@@ -188,20 +186,18 @@ export default function CategoryList() {
             setSubName("");
             setSubStatus("Active");
           }}
-          className={`flex items-center gap-2.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-            activeTab === "subcategories"
-              ? "bg-[#0c6760]/10 dark:bg-[#0c6760]/20 text-[#0c6760] dark:text-teal-400 border border-[#0c6760]/30 dark:border-[#0c6760]/50 shadow-xs"
-              : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
-          }`}
+          className={`flex items-center gap-2.5 px-4 py-2 rounded-md text-xs font-semibold transition-all cursor-pointer ${activeTab === "subcategories"
+            ? "bg-[#0c6760]/10 dark:bg-[#0c6760]/20 text-[#0c6760] dark:text-teal-400 border border-[#0c6760]/30 dark:border-[#0c6760]/50 shadow-xs"
+            : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+            }`}
         >
           <LayoutGrid className="w-4 h-4" />
           <span>Subcategories</span>
           <span
-            className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
-              activeTab === "subcategories"
-                ? "bg-[#0c6760] text-white"
-                : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700"
-            }`}
+            className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${activeTab === "subcategories"
+              ? "bg-[#0c6760] text-white"
+              : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700"
+              }`}
           >
             {subcategories.length}
           </span>
@@ -215,7 +211,7 @@ export default function CategoryList() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start w-full animate-in fade-in duration-200">
           {/* Left Column: Create / Edit Category Card */}
           <div className="lg:col-span-4">
-            <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 shadow-xs space-y-5">
+            <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-6 shadow-xs space-y-5">
               <div className="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800/60">
                 <h2 className="text-base font-bold text-slate-900 dark:text-white">
                   {editingCategory ? "Edit Category" : "Create Category"}
@@ -237,7 +233,7 @@ export default function CategoryList() {
                     onChange={(e) => setCatName(e.target.value)}
                     placeholder="Enter category name"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
                   />
                 </div>
 
@@ -249,7 +245,7 @@ export default function CategoryList() {
                   <select
                     value={catStatus}
                     onChange={(e) => setCatStatus(e.target.value as any)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
                   >
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
@@ -284,7 +280,7 @@ export default function CategoryList() {
 
           {/* Right Column: Category list */}
           <div className="lg:col-span-8">
-            <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-xs overflow-hidden">
+            <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md shadow-xs overflow-hidden">
               <div className="p-4 sm:p-5 flex items-center justify-between border-b border-slate-100 dark:border-slate-800/60">
                 <h2 className="text-base font-bold text-slate-900 dark:text-white">
                   Category list
@@ -382,7 +378,7 @@ export default function CategoryList() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start w-full animate-in fade-in duration-200">
           {/* Left Column: Create / Edit Subcategory Card */}
           <div className="lg:col-span-4">
-            <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 shadow-xs space-y-5">
+            <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-6 shadow-xs space-y-5">
               <div className="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800/60">
                 <h2 className="text-base font-bold text-slate-900 dark:text-white">
                   {editingSubcategory ? "Edit Subcategory" : "Create Subcategory"}
@@ -402,7 +398,7 @@ export default function CategoryList() {
                     value={subParentId}
                     onChange={(e) => setSubParentId(e.target.value)}
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
                   >
                     {categories.map((c) => (
                       <option key={c.id} value={c.id}>
@@ -423,7 +419,7 @@ export default function CategoryList() {
                     onChange={(e) => setSubName(e.target.value)}
                     placeholder="Enter subcategory name"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
                   />
                 </div>
 
@@ -435,7 +431,7 @@ export default function CategoryList() {
                   <select
                     value={subStatus}
                     onChange={(e) => setSubStatus(e.target.value as any)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
                   >
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
@@ -470,7 +466,7 @@ export default function CategoryList() {
 
           {/* Right Column: Subcategory list */}
           <div className="lg:col-span-8">
-            <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-xs overflow-hidden">
+            <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md shadow-xs overflow-hidden">
               <div className="p-4 sm:p-5 flex items-center justify-between border-b border-slate-100 dark:border-slate-800/60">
                 <h2 className="text-base font-bold text-slate-900 dark:text-white">
                   Subcategory list
@@ -535,7 +531,7 @@ export default function CategoryList() {
                                   type: "subcategory",
                                   id: sub.id,
                                   name: sub.name,
-                                 })
+                                })
                               }
                               className="w-7 h-7 rounded-full bg-[#fef2f2] hover:bg-[#fee2e2] dark:bg-rose-950/40 text-[#ef4444] transition-colors flex items-center justify-center cursor-pointer shadow-2xs"
                               title="Delete Subcategory"
@@ -570,11 +566,10 @@ export default function CategoryList() {
                     <button
                       key={p}
                       onClick={() => setSubPage(p)}
-                      className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center cursor-pointer transition-colors ${
-                        subPage === p
-                          ? "bg-[#0c6760] text-white shadow-xs"
-                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                      }`}
+                      className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center cursor-pointer transition-colors ${subPage === p
+                        ? "bg-[#0c6760] text-white shadow-xs"
+                        : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        }`}
                     >
                       {p}
                     </button>
@@ -596,7 +591,7 @@ export default function CategoryList() {
       {/* Delete Confirmation Modal */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-xl space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-md w-full shadow-xl space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-600 flex items-center justify-center shrink-0">
                 <AlertCircle className="w-5 h-5" />
@@ -621,14 +616,14 @@ export default function CategoryList() {
               <button
                 type="button"
                 onClick={() => setDeleteTarget(null)}
-                className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={confirmDelete}
-                className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-md bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
               >
                 Delete
               </button>

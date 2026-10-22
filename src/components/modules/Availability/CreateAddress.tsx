@@ -70,9 +70,9 @@ export default function CreateAddress() {
 
     try {
       // Pass the ID if updating an existing record, otherwise handle accordingly
-      const res = await updateLocation({ 
-        id: locationData?._id, 
-        payload: data 
+      const res = await updateLocation({
+        id: locationData?._id,
+        payload: data
       }).unwrap();
 
       if (res.success) {
@@ -100,7 +100,7 @@ export default function CreateAddress() {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4 md:p-8 space-y-6">
-      
+
       {/* Header */}
       <div className="space-y-2 mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
@@ -114,7 +114,7 @@ export default function CreateAddress() {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden">
+          <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden">
             <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800 py-5">
               <div className="flex items-center gap-2">
                 <Building className="w-5 h-5 text-gray-400 dark:text-gray-500" />
@@ -124,9 +124,9 @@ export default function CreateAddress() {
                 This address is used to determine your local service area.
               </CardDescription>
             </CardHeader>
-            
+
             <CardContent className="p-6 md:p-8 space-y-6">
-              
+
               {/* Street Address */}
               <FormField
                 control={form.control}
@@ -135,10 +135,10 @@ export default function CreateAddress() {
                   <FormItem className="space-y-2">
                     <Label className="text-gray-700 dark:text-gray-300 font-medium">Street Address</Label>
                     <FormControl>
-                      <Input 
-                        placeholder="123 Dallas Parkway" 
-                        className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
-                        {...field} 
+                      <Input
+                        placeholder="123 Dallas Parkway"
+                        className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
+                        {...field}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500" />
@@ -155,10 +155,10 @@ export default function CreateAddress() {
                     <FormItem className="space-y-2">
                       <Label className="text-gray-700 dark:text-gray-300 font-medium">City</Label>
                       <FormControl>
-                        <Input 
-                          placeholder="Dallas" 
-                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
-                          {...field} 
+                        <Input
+                          placeholder="Dallas"
+                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500" />
@@ -173,10 +173,10 @@ export default function CreateAddress() {
                     <FormItem className="space-y-2">
                       <Label className="text-gray-700 dark:text-gray-300 font-medium">State</Label>
                       <FormControl>
-                        <Input 
-                          placeholder="e.g. Texas" 
-                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
-                          {...field} 
+                        <Input
+                          placeholder="e.g. Texas"
+                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500" />
@@ -191,10 +191,10 @@ export default function CreateAddress() {
                     <FormItem className="space-y-2">
                       <Label className="text-gray-700 dark:text-gray-300 font-medium">ZIP Code</Label>
                       <FormControl>
-                        <Input 
-                          placeholder="75201" 
-                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
-                          {...field} 
+                        <Input
+                          placeholder="75201"
+                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500" />
@@ -213,7 +213,7 @@ export default function CreateAddress() {
                       <Label className="text-gray-700 dark:text-gray-300 font-medium">Location Region Type</Label>
                       <Select onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl border-gray-200 dark:border-zinc-800 focus:ring-[#1BAE70] md:w-1/2">
+                          <SelectTrigger className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md border-gray-200 dark:border-zinc-800 focus:ring-[#1BAE70] md:w-1/2">
                             <SelectValue placeholder="Select location type" />
                           </SelectTrigger>
                         </FormControl>
@@ -240,11 +240,11 @@ export default function CreateAddress() {
 
           {/* Action Bar */}
           <div className="flex justify-end pt-2">
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="bg-[#1BAE70] hover:bg-[#16965f] text-white px-8 h-12 rounded-xl font-semibold shadow-md w-full md:w-auto transition-all"
+              className="bg-[#1BAE70] hover:bg-[#16965f] text-white px-8 h-12 rounded-md font-semibold shadow-md w-full md:w-auto transition-all"
             >
               {isSubmitting ? (
                 <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Saving Changes...</>

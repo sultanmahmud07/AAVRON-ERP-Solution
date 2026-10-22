@@ -13,6 +13,11 @@ import {
   ChevronRight,
   Building,
   RotateCcw,
+  UserCheck,
+  TrendingDown,
+  Receipt,
+  Users,
+  Wallet,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -100,22 +105,20 @@ export default function CustomerDueList() {
     e.preventDefault();
     if (!activePaymentRecord) return;
 
-    const amountNum = parseFloat(paymentAmount);
-    if (isNaN(amountNum) || amountNum <= 0) {
+    const numAmount = parseFloat(paymentAmount);
+    if (isNaN(numAmount) || numAmount <= 0) {
       toast.error("Please enter a valid payment amount greater than 0");
       return;
     }
 
-    if (amountNum > activePaymentRecord.totalDue) {
-      toast.error(
-        `Amount cannot exceed outstanding due of ${formatTaka(activePaymentRecord.totalDue)}`
-      );
+    if (numAmount > activePaymentRecord.totalDue) {
+      toast.error("Collection amount cannot exceed outstanding due amount");
       return;
     }
 
     const updated = recordCustomerDuePayment(
       activePaymentRecord.id,
-      amountNum,
+      numAmount,
       paymentAccount,
       paymentReference,
       paymentNote
@@ -123,18 +126,18 @@ export default function CustomerDueList() {
 
     if (updated) {
       toast.success(
-        `Received ${formatTaka(amountNum)} from ${activePaymentRecord.name} successfully!`
+        `Received ${formatTaka(numAmount)} from ${updated.name}. Due updated to ${formatTaka(
+          updated.totalDue
+        )}`
       );
+      loadData();
       setActivePaymentRecord(null);
-      if (activeLedgerRecord?.id === updated.id) {
-        setActiveLedgerRecord(updated);
-      }
-    } else {
-      toast.error("Failed to record payment. Please try again.");
+      // Dispatch custom event for real-time sync across widgets
+      window.dispatchEvent(new Event("nexora_due_updated"));
     }
   };
 
-  // Quick Preset Pay
+  // Quick preset amount helper
   const handlePresetPay = (type: "full" | "half" | "clear") => {
     if (!activePaymentRecord) return;
     if (type === "full") {
@@ -179,7 +182,7 @@ export default function CustomerDueList() {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `Customer_Due_Report_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute("download", `NEXORA_Customer_Due_Report_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -193,15 +196,18 @@ export default function CustomerDueList() {
   }, [activePaymentRecord, paymentAmount]);
 
   return (
-    <div className="space-y-6">
-      {/* Top Page Header (Matching Image 1) */}
+    <div className="space-y-4">
+      {/* Top Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-md bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 flex items-center justify-center shrink-0">
+              <UserCheck className="w-4 h-4" />
+            </div>
             Customer Due
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Manage your customer due here.
+            Track customer receivables, review detailed invoice ledgers, and collect outstanding payments.
           </p>
         </div>
 
@@ -209,18 +215,18 @@ export default function CustomerDueList() {
         <div className="flex items-center gap-2">
           <button
             onClick={handleExportCSV}
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-md bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors shadow-2xs cursor-pointer"
             title="Export to CSV"
           >
-            <Download className="w-3.5 h-3.5 text-slate-500" />
+            <Download className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
             <span className="hidden sm:inline">Export</span>
           </button>
           <button
             onClick={handlePrint}
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-md bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors shadow-2xs cursor-pointer"
             title="Print List"
           >
-            <Printer className="w-3.5 h-3.5 text-slate-500" />
+            <Printer className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
             <span className="hidden sm:inline">Print</span>
           </button>
         </div>
@@ -228,52 +234,82 @@ export default function CustomerDueList() {
 
       {/* KPI Highlight Strip */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 shadow-xs">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            Total Receivables (Due)
-          </span>
-          <div className="text-xl font-bold text-rose-600 dark:text-rose-400 mt-1">
+        {/* Total Receivables (Due) */}
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 sm:p-5 shadow-xs">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Total Receivables
+            </span>
+            <div className="w-7 h-7 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+              <TrendingDown className="w-3.5 h-3.5" />
+            </div>
+          </div>
+          <div className="text-xl sm:text-2xl font-bold text-rose-600 dark:text-rose-400 tracking-tight">
             {formatTaka(kpis.totalDue)}
           </div>
-          <span className="text-[11px] text-slate-400 mt-0.5 block">
+          <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
             Across {kpis.customersWithDue} pending accounts
           </span>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 shadow-xs">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            Total Paid Collections
-          </span>
-          <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">
+        {/* Total Collections (Paid) */}
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 sm:p-5 shadow-xs">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Total Collections
+            </span>
+            <div className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <Wallet className="w-3.5 h-3.5" />
+            </div>
+          </div>
+          <div className="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400 tracking-tight">
             {formatTaka(kpis.totalPaid)}
           </div>
-          <span className="text-[11px] text-slate-400 mt-0.5 block">Settled successfully</span>
+          <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
+            Settled successfully
+          </span>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 shadow-xs">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            Total Invoiced Amount
-          </span>
-          <div className="text-xl font-bold text-slate-900 dark:text-white mt-1">
+        {/* Total Invoiced Amount */}
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 sm:p-5 shadow-xs">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Total Invoiced
+            </span>
+            <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <Receipt className="w-3.5 h-3.5" />
+            </div>
+          </div>
+          <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
             {formatTaka(kpis.totalAmount)}
           </div>
-          <span className="text-[11px] text-slate-400 mt-0.5 block">Gross sales volume</span>
+          <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
+            Gross sales volume
+          </span>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 shadow-xs">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            Outstanding Accounts
-          </span>
-          <div className="text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-1">
+        {/* Outstanding Accounts */}
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 sm:p-5 shadow-xs">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Due Accounts
+            </span>
+            <div className="w-7 h-7 rounded-lg bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 flex items-center justify-center">
+              <Users className="w-3.5 h-3.5" />
+            </div>
+          </div>
+          <div className="text-xl sm:text-2xl font-bold text-teal-600 dark:text-teal-400 tracking-tight">
             {kpis.customersWithDue} / {records.length}
           </div>
-          <span className="text-[11px] text-slate-400 mt-0.5 block">Active credit accounts</span>
+          <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
+            Active credit accounts
+          </span>
         </div>
       </div>
 
-      {/* Main Table Card (Matches Reference Image 1) */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs overflow-hidden">
-        {/* Filter Controls Row (SHOW, Date Range, SEARCH) */}
+      {/* Main Table Card */}
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
+        {/* Filter Controls Row */}
         <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80">
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-end">
             {/* SHOW Dropdown */}
@@ -287,7 +323,7 @@ export default function CustomerDueList() {
                   setPageSize(Number(e.target.value));
                   setCurrentPage(1);
                 }}
-                className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all cursor-pointer"
+                className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700/80 rounded-md px-3 py-2 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 transition-all cursor-pointer"
               >
                 <option value={10}>10</option>
                 <option value={25}>25</option>
@@ -296,10 +332,10 @@ export default function CustomerDueList() {
               </select>
             </div>
 
-            {/* Date Range Dropdown / Quick filter */}
+            {/* Status / Due Filter Dropdown */}
             <div className="sm:col-span-4">
               <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
-                Date Range
+                Filter by Status
               </label>
               <div className="relative">
                 <select
@@ -308,9 +344,9 @@ export default function CustomerDueList() {
                     setDateRangeFilter(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all cursor-pointer"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700/80 rounded-md pl-9 pr-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-300 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 transition-all cursor-pointer"
                 >
-                  <option value="all">Select date range (All Dates)</option>
+                  <option value="all">All Accounts (All Records)</option>
                   <option value="due_only">With Outstanding Due</option>
                   <option value="cleared_only">Fully Cleared Only</option>
                 </select>
@@ -321,7 +357,7 @@ export default function CustomerDueList() {
             {/* SEARCH Input */}
             <div className="sm:col-span-6">
               <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
-                Search
+                Search Customer
               </label>
               <div className="relative">
                 <input
@@ -331,14 +367,14 @@ export default function CustomerDueList() {
                     setSearchQuery(e.target.value);
                     setCurrentPage(1);
                   }}
-                  placeholder="Search customer..."
-                  className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-9 pr-8 py-2 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                  placeholder="Search by customer name, phone, address..."
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700/80 rounded-md pl-9 pr-8 py-2 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 transition-all"
                 />
                 <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -352,12 +388,12 @@ export default function CustomerDueList() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-slate-50/75 dark:bg-slate-800/40 border-b border-slate-200/80 dark:border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+              <tr className="bg-slate-50/70 dark:bg-[#13161f] border-b border-slate-200/80 dark:border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                 <th className="py-3.5 px-4 w-12 text-center">SL</th>
                 <th className="py-3.5 px-4 min-w-[200px]">Customer Info</th>
-                <th className="py-3.5 px-4 min-w-[120px]">Total Invoice</th>
-                <th className="py-3.5 px-4 min-w-[140px]">Total Amount</th>
-                <th className="py-3.5 px-4 min-w-[140px]">Total Paid</th>
+                <th className="py-3.5 px-4 min-w-[110px] text-center">Invoices</th>
+                <th className="py-3.5 px-4 min-w-[130px]">Total Amount</th>
+                <th className="py-3.5 px-4 min-w-[130px]">Total Paid</th>
                 <th className="py-3.5 px-4 min-w-[140px]">Total Due</th>
                 <th className="py-3.5 px-4 min-w-[100px] text-center">Action</th>
               </tr>
@@ -368,9 +404,11 @@ export default function CustomerDueList() {
                   <td colSpan={7} className="py-12 text-center text-slate-400 dark:text-slate-500">
                     <div className="flex flex-col items-center justify-center">
                       <AlertCircle className="w-8 h-8 text-slate-300 dark:text-slate-600 mb-2" />
-                      <p className="text-sm font-medium">No customer due records found</p>
+                      <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        No customer due records found
+                      </p>
                       <p className="text-xs text-slate-400 mt-0.5">
-                        Try adjusting your search query or filter settings
+                        Try adjusting your search query or status filter settings
                       </p>
                     </div>
                   </td>
@@ -381,14 +419,14 @@ export default function CustomerDueList() {
                   return (
                     <tr
                       key={item.id}
-                      className="hover:bg-slate-50/60 dark:hover:bg-slate-800/30 transition-colors"
+                      className="hover:bg-slate-50/70 dark:hover:bg-slate-800/30 transition-colors"
                     >
                       {/* SL */}
-                      <td className="py-3.5 px-4 text-center font-medium text-slate-500 dark:text-slate-400">
+                      <td className="py-3.5 px-4 text-center font-medium text-slate-400 dark:text-slate-500">
                         {sl}
                       </td>
 
-                      {/* Customer Info (Name in bold, phone, address) */}
+                      {/* Customer Info */}
                       <td className="py-3.5 px-4">
                         <div className="font-bold text-slate-900 dark:text-white text-sm">
                           {item.name}
@@ -396,17 +434,19 @@ export default function CustomerDueList() {
                         <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-normal">
                           {item.phone}
                         </div>
-                        <div className="text-xs text-slate-500 dark:text-slate-400 font-normal">
+                        <div className="text-xs text-slate-400 dark:text-slate-500 font-normal truncate max-w-[240px]">
                           {item.address}
                         </div>
                       </td>
 
                       {/* Total Invoice */}
-                      <td className="py-3.5 px-4 font-medium text-slate-700 dark:text-slate-300">
-                        {item.totalInvoice}
+                      <td className="py-3.5 px-4 text-center">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                          {item.totalInvoice}
+                        </span>
                       </td>
 
-                      {/* Total Amount (Bold) */}
+                      {/* Total Amount */}
                       <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white text-sm">
                         {formatTaka(item.totalAmount)}
                       </td>
@@ -416,31 +456,39 @@ export default function CustomerDueList() {
                         {formatTaka(item.totalPaid)}
                       </td>
 
-                      {/* Total Due (Rose Red) */}
-                      <td className="py-3.5 px-4 font-semibold text-rose-600 dark:text-rose-400 text-sm">
-                        {formatTaka(item.totalDue)}
+                      {/* Total Due (Rose Red or Cleared) */}
+                      <td className="py-3.5 px-4 text-sm">
+                        {item.totalDue > 0 ? (
+                          <span className="font-bold text-rose-600 dark:text-rose-400">
+                            {formatTaka(item.totalDue)}
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400 text-xs">
+                            <CheckCircle2 className="w-3.5 h-3.5" /> Cleared
+                          </span>
+                        )}
                       </td>
 
-                      {/* Action Buttons (Matching Image 1) */}
+                      {/* Action Buttons */}
                       <td className="py-3.5 px-4 text-center">
                         <div className="inline-flex items-center gap-1.5 justify-center">
-                          {/* View details / ledger button (soft cyan/indigo) */}
+                          {/* View details / ledger button */}
                           <button
                             onClick={() => {
                               setActiveLedgerRecord(item);
                               setActiveLedgerTab("invoices");
                             }}
-                            className="p-1.5 rounded-lg text-sky-500 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/40 hover:bg-sky-100 dark:hover:bg-sky-900/60 transition-colors cursor-pointer"
+                            className="p-1.5 rounded-lg text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/40 hover:bg-teal-100 dark:hover:bg-teal-900/60 transition-colors cursor-pointer"
                             title="View customer ledger & invoices"
                             aria-label={`View ledger for ${item.name}`}
                           >
                             <Eye className="w-4 h-4" />
                           </button>
 
-                          {/* Collect due / payment button (soft pink/rose) */}
+                          {/* Collect due / payment button */}
                           <button
                             onClick={() => handleOpenPayment(item)}
-                            className="p-1.5 rounded-lg text-rose-500 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 transition-colors cursor-pointer"
+                            className="p-1.5 rounded-lg text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 transition-colors cursor-pointer"
                             title={
                               item.totalDue > 0
                                 ? `Collect due payment (${formatTaka(item.totalDue)})`
@@ -478,11 +526,11 @@ export default function CustomerDueList() {
             entries
           </div>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1">
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage <= 1}
-              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700/80 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
               title="Previous Page"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -491,11 +539,10 @@ export default function CustomerDueList() {
               <button
                 key={pg}
                 onClick={() => setCurrentPage(pg)}
-                className={`w-7 h-7 rounded-lg text-xs font-bold transition-all ${
-                  currentPage === pg
-                    ? "bg-indigo-600 text-white shadow-xs"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                className={`w-7 h-7 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${currentPage === pg
+                  ? "bg-[#202938] dark:bg-teal-600 text-white font-bold shadow-2xs"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
               >
                 {pg}
               </button>
@@ -503,7 +550,7 @@ export default function CustomerDueList() {
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage >= totalPages}
-              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700/80 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
               title="Next Page"
             >
               <ChevronRight className="w-4 h-4" />
@@ -514,12 +561,12 @@ export default function CustomerDueList() {
 
       {/* ======================= MODAL 1: VIEW CUSTOMER LEDGER & INVOICES ======================= */}
       {activeLedgerRecord && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
             {/* Modal Header */}
             <div className="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">
                   Customer Due Ledger
                 </span>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
@@ -531,7 +578,7 @@ export default function CustomerDueList() {
               </div>
               <button
                 onClick={() => setActiveLedgerRecord(null)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -541,18 +588,18 @@ export default function CustomerDueList() {
             <div className="p-5 overflow-y-auto space-y-5">
               {/* Stat Cards */}
               <div className="grid grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
-                  <span className="text-[10px] uppercase font-bold text-slate-400">
+                <div className="p-3.5 rounded-md bg-slate-50 dark:bg-[#12141c] border border-slate-200/60 dark:border-slate-800">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">
                     Total Billed
                   </span>
                   <div className="text-base font-bold text-slate-900 dark:text-white mt-0.5">
                     {formatTaka(activeLedgerRecord.totalAmount)}
                   </div>
-                  <span className="text-[10px] text-slate-400">
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500">
                     {activeLedgerRecord.totalInvoice} Invoices
                   </span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200/50 dark:border-emerald-800/40">
+                <div className="p-3.5 rounded-md bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200/50 dark:border-emerald-800/40">
                   <span className="text-[10px] uppercase font-bold text-emerald-700 dark:text-emerald-400">
                     Total Paid
                   </span>
@@ -561,9 +608,9 @@ export default function CustomerDueList() {
                   </div>
                   <span className="text-[10px] text-emerald-600/80">Collected to date</span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/50 dark:border-rose-800/40">
+                <div className="p-3.5 rounded-md bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/50 dark:border-rose-800/40">
                   <span className="text-[10px] uppercase font-bold text-rose-700 dark:text-rose-400">
-                    Current Outstanding Due
+                    Outstanding Due
                   </span>
                   <div className="text-base font-bold text-rose-600 dark:text-rose-400 mt-0.5">
                     {formatTaka(activeLedgerRecord.totalDue)}
@@ -576,21 +623,19 @@ export default function CustomerDueList() {
               <div className="flex border-b border-slate-200 dark:border-slate-800">
                 <button
                   onClick={() => setActiveLedgerTab("invoices")}
-                  className={`pb-2 px-3 text-xs font-bold transition-all border-b-2 ${
-                    activeLedgerTab === "invoices"
-                      ? "border-indigo-600 text-indigo-600 dark:text-indigo-400"
-                      : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
-                  }`}
+                  className={`pb-2.5 px-3.5 text-xs font-bold transition-all border-b-2 cursor-pointer ${activeLedgerTab === "invoices"
+                    ? "border-teal-600 text-teal-600 dark:text-teal-400"
+                    : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                    }`}
                 >
                   Invoices Breakdown ({activeLedgerRecord.invoices?.length || 0})
                 </button>
                 <button
                   onClick={() => setActiveLedgerTab("payments")}
-                  className={`pb-2 px-3 text-xs font-bold transition-all border-b-2 ${
-                    activeLedgerTab === "payments"
-                      ? "border-indigo-600 text-indigo-600 dark:text-indigo-400"
-                      : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
-                  }`}
+                  className={`pb-2.5 px-3.5 text-xs font-bold transition-all border-b-2 cursor-pointer ${activeLedgerTab === "payments"
+                    ? "border-teal-600 text-teal-600 dark:text-teal-400"
+                    : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                    }`}
                 >
                   Payment Receipts ({activeLedgerRecord.paymentHistory?.length || 0})
                 </button>
@@ -598,9 +643,9 @@ export default function CustomerDueList() {
 
               {/* Tab 1: Invoices */}
               {activeLedgerTab === "invoices" && (
-                <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+                <div className="border border-slate-200 dark:border-slate-800 rounded-md overflow-hidden">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 dark:bg-slate-800/50 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    <thead className="bg-slate-50 dark:bg-[#12141c] text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                       <tr>
                         <th className="py-2.5 px-3">Invoice #</th>
                         <th className="py-2.5 px-3">Date</th>
@@ -610,9 +655,9 @@ export default function CustomerDueList() {
                         <th className="py-2.5 px-3 text-center">Status</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 text-xs">
                       {activeLedgerRecord.invoices?.map((inv) => (
-                        <tr key={inv.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850">
+                        <tr key={inv.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
                           <td className="py-2.5 px-3 font-semibold text-slate-800 dark:text-slate-200">
                             {inv.invoiceNumber}
                           </td>
@@ -628,13 +673,12 @@ export default function CustomerDueList() {
                           </td>
                           <td className="py-2.5 px-3 text-center">
                             <span
-                              className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                                inv.status === "Paid"
-                                  ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
-                                  : inv.status === "Partial"
+                              className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${inv.status === "Paid"
+                                ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
+                                : inv.status === "Partial"
                                   ? "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400"
                                   : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400"
-                              }`}
+                                }`}
                             >
                               {inv.status}
                             </span>
@@ -648,9 +692,9 @@ export default function CustomerDueList() {
 
               {/* Tab 2: Payments */}
               {activeLedgerTab === "payments" && (
-                <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+                <div className="border border-slate-200 dark:border-slate-800 rounded-md overflow-hidden">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 dark:bg-slate-800/50 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    <thead className="bg-slate-50 dark:bg-[#12141c] text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                       <tr>
                         <th className="py-2.5 px-3">Date</th>
                         <th className="py-2.5 px-3">Amount</th>
@@ -659,11 +703,11 @@ export default function CustomerDueList() {
                         <th className="py-2.5 px-3">Note</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 text-xs">
                       {activeLedgerRecord.paymentHistory &&
-                      activeLedgerRecord.paymentHistory.length > 0 ? (
+                        activeLedgerRecord.paymentHistory.length > 0 ? (
                         activeLedgerRecord.paymentHistory.map((pay) => (
-                          <tr key={pay.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850">
+                          <tr key={pay.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
                             <td className="py-2.5 px-3 text-slate-500">{pay.date}</td>
                             <td className="py-2.5 px-3 font-bold text-emerald-600 dark:text-emerald-400">
                               {formatTaka(pay.amount)}
@@ -691,12 +735,12 @@ export default function CustomerDueList() {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-850/50">
+            <div className="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-[#12141c]/50">
               <button
                 onClick={() => {
                   window.print();
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-md bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
               >
                 <Printer className="w-3.5 h-3.5" />
                 Print Statement
@@ -705,7 +749,7 @@ export default function CustomerDueList() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setActiveLedgerRecord(null)}
-                  className="px-4 py-2 text-xs font-semibold rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors"
+                  className="px-4 py-2 text-xs font-semibold rounded-md text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                 >
                   Close
                 </button>
@@ -716,7 +760,7 @@ export default function CustomerDueList() {
                       setActiveLedgerRecord(null);
                       handleOpenPayment(rec);
                     }}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition-colors"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-md bg-[#202938] hover:bg-[#141b25] text-white dark:bg-teal-600 dark:hover:bg-teal-500 dark:text-white shadow-xs transition-colors cursor-pointer"
                   >
                     <CreditCard className="w-3.5 h-3.5" />
                     Collect Due Payment
@@ -730,16 +774,16 @@ export default function CustomerDueList() {
 
       {/* ======================= MODAL 2: COLLECT DUE PAYMENT MODAL ======================= */}
       {activePaymentRecord && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-lg shadow-2xl overflow-hidden">
             {/* Modal Header */}
             <div className="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
-                  Due Collection Receipt
+                <span className="text-[10px] font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">
+                  Payment Collection Voucher
                 </span>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  Receive Payment: {activePaymentRecord.name}
+                  Receive From: {activePaymentRecord.name}
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   Phone: {activePaymentRecord.phone} • Address: {activePaymentRecord.address}
@@ -747,7 +791,7 @@ export default function CustomerDueList() {
               </div>
               <button
                 onClick={() => setActivePaymentRecord(null)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -756,7 +800,7 @@ export default function CustomerDueList() {
             {/* Modal Form */}
             <form onSubmit={handleSubmitPayment} className="p-5 space-y-4">
               {/* Outstanding Due Banner */}
-              <div className="p-3.5 rounded-xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/50 dark:border-rose-800/40 flex items-center justify-between">
+              <div className="p-3.5 rounded-md bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/50 dark:border-rose-800/40 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
                     Outstanding Customer Due
@@ -766,7 +810,7 @@ export default function CustomerDueList() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] font-semibold text-slate-500 block">Total Invoiced</span>
+                  <span className="text-[10px] font-semibold text-slate-500 block">Total Billed</span>
                   <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
                     {formatTaka(activePaymentRecord.totalAmount)}
                   </span>
@@ -777,27 +821,27 @@ export default function CustomerDueList() {
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <label className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
-                    Payment Amount (৳) <span className="text-rose-500">*</span>
+                    Received Amount (৳) <span className="text-rose-500">*</span>
                   </label>
                   <div className="flex items-center gap-1.5">
                     <button
                       type="button"
                       onClick={() => handlePresetPay("full")}
-                      className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 border border-indigo-200/60 dark:border-indigo-800/60 transition-colors"
+                      className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 hover:bg-teal-100 dark:hover:bg-teal-900/60 border border-teal-200/60 dark:border-teal-800/60 transition-colors cursor-pointer"
                     >
-                      Pay Full Due
+                      Collect Full Due
                     </button>
                     <button
                       type="button"
                       onClick={() => handlePresetPay("half")}
-                      className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors"
+                      className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors cursor-pointer"
                     >
                       50%
                     </button>
                     <button
                       type="button"
                       onClick={() => handlePresetPay("clear")}
-                      className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors"
+                      className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors cursor-pointer"
                     >
                       <RotateCcw className="w-2.5 h-2.5 inline" /> Clear
                     </button>
@@ -811,22 +855,21 @@ export default function CustomerDueList() {
                   value={paymentAmount}
                   onChange={(e) => setPaymentAmount(e.target.value)}
                   placeholder="Enter amount to collect..."
-                  className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700/80 rounded-md px-3.5 py-2.5 text-sm font-bold text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600"
                   required
                 />
               </div>
 
               {/* Live Remaining Due Calculation */}
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700 flex items-center justify-between text-xs">
+              <div className="p-3 rounded-md bg-slate-50 dark:bg-[#12141c] border border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs">
                 <span className="text-slate-600 dark:text-slate-400">
                   Remaining Due After This Payment:
                 </span>
                 <span
-                  className={`font-bold ${
-                    remainingDuePreview === 0
-                      ? "text-emerald-600 dark:text-emerald-400"
-                      : "text-rose-600 dark:text-rose-400"
-                  }`}
+                  className={`font-bold ${remainingDuePreview === 0
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-rose-600 dark:text-rose-400"
+                    }`}
                 >
                   {remainingDuePreview === 0 ? "✓ ৳ 0.00 (Fully Settled)" : formatTaka(remainingDuePreview)}
                 </span>
@@ -841,7 +884,7 @@ export default function CustomerDueList() {
                   <select
                     value={paymentAccount}
                     onChange={(e) => setPaymentAccount(e.target.value)}
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700/80 rounded-md pl-9 pr-3 py-2 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 cursor-pointer"
                     required
                   >
                     <option value="Cash Account (Counter 1)">Cash Account (Counter 1)</option>
@@ -870,7 +913,7 @@ export default function CustomerDueList() {
                     type="date"
                     value={paymentDate}
                     onChange={(e) => setPaymentDate(e.target.value)}
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700/80 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600"
                     required
                   />
                 </div>
@@ -883,7 +926,7 @@ export default function CustomerDueList() {
                     value={paymentReference}
                     onChange={(e) => setPaymentReference(e.target.value)}
                     placeholder="e.g. REC-8921"
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700/80 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600"
                   />
                 </div>
               </div>
@@ -898,7 +941,7 @@ export default function CustomerDueList() {
                   value={paymentNote}
                   onChange={(e) => setPaymentNote(e.target.value)}
                   placeholder="e.g. Settlement for overdue invoice"
-                  className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700/80 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600"
                 />
               </div>
 
@@ -907,13 +950,13 @@ export default function CustomerDueList() {
                 <button
                   type="button"
                   onClick={() => setActivePaymentRecord(null)}
-                  className="px-4 py-2 text-xs font-semibold rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  className="px-4 py-2 text-xs font-semibold rounded-md text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-md bg-[#202938] hover:bg-[#141b25] text-white dark:bg-teal-600 dark:hover:bg-teal-500 dark:text-white shadow-xs transition-colors cursor-pointer"
                 >
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   Confirm Collection

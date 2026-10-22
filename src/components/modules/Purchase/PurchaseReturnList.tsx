@@ -305,9 +305,8 @@ export default function PurchaseReturnList() {
               <Download className="w-3.5 h-3.5" />
               <span>Export</span>
               <ChevronRight
-                className={`w-3.5 h-3.5 transform transition-transform ${
-                  isExportOpen ? "rotate-90" : ""
-                }`}
+                className={`w-3.5 h-3.5 transform transition-transform ${isExportOpen ? "rotate-90" : ""
+                  }`}
               />
             </button>
             {isExportOpen && (
@@ -348,7 +347,7 @@ export default function PurchaseReturnList() {
       </div>
 
       {/* ===================== 2. MAIN TABLE CARD (Exact Layout of Reference Image 2) ===================== */}
-      <div className="bg-white dark:bg-[#181b24] rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
         {/* Table Top Controls Bar (Search + Date Range + Action Controls) */}
         <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Left: Search Box & Date Range Filter */}
@@ -410,11 +409,10 @@ export default function PurchaseReturnList() {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilterBar(!showFilterBar)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition ${
-                showFilterBar
-                  ? "bg-indigo-50 border-indigo-200 text-indigo-600 dark:bg-indigo-950/40 dark:border-indigo-800 dark:text-indigo-300"
-                  : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              }`}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition ${showFilterBar
+                ? "bg-indigo-50 border-indigo-200 text-indigo-600 dark:bg-indigo-950/40 dark:border-indigo-800 dark:text-indigo-300"
+                : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                }`}
             >
               <Filter className="w-3.5 h-3.5" />
               <span>Filter</span>
@@ -436,11 +434,10 @@ export default function PurchaseReturnList() {
                       setSortBy("default");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "default"
-                        ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
-                        : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "default"
+                      ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
+                      : "text-slate-700 dark:text-slate-200"
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Default
                   </button>
@@ -449,11 +446,10 @@ export default function PurchaseReturnList() {
                       setSortBy("amount-desc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "amount-desc"
-                        ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
-                        : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "amount-desc"
+                      ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
+                      : "text-slate-700 dark:text-slate-200"
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Amount (High to Low)
                   </button>
@@ -462,11 +458,10 @@ export default function PurchaseReturnList() {
                       setSortBy("amount-asc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "amount-asc"
-                        ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
-                        : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "amount-asc"
+                      ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
+                      : "text-slate-700 dark:text-slate-200"
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Amount (Low to High)
                   </button>
@@ -475,11 +470,10 @@ export default function PurchaseReturnList() {
                       setSortBy("supplier-asc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "supplier-asc"
-                        ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
-                        : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "supplier-asc"
+                      ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
+                      : "text-slate-700 dark:text-slate-200"
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Supplier (A - Z)
                   </button>
@@ -488,11 +482,10 @@ export default function PurchaseReturnList() {
                       setSortBy("date-desc");
                       setIsSortOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 text-xs ${
-                      sortBy === "date-desc"
-                        ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
-                        : "text-slate-700 dark:text-slate-200"
-                    } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
+                    className={`w-full text-left px-3 py-1.5 text-xs ${sortBy === "date-desc"
+                      ? "text-indigo-600 font-medium bg-indigo-50/50 dark:bg-indigo-950/30"
+                      : "text-slate-700 dark:text-slate-200"
+                      } hover:bg-slate-50 dark:hover:bg-slate-800/70`}
                   >
                     Date (Newest First)
                   </button>
@@ -712,11 +705,10 @@ export default function PurchaseReturnList() {
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`w-7 h-7 flex items-center justify-center rounded text-xs font-semibold transition ${
-                  currentPage === page
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
-                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                className={`w-7 h-7 flex items-center justify-center rounded text-xs font-semibold transition ${currentPage === page
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
+                  : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
               >
                 {page}
               </button>
@@ -743,7 +735,7 @@ export default function PurchaseReturnList() {
       {/* ===================== CREATE RETURN MODAL ===================== */}
       {isCreateModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-lg p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-lg p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
@@ -794,7 +786,7 @@ export default function PurchaseReturnList() {
               </div>
 
               {returnItems.length > 0 && (
-                <div className="bg-slate-50 dark:bg-[#12141c] p-3 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                <div className="bg-slate-50 dark:bg-[#12141c] p-3 rounded-md border border-slate-200 dark:border-slate-800 space-y-3">
                   <span className="font-bold text-slate-800 dark:text-slate-200 block text-[11px] uppercase tracking-wider">
                     Item To Return
                   </span>
@@ -908,7 +900,7 @@ export default function PurchaseReturnList() {
       {/* ===================== VIEW RETURN MODAL ===================== */}
       {viewingReturn && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-md p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div>
                 <h3 className="font-bold text-base text-slate-900 dark:text-white">
@@ -970,7 +962,7 @@ export default function PurchaseReturnList() {
       {/* ===================== DELETE CONFIRMATION MODAL ===================== */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-sm p-6 shadow-2xl space-y-4 text-center">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-sm p-6 shadow-2xl space-y-4 text-center">
             <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/60 text-rose-500 flex items-center justify-center mx-auto">
               <Trash2 className="w-6 h-6" />
             </div>

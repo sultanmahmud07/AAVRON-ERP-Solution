@@ -155,7 +155,7 @@ export default function BalanceAdjustments() {
   if (viewMode === "create" || viewMode === "edit") {
     return (
       <div className="w-full space-y-4 text-slate-900 dark:text-slate-100">
-        <div className="bg-white dark:bg-[#181b24] rounded-xl border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-8 shadow-2xs space-y-6">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-8 shadow-2xs space-y-6">
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
@@ -298,7 +298,7 @@ export default function BalanceAdjustments() {
       </div>
 
       {/* ===================== MAIN TABLE CARD (Matching Reference Image 3) ===================== */}
-      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
         {/* Table Top Controls Bar */}
         <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80 flex flex-wrap items-center gap-4">
           {/* SHOW */}

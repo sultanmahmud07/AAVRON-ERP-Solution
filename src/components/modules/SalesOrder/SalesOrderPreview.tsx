@@ -283,7 +283,7 @@ export default function SalesOrderPreview() {
 
   if (!order) {
     return (
-      <div className="text-center py-20 bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-8">
+      <div className="text-center py-20 bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-8">
         <h3 className="text-lg font-bold text-slate-900 dark:text-white">Order Not Found</h3>
         <p className="text-sm text-slate-500 mt-2 mb-6">
           The requested sales order could not be located in local storage.
@@ -383,21 +383,19 @@ export default function SalesOrderPreview() {
           <div className="inline-flex items-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181b24] p-0.5 text-xs">
             <button
               onClick={() => setViewMode("default")}
-              className={`px-2.5 py-1 rounded-md font-medium transition ${
-                viewMode === "default"
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`px-2.5 py-1 rounded-md font-medium transition ${viewMode === "default"
+                ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
             >
               Default
             </button>
             <button
               onClick={() => setViewMode("pos")}
-              className={`px-2.5 py-1 rounded-md font-medium transition flex items-center gap-1 ${
-                viewMode === "pos"
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`px-2.5 py-1 rounded-md font-medium transition flex items-center gap-1 ${viewMode === "pos"
+                ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
             >
               <Receipt className="w-3 h-3" />
               POS
@@ -465,7 +463,7 @@ export default function SalesOrderPreview() {
         /* ======================== DEFAULT A4 PREVIEW (Matching Image 4 & Image 2) ======================== */
         <div
           ref={printAreaRef}
-          className="sales-order-printable bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-xs p-6 sm:p-10 transition-colors"
+          className="sales-order-printable bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md shadow-xs p-6 sm:p-10 transition-colors"
         >
           {/* Top Row: Brand & Order Metadata */}
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 pb-8 border-b border-slate-100 dark:border-slate-800/60">
@@ -503,13 +501,12 @@ export default function SalesOrderPreview() {
               <div className="flex sm:justify-end items-center gap-2 pt-1">
                 {getStatusBadge(order.status)}
                 <span
-                  className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium ${
-                    order.paymentStatus === "Paid"
-                      ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300"
-                      : order.paymentStatus === "Partial"
+                  className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium ${order.paymentStatus === "Paid"
+                    ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300"
+                    : order.paymentStatus === "Partial"
                       ? "bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300"
                       : "bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-300"
-                  }`}
+                    }`}
                 >
                   {order.paymentStatus}
                 </span>
@@ -742,7 +739,7 @@ export default function SalesOrderPreview() {
         </div>
       ) : (
         /* ======================== POS RECEIPT PREVIEW (Matching Image 2 POS button) ======================== */
-        <div className="max-w-md mx-auto bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-lg p-6 sm:p-8 font-mono text-xs">
+        <div className="max-w-md mx-auto bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md shadow-lg p-6 sm:p-8 font-mono text-xs">
           {/* POS Header */}
           <div className="text-center space-y-1.5 pb-4 border-b border-dashed border-slate-300 dark:border-slate-700">
             <div className="flex justify-center pb-1">
@@ -883,7 +880,7 @@ export default function SalesOrderPreview() {
       {/* 3. Edit Order Modal */}
       {isEditModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in overflow-y-auto">
-          <div className="bg-white dark:bg-[#181b24] rounded-xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4 my-8">
+          <div className="bg-white dark:bg-[#181b24] rounded-md max-w-2xl w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4 my-8">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div>
                 <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -1187,7 +1184,7 @@ export default function SalesOrderPreview() {
       {/* 4. SMS / Email Share Modal */}
       {isShareModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-[#181b24] rounded-xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+          <div className="bg-white dark:bg-[#181b24] rounded-md max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 {shareType === "email" ? (

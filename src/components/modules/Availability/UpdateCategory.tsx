@@ -21,7 +21,7 @@ import { IApiError } from "@/types";
 import { useNavigate, useParams } from "react-router";
 import { Loader2, LayoutGrid, X, ImageIcon } from "lucide-react";
 // Import your GET and UPDATE hooks
-import { 
+import {
   useGetCategoryDetailsQuery,
   useUpdateCategoryMutation
 } from "@/redux/features/category/category.api";
@@ -40,10 +40,10 @@ type CategoryFormValues = z.infer<typeof categorySchema>;
 const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
   const navigate = useNavigate();
   const { slug } = useParams(); // Get the slug/id from the route URL
-  
+
   // Fetch existing data
   const { data: existingData, isLoading: isFetching } = useGetCategoryDetailsQuery(slug);
-  
+
   // Use Update mutation instead of Add
   const [updateCategory, { isLoading: isSubmitting }] = useUpdateCategoryMutation();
 
@@ -66,7 +66,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
   useEffect(() => {
     if (existingData) {
       const category = existingData;
-      
+
       form.reset({
         name: category.name || "",
         slug: category.slug || "",
@@ -109,9 +109,9 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
     try {
       // Assuming your update mutation expects { id, data } 
       // Adjust this based on how your RTK Query endpoint is structured
-      const res = await updateCategory({ 
-        categoryId: existingData?._id, 
-        categoryInfo: formData 
+      const res = await updateCategory({
+        categoryId: existingData?._id,
+        categoryInfo: formData
       }).unwrap();
 
       if (res.success) {
@@ -141,7 +141,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
 
   return (
     <div className={cn("max-w-6xl mx-auto p-4 md:p-8", className)}>
-      
+
       {/* Header */}
       <div className="space-y-2 border-b border-gray-100 dark:border-zinc-800 pb-6 mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
@@ -155,27 +155,27 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col lg:flex-row gap-10 items-start">
-          
+
           {/* ================= LEFT SIDE: IMAGE UPLOAD ================= */}
           <div className="w-full lg:w-1/3 flex flex-col gap-4 sticky top-6">
             <FormLabel className="text-lg font-semibold text-gray-900 dark:text-white">Category Thumbnail</FormLabel>
-            
-            <div className="relative flex flex-col items-center justify-center w-full aspect-square md:aspect-auto md:h-80 border-2 border-dashed rounded-2xl border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-900 overflow-hidden transition-all">
-              
+
+            <div className="relative flex flex-col items-center justify-center w-full aspect-square md:aspect-auto md:h-80 border-2 border-dashed rounded-md border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-900 overflow-hidden transition-all">
+
               {previewUrl ? (
                 // Image Preview State
                 <div className="relative w-full h-full group">
-                  <img 
-                    src={previewUrl} 
-                    alt="Preview" 
+                  <img
+                    src={previewUrl}
+                    alt="Preview"
                     className="w-full h-full object-cover"
                   />
                   {/* Remove Overlay */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Button 
-                      type="button" 
-                      variant="destructive" 
-                      size="icon" 
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="icon"
                       className="rounded-full w-12 h-12 shadow-lg"
                       onClick={handleRemoveImage}
                     >
@@ -206,8 +206,8 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
           </div>
 
           {/* ================= RIGHT SIDE: FORM FIELDS ================= */}
-          <div className="w-full lg:w-2/3 bg-white dark:bg-zinc-950 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800/50 flex flex-col gap-6">
-            
+          <div className="w-full lg:w-2/3 bg-white dark:bg-zinc-950 p-6 md:p-8 rounded-md shadow-sm border border-gray-100 dark:border-zinc-800/50 flex flex-col gap-6">
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name */}
               <FormField
@@ -217,7 +217,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
                   <FormItem>
                     <FormLabel className="text-gray-700 dark:text-gray-300 font-medium">Category Name</FormLabel>
                     <FormControl>
-                      <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl" placeholder="e.g. Electronics" {...field} />
+                      <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md" placeholder="e.g. Electronics" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -232,7 +232,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
                   <FormItem>
                     <FormLabel className="text-gray-700 dark:text-gray-300 font-medium">Slug</FormLabel>
                     <FormControl>
-                      <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl font-mono text-sm" placeholder="e.g. electronics" {...field} />
+                      <Input className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md font-mono text-sm" placeholder="e.g. electronics" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -251,7 +251,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
                     <FormControl>
                       <Input
                         type="number"
-                        className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl"
+                        className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md"
                         placeholder="0"
                         defaultValue={field.value ?? ""}
                         onChange={(e) => field.onChange(Number(e.target.value))}
@@ -267,7 +267,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
                 control={form.control}
                 name="visibility"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-xl border border-gray-200 dark:border-zinc-800 p-4 bg-gray-50/50 dark:bg-zinc-900/50">
+                  <FormItem className="flex flex-row items-center justify-between rounded-md border border-gray-200 dark:border-zinc-800 p-4 bg-gray-50/50 dark:bg-zinc-900/50">
                     <div className="space-y-1 mr-4">
                       <FormLabel className="text-base text-gray-900 dark:text-white">Public Visibility</FormLabel>
                       <FormDescription className="text-xs">
@@ -295,7 +295,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
                   <FormLabel className="text-gray-700 dark:text-gray-300 font-medium">Description</FormLabel>
                   <FormControl>
                     <Textarea
-                      className="bg-gray-50 dark:bg-zinc-900 resize-none h-32 rounded-xl"
+                      className="bg-gray-50 dark:bg-zinc-900 resize-none h-32 rounded-md"
                       placeholder="Write a brief description about this category..."
                       {...field}
                     />
@@ -309,7 +309,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
             <div className="mt-6 pt-6 border-t border-gray-100 dark:border-zinc-800">
               <Button
                 type="submit"
-                className="w-full md:w-auto px-10 h-12 bg-primary hover:bg-secondary cursor-pointer text-white rounded-xl font-medium text-base transition-all"
+                className="w-full md:w-auto px-10 h-12 bg-primary hover:bg-secondary cursor-pointer text-white rounded-md font-medium text-base transition-all"
                 disabled={isSubmitting}
               >
                 {isSubmitting && (
@@ -318,7 +318,7 @@ const UpdateCategoryComponent = ({ className }: React.HTMLAttributes<HTMLDivElem
                 {isSubmitting ? "Updating..." : "Update Category"}
               </Button>
             </div>
-            
+
           </div>
         </form>
       </Form>

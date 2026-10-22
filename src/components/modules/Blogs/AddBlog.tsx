@@ -76,7 +76,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    
+
     if (name === "slug") {
       const cleaned = value
         .toLowerCase()
@@ -148,7 +148,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
   };
 
   // Handle Submission using RTK Query
-// Handle Submission using RTK Query
+  // Handle Submission using RTK Query
   const handleCreateBlog = async (): Promise<void> => {
     if (!formData.title || !formData.content) {
       toast.error("Title and content are required.");
@@ -176,7 +176,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
     // 2. Append the entire object as a JSON string under the "data" key
     bodyFormData.append("data", JSON.stringify(payloadData));
-    
+
     // 3. Append the image under the "file" key
     if (formData.image) {
       bodyFormData.append("file", formData.image);
@@ -184,7 +184,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
     try {
       const res = await createBlog(bodyFormData).unwrap();
-      if (res.success) { 
+      if (res.success) {
         toast.success("Blog published successfully!");
         navigate("/news");
       }
@@ -201,7 +201,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
   return (
     <div className={cn("  p-4 md:p-5", className)}>
-      
+
       {/* Header */}
       <div className="space-y-2 border-b border-gray-100 dark:border-zinc-800 pb-6 mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
@@ -214,17 +214,17 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 items-start">
-        
+
         {/* ================= LEFT SECTION (MAIN CONTENT) ================= */}
         <div className="w-full lg:w-2/3 flex flex-col gap-8">
-          
+
           {/* Basic Fields Card */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md bg-white dark:bg-zinc-950">
             <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800">
               <CardTitle className="text-lg">Article Details</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6 pt-6">
-              
+
               <div className="space-y-2">
                 <Label className="text-base">Post Title</Label>
                 <Input
@@ -232,7 +232,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   value={formData.title}
                   onChange={handleInputChange}
                   placeholder="Enter a captivating title..."
-                  className="h-12 text-lg font-medium bg-gray-50 dark:bg-zinc-900 rounded-xl"
+                  className="h-12 text-lg font-medium bg-gray-50 dark:bg-zinc-900 rounded-md"
                 />
               </div>
 
@@ -243,7 +243,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   value={formData.description}
                   onChange={handleInputChange}
                   placeholder="A brief summary of the article..."
-                  className="h-24 resize-none bg-gray-50 dark:bg-zinc-900 rounded-xl"
+                  className="h-24 resize-none bg-gray-50 dark:bg-zinc-900 rounded-md"
                 />
               </div>
 
@@ -255,7 +255,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     value={formData.category}
                     onChange={handleInputChange}
                     placeholder="e.g. Technology"
-                    className="bg-gray-50 dark:bg-zinc-900 rounded-xl"
+                    className="bg-gray-50 dark:bg-zinc-900 rounded-md"
                   />
                 </div>
                 <div className="space-y-2">
@@ -266,7 +266,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     value={formData.readTime}
                     onChange={handleInputChange}
                     placeholder="5"
-                    className="bg-gray-50 dark:bg-zinc-900 rounded-xl"
+                    className="bg-gray-50 dark:bg-zinc-900 rounded-md"
                   />
                 </div>
                 <div className="space-y-2">
@@ -277,7 +277,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     value={formData.commentCount}
                     onChange={handleInputChange}
                     placeholder="0"
-                    className="bg-gray-50 dark:bg-zinc-900 rounded-xl"
+                    className="bg-gray-50 dark:bg-zinc-900 rounded-md"
                   />
                 </div>
               </div>
@@ -285,16 +285,16 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
           </Card>
 
           {/* Text Editor Card */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md bg-white dark:bg-zinc-950">
             <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800">
               <CardTitle className="text-lg">Article Content</CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
-               <TextEditor
-                  value={formData.content}
-                  onChange={handleContentChange}
-                  label=""
-                />
+              <TextEditor
+                value={formData.content}
+                onChange={handleContentChange}
+                label=""
+              />
             </CardContent>
           </Card>
 
@@ -302,14 +302,14 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
         {/* ================= RIGHT SECTION (SIDEBAR) ================= */}
         <div className="w-full lg:w-1/3 flex flex-col gap-6 sticky top-6">
-          
+
           {/* Thumbnail Upload */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md bg-white dark:bg-zinc-950">
             <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800">
               <CardTitle className="text-lg">Featured Image</CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
-              <div className="relative flex flex-col items-center justify-center w-full aspect-video border-2 border-dashed rounded-xl border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-900 overflow-hidden transition-all">
+              <div className="relative flex flex-col items-center justify-center w-full aspect-video border-2 border-dashed rounded-md border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-900 overflow-hidden transition-all">
                 {previewUrl ? (
                   <div className="relative w-full h-full group">
                     <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
@@ -333,7 +333,7 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
           </Card>
 
           {/* SEO & Meta */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md bg-white dark:bg-zinc-950">
             <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800">
               <CardTitle className="text-lg">SEO Settings</CardTitle>
             </CardHeader>
@@ -354,22 +354,22 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
           </Card>
 
           {/* Tags & Keywords */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md bg-white dark:bg-zinc-950">
             <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800">
               <CardTitle className="text-lg">Taxonomy</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6 pt-6">
-              
+
               {/* Tags */}
               <div className="space-y-2">
                 <Label>Tags</Label>
                 <div className="flex gap-2">
-                  <Input 
-                    value={tagInput} 
-                    onChange={(e) => setTagInput(e.target.value)} 
+                  <Input
+                    value={tagInput}
+                    onChange={(e) => setTagInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleTagAdd(e)}
-                    placeholder="Add a tag..." 
-                    className="bg-gray-50 dark:bg-zinc-900" 
+                    placeholder="Add a tag..."
+                    className="bg-gray-50 dark:bg-zinc-900"
                   />
                   <Button type="button" onClick={handleTagAdd} size="icon">
                     <Plus className="w-4 h-4" />
@@ -393,12 +393,12 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
               <div className="space-y-2">
                 <Label>Keywords</Label>
                 <div className="flex gap-2">
-                  <Input 
-                    value={keywordInput} 
-                    onChange={(e) => setKeywordInput(e.target.value)} 
+                  <Input
+                    value={keywordInput}
+                    onChange={(e) => setKeywordInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleKeywordAdd(e)}
-                    placeholder="Add a keyword..." 
-                    className="bg-gray-50 dark:bg-zinc-900" 
+                    placeholder="Add a keyword..."
+                    className="bg-gray-50 dark:bg-zinc-900"
                   />
                   <Button type="button" onClick={handleKeywordAdd} size="icon">
                     <Plus className="w-4 h-4" />
@@ -426,17 +426,17 @@ const AddBlog = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
       {/* Footer Actions */}
       <div className="flex items-center justify-end gap-4 mt-8 pt-6 border-t border-gray-100 dark:border-zinc-800">
-        <Button 
-          type="button" 
-          variant="outline" 
-          className="h-12 px-8 rounded-xl"
+        <Button
+          type="button"
+          variant="outline"
+          className="h-12 px-8 rounded-md"
           onClick={() => navigate("/news")}
         >
           Cancel
         </Button>
-        <Button 
-          type="button" 
-          className="h-12 px-10 bg-primary hover:bg-[#16965f] text-white rounded-xl font-medium"
+        <Button
+          type="button"
+          className="h-12 px-10 bg-primary hover:bg-[#16965f] text-white rounded-md font-medium"
           onClick={handleCreateBlog}
           disabled={isSubmitting}
         >

@@ -15,7 +15,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div className="relative bg-white rounded-2xl py-[0.4rem] overflow-hidden">
+    <div className="relative bg-white rounded-md py-[0.4rem] overflow-hidden">
       <input
         type="text"
         placeholder="Search..."

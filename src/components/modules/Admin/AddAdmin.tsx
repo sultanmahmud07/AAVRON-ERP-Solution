@@ -80,7 +80,7 @@ const AddAdmin = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
   return (
     <div className={cn("max-w-5xl mx-auto p-4 md:p-8", className)}>
-      
+
       {/* Header */}
       <div className="space-y-2 border-b border-gray-100 dark:border-zinc-800 pb-6 mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
@@ -92,16 +92,16 @@ const AddAdmin = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
         </p>
       </div>
 
-      <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden">
+      <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden">
         <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800">
           <CardTitle className="text-lg">Admin Credentials</CardTitle>
           <CardDescription>All fields are required to register a new admin.</CardDescription>
         </CardHeader>
-        
+
         <CardContent className="pt-8">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
                 <FormField
@@ -113,10 +113,10 @@ const AddAdmin = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                         <User className="w-4 h-4 text-gray-400" /> Full Name
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl" 
-                          placeholder="e.g. Mr Admin" 
-                          {...field} 
+                        <Input
+                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md"
+                          placeholder="e.g. Mr Admin"
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -134,11 +134,11 @@ const AddAdmin = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                         <Mail className="w-4 h-4 text-gray-400" /> Email Address
                       </FormLabel>
                       <FormControl>
-                        <Input 
+                        <Input
                           type="email"
-                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl" 
-                          placeholder="dev.mrshimul@gmail.com" 
-                          {...field} 
+                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md"
+                          placeholder="dev.mrshimul@gmail.com"
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -158,11 +158,11 @@ const AddAdmin = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     </FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Input 
+                        <Input
                           type={showPassword ? "text" : "password"}
-                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-xl pr-12" 
-                          placeholder="A@12345678" 
-                          {...field} 
+                          className="bg-gray-50 dark:bg-zinc-900 h-12 rounded-md pr-12"
+                          placeholder="A@12345678"
+                          {...field}
                         />
                         <button
                           type="button"
@@ -181,7 +181,7 @@ const AddAdmin = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
               {/* Readonly Role Indicator */}
               <div className="max-w-md space-y-2 pt-2">
                 <Label className="text-gray-700 dark:text-gray-300 font-medium">Assigned Role</Label>
-                <div className="flex items-center h-12 px-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900 rounded-xl cursor-not-allowed">
+                <div className="flex items-center h-12 px-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900 rounded-md cursor-not-allowed">
                   <span className="font-semibold text-emerald-700 dark:text-emerald-400 tracking-wide">ADMIN</span>
                   <span className="ml-auto text-xs text-emerald-600/70 dark:text-emerald-500/70">(Locked via system)</span>
                 </div>
@@ -189,17 +189,17 @@ const AddAdmin = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
               {/* Actions */}
               <div className="flex items-center justify-end gap-4 mt-8 pt-6 border-t border-gray-100 dark:border-zinc-800">
-                <Button 
-                  type="button" 
-                  variant="outline" 
-                  className="h-12 px-8 rounded-xl"
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="h-12 px-8 rounded-md"
                   onClick={() => navigate("/admin")}
                 >
                   Cancel
                 </Button>
-                <Button 
-                  type="submit" 
-                  className="h-12 px-10 bg-[#1BAE70] hover:bg-[#16965f] text-white rounded-xl font-medium"
+                <Button
+                  type="submit"
+                  className="h-12 px-10 bg-[#1BAE70] hover:bg-[#16965f] text-white rounded-md font-medium"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

@@ -53,14 +53,14 @@ export default function AllContactList() {
   const [limit] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("");
-  
+
   const { data, isLoading } = useGetAllContactQuery({
     page: currentPage,
     limit,
     searchTerm,
     sort: sortOrder,
   });
-  
+
   const [removeContact] = useRemoveContactMutation();
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,8 +88,8 @@ export default function AllContactList() {
   const totalPage = data?.meta?.totalPage || 1;
 
   return (
-    <div className="w-full h-full bg-white dark:bg-zinc-950 p-5 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800/50">
-      
+    <div className="w-full h-full bg-white dark:bg-zinc-950 p-5 md:p-8 rounded-md shadow-sm border border-gray-100 dark:border-zinc-800/50">
+
       {/* Header & Controls */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div className="space-y-1">
@@ -107,7 +107,7 @@ export default function AllContactList() {
           <div className="relative w-full sm:w-[250px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
-              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
+              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-11 rounded-md border-gray-200 dark:border-zinc-800 focus-visible:ring-[#1BAE70]"
               type="text"
               placeholder="Search name or email..."
               value={searchTerm}
@@ -117,7 +117,7 @@ export default function AllContactList() {
 
           {/* Sort Dropdown */}
           <Select onValueChange={handleSortChange} value={sortOrder}>
-            <SelectTrigger className="w-full sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl border-gray-200 dark:border-zinc-800 focus:ring-[#1BAE70]">
+            <SelectTrigger className="w-full sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-11 rounded-md border-gray-200 dark:border-zinc-800 focus:ring-[#1BAE70]">
               <SelectValue placeholder="Sort order" />
             </SelectTrigger>
             <SelectContent>
@@ -135,7 +135,7 @@ export default function AllContactList() {
       {isLoading ? (
         <TableSkeleton />
       ) : (
-        <div className="rounded-xl border border-gray-200 dark:border-zinc-800 overflow-hidden">
+        <div className="rounded-md border border-gray-200 dark:border-zinc-800 overflow-hidden">
           <Table>
             <TableHeader className="bg-gray-50/50 dark:bg-zinc-900/50">
               <TableRow>
@@ -157,12 +157,12 @@ export default function AllContactList() {
               ) : (
                 data?.data.map((contact: IContact) => (
                   <TableRow key={contact._id} className="hover:bg-gray-50/50 dark:hover:bg-zinc-900/50 transition-colors">
-                    
+
                     {/* Name */}
                     <TableCell className="font-bold text-gray-900 dark:text-white capitalize align-top pt-4">
                       {contact.name}
                     </TableCell>
-                    
+
                     {/* Contact Info (Stacked Email & Phone) */}
                     <TableCell className="align-top pt-4">
                       <div className="flex flex-col gap-1 text-sm text-gray-500 dark:text-gray-400">
@@ -213,7 +213,7 @@ export default function AllContactList() {
                             <EyeIcon className="w-4 h-4" />
                           </Button>
                         </Link>
-                        
+
                         <DeleteConfirmation onConfirm={() => handleRemoveContact(contact._id)}>
                           <Button variant="ghost" size="icon" className="h-8 w-8 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20">
                             <Trash2 className="w-4 h-4" />
@@ -241,7 +241,7 @@ export default function AllContactList() {
                   className={
                     currentPage === 1
                       ? "pointer-events-none opacity-50"
-                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl"
+                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md"
                   }
                 />
               </PaginationItem>
@@ -251,13 +251,13 @@ export default function AllContactList() {
                     key={page}
                     onClick={() => setCurrentPage(page)}
                   >
-                    <PaginationLink 
+                    <PaginationLink
                       className={cn(
-                        "cursor-pointer rounded-xl transition-colors",
-                        currentPage === page 
+                        "cursor-pointer rounded-md transition-colors",
+                        currentPage === page
                           ? "bg-[#1BAE70] text-white hover:bg-[#16965f] hover:text-white border-transparent"
                           : "hover:bg-gray-100 dark:hover:bg-zinc-800"
-                      )} 
+                      )}
                       isActive={currentPage === page}
                     >
                       {page}
@@ -271,7 +271,7 @@ export default function AllContactList() {
                   className={
                     currentPage === totalPage
                       ? "pointer-events-none opacity-50"
-                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl"
+                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md"
                   }
                 />
               </PaginationItem>

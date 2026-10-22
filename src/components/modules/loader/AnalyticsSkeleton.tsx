@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils"; 
+import { cn } from "@/lib/utils";
 
 // Reusable Skeleton primitive
 const Skeleton = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -12,7 +12,7 @@ const Skeleton = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>)
 const AnalyticsSkeleton = () => {
   return (
     <div className="p-4 md:p-6 space-y-6 w-full">
-      
+
       {/* === Page Header Skeleton === */}
       <div className="space-y-3 mb-6">
         <div className="flex items-center gap-3">
@@ -25,7 +25,7 @@ const AnalyticsSkeleton = () => {
       {/* === Top Stats Grid Skeleton === */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="p-5 md:p-6 bg-card rounded-2xl border border-border shadow-sm flex flex-col justify-between h-[140px]">
+          <div key={i} className="p-5 md:p-6 bg-card rounded-md border border-border shadow-sm flex flex-col justify-between h-[140px]">
             <div className="flex justify-between items-start">
               <Skeleton className="h-4 w-28" /> {/* Label */}
               <Skeleton className="h-8 w-8 rounded-lg" /> {/* Icon Box */}
@@ -40,11 +40,11 @@ const AnalyticsSkeleton = () => {
 
       {/* === Charts Grid Skeleton === */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-        
+
         {/* Left: Wide Line Chart Skeleton (Span 2) */}
-        <div className="lg:col-span-2 p-5 md:p-6 bg-card rounded-2xl border border-border shadow-sm h-[400px] flex flex-col">
+        <div className="lg:col-span-2 p-5 md:p-6 bg-card rounded-md border border-border shadow-sm h-[400px] flex flex-col">
           <Skeleton className="h-5 w-56 mb-8" /> {/* Chart Title */}
-          
+
           {/* Simulated Chart Area */}
           <div className="flex-1 flex flex-col justify-between relative px-2 pb-6 border-b border-l border-muted">
             {/* Horizontal Grid Lines */}
@@ -52,7 +52,7 @@ const AnalyticsSkeleton = () => {
             <div className="w-full h-px bg-muted" />
             <div className="w-full h-px bg-muted" />
             <div className="w-full h-px bg-muted" />
-            
+
             {/* Animated Graph Line (Simulating the spike in the image) */}
             <svg className="absolute inset-0 w-full h-full text-muted-foreground/20 animate-pulse" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none">
               <path d="M0,95 L85,95 L92,85 L96,40 L100,10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -62,9 +62,9 @@ const AnalyticsSkeleton = () => {
         </div>
 
         {/* Right: Donut Chart Skeleton (Span 1) */}
-        <div className="lg:col-span-1 p-5 md:p-6 bg-card rounded-2xl border border-border shadow-sm h-[400px] flex flex-col">
+        <div className="lg:col-span-1 p-5 md:p-6 bg-card rounded-md border border-border shadow-sm h-[400px] flex flex-col">
           <Skeleton className="h-5 w-40 mb-8" /> {/* Chart Title */}
-          
+
           <div className="flex-1 flex items-center justify-center">
             {/* Donut Chart Shape */}
             <div className="relative flex items-center justify-center w-48 h-48">
@@ -74,7 +74,7 @@ const AnalyticsSkeleton = () => {
               <div className="absolute w-32 h-32 bg-card rounded-full" />
             </div>
           </div>
-          
+
           {/* Legend Items */}
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mt-6">
             {Array.from({ length: 4 }).map((_, i) => (

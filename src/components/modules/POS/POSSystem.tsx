@@ -483,7 +483,7 @@ export default function POSSystem() {
                     {/* Product Image Container */}
                     <div
                       onClick={() => addToCart(prod)}
-                      className="cursor-pointer bg-slate-50 dark:bg-[#12141c] rounded-xl h-36 flex items-center justify-center p-2 mb-2.5 overflow-hidden transition-transform group-hover:scale-[1.02]"
+                      className="cursor-pointer bg-slate-50 dark:bg-[#12141c] rounded-md h-36 flex items-center justify-center p-2 mb-2.5 overflow-hidden transition-transform group-hover:scale-[1.02]"
                     >
                       <img
                         src={prod.image}
@@ -567,22 +567,20 @@ export default function POSSystem() {
                 <button
                   type="button"
                   onClick={() => setCurrency("$")}
-                  className={`px-2 py-0.5 rounded-md transition ${
-                    currency === "$"
-                      ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-white shadow-2xs font-bold"
-                      : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
-                  }`}
+                  className={`px-2 py-0.5 rounded-md transition ${currency === "$"
+                    ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-white shadow-2xs font-bold"
+                    : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+                    }`}
                 >
                   $
                 </button>
                 <button
                   type="button"
                   onClick={() => setCurrency("৳")}
-                  className={`px-2 py-0.5 rounded-md transition ${
-                    currency === "৳"
-                      ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-white shadow-2xs font-bold"
-                      : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
-                  }`}
+                  className={`px-2 py-0.5 rounded-md transition ${currency === "৳"
+                    ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-white shadow-2xs font-bold"
+                    : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+                    }`}
                 >
                   ৳
                 </button>
@@ -687,7 +685,7 @@ export default function POSSystem() {
                   cartItems.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center justify-between gap-2.5 p-2 rounded-xl bg-slate-50 dark:bg-[#12141c] border border-slate-200/60 dark:border-slate-800/60"
+                      className="flex items-center justify-between gap-2.5 p-2 rounded-md bg-slate-50 dark:bg-[#12141c] border border-slate-200/60 dark:border-slate-800/60"
                     >
                       {/* Left: Thumbnail & Code & Title */}
                       <div className="flex items-center gap-2.5 min-w-0">
@@ -794,7 +792,7 @@ export default function POSSystem() {
             {/* Financial Cards (Matching Image 2) */}
             <div className="space-y-2.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
               <div className="grid grid-cols-2 gap-2.5">
-                <div className="p-3 bg-slate-50 dark:bg-[#12141c] rounded-xl border border-slate-200/60 dark:border-slate-800/60">
+                <div className="p-3 bg-slate-50 dark:bg-[#12141c] rounded-md border border-slate-200/60 dark:border-slate-800/60">
                   <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 block">
                     Subtotal
                   </span>
@@ -802,7 +800,7 @@ export default function POSSystem() {
                     {formatMoney(subtotal)}
                   </span>
                 </div>
-                <div className="p-3 bg-slate-50 dark:bg-[#12141c] rounded-xl border border-slate-200/60 dark:border-slate-800/60">
+                <div className="p-3 bg-slate-50 dark:bg-[#12141c] rounded-md border border-slate-200/60 dark:border-slate-800/60">
                   <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 block">
                     Total VAT ({taxPercent}%)
                   </span>
@@ -813,7 +811,7 @@ export default function POSSystem() {
               </div>
 
               {/* Grand Total Box (Matching Image 2's purple banner) */}
-              <div className="p-3.5 bg-green-50/80 dark:bg-green-950/40 border border-green-100 dark:border-green-800/50 rounded-xl">
+              <div className="p-3.5 bg-green-50/80 dark:bg-green-950/40 border border-green-100 dark:border-green-800/50 rounded-md">
                 <span className="text-[11px] font-semibold text-green-700 dark:text-green-300 block">
                   Grand Total
                 </span>
@@ -919,7 +917,7 @@ export default function POSSystem() {
             <button
               onClick={() => handleSubmitPOSOrder()}
               disabled={cartItems.length === 0}
-              className="w-full py-3 bg-[#1e293b] hover:bg-[#334155] cursor-pointer disabled:opacity-50 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm"
+              className="w-full py-3 bg-[#1e293b] hover:bg-[#334155] cursor-pointer disabled:opacity-50 text-white font-bold rounded-md shadow-md transition flex items-center justify-center gap-2 text-sm"
             >
               <Printer className="w-4 h-4" />
               Submit & Print Invoice
@@ -931,7 +929,7 @@ export default function POSSystem() {
       {/* 3. QUICK ADD NEW CUSTOMER MODAL */}
       {isNewCustomerOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-[#181b24] rounded-xl max-w-sm w-full p-5 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+          <div className="bg-white dark:bg-[#181b24] rounded-md max-w-sm w-full p-5 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <UserPlus className="w-4 h-4 text-indigo-500" />
@@ -1022,7 +1020,7 @@ export default function POSSystem() {
       {/* 4. ORDER SUCCESS & PRINT INVOICE MODAL */}
       {isSuccessModalOpen && completedOrder && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-[#181b24] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+          <div className="bg-white dark:bg-[#181b24] rounded-md max-w-lg w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
             <div className="text-center space-y-2">
               <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center">
                 <CheckCircle2 className="w-7 h-7" />
@@ -1038,7 +1036,7 @@ export default function POSSystem() {
             </div>
 
             {/* Quick Summary Pill */}
-            <div className="p-3 bg-slate-50 dark:bg-[#12141c] rounded-xl border border-slate-200/60 dark:border-slate-800/60 text-xs space-y-1.5">
+            <div className="p-3 bg-slate-50 dark:bg-[#12141c] rounded-md border border-slate-200/60 dark:border-slate-800/60 text-xs space-y-1.5">
               <div className="flex justify-between">
                 <span className="text-slate-500">Customer:</span>
                 <span className="font-semibold">{completedOrder.customer?.name || "Counter Customer"}</span>
@@ -1250,11 +1248,6 @@ export default function POSSystem() {
           </div>
         </div>
       </div>
-
-      {/* Footer Copyright matching Image 1 */}
-      <footer className="py-2.5 text-center text-xs text-slate-400 dark:text-slate-500 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-        2026 © Dreams ERP. All Rights Reserved
-      </footer>
 
       {/* Print Style Injections */}
       <style>

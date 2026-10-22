@@ -295,22 +295,20 @@ export default function PaymentList() {
             <button
               type="button"
               onClick={() => setCurrencySymbol("$")}
-              className={`px-2 py-1 rounded font-bold text-[11px] transition ${
-                currencySymbol === "$"
-                  ? "bg-[#0c6760] text-white shadow-2xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`px-2 py-1 rounded font-bold text-[11px] transition ${currencySymbol === "$"
+                ? "bg-[#0c6760] text-white shadow-2xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
             >
               USD ($)
             </button>
             <button
               type="button"
               onClick={() => setCurrencySymbol("৳")}
-              className={`px-2 py-1 rounded font-bold text-[11px] transition ${
-                currencySymbol === "৳"
-                  ? "bg-[#0c6760] text-white shadow-2xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`px-2 py-1 rounded font-bold text-[11px] transition ${currencySymbol === "৳"
+                ? "bg-[#0c6760] text-white shadow-2xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
             >
               BDT (৳)
             </button>
@@ -336,9 +334,8 @@ export default function PaymentList() {
               <Download className="w-3.5 h-3.5" />
               <span>Export</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transform transition-transform ${
-                  isExportOpen ? "rotate-180" : ""
-                }`}
+                className={`w-3.5 h-3.5 transform transition-transform ${isExportOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
             {isExportOpen && (
@@ -377,7 +374,7 @@ export default function PaymentList() {
       </div>
 
       {/* ===================== 2. MAIN TABLE CARD (Exact Image 1 Layout) ===================== */}
-      <div className="bg-white dark:bg-[#181b24] rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
         {/* Top Controls Bar */}
         <div className="p-3.5 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Left: Search Box & Date Range Filter */}
@@ -439,11 +436,10 @@ export default function PaymentList() {
             <button
               type="button"
               onClick={() => setShowFilterBar(!showFilterBar)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition cursor-pointer ${
-                showFilterBar
-                  ? "bg-teal-50 border-teal-200 text-teal-700 dark:bg-teal-950/40 dark:border-teal-800 dark:text-teal-300"
-                  : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              }`}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium border rounded-md transition cursor-pointer ${showFilterBar
+                ? "bg-teal-50 border-teal-200 text-teal-700 dark:bg-teal-950/40 dark:border-teal-800 dark:text-teal-300"
+                : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                }`}
             >
               <Filter className="w-3.5 h-3.5" />
               <span>Filter</span>
@@ -794,11 +790,10 @@ export default function PaymentList() {
                 key={pageNum}
                 type="button"
                 onClick={() => setCurrentPage(pageNum)}
-                className={`w-7 h-7 flex items-center justify-center rounded-md font-semibold text-xs transition cursor-pointer ${
-                  currentPage === pageNum
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                className={`w-7 h-7 flex items-center justify-center rounded-md font-semibold text-xs transition cursor-pointer ${currentPage === pageNum
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
               >
                 {pageNum}
               </button>
@@ -828,7 +823,7 @@ export default function PaymentList() {
       {/* ===================== 4. ADD / EDIT PAYMENT MODAL ===================== */}
       {isAddModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-          <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <DollarSign className="w-4 h-4 text-[#0c6760]" />
@@ -854,7 +849,7 @@ export default function PaymentList() {
                   value={formPayee}
                   onChange={(e) => setFormPayee(e.target.value)}
                   placeholder="e.g. Alpha Supplies Inc"
-                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                 />
               </div>
 
@@ -866,7 +861,7 @@ export default function PaymentList() {
                   <select
                     value={formBank}
                     onChange={(e) => setFormBank(e.target.value)}
-                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
                   >
                     {COMMON_BANKS.map((b) => (
                       <option key={b} value={b}>
@@ -883,7 +878,7 @@ export default function PaymentList() {
                   <select
                     value={formMethod}
                     onChange={(e) => setFormMethod(e.target.value as PaymentMethodType)}
-                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
                   >
                     <option value="Bank Transfer">Bank Transfer</option>
                     <option value="UPI">UPI</option>
@@ -906,7 +901,7 @@ export default function PaymentList() {
                     value={formAmount}
                     onChange={(e) => setFormAmount(e.target.value)}
                     placeholder="22500"
-                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-mono font-bold text-slate-800 dark:text-slate-100 focus:outline-hidden"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs font-mono font-bold text-slate-800 dark:text-slate-100 focus:outline-hidden"
                   />
                 </div>
 
@@ -920,7 +915,7 @@ export default function PaymentList() {
                     value={formDate}
                     onChange={(e) => setFormDate(e.target.value)}
                     placeholder="11 Sep 2025"
-                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
                   />
                 </div>
               </div>
@@ -933,7 +928,7 @@ export default function PaymentList() {
                   <select
                     value={formStatus}
                     onChange={(e) => setFormStatus(e.target.value as PaymentStatus)}
-                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
                   >
                     <option value="Completed">Completed</option>
                     <option value="Pending">Pending</option>
@@ -950,7 +945,7 @@ export default function PaymentList() {
                     value={formRefNo}
                     onChange={(e) => setFormRefNo(e.target.value)}
                     placeholder="TRX-CHASE-9921"
-                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-slate-800 dark:text-slate-100 focus:outline-hidden"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs font-mono text-slate-800 dark:text-slate-100 focus:outline-hidden"
                   />
                 </div>
               </div>
@@ -964,7 +959,7 @@ export default function PaymentList() {
                   value={formNotes}
                   onChange={(e) => setFormNotes(e.target.value)}
                   placeholder="Optional payment notes..."
-                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md p-2.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden"
                 />
               </div>
 
@@ -972,13 +967,13 @@ export default function PaymentList() {
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(false)}
-                  className="px-4 py-2 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
+                  className="px-4 py-2 text-xs font-semibold rounded-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold rounded-xl bg-[#0c6760] hover:bg-[#09544e] text-white shadow-xs cursor-pointer"
+                  className="px-5 py-2 text-xs font-bold rounded-md bg-[#0c6760] hover:bg-[#09544e] text-white shadow-xs cursor-pointer"
                 >
                   {editingPayment ? "Update Payment" : "Save Payment"}
                 </button>
@@ -991,7 +986,7 @@ export default function PaymentList() {
       {/* ===================== 5. VIEW PAYMENT RECEIPT MODAL ===================== */}
       {viewingPayment && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-          <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <CreditCard className="w-4 h-4 text-[#0c6760]" />
@@ -1076,7 +1071,7 @@ export default function PaymentList() {
       {/* ===================== 6. DELETE CONFIRMATION ===================== */}
       {deletingPayment && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-          <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-sm p-6 text-center animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-sm p-6 text-center animate-in fade-in zoom-in-95 duration-200">
             <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto mb-4 border border-rose-200 dark:border-rose-800">
               <Trash2 className="w-6 h-6" />
             </div>
@@ -1098,14 +1093,14 @@ export default function PaymentList() {
               <button
                 type="button"
                 onClick={() => setDeletingPayment(null)}
-                className="px-4 py-2 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold rounded-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleConfirmDelete}
-                className="px-5 py-2 text-xs font-bold rounded-xl bg-rose-600 hover:bg-rose-700 text-white shadow-xs cursor-pointer"
+                className="px-5 py-2 text-xs font-bold rounded-md bg-rose-600 hover:bg-rose-700 text-white shadow-xs cursor-pointer"
               >
                 Delete
               </button>

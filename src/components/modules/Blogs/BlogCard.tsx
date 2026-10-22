@@ -51,7 +51,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
     <div className="group relative transition overflow-hidden flex flex-col gap-1">
       {/* Image */}
-      <div className="overflow-hidden aspect-square rounded-xl">
+      <div className="overflow-hidden aspect-square rounded-md">
         <img
           src={blog.thumbnail || "/default-img.png"}
           alt={blog.title}

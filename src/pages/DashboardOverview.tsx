@@ -147,7 +147,7 @@ export const DashboardOverview: React.FC = () => {
           {/* Add Employee Button */}
           <button
             onClick={() => setAddEmployeeOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-all font-semibold text-xs shadow-xs"
+            className="flex items-center gap-2 px-4 py-2 rounded-md bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-all font-semibold text-xs shadow-xs"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Add Employee</span>
@@ -158,7 +158,7 @@ export const DashboardOverview: React.FC = () => {
       {/* 2. Top Metric Cards Row (Row 1) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Card 1: Total Workforce + 4 Mini Stat Boxes (lg:col-span-4) */}
-        <div className="lg:col-span-4 bg-white dark:bg-[#161821] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-xs flex flex-col justify-between">
+        <div className="lg:col-span-4 bg-white dark:bg-[#161821] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-start justify-between">
               <div>
@@ -179,7 +179,7 @@ export const DashboardOverview: React.FC = () => {
                 </p>
               </div>
 
-              <div className="w-10 h-10 rounded-xl bg-[#1e2238] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <div className="w-10 h-10 rounded-md bg-[#1e2238] text-white flex items-center justify-center shrink-0 shadow-xs">
                 <Users className="w-5 h-5" />
               </div>
             </div>
@@ -187,7 +187,7 @@ export const DashboardOverview: React.FC = () => {
             {/* 4 Mini Stat Tiles in 2x2 grid */}
             <div className="grid grid-cols-2 gap-3 mt-6">
               {/* On Leave Today */}
-              <div className="p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+              <div className="p-3.5 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
                 <div className="flex items-center justify-between">
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                     <Calendar className="w-4 h-4" />
@@ -203,7 +203,7 @@ export const DashboardOverview: React.FC = () => {
               </div>
 
               {/* Attendance Rate */}
-              <div className="p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+              <div className="p-3.5 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
                 <div className="flex items-center justify-between">
                   <div className="w-8 h-8 rounded-lg bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 flex items-center justify-center">
                     <UserCheck className="w-4 h-4" />
@@ -219,7 +219,7 @@ export const DashboardOverview: React.FC = () => {
               </div>
 
               {/* Open Positions */}
-              <div className="p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+              <div className="p-3.5 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
                 <div className="flex items-center justify-between">
                   <div className="w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
                     <UserPlus className="w-4 h-4" />
@@ -235,7 +235,7 @@ export const DashboardOverview: React.FC = () => {
               </div>
 
               {/* Monthly Payroll */}
-              <div className="p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+              <div className="p-3.5 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
                 <div className="flex items-center justify-between">
                   <div className="w-8 h-8 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center">
                     <DollarSign className="w-4 h-4" />
@@ -254,7 +254,7 @@ export const DashboardOverview: React.FC = () => {
         </div>
 
         {/* Card 2: Employee Distribution & Run Payroll (lg:col-span-4) */}
-        <div className="lg:col-span-4 bg-white dark:bg-[#161821] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-xs flex flex-col justify-between">
+        <div className="lg:col-span-4 bg-white dark:bg-[#161821] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -326,15 +326,15 @@ export const DashboardOverview: React.FC = () => {
 
             {/* 3 Summary Badges */}
             <div className="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-center">
-              <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-900/40">
+              <div className="p-2 rounded-md bg-slate-50 dark:bg-slate-900/40">
                 <p className="text-base font-extrabold text-slate-900 dark:text-white">1196</p>
                 <p className="text-[10px] text-slate-400 font-medium">Active</p>
               </div>
-              <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-900/40">
+              <div className="p-2 rounded-md bg-slate-50 dark:bg-slate-900/40">
                 <p className="text-base font-extrabold text-slate-900 dark:text-white">88</p>
                 <p className="text-[10px] text-slate-400 font-medium">On Leave</p>
               </div>
-              <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-900/40">
+              <div className="p-2 rounded-md bg-slate-50 dark:bg-slate-900/40">
                 <p className="text-base font-extrabold text-slate-900 dark:text-white">12</p>
                 <p className="text-[10px] text-slate-400 font-medium">Notice</p>
               </div>
@@ -342,7 +342,7 @@ export const DashboardOverview: React.FC = () => {
           </div>
 
           {/* Bottom Banner: Run Payroll */}
-          <div className="mt-4 p-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white flex items-center justify-between shadow-xs">
+          <div className="mt-4 p-3.5 rounded-md bg-gradient-to-r from-emerald-600 to-teal-700 text-white flex items-center justify-between shadow-xs">
             <div>
               <p className="text-xs font-bold leading-tight">Run Payroll</p>
               <p className="text-[11px] text-emerald-100">Process Monthly Pay</p>
@@ -358,7 +358,7 @@ export const DashboardOverview: React.FC = () => {
         </div>
 
         {/* Card 3: Attendance Summary (lg:col-span-4) */}
-        <div className="lg:col-span-4 bg-white dark:bg-[#161821] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-xs flex flex-col justify-between">
+        <div className="lg:col-span-4 bg-white dark:bg-[#161821] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -375,25 +375,25 @@ export const DashboardOverview: React.FC = () => {
 
             {/* 4 Attendance Status Boxes in 2x2 grid */}
             <div className="grid grid-cols-2 gap-3 mt-4">
-              <div className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+              <div className="p-3 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
                 <p className="text-xs text-slate-400 font-medium">Present</p>
                 <p className="text-xl font-extrabold text-slate-900 dark:text-white mt-0.5">1209</p>
                 <p className="text-[11px] text-slate-400 mt-0.5">94.2% of workforce</p>
               </div>
 
-              <div className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+              <div className="p-3 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
                 <p className="text-xs text-slate-400 font-medium">Late</p>
                 <p className="text-xl font-extrabold text-slate-900 dark:text-white mt-0.5">78</p>
                 <p className="text-[11px] text-slate-400 mt-0.5">After 9:30 AM</p>
               </div>
 
-              <div className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+              <div className="p-3 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
                 <p className="text-xs text-slate-400 font-medium">Absent</p>
                 <p className="text-xl font-extrabold text-slate-900 dark:text-white mt-0.5">52</p>
                 <p className="text-[11px] text-slate-400 mt-0.5">Unplanned absence</p>
               </div>
 
-              <div className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+              <div className="p-3 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
                 <p className="text-xs text-slate-400 font-medium">Remote</p>
                 <p className="text-xl font-extrabold text-slate-900 dark:text-white mt-0.5">361</p>
                 <p className="text-[11px] text-slate-400 mt-0.5">WFH approved</p>
@@ -443,7 +443,7 @@ export const DashboardOverview: React.FC = () => {
       {/* 3. Middle Section: Monthly Payroll Card & Recruitment Pipeline (Row 2) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Card 4: Monthly Payroll Dark Navy Card (lg:col-span-5) */}
-        <div className="lg:col-span-5 bg-[#101935] dark:bg-[#0e172e] rounded-2xl border border-blue-900/30 p-6 shadow-md text-white flex flex-col justify-between">
+        <div className="lg:col-span-5 bg-[#101935] dark:bg-[#0e172e] rounded-md border border-blue-900/30 p-6 shadow-md text-white flex flex-col justify-between">
           <div>
             <div className="flex items-start justify-between">
               <div>
@@ -460,7 +460,7 @@ export const DashboardOverview: React.FC = () => {
 
               <button
                 onClick={() => toast.success("Downloading March 2026 Consolidated Payslip...")}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs backdrop-blur-sm border border-white/10 transition-colors shadow-xs"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-white font-semibold text-xs backdrop-blur-sm border border-white/10 transition-colors shadow-xs"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download Payslip</span>
@@ -527,7 +527,7 @@ export const DashboardOverview: React.FC = () => {
         </div>
 
         {/* Card 5: Recruitment Pipeline Card (lg:col-span-7) */}
-        <div className="lg:col-span-7 bg-white dark:bg-[#161821] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-xs flex flex-col justify-between">
+        <div className="lg:col-span-7 bg-white dark:bg-[#161821] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -535,7 +535,7 @@ export const DashboardOverview: React.FC = () => {
               </h3>
               <button
                 onClick={() => setPostJobOpen(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-slate-800 dark:text-white font-semibold text-xs transition-colors shadow-xs"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-slate-800 dark:text-white font-semibold text-xs transition-colors shadow-xs"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Post New Job</span>
@@ -545,7 +545,7 @@ export const DashboardOverview: React.FC = () => {
             {/* 3 Pipeline Stages */}
             <div className="grid grid-cols-3 gap-3 my-4">
               {/* New Applicants */}
-              <div className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 relative overflow-hidden">
+              <div className="p-3 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 relative overflow-hidden">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
                     <FileText className="w-4 h-4" />
@@ -559,7 +559,7 @@ export const DashboardOverview: React.FC = () => {
               </div>
 
               {/* Screening */}
-              <div className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 relative overflow-hidden">
+              <div className="p-3 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 relative overflow-hidden">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
                     <Users className="w-4 h-4" />
@@ -573,7 +573,7 @@ export const DashboardOverview: React.FC = () => {
               </div>
 
               {/* Interviews */}
-              <div className="p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 relative overflow-hidden">
+              <div className="p-3 rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 relative overflow-hidden">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0">
                     <Video className="w-4 h-4" />
@@ -594,7 +594,7 @@ export const DashboardOverview: React.FC = () => {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Alex Thompson */}
-                <div className="flex items-center justify-between p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
+                <div className="flex items-center justify-between p-2.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
                   <div className="flex items-center gap-2.5 min-w-0">
                     <img
                       src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face"
@@ -614,7 +614,7 @@ export const DashboardOverview: React.FC = () => {
                 </div>
 
                 {/* Maria Garcia */}
-                <div className="flex items-center justify-between p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
+                <div className="flex items-center justify-between p-2.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
                   <div className="flex items-center gap-2.5 min-w-0">
                     <img
                       src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
@@ -634,7 +634,7 @@ export const DashboardOverview: React.FC = () => {
                 </div>
 
                 {/* Thomas Mervin */}
-                <div className="flex items-center justify-between p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
+                <div className="flex items-center justify-between p-2.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
                   <div className="flex items-center gap-2.5 min-w-0">
                     <img
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
@@ -654,7 +654,7 @@ export const DashboardOverview: React.FC = () => {
                 </div>
 
                 {/* Regina Bryant */}
-                <div className="flex items-center justify-between p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
+                <div className="flex items-center justify-between p-2.5 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
                   <div className="flex items-center gap-2.5 min-w-0">
                     <img
                       src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face"
@@ -681,7 +681,7 @@ export const DashboardOverview: React.FC = () => {
       {/* 4. Bottom Section: Performance Tracking & Recent Openings / Payments Table (Row 3) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Card 6: Performance Tracking (lg:col-span-5) */}
-        <div className="lg:col-span-5 bg-white dark:bg-[#161821] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-xs flex flex-col justify-between">
+        <div className="lg:col-span-5 bg-white dark:bg-[#161821] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -699,7 +699,7 @@ export const DashboardOverview: React.FC = () => {
             {/* Top 3 Performers */}
             <div className="space-y-3 mt-4">
               {/* Evelyn Hayes - Rank 1 */}
-              <div className="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
+              <div className="flex items-center justify-between p-3 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
                 <div className="flex items-center gap-3">
                   <div className="relative">
                     <img
@@ -727,7 +727,7 @@ export const DashboardOverview: React.FC = () => {
               </div>
 
               {/* Emily Carter - Rank 2 */}
-              <div className="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
+              <div className="flex items-center justify-between p-3 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
                 <div className="flex items-center gap-3">
                   <div className="relative">
                     <img
@@ -755,7 +755,7 @@ export const DashboardOverview: React.FC = () => {
               </div>
 
               {/* Daniel Roberts - Rank 3 */}
-              <div className="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
+              <div className="flex items-center justify-between p-3 rounded-md border border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30">
                 <div className="flex items-center gap-3">
                   <div className="relative">
                     <img
@@ -809,7 +809,7 @@ export const DashboardOverview: React.FC = () => {
         </div>
 
         {/* Card 7: Recent Payments / Active Openings Table (lg:col-span-7) */}
-        <div className="lg:col-span-7 bg-white dark:bg-[#161821] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-xs flex flex-col justify-between">
+        <div className="lg:col-span-7 bg-white dark:bg-[#161821] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -893,22 +893,6 @@ export const DashboardOverview: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* 5. Footer */}
-      <footer className="pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
-        <p>2026 © NEXORA ERP. All Rights Reserved</p>
-        <div className="flex items-center gap-4">
-          <button onClick={() => toast.info("Privacy Policy")} className="hover:text-slate-600 dark:hover:text-slate-200">
-            Privacy Policy
-          </button>
-          <button onClick={() => toast.info("Terms of Service")} className="hover:text-slate-600 dark:hover:text-slate-200">
-            Terms of Service
-          </button>
-          <button onClick={() => toast.info("Help & Support Center")} className="hover:text-slate-600 dark:hover:text-slate-200">
-            Help Center
-          </button>
-        </div>
-      </footer>
 
       {/* Interactive Modals */}
       <AddEmployeeModal

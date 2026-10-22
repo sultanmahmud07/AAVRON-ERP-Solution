@@ -39,7 +39,7 @@ type PasswordFormValues = z.infer<typeof passwordSchema>;
 const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
   const { data: userInfo, isLoading } = useUserInfoQuery(undefined);
   const [changePassword, { isLoading: isChanging }] = useChangePasswordMutation();
-  
+
   // Assume you have an endpoint to update the profile picture
   const [updateProfile, { isLoading: isUpdatingProfile }] = useUpdateProfileMutation();
 
@@ -102,13 +102,13 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
     try {
       // Uncomment and use your actual RTK Query mutation here:
       const res = await updateProfile(formData).unwrap();
-      if (res.success) { 
+      if (res.success) {
         toast.dismiss(toastId);
         toast.success("Profile picture updated successfully!");
-        setSelectedImage(null); 
+        setSelectedImage(null);
       }
 
-      
+
     } catch (err) {
       console.error(err);
       toast.error("Failed to upload image", { id: toastId });
@@ -123,19 +123,19 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
   return (
     <div className={cn(" p-4 md:p-6", className)}>
-      
+
       <div className="mb-8 space-y-2">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Account Settings</h1>
         <p className="text-gray-500 dark:text-gray-400">Manage your profile information and security preferences.</p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 items-start">
-        
+
         {/* ================= LEFT COLUMN: PROFILE IDENTITY ================= */}
         <div className="w-full lg:w-1/3 flex flex-col gap-6">
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl overflow-hidden text-center bg-white dark:bg-zinc-950">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md overflow-hidden text-center bg-white dark:bg-zinc-950">
             <CardContent className="pt-8 pb-8 flex flex-col items-center">
-              
+
               {/* Profile Picture Upload System */}
               <div className="relative group mb-6">
                 <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 dark:border-zinc-900 shadow-md bg-gray-100 dark:bg-zinc-800 flex items-center justify-center relative">
@@ -144,9 +144,9 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   ) : (
                     <User className="w-16 h-16 text-gray-300" />
                   )}
-                  
+
                   {/* Hover Edit Overlay */}
-                  <div 
+                  <div
                     onClick={() => fileInputRef.current?.click()}
                     className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer flex flex-col items-center justify-center text-white"
                   >
@@ -154,21 +154,21 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     <span className="text-xs font-medium">Change</span>
                   </div>
                 </div>
-                
+
                 {/* Hidden File Input */}
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  onChange={handleImageChange} 
-                  accept="image/*" 
-                  className="hidden" 
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleImageChange}
+                  accept="image/*"
+                  className="hidden"
                 />
               </div>
 
               {/* Upload Action Button (Only visible if a new image is selected) */}
               {selectedImage && (
-                <Button 
-                  onClick={handleImageUpload} 
+                <Button
+                  onClick={handleImageUpload}
                   disabled={isUpdatingProfile}
                   className="mb-6 bg-primary hover:bg-primary/90 text-white rounded-full px-6 h-9 transition-all animate-in fade-in zoom-in"
                 >
@@ -187,8 +187,8 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                 </span>
                 <span className={cn(
                   "inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold",
-                  user?.isActive === "ACTIVE" 
-                    ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400" 
+                  user?.isActive === "ACTIVE"
+                    ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                     : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
                 )}>
                   {user?.isActive}
@@ -198,7 +198,7 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
           </Card>
 
           {/* System Metadata Card */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md bg-white dark:bg-zinc-950">
             <CardHeader className="pb-4 border-b border-gray-100 dark:border-zinc-800">
               <CardTitle className="text-lg">Account Details</CardTitle>
             </CardHeader>
@@ -209,9 +209,9 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   <span className="text-sm">Verification</span>
                 </div>
                 {user?.isVerified ? (
-                  <span className="flex items-center text-sm font-medium text-emerald-600 dark:text-emerald-400"><CheckCircle2 className="w-4 h-4 mr-1"/> Verified</span>
+                  <span className="flex items-center text-sm font-medium text-emerald-600 dark:text-emerald-400"><CheckCircle2 className="w-4 h-4 mr-1" /> Verified</span>
                 ) : (
-                  <span className="flex items-center text-sm font-medium text-amber-600 dark:text-amber-400"><XCircle className="w-4 h-4 mr-1"/> Pending</span>
+                  <span className="flex items-center text-sm font-medium text-amber-600 dark:text-amber-400"><XCircle className="w-4 h-4 mr-1" /> Pending</span>
                 )}
               </div>
               <div className="flex items-center justify-between">
@@ -234,7 +234,7 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
         {/* ================= RIGHT COLUMN: SECURITY SETTINGS ================= */}
         <div className="w-full lg:w-2/3 flex flex-col gap-6">
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md bg-white dark:bg-zinc-950">
             <CardHeader className="border-b border-gray-100 dark:border-zinc-800 pb-6">
               <CardTitle className="text-xl">Security Preferences</CardTitle>
               <CardDescription>Update your password to keep your account secure.</CardDescription>
@@ -242,7 +242,7 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
             <CardContent className="pt-6">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onPasswordSubmit)} className="space-y-6 max-w-md">
-                  
+
                   <FormField
                     control={form.control}
                     name="oldPassword"
@@ -250,7 +250,7 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                       <FormItem>
                         <FormLabel className="text-gray-700 dark:text-gray-300">Current Password</FormLabel>
                         <FormControl>
-                          <Input className="bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl" type="password" placeholder="Enter current password" {...field} />
+                          <Input className="bg-gray-50 dark:bg-zinc-900 h-11 rounded-md" type="password" placeholder="Enter current password" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -264,7 +264,7 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                       <FormItem>
                         <FormLabel className="text-gray-700 dark:text-gray-300">New Password</FormLabel>
                         <FormControl>
-                          <Input className="bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl" type="password" placeholder="Enter new password" {...field} />
+                          <Input className="bg-gray-50 dark:bg-zinc-900 h-11 rounded-md" type="password" placeholder="Enter new password" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -278,7 +278,7 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                       <FormItem>
                         <FormLabel className="text-gray-700 dark:text-gray-300">Confirm New Password</FormLabel>
                         <FormControl>
-                          <Input className="bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl" type="password" placeholder="Confirm new password" {...field} />
+                          <Input className="bg-gray-50 dark:bg-zinc-900 h-11 rounded-md" type="password" placeholder="Confirm new password" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -286,9 +286,9 @@ const MyProfile = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   />
 
                   <div className="pt-2">
-                    <Button 
-                      type="submit" 
-                      className="w-full md:w-auto h-11 px-8 rounded-xl bg-primary hover:bg-primary/90 text-white"
+                    <Button
+                      type="submit"
+                      className="w-full md:w-auto h-11 px-8 rounded-md bg-primary hover:bg-primary/90 text-white"
                       disabled={isChanging}
                     >
                       {isChanging ? <Loader2 className="w-5 h-5 mr-2 animate-spin" /> : null}

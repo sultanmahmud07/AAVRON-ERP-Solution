@@ -141,7 +141,7 @@ export default function AllInspectionList() {
   };
 
   return (
-    <div className="w-full h-full bg-white dark:bg-zinc-950 p-3 md:p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800/50">
+    <div className="w-full h-full bg-white dark:bg-zinc-950 p-3 md:p-5 rounded-md shadow-sm border border-gray-100 dark:border-zinc-800/50">
 
       {/* Header & Controls */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
@@ -160,7 +160,7 @@ export default function AllInspectionList() {
           <div className="relative w-full sm:w-[250px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
-              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl border-gray-200 dark:border-zinc-800 focus-visible:ring-primary"
+              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-11 rounded-md border-gray-200 dark:border-zinc-800 focus-visible:ring-primary"
               type="text"
               placeholder="Search name, email or city..."
               value={searchTerm}
@@ -170,7 +170,7 @@ export default function AllInspectionList() {
 
           {/* Sort Dropdown */}
           <Select onValueChange={handleSortChange} value={sortOrder}>
-            <SelectTrigger className="w-full py-5 sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl border-gray-200 dark:border-zinc-800 focus:ring-primary">
+            <SelectTrigger className="w-full py-5 sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-11 rounded-md border-gray-200 dark:border-zinc-800 focus:ring-primary">
               <SelectValue placeholder="Sort order" />
             </SelectTrigger>
             <SelectContent>
@@ -207,7 +207,7 @@ export default function AllInspectionList() {
       {isLoading ? (
         <InspectionSkeleton />
       ) : (
-        <div className="rounded-xl border border-gray-200 dark:border-zinc-800 overflow-hidden">
+        <div className="rounded-md border border-gray-200 dark:border-zinc-800 overflow-hidden">
           <Table>
             <TableHeader className="bg-gray-50/50 dark:bg-zinc-900/50">
               <TableRow>
@@ -356,7 +356,7 @@ export default function AllInspectionList() {
                   className={
                     currentPage === 1
                       ? "pointer-events-none opacity-50"
-                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl"
+                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md"
                   }
                 />
               </PaginationItem>
@@ -368,7 +368,7 @@ export default function AllInspectionList() {
                   >
                     <PaginationLink
                       className={cn(
-                        "cursor-pointer rounded-xl transition-colors",
+                        "cursor-pointer rounded-md transition-colors",
                         currentPage === page
                           ? "bg-primary text-white hover:bg-[#16965f] hover:text-white border-transparent"
                           : "hover:bg-gray-100 dark:hover:bg-zinc-800"
@@ -386,7 +386,7 @@ export default function AllInspectionList() {
                   className={
                     currentPage === totalPage
                       ? "pointer-events-none opacity-50"
-                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl"
+                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md"
                   }
                 />
               </PaginationItem>

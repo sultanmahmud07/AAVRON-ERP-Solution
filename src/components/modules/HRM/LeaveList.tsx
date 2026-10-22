@@ -284,7 +284,7 @@ export default function LeaveList() {
             {isExportOpen && (
               <>
                 <div className="fixed inset-0 z-20" onClick={() => setIsExportOpen(false)} />
-                <div className="absolute right-0 mt-1.5 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-30 text-xs">
+                <div className="absolute right-0 mt-1.5 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1.5 z-30 text-xs">
                   <button
                     onClick={handleExportPDF}
                     className="w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-200 cursor-pointer"
@@ -316,7 +316,7 @@ export default function LeaveList() {
       {/* =========================================================================
           MAIN CONTAINER CARD (Matching Image 3)
           ========================================================================= */}
-      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md shadow-xs overflow-hidden">
         {/* Top Filter Toolbar */}
         <div className="p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800/80">
           {/* Left: Search input + Date Range Picker */}
@@ -328,7 +328,7 @@ export default function LeaveList() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search"
-                className="w-full pl-3 pr-8 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] transition-all"
+                className="w-full pl-3 pr-8 py-2 text-xs rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] transition-all"
               />
               <Search className="w-3.5 h-3.5 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
@@ -337,7 +337,7 @@ export default function LeaveList() {
             <button
               type="button"
               onClick={() => toast.info(`Current Date Range: ${dateRangeText}`)}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+              className="flex items-center gap-2 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
             >
               <Calendar className="w-3.5 h-3.5 text-slate-400" />
               <span>{dateRangeText}</span>
@@ -351,7 +351,7 @@ export default function LeaveList() {
               <button
                 type="button"
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
               >
                 <Filter className="w-3.5 h-3.5 text-slate-500" />
                 <span>Filter</span>
@@ -361,7 +361,7 @@ export default function LeaveList() {
               {isFilterOpen && (
                 <>
                   <div className="fixed inset-0 z-20" onClick={() => setIsFilterOpen(false)} />
-                  <div className="absolute right-0 mt-1.5 w-52 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl p-3 z-30 text-xs space-y-3">
+                  <div className="absolute right-0 mt-1.5 w-52 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl p-3 z-30 text-xs space-y-3">
                     <div>
                       <label className="block text-[11px] font-bold text-slate-400 uppercase mb-1">
                         Status
@@ -408,7 +408,7 @@ export default function LeaveList() {
               <button
                 type="button"
                 onClick={() => setIsSortOpen(!isSortOpen)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
               >
                 <ArrowUpDown className="w-3.5 h-3.5 text-slate-500" />
                 <span>Sort By</span>
@@ -418,15 +418,14 @@ export default function LeaveList() {
               {isSortOpen && (
                 <>
                   <div className="fixed inset-0 z-20" onClick={() => setIsSortOpen(false)} />
-                  <div className="absolute right-0 mt-1.5 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-30 text-xs">
+                  <div className="absolute right-0 mt-1.5 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1.5 z-30 text-xs">
                     <button
                       onClick={() => {
                         setSortBy("default");
                         setIsSortOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                        sortBy === "default" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                      }`}
+                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "default" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                        }`}
                     >
                       Default
                     </button>
@@ -435,9 +434,8 @@ export default function LeaveList() {
                         setSortBy("name-asc");
                         setIsSortOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                        sortBy === "name-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                      }`}
+                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "name-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                        }`}
                     >
                       Employee (A-Z)
                     </button>
@@ -446,9 +444,8 @@ export default function LeaveList() {
                         setSortBy("days-desc");
                         setIsSortOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                        sortBy === "days-desc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                      }`}
+                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "days-desc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                        }`}
                     >
                       Days (High to Low)
                     </button>
@@ -457,9 +454,8 @@ export default function LeaveList() {
                         setSortBy("days-asc");
                         setIsSortOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                        sortBy === "days-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                      }`}
+                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "days-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                        }`}
                     >
                       Days (Low to High)
                     </button>
@@ -475,7 +471,7 @@ export default function LeaveList() {
                 loadData();
                 toast.success("Leaves refreshed");
               }}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+              className="p-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
               title="Refresh"
             >
               <RotateCw className="w-3.5 h-3.5" />
@@ -557,13 +553,12 @@ export default function LeaveList() {
                     {/* Status Badge (Approved, Pending, Rejected) */}
                     <td className="py-4 px-4">
                       <span
-                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${
-                          item.status === "Approved"
-                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
-                            : item.status === "Pending"
+                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${item.status === "Approved"
+                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
+                          : item.status === "Pending"
                             ? "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/60"
                             : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60"
-                        }`}
+                          }`}
                       >
                         {item.status}
                       </span>
@@ -586,7 +581,7 @@ export default function LeaveList() {
                               className="fixed inset-0 z-20"
                               onClick={() => setActiveMenuId(null)}
                             />
-                            <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1 z-30 text-xs">
+                            <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1 z-30 text-xs">
                               {item.status !== "Approved" && (
                                 <button
                                   type="button"
@@ -658,7 +653,7 @@ export default function LeaveList() {
           ========================================================================= */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-5">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-md w-full shadow-2xl space-y-5">
             {/* Modal Header */}
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
               <h2 className="text-base font-bold text-slate-900 dark:text-white">
@@ -683,7 +678,7 @@ export default function LeaveList() {
                 <select
                   value={selectedEmployeeName}
                   onChange={(e) => setSelectedEmployeeName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
                 >
                   <option value="">Select Employee</option>
                   {employeesList.map((emp) => (
@@ -702,7 +697,7 @@ export default function LeaveList() {
                 <select
                   value={leaveType}
                   onChange={(e) => setLeaveType(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all cursor-pointer"
                 >
                   {leaveTypesList.map((t) => (
                     <option key={t} value={t}>
@@ -723,7 +718,7 @@ export default function LeaveList() {
                     value={fromDate}
                     onChange={(e) => setFromDate(e.target.value)}
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
                   />
                   <Calendar className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
@@ -740,7 +735,7 @@ export default function LeaveList() {
                     value={toDate}
                     onChange={(e) => setToDate(e.target.value)}
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all"
                   />
                   <Calendar className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
@@ -756,7 +751,7 @@ export default function LeaveList() {
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Enter reason for leave..."
                   rows={3}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] text-xs transition-all resize-none"
                 />
               </div>
 
@@ -786,7 +781,7 @@ export default function LeaveList() {
           ========================================================================= */}
       {viewDetailsItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-md w-full shadow-2xl space-y-4">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
               <h2 className="text-base font-bold text-slate-900 dark:text-white">
                 Leave Details ({viewDetailsItem.code})
@@ -816,7 +811,7 @@ export default function LeaveList() {
               </div>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900/50 p-3.5 rounded-xl space-y-2 text-xs">
+            <div className="bg-slate-50 dark:bg-slate-900/50 p-3.5 rounded-md space-y-2 text-xs">
               <div className="flex justify-between">
                 <span className="text-slate-500">Period:</span>
                 <span className="font-semibold text-slate-800 dark:text-slate-200">
@@ -826,13 +821,12 @@ export default function LeaveList() {
               <div className="flex justify-between">
                 <span className="text-slate-500">Status:</span>
                 <span
-                  className={`font-semibold ${
-                    viewDetailsItem.status === "Approved"
-                      ? "text-emerald-600"
-                      : viewDetailsItem.status === "Pending"
+                  className={`font-semibold ${viewDetailsItem.status === "Approved"
+                    ? "text-emerald-600"
+                    : viewDetailsItem.status === "Pending"
                       ? "text-amber-600"
                       : "text-rose-600"
-                  }`}
+                    }`}
                 >
                   {viewDetailsItem.status}
                 </span>
@@ -865,7 +859,7 @@ export default function LeaveList() {
           ========================================================================= */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-sm w-full shadow-2xl space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-sm w-full shadow-2xl space-y-4">
             <div className="w-10 h-10 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-600 flex items-center justify-center mx-auto">
               <AlertCircle className="w-5 h-5" />
             </div>

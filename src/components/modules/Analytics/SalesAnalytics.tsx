@@ -145,22 +145,20 @@ export default function SalesAnalytics() {
             <button
               type="button"
               onClick={() => setCurrencySymbol("$")}
-              className={`px-2.5 py-1 rounded-md font-bold text-xs transition cursor-pointer ${
-                currencySymbol === "$"
-                  ? "bg-[#0c6760] text-white shadow-2xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`px-2.5 py-1 rounded-md font-bold text-xs transition cursor-pointer ${currencySymbol === "$"
+                ? "bg-[#0c6760] text-white shadow-2xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
             >
               USD ($)
             </button>
             <button
               type="button"
               onClick={() => setCurrencySymbol("৳")}
-              className={`px-2.5 py-1 rounded-md font-bold text-xs transition cursor-pointer ${
-                currencySymbol === "৳"
-                  ? "bg-[#0c6760] text-white shadow-2xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`px-2.5 py-1 rounded-md font-bold text-xs transition cursor-pointer ${currencySymbol === "৳"
+                ? "bg-[#0c6760] text-white shadow-2xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
             >
               BDT (৳)
             </button>
@@ -170,11 +168,10 @@ export default function SalesAnalytics() {
           <button
             type="button"
             onClick={() => setShowCharts(!showCharts)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition cursor-pointer ${
-              showCharts
-                ? "bg-teal-50 border-teal-300 text-teal-800 dark:bg-teal-950/60 dark:border-teal-700 dark:text-teal-300"
-                : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-            }`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition cursor-pointer ${showCharts
+              ? "bg-teal-50 border-teal-300 text-teal-800 dark:bg-teal-950/60 dark:border-teal-700 dark:text-teal-300"
+              : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-[#181b24] dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              }`}
           >
             <BarChart3 className="w-3.5 h-3.5" />
             <span>{showCharts ? "Hide Visual Charts" : "Visual Charts"}</span>
@@ -200,13 +197,12 @@ export default function SalesAnalytics() {
               <Download className="w-3.5 h-3.5" />
               <span>Export</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transform transition-transform ${
-                  isExportOpen ? "rotate-180" : ""
-                }`}
+                className={`w-3.5 h-3.5 transform transition-transform ${isExportOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
             {isExportOpen && (
-              <div className="absolute right-0 mt-1 w-40 bg-white dark:bg-[#181b24] rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 py-1.5 z-30 animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute right-0 mt-1 w-40 bg-white dark:bg-[#181b24] rounded-md shadow-xl border border-slate-200 dark:border-slate-800 py-1.5 z-30 animate-in fade-in zoom-in-95 duration-100">
                 <button
                   type="button"
                   onClick={handleExportCSV}
@@ -233,12 +229,12 @@ export default function SalesAnalytics() {
       {/* ===================== 2. FOUR KPI SUMMARY CARDS (Exact Layout of Reference Image) ===================== */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Total Sales */}
-        <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between hover:shadow-xs transition">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between hover:shadow-xs transition">
           <div className="flex items-start justify-between">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Total Sales
             </span>
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+            <div className="w-9 h-9 rounded-md bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
               <TrendingUp className="w-5 h-5" />
             </div>
           </div>
@@ -256,12 +252,12 @@ export default function SalesAnalytics() {
         </div>
 
         {/* Card 2: Total Orders */}
-        <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between hover:shadow-xs transition">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between hover:shadow-xs transition">
           <div className="flex items-start justify-between">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Total Orders
             </span>
-            <div className="w-9 h-9 rounded-xl bg-sky-50 dark:bg-sky-950/50 flex items-center justify-center text-sky-600 dark:text-sky-400">
+            <div className="w-9 h-9 rounded-md bg-sky-50 dark:bg-sky-950/50 flex items-center justify-center text-sky-600 dark:text-sky-400">
               <ShoppingCart className="w-5 h-5" />
             </div>
           </div>
@@ -279,12 +275,12 @@ export default function SalesAnalytics() {
         </div>
 
         {/* Card 3: Avg Order Value */}
-        <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between hover:shadow-xs transition">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between hover:shadow-xs transition">
           <div className="flex items-start justify-between">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Avg Order Value
             </span>
-            <div className="w-9 h-9 rounded-xl bg-amber-50 dark:bg-amber-950/50 flex items-center justify-center text-amber-600 dark:text-amber-400">
+            <div className="w-9 h-9 rounded-md bg-amber-50 dark:bg-amber-950/50 flex items-center justify-center text-amber-600 dark:text-amber-400">
               <Coins className="w-5 h-5" />
             </div>
           </div>
@@ -302,12 +298,12 @@ export default function SalesAnalytics() {
         </div>
 
         {/* Card 4: Conversion Rate */}
-        <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between hover:shadow-xs transition">
+        <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between hover:shadow-xs transition">
           <div className="flex items-start justify-between">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Conversion Rate
             </span>
-            <div className="w-9 h-9 rounded-xl bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center text-purple-600 dark:text-purple-400">
+            <div className="w-9 h-9 rounded-md bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center text-purple-600 dark:text-purple-400">
               <Activity className="w-5 h-5" />
             </div>
           </div>
@@ -329,7 +325,7 @@ export default function SalesAnalytics() {
       {showCharts && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 animate-in fade-in duration-200">
           {/* Monthly Trend Area Chart */}
-          <div className="lg:col-span-8 bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs">
+          <div className="lg:col-span-8 bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -393,7 +389,7 @@ export default function SalesAnalytics() {
           </div>
 
           {/* Category Distribution Donut Chart */}
-          <div className="lg:col-span-4 bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between">
+          <div className="lg:col-span-4 bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-2xs flex flex-col justify-between">
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-1">
                 <PieIcon className="w-4 h-4 text-[#0c6760]" />
@@ -441,7 +437,7 @@ export default function SalesAnalytics() {
       )}
 
       {/* ===================== 3. TOP SELLING PRODUCTS CARD (Exact Reference Layout) ===================== */}
-      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xs overflow-hidden">
         {/* Card Header & Controls */}
         <div className="p-5 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
@@ -464,7 +460,7 @@ export default function SalesAnalytics() {
                   setCurrentPage(1);
                 }}
                 placeholder="Search clothing..."
-                className="w-full bg-slate-50 dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl pl-3 pr-8 py-1.5 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-1 focus:ring-[#0c6760]"
+                className="w-full bg-slate-50 dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md pl-3 pr-8 py-1.5 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-1 focus:ring-[#0c6760]"
               />
               <Search className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
@@ -477,7 +473,7 @@ export default function SalesAnalytics() {
                   setCategoryFilter(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="bg-slate-50 dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-hidden cursor-pointer"
+                className="bg-slate-50 dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-1.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-hidden cursor-pointer"
               >
                 <option value="all">All Categories</option>
                 {categories.map((c) => (
@@ -584,11 +580,10 @@ export default function SalesAnalytics() {
                       {/* Growth (Matching badge style in reference image) */}
                       <td className="py-4 px-6 text-right">
                         <span
-                          className={`inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
-                            isPositive
-                              ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/80 dark:border-emerald-800/50"
-                              : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/80 dark:border-rose-800/50"
-                          }`}
+                          className={`inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold ${isPositive
+                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/80 dark:border-emerald-800/50"
+                            : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/80 dark:border-rose-800/50"
+                            }`}
                         >
                           {isPositive ? (
                             <ArrowUpRight className="w-3 h-3 stroke-[2.5]" />
@@ -632,11 +627,10 @@ export default function SalesAnalytics() {
                 key={pageNum}
                 type="button"
                 onClick={() => setCurrentPage(pageNum)}
-                className={`w-7 h-7 flex items-center justify-center rounded-md font-semibold text-xs transition cursor-pointer ${
-                  currentPage === pageNum
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                className={`w-7 h-7 flex items-center justify-center rounded-md font-semibold text-xs transition cursor-pointer ${currentPage === pageNum
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
               >
                 {pageNum}
               </button>

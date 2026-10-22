@@ -77,13 +77,13 @@ const ViewProductDetails = () => {
         {/* ================= LEFT SIDE: IMAGE GALLERY ================= */}
         <div className="w-full lg:w-1/3 flex flex-col gap-4 sticky top-6">
           {/* Main Large Image */}
-          <Card className="overflow-hidden border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl">
+          <Card className="overflow-hidden border-gray-100 dark:border-zinc-800 shadow-sm rounded-md">
             <div className="aspect-square bg-gray-50 dark:bg-zinc-900 flex items-center justify-center p-4">
               {mainImage ? (
                 <img
                   src={mainImage}
                   alt={product.name}
-                  className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal rounded-xl"
+                  className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal rounded-md"
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center text-gray-400">
@@ -132,7 +132,7 @@ const ViewProductDetails = () => {
 
           {/* Highlights / Bullet Points */}
           {product.bulletPoints && product.bulletPoints.length > 0 && (
-            <div className="bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl p-5 border border-blue-100 dark:border-blue-900/30">
+            <div className="bg-blue-50/50 dark:bg-blue-900/10 rounded-md p-5 border border-blue-100 dark:border-blue-900/30">
               <h3 className="text-sm font-bold text-blue-900 dark:text-blue-300 uppercase tracking-wider mb-3 flex items-center gap-2">
                 <CheckCircle2 size={16} /> Key Highlights
               </h3>
@@ -149,7 +149,7 @@ const ViewProductDetails = () => {
 
           {/* Variations (Colors/Sizes) */}
           {product.variations && product.variations.length > 0 && (
-            <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl">
+            <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md">
               <CardHeader className="pb-3 border-b border-gray-100 dark:border-zinc-800/50">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Package className="w-5 h-5 text-gray-400" /> Inventory & Variations
@@ -172,7 +172,7 @@ const ViewProductDetails = () => {
           )}
 
           {/* Description Card (HTML Content) */}
-          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl">
+          <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md">
             <CardHeader className="pb-3 border-b border-gray-100 dark:border-zinc-800/50">
               <CardTitle className="text-lg">Product Description</CardTitle>
             </CardHeader>
@@ -191,7 +191,7 @@ const ViewProductDetails = () => {
 
           {/* Specifications Table */}
           {product.specifications && product.specifications.length > 0 && (
-            <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl">
+            <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md">
               <CardHeader className="pb-3 border-b border-gray-100 dark:border-zinc-800/50">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <List className="w-5 h-5 text-gray-400" /> Technical Specifications
@@ -212,14 +212,14 @@ const ViewProductDetails = () => {
 
           {/* Feature Images Strip */}
           {product.featureImages && product.featureImages.length > 0 && (
-            <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-2xl">
+            <Card className="border-gray-100 dark:border-zinc-800 shadow-sm rounded-md">
               <CardHeader className="pb-3 border-b border-gray-100 dark:border-zinc-800/50">
                 <CardTitle className="text-lg">Feature Banners</CardTitle>
               </CardHeader>
               <CardContent className="pt-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {product.featureImages.map((img, idx) => (
-                    <img key={idx} src={img} alt={`Feature ${idx}`} className="w-full rounded-xl border border-gray-200 dark:border-zinc-800" />
+                    <img key={idx} src={img} alt={`Feature ${idx}`} className="w-full rounded-md border border-gray-200 dark:border-zinc-800" />
                   ))}
                 </div>
               </CardContent>

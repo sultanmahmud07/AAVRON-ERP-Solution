@@ -22,7 +22,7 @@ const ParcelDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto md:p-6">
-      <Card className="shadow-xl rounded-2xl border">
+      <Card className="shadow-xl rounded-md border">
         <CardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <CardTitle className="text-2xl font-bold">Parcel Details</CardTitle>
           <div className="flex items-center gap-2">
@@ -31,8 +31,8 @@ const ParcelDetails = () => {
                 parcel.status === "DELIVERED"
                   ? "default"
                   : parcel.status === "REQUESTED"
-                  ? "secondary"
-                  : "outline"
+                    ? "secondary"
+                    : "outline"
               }
             >
               {parcel.status}

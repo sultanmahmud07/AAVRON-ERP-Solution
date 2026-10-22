@@ -49,7 +49,7 @@ export default function AllAdminList() {
     searchTerm,
     sort: sortOrder,
   });
-  
+
   const [removeUser] = useRemoveUserMutation();
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,8 +80,8 @@ export default function AllAdminList() {
   const totalPage = data?.meta?.totalPage || 1;
 
   return (
-    <div className="w-full bg-white min-h-full dark:bg-zinc-950 p-5 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800/50">
-      
+    <div className="w-full bg-white min-h-full dark:bg-zinc-950 p-5 md:p-8 rounded-md shadow-sm border border-gray-100 dark:border-zinc-800/50">
+
       {/* Header & Controls */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div className="space-y-1">
@@ -99,7 +99,7 @@ export default function AllAdminList() {
           <div className="relative w-full sm:w-[250px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
-              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl"
+              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-11 rounded-md"
               type="text"
               placeholder="Search by name or email..."
               value={searchTerm}
@@ -109,7 +109,7 @@ export default function AllAdminList() {
 
           {/* Sort Dropdown */}
           <Select onValueChange={handleSortChange} value={sortOrder}>
-            <SelectTrigger className="w-full py-5 sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl">
+            <SelectTrigger className="w-full py-5 sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-11 rounded-md">
               <SelectValue placeholder="Sort order" />
             </SelectTrigger>
             <SelectContent>
@@ -123,7 +123,7 @@ export default function AllAdminList() {
 
           {/* Add Admin Button */}
           <Link to="/admin/invite" className="w-full sm:w-auto">
-            <Button className="w-full bg-primary hover:bg-secondary cursor-pointer text-white h-11 rounded-xl px-6">
+            <Button className="w-full bg-primary hover:bg-secondary cursor-pointer text-white h-11 rounded-md px-6">
               <Plus className="w-4 h-4 mr-2" />
               Add Admin
             </Button>
@@ -135,7 +135,7 @@ export default function AllAdminList() {
       {isLoading ? (
         <TableSkeleton />
       ) : (
-        <div className="rounded-xl border border-gray-200 dark:border-zinc-800 overflow-hidden">
+        <div className="rounded-md border border-gray-200 dark:border-zinc-800 overflow-hidden">
           <Table>
             <TableHeader className="bg-gray-50/50 dark:bg-zinc-900/50">
               <TableRow>
@@ -157,41 +157,41 @@ export default function AllAdminList() {
               ) : (
                 data?.data.map((user: IUser) => (
                   <TableRow key={user._id} className="hover:bg-gray-50/50 dark:hover:bg-zinc-900/50 transition-colors">
-                    
+
                     {/* Name */}
                     <TableCell className="font-bold text-gray-900 dark:text-white capitalize">
                       {user.name}
                     </TableCell>
-                    
+
                     {/* Email */}
                     <TableCell className="text-gray-500 dark:text-gray-400 font-medium">
                       {user.email}
                     </TableCell>
-                    
+
                     {/* Role Badge */}
                     <TableCell>
                       <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900">
                         {user.role}
                       </span>
                     </TableCell>
-                    
+
                     {/* Date */}
                     <TableCell className="text-gray-500 dark:text-gray-400 text-sm">
                       {formatDate(user.createdAt)}
                     </TableCell>
-                    
+
                     {/* Status Badge */}
                     <TableCell>
                       <span className={cn(
                         "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold",
-                        user.isActive === "ACTIVE" 
+                        user.isActive === "ACTIVE"
                           ? "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
                           : "bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-400"
                       )}>
                         {user.isActive}
                       </span>
                     </TableCell>
-                    
+
                     {/* Actions */}
                     <TableCell className="flex items-center justify-end gap-1 mt-0.5">
                       <Link className="cursor-pointer" to={`/admin/user/${user._id}`}>
@@ -199,13 +199,13 @@ export default function AllAdminList() {
                           <EyeIcon className="w-4 h-4" />
                         </Button>
                       </Link>
-                      
+
                       <DeleteConfirmation onConfirm={() => handleRemoveUser(user._id)}>
                         <Button disabled={user.role === "SUPER_ADMIN"} variant="ghost" size="icon" className="h-8 w-8 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20">
                           <Trash2 className="w-4 h-4" />
                         </Button>
                       </DeleteConfirmation>
-                      
+
                       <UserActionMenu user={user} />
                     </TableCell>
 
@@ -238,13 +238,13 @@ export default function AllAdminList() {
                     key={page}
                     onClick={() => setCurrentPage(page)}
                   >
-                    <PaginationLink 
+                    <PaginationLink
                       className={cn(
                         "cursor-pointer",
-                        currentPage === page 
+                        currentPage === page
                           ? "bg-[#1BAE70] text-white hover:bg-[#16965f] hover:text-white"
                           : "hover:bg-gray-100 dark:hover:bg-zinc-800"
-                      )} 
+                      )}
                       isActive={currentPage === page}
                     >
                       {page}

@@ -150,7 +150,7 @@
 //     <div className="md:h-screen flex justify-center items-center">
 //       <div className="w-full md:w-2/5 mx-auto">
 //         {!token ? (
-//             <div className="bg-base-100 shadow-2xl p-5 md:p-10 rounded-xl">
+//             <div className="bg-base-100 shadow-2xl p-5 md:p-10 rounded-md">
 //               <div>
 //                     <h3 className="text-4xl text-center text-[#202020] md:my-3 font-bold capitalize">
 //                       Forgot Password
@@ -221,7 +221,7 @@
 //               </div>
 //             </div>
 //           ) : (
-//             <div className="bg-base-100 shadow-2xl p-5 md:p-10 rounded-xl">
+//             <div className="bg-base-100 shadow-2xl p-5 md:p-10 rounded-md">
 //                <div>
 //                     <h3 className="text-4xl text-center text-[#202020] md:my-3 font-bold capitalize">
 //                       Forgot Password

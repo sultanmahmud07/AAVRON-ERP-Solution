@@ -685,7 +685,7 @@ export default function TaxList() {
       {/* ============================================================== */}
       {isAddModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] w-full max-w-md rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden animate-in zoom-in-95 duration-200">
+          <div className="bg-white dark:bg-[#181b24] w-full max-w-md rounded-md shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800">
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
                 Add Tax
@@ -845,7 +845,7 @@ export default function TaxList() {
       {/* ============================================================== */}
       {isEditModalOpen && selectedTax && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] w-full max-w-md rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div className="bg-white dark:bg-[#181b24] w-full max-w-md rounded-md shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800">
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
                 Edit Tax - {selectedTax.taxId}
@@ -973,7 +973,7 @@ export default function TaxList() {
       {/* ============================================================== */}
       {isViewModalOpen && selectedTax && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] w-full max-w-md rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div className="bg-white dark:bg-[#181b24] w-full max-w-md rounded-md shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800">
               <div className="flex items-center gap-2">
                 <Percent className="w-5 h-5 text-[#0c6760]" />
@@ -991,7 +991,7 @@ export default function TaxList() {
             </div>
 
             <div className="p-6 space-y-4">
-              <div className="bg-gray-50 dark:bg-[#12141c] p-4 rounded-xl border border-gray-200 dark:border-gray-800 flex items-center justify-between">
+              <div className="bg-gray-50 dark:bg-[#12141c] p-4 rounded-md border border-gray-200 dark:border-gray-800 flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-500">Tax Name</p>
                   <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
@@ -1054,7 +1054,7 @@ export default function TaxList() {
       {/* ============================================================== */}
       {isDeleteModalOpen && selectedTax && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] w-full max-w-sm rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 text-center">
+          <div className="bg-white dark:bg-[#181b24] w-full max-w-sm rounded-md shadow-2xl border border-gray-200 dark:border-gray-700 p-6 text-center">
             <div className="w-12 h-12 rounded-full bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400 mx-auto flex items-center justify-center mb-4">
               <Trash2 className="w-6 h-6" />
             </div>

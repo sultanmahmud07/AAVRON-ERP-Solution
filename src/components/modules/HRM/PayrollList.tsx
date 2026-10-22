@@ -189,7 +189,7 @@ export default function PayrollList() {
             {isExportOpen && (
               <>
                 <div className="fixed inset-0 z-20" onClick={() => setIsExportOpen(false)} />
-                <div className="absolute right-0 mt-1.5 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-30 text-xs">
+                <div className="absolute right-0 mt-1.5 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1.5 z-30 text-xs">
                   <button
                     onClick={handleExportPDF}
                     className="w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-200 cursor-pointer"
@@ -221,7 +221,7 @@ export default function PayrollList() {
       {/* =========================================================================
           MAIN CONTAINER CARD (Matching Image 3)
           ========================================================================= */}
-      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md shadow-xs overflow-hidden">
         {/* Top Filter Toolbar */}
         <div className="p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800/80">
           {/* Left: Search input + Date Range Picker */}
@@ -233,7 +233,7 @@ export default function PayrollList() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search"
-                className="w-full pl-3 pr-8 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] transition-all"
+                className="w-full pl-3 pr-8 py-2 text-xs rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] transition-all"
               />
               <Search className="w-3.5 h-3.5 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
@@ -242,7 +242,7 @@ export default function PayrollList() {
             <button
               type="button"
               onClick={() => toast.info(`Current Date Range: ${dateRangeText}`)}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+              className="flex items-center gap-2 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
             >
               <Calendar className="w-3.5 h-3.5 text-slate-400" />
               <span>{dateRangeText}</span>
@@ -256,7 +256,7 @@ export default function PayrollList() {
               <button
                 type="button"
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
               >
                 <Filter className="w-3.5 h-3.5 text-slate-500" />
                 <span>Filter</span>
@@ -266,7 +266,7 @@ export default function PayrollList() {
               {isFilterOpen && (
                 <>
                   <div className="fixed inset-0 z-20" onClick={() => setIsFilterOpen(false)} />
-                  <div className="absolute right-0 mt-1.5 w-52 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl p-3 z-30 text-xs space-y-3">
+                  <div className="absolute right-0 mt-1.5 w-52 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl p-3 z-30 text-xs space-y-3">
                     <div>
                       <label className="block text-[11px] font-bold text-slate-400 uppercase mb-1">
                         Department
@@ -312,7 +312,7 @@ export default function PayrollList() {
               <button
                 type="button"
                 onClick={() => setIsSortOpen(!isSortOpen)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
               >
                 <ArrowUpDown className="w-3.5 h-3.5 text-slate-500" />
                 <span>Sort By</span>
@@ -322,15 +322,14 @@ export default function PayrollList() {
               {isSortOpen && (
                 <>
                   <div className="fixed inset-0 z-20" onClick={() => setIsSortOpen(false)} />
-                  <div className="absolute right-0 mt-1.5 w-48 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-30 text-xs">
+                  <div className="absolute right-0 mt-1.5 w-48 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1.5 z-30 text-xs">
                     <button
                       onClick={() => {
                         setSortBy("default");
                         setIsSortOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                        sortBy === "default" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                      }`}
+                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "default" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                        }`}
                     >
                       Default
                     </button>
@@ -339,9 +338,8 @@ export default function PayrollList() {
                         setSortBy("name-asc");
                         setIsSortOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                        sortBy === "name-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                      }`}
+                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "name-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                        }`}
                     >
                       Employee Name (A-Z)
                     </button>
@@ -350,9 +348,8 @@ export default function PayrollList() {
                         setSortBy("net-desc");
                         setIsSortOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                        sortBy === "net-desc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                      }`}
+                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "net-desc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                        }`}
                     >
                       Net Pay (High to Low)
                     </button>
@@ -361,9 +358,8 @@ export default function PayrollList() {
                         setSortBy("net-asc");
                         setIsSortOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${
-                        sortBy === "net-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
-                      }`}
+                      className={`w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 cursor-pointer ${sortBy === "net-asc" ? "font-bold text-[#0c6760] dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                        }`}
                     >
                       Net Pay (Low to High)
                     </button>
@@ -379,7 +375,7 @@ export default function PayrollList() {
                 loadData();
                 toast.success("Payroll refreshed");
               }}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+              className="p-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
               title="Refresh"
             >
               <RotateCw className="w-3.5 h-3.5" />
@@ -467,11 +463,10 @@ export default function PayrollList() {
                     {/* Status (Paid: emerald badge, Pending: amber badge) */}
                     <td className="py-4 px-4">
                       <span
-                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${
-                          item.status === "Paid"
-                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
-                            : "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/60"
-                        }`}
+                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${item.status === "Paid"
+                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
+                          : "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/60"
+                          }`}
                       >
                         {item.status}
                       </span>
@@ -494,7 +489,7 @@ export default function PayrollList() {
                               className="fixed inset-0 z-20"
                               onClick={() => setActiveMenuId(null)}
                             />
-                            <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1 z-30 text-xs">
+                            <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1 z-30 text-xs">
                               <button
                                 type="button"
                                 onClick={() => {
@@ -554,7 +549,7 @@ export default function PayrollList() {
           ========================================================================= */}
       {viewPayslipItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-5">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-lg w-full shadow-2xl space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div>
                 <h2 className="text-base font-bold text-slate-900 dark:text-white">
@@ -574,7 +569,7 @@ export default function PayrollList() {
             </div>
 
             {/* Employee Banner */}
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
+            <div className="flex items-center gap-3 p-3.5 rounded-md bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
               <img
                 src={viewPayslipItem.employeePhoto}
                 alt={viewPayslipItem.employeeName}
@@ -590,11 +585,10 @@ export default function PayrollList() {
               </div>
               <div>
                 <span
-                  className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${
-                    viewPayslipItem.status === "Paid"
-                      ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
-                      : "bg-amber-50 text-amber-600 border border-amber-200"
-                  }`}
+                  className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${viewPayslipItem.status === "Paid"
+                    ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
+                    : "bg-amber-50 text-amber-600 border border-amber-200"
+                    }`}
                 >
                   {viewPayslipItem.status}
                 </span>
@@ -604,7 +598,7 @@ export default function PayrollList() {
             {/* Earnings & Deductions Breakdown */}
             <div className="grid grid-cols-2 gap-4 text-xs">
               {/* Earnings */}
-              <div className="bg-slate-50/60 dark:bg-slate-900/30 p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/80 space-y-2">
+              <div className="bg-slate-50/60 dark:bg-slate-900/30 p-3.5 rounded-md border border-slate-100 dark:border-slate-800/80 space-y-2">
                 <h4 className="font-bold text-slate-800 dark:text-slate-200 pb-1 border-b border-slate-200/60 dark:border-slate-800">
                   Earnings
                 </h4>
@@ -633,7 +627,7 @@ export default function PayrollList() {
               </div>
 
               {/* Deductions */}
-              <div className="bg-slate-50/60 dark:bg-slate-900/30 p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/80 space-y-2">
+              <div className="bg-slate-50/60 dark:bg-slate-900/30 p-3.5 rounded-md border border-slate-100 dark:border-slate-800/80 space-y-2">
                 <h4 className="font-bold text-slate-800 dark:text-slate-200 pb-1 border-b border-slate-200/60 dark:border-slate-800">
                   Deductions
                 </h4>
@@ -655,7 +649,7 @@ export default function PayrollList() {
             </div>
 
             {/* Net Salary Highlight */}
-            <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-800/60 flex items-center justify-between">
+            <div className="p-4 rounded-md bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-800/60 flex items-center justify-between">
               <div>
                 <span className="text-xs text-emerald-800 dark:text-emerald-300 font-semibold block">
                   Net Salary Payable
@@ -692,7 +686,7 @@ export default function PayrollList() {
           ========================================================================= */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-sm w-full shadow-2xl space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-sm w-full shadow-2xl space-y-4">
             <div className="w-10 h-10 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-600 flex items-center justify-center mx-auto">
               <AlertCircle className="w-5 h-5" />
             </div>

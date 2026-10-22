@@ -303,7 +303,7 @@ export default function UserManagement() {
       </div>
 
       {/* Main Table Container Card (Matching Image 2) */}
-      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
         {/* Filter Toolbar matching Image 2 */}
         <div className="p-3.5 sm:p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
           {/* Left: Search input & Date Range */}
@@ -347,7 +347,7 @@ export default function UserManagement() {
               </button>
 
               {isFilterOpen && (
-                <div className="absolute right-0 mt-1 w-48 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-2.5 z-20 space-y-2 text-xs">
+                <div className="absolute right-0 mt-1 w-48 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg p-2.5 z-20 space-y-2 text-xs">
                   <div>
                     <label className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
                       Status
@@ -402,7 +402,7 @@ export default function UserManagement() {
               </button>
 
               {isSortOpen && (
-                <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-1.5 z-20 text-xs space-y-1">
+                <div className="absolute right-0 mt-1 w-36 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg p-1.5 z-20 text-xs space-y-1">
                   <button
                     onClick={() => {
                       setSortBy("date");
@@ -548,11 +548,10 @@ export default function UserManagement() {
                       {/* Status */}
                       <td className="py-3 px-4">
                         <span
-                          className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${
-                            item.status === "Active"
-                              ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
-                              : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60"
-                          }`}
+                          className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${item.status === "Active"
+                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
+                            : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60"
+                            }`}
                         >
                           {item.status}
                         </span>
@@ -629,11 +628,10 @@ export default function UserManagement() {
               <button
                 key={pg}
                 onClick={() => setCurrentPage(pg)}
-                className={`w-7 h-7 rounded-md text-xs font-bold transition-all ${
-                  currentPage === pg
-                    ? "bg-[#0c6760] text-white shadow-xs"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                className={`w-7 h-7 rounded-md text-xs font-bold transition-all ${currentPage === pg
+                  ? "bg-[#0c6760] text-white shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
               >
                 {pg}
               </button>
@@ -661,7 +659,7 @@ export default function UserManagement() {
       {/* ======================= MODAL: ADD / EDIT USER (Matching Image 3 & 4) ======================= */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-lg shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
             {/* Modal Header */}
             <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -683,7 +681,7 @@ export default function UserManagement() {
                   Profile Image <span className="text-rose-500">*</span>
                 </label>
                 <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-400 overflow-hidden bg-slate-50 dark:bg-[#12141c]">
+                  <div className="w-14 h-14 rounded-md border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-400 overflow-hidden bg-slate-50 dark:bg-[#12141c]">
                     {previewImage ? (
                       <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
                     ) : (
@@ -855,7 +853,7 @@ export default function UserManagement() {
       {/* ======================= MODAL: DELETE CONFIRMATION ======================= */}
       {deletingUser && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-sm shadow-2xl p-5 text-center space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-sm shadow-2xl p-5 text-center space-y-4">
             <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-500 flex items-center justify-center mx-auto">
               <Trash2 className="w-6 h-6" />
             </div>

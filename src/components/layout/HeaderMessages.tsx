@@ -39,7 +39,7 @@ export const HeaderMessages: React.FC = () => {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181a24] text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center justify-center transition-all shadow-xs hover:border-slate-300 dark:hover:border-slate-700 shrink-0"
+        className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181a24] text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center justify-center transition-all shadow-xs hover:border-slate-300 dark:hover:border-slate-700 shrink-0"
         title="Messages"
         aria-label="Messages"
       >
@@ -56,7 +56,7 @@ export const HeaderMessages: React.FC = () => {
       )}
 
       {isOpen && (
-        <div className="fixed sm:absolute right-3 sm:right-0 top-[60px] sm:top-full mt-2 w-[calc(100vw-24px)] sm:w-96 max-w-sm rounded-2xl bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 p-3 z-50 animate-in fade-in zoom-in-95">
+        <div className="fixed sm:absolute right-3 sm:right-0 top-[60px] sm:top-full mt-2 w-[calc(100vw-24px)] sm:w-96 max-w-sm rounded-md bg-white dark:bg-[#181a24] shadow-2xl border border-slate-200/80 dark:border-slate-800 p-3 z-50 animate-in fade-in zoom-in-95">
           <div className="flex items-center justify-between pb-2.5 px-2 border-b border-slate-100 dark:border-slate-800">
             <div>
               <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Direct Messages</h4>
@@ -73,7 +73,7 @@ export const HeaderMessages: React.FC = () => {
                   toast.info(`Opening chat with ${m.sender}`);
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-2.5 sm:gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="flex items-center gap-2.5 sm:gap-3 p-2.5 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
               >
                 <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden shrink-0">
                   <img src={m.avatar} alt={m.sender} className="w-full h-full object-cover" />

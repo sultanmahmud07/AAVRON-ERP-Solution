@@ -395,26 +395,24 @@ export default function AddPurchase() {
 
         <div className="flex flex-wrap items-center gap-2.5">
           {/* Currency Toggle */}
-          <div className="flex items-center bg-slate-100 dark:bg-[#181b24] p-1 rounded-xl border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+          <div className="flex items-center bg-slate-100 dark:bg-[#181b24] p-1 rounded-md border border-slate-200 dark:border-slate-700/80 shadow-2xs">
             <button
               type="button"
               onClick={() => setCurrency("৳")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                currency === "৳"
-                  ? "bg-indigo-600 text-white shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${currency === "৳"
+                ? "bg-indigo-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
             >
               ৳ BDT
             </button>
             <button
               type="button"
               onClick={() => setCurrency("$")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                currency === "$"
-                  ? "bg-indigo-600 text-white shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${currency === "$"
+                ? "bg-indigo-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
             >
               $ USD
             </button>
@@ -424,7 +422,7 @@ export default function AddPurchase() {
           <button
             type="button"
             onClick={handleResetForm}
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700/80 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 shadow-2xs transition"
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700/80 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/80 shadow-2xs transition"
             title="Reset form"
           >
             <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
@@ -434,7 +432,7 @@ export default function AddPurchase() {
           {/* Back to Purchases Button */}
           <Link
             to="/purchase/manage"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold shadow-2xs transition"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-md border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold shadow-2xs transition"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Purchases List</span>
@@ -444,7 +442,7 @@ export default function AddPurchase() {
           <button
             type="button"
             onClick={handleSubmitPurchase}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md hover:shadow-indigo-500/20 transition active:scale-98"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md hover:shadow-indigo-500/20 transition active:scale-98"
           >
             <CheckCircle2 className="w-3.5 h-3.5" />
             <span>Save Purchase</span>
@@ -455,10 +453,10 @@ export default function AddPurchase() {
       {/* ===================== MAIN FORM ===================== */}
       <form onSubmit={handleSubmitPurchase} className="space-y-6">
         {/* ===================== SECTION 1: SUPPLIER & ORDER DETAILS ===================== */}
-        <div className="bg-white dark:bg-[#141824] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+        <div className="bg-white dark:bg-[#141824] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 sm:p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800/80">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold">
+              <div className="w-8 h-8 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold">
                 <Building2 className="w-4 h-4" />
               </div>
               <div>
@@ -490,7 +488,7 @@ export default function AddPurchase() {
                   value={selectedSupplierId}
                   onChange={(e) => setSelectedSupplierId(e.target.value)}
                   required
-                  className="w-full px-3 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition cursor-pointer"
+                  className="w-full px-3 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition cursor-pointer"
                 >
                   <option value="">Select Supplier</option>
                   {suppliers.map((sup) => (
@@ -504,7 +502,7 @@ export default function AddPurchase() {
                 <button
                   type="button"
                   onClick={() => setIsAddSupplierModalOpen(true)}
-                  className="w-10 h-10 shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl flex items-center justify-center transition-all shadow-xs hover:shadow-indigo-500/30"
+                  className="w-10 h-10 shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md flex items-center justify-center transition-all shadow-xs hover:shadow-indigo-500/30"
                   title="Quick Add New Supplier"
                 >
                   <Plus className="w-4 h-4" />
@@ -524,7 +522,7 @@ export default function AddPurchase() {
                   onChange={(e) => setPurchaseDate(e.target.value)}
                   placeholder="MM/DD/YYYY"
                   required
-                  className="w-full pl-3.5 pr-9 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition"
+                  className="w-full pl-3.5 pr-9 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition"
                 />
                 <Calendar className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
               </div>
@@ -542,7 +540,7 @@ export default function AddPurchase() {
                   onChange={(e) => setPurchaseName(e.target.value)}
                   placeholder="e.g. Air Fryer 1500W Batch"
                   required
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition"
                 />
               </div>
             </div>
@@ -558,7 +556,7 @@ export default function AddPurchase() {
                   value={challanNo}
                   onChange={(e) => setChallanNo(e.target.value)}
                   placeholder="e.g. CH-2026-904"
-                  className="w-full pl-3.5 pr-8 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition"
+                  className="w-full pl-3.5 pr-8 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition"
                 />
                 <Hash className="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
               </div>
@@ -567,11 +565,11 @@ export default function AddPurchase() {
         </div>
 
         {/* ===================== SECTION 2: DYNAMIC PRODUCT ITEMS TABLE ===================== */}
-        <div className="bg-white dark:bg-[#141824] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-xs space-y-0">
+        <div className="bg-white dark:bg-[#141824] border border-slate-200/80 dark:border-slate-800/80 rounded-md overflow-hidden shadow-xs space-y-0">
           {/* Card Header */}
           <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+              <div className="w-8 h-8 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
                 <Package className="w-4 h-4" />
               </div>
               <div>
@@ -785,7 +783,7 @@ export default function AddPurchase() {
             <button
               type="button"
               onClick={handleAddItem}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs hover:shadow-emerald-500/20 transition-all active:scale-98"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs hover:shadow-emerald-500/20 transition-all active:scale-98"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Add Another Item</span>
@@ -796,10 +794,10 @@ export default function AddPurchase() {
         {/* ===================== SECTION 3: 2-COLUMN PAYMENT & SUMMARY GRID ===================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* ===================== LEFT: PAYMENT OPTIONS & SETTLEMENT ===================== */}
-          <div className="lg:col-span-7 bg-white dark:bg-[#141824] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+          <div className="lg:col-span-7 bg-white dark:bg-[#141824] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 sm:p-6 shadow-xs space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800/80">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
                   <CreditCard className="w-4 h-4" />
                 </div>
                 <div>
@@ -814,20 +812,19 @@ export default function AddPurchase() {
 
               {/* Status Badge */}
               <span
-                className={`px-3 py-1 rounded-full text-xs font-bold ${
-                  dueAmount <= 0
-                    ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/70 dark:text-emerald-300"
-                    : effectivePaidAmount > 0
+                className={`px-3 py-1 rounded-full text-xs font-bold ${dueAmount <= 0
+                  ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/70 dark:text-emerald-300"
+                  : effectivePaidAmount > 0
                     ? "bg-amber-100 text-amber-700 dark:bg-amber-950/70 dark:text-amber-300"
                     : "bg-rose-100 text-rose-700 dark:bg-rose-950/70 dark:text-rose-300"
-                }`}
+                  }`}
               >
                 {dueAmount <= 0 ? "Paid in Full" : effectivePaidAmount > 0 ? "Partially Paid" : "Unpaid / Due"}
               </span>
             </div>
 
             {/* Multiple Payment Checkbox */}
-            <div className="flex items-center justify-between p-3 bg-slate-50/70 dark:bg-[#0d111d] rounded-xl border border-slate-200/70 dark:border-slate-800">
+            <div className="flex items-center justify-between p-3 bg-slate-50/70 dark:bg-[#0d111d] rounded-md border border-slate-200/70 dark:border-slate-800">
               <label className="flex items-center gap-2.5 cursor-pointer select-none">
                 <input
                   type="checkbox"
@@ -855,7 +852,7 @@ export default function AddPurchase() {
                 <select
                   value={paymentAccount}
                   onChange={(e) => setPaymentAccount(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition cursor-pointer"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition cursor-pointer"
                 >
                   <option value="Cash">Cash in Hand</option>
                   <option value="City Bank Ltd">City Bank Ltd</option>
@@ -875,7 +872,7 @@ export default function AddPurchase() {
                   value={transactionId}
                   onChange={(e) => setTransactionId(e.target.value)}
                   placeholder="e.g. TX-982410"
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium transition"
                 />
               </div>
             </div>
@@ -919,13 +916,13 @@ export default function AddPurchase() {
                   value={amountPaidInput}
                   onChange={(e) => setAmountPaidInput(e.target.value)}
                   placeholder="0"
-                  className="w-full px-3.5 py-2.5 text-base sm:text-lg font-bold font-mono bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition"
+                  className="w-full px-3.5 py-2.5 text-base sm:text-lg font-bold font-mono bg-slate-50/70 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition"
                 />
               </div>
             </div>
 
             {/* Paid vs Due Progress & Summary Banner */}
-            <div className="p-4 bg-slate-50 dark:bg-[#0d111d] rounded-xl border border-slate-200/70 dark:border-slate-800 space-y-3">
+            <div className="p-4 bg-slate-50 dark:bg-[#0d111d] rounded-md border border-slate-200/70 dark:border-slate-800 space-y-3">
               <div className="flex items-center justify-between text-xs">
                 <span className="font-semibold text-slate-600 dark:text-slate-400">
                   Payment Progress ({paidPercentage}%)
@@ -958,11 +955,10 @@ export default function AddPurchase() {
                     Remaining Due
                   </span>
                   <span
-                    className={`text-base font-bold font-mono ${
-                      dueAmount > 0
-                        ? "text-rose-600 dark:text-rose-400"
-                        : "text-slate-400 dark:text-slate-500"
-                    }`}
+                    className={`text-base font-bold font-mono ${dueAmount > 0
+                      ? "text-rose-600 dark:text-rose-400"
+                      : "text-slate-400 dark:text-slate-500"
+                      }`}
                   >
                     {formatMoney(dueAmount)}
                   </span>
@@ -972,9 +968,9 @@ export default function AddPurchase() {
           </div>
 
           {/* ===================== RIGHT: FINANCIAL TOTALS BREAKDOWN ===================== */}
-          <div className="lg:col-span-5 bg-white dark:bg-[#141824] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="lg:col-span-5 bg-white dark:bg-[#141824] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 sm:p-6 shadow-xs space-y-4">
             <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 dark:border-slate-800/80">
-              <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
+              <div className="w-8 h-8 rounded-md bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
                 <Receipt className="w-4 h-4" />
               </div>
               <div>
@@ -1049,7 +1045,7 @@ export default function AddPurchase() {
               </div>
 
               {/* Net Total Highlight Box */}
-              <div className="p-4 rounded-xl bg-slate-900 text-white dark:bg-indigo-950/40 dark:border dark:border-indigo-800/60 shadow-xs space-y-1 mt-2">
+              <div className="p-4 rounded-md bg-slate-900 text-white dark:bg-indigo-950/40 dark:border dark:border-indigo-800/60 shadow-xs space-y-1 mt-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase tracking-wider text-slate-400 dark:text-indigo-300 font-bold">
                     Net Total Amount
@@ -1079,11 +1075,10 @@ export default function AddPurchase() {
                     Due Amount:
                   </span>
                   <span
-                    className={`text-sm font-bold font-mono ${
-                      dueAmount > 0
-                        ? "text-rose-600 dark:text-rose-400"
-                        : "text-slate-400 dark:text-slate-500"
-                    }`}
+                    className={`text-sm font-bold font-mono ${dueAmount > 0
+                      ? "text-rose-600 dark:text-rose-400"
+                      : "text-slate-400 dark:text-slate-500"
+                      }`}
                   >
                     {formatMoney(dueAmount)}
                   </span>
@@ -1098,14 +1093,14 @@ export default function AddPurchase() {
           <button
             type="button"
             onClick={handleResetForm}
-            className="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs sm:text-sm font-semibold transition shadow-2xs"
+            className="px-5 py-2.5 rounded-md border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs sm:text-sm font-semibold transition shadow-2xs"
           >
             Reset Form
           </button>
 
           <button
             type="submit"
-            className="px-7 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-indigo-500/25 transition-all transform active:scale-98 flex items-center gap-2"
+            className="px-7 py-2.5 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-indigo-500/25 transition-all transform active:scale-98 flex items-center gap-2"
           >
             <CheckCircle2 className="w-4 h-4" />
             <span>Save Purchase</span>
@@ -1116,10 +1111,10 @@ export default function AddPurchase() {
       {/* ===================== QUICK ADD SUPPLIER MODAL ===================== */}
       {isAddSupplierModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#141824] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-[#141824] border border-slate-200 dark:border-slate-800 rounded-md w-full max-w-md p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
                   <UserPlus className="w-4 h-4" />
                 </div>
                 <div>
@@ -1150,7 +1145,7 @@ export default function AddPurchase() {
                   value={newSupName}
                   onChange={(e) => setNewSupName(e.target.value)}
                   placeholder="e.g. Akash Islam"
-                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
                 />
               </div>
 
@@ -1163,7 +1158,7 @@ export default function AddPurchase() {
                   value={newSupCompany}
                   onChange={(e) => setNewSupCompany(e.target.value)}
                   placeholder="e.g. Ma Traders / DR Group"
-                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
                 />
               </div>
 
@@ -1176,7 +1171,7 @@ export default function AddPurchase() {
                   value={newSupPhone}
                   onChange={(e) => setNewSupPhone(e.target.value)}
                   placeholder="e.g. 01900000000"
-                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
                 />
               </div>
 
@@ -1189,7 +1184,7 @@ export default function AddPurchase() {
                   value={newSupEmail}
                   onChange={(e) => setNewSupEmail(e.target.value)}
                   placeholder="supplier@example.com"
-                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
                 />
               </div>
 
@@ -1202,7 +1197,7 @@ export default function AddPurchase() {
                   value={newSupCountry}
                   onChange={(e) => setNewSupCountry(e.target.value)}
                   placeholder="e.g. Bangladesh"
-                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#0d111d] border border-slate-200 dark:border-slate-700/80 rounded-md text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-medium"
                 />
               </div>
 
@@ -1210,13 +1205,13 @@ export default function AddPurchase() {
                 <button
                   type="button"
                   onClick={() => setIsAddSupplierModalOpen(false)}
-                  className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold"
+                  className="px-4 py-2 rounded-md border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-xs"
+                  className="px-5 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-xs"
                 >
                   Create & Select
                 </button>

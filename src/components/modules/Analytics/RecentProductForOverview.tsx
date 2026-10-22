@@ -6,7 +6,7 @@ import { Package, ExternalLink, ImageIcon, ChevronRight, Clock } from "lucide-re
 import { Link } from "react-router";
 import { formatDate } from "@/utils/getDateFormater";
 // Adjust import path based on your actual API slice
-import { useGetDashboardAnalyticsQuery } from "@/redux/features/product/product.api"; 
+import { useGetDashboardAnalyticsQuery } from "@/redux/features/product/product.api";
 
 // Using the type inferred from your JSON data
 interface IRecentProduct {
@@ -28,7 +28,7 @@ const RecentProductForOverview = () => {
 
   if (isLoading) {
     return (
-      <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden">
+      <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden">
         <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800 pb-4">
           <div className="w-48 h-6 bg-gray-200 dark:bg-zinc-800 rounded animate-pulse"></div>
         </CardHeader>
@@ -36,7 +36,7 @@ const RecentProductForOverview = () => {
           {/* Skeleton Rows */}
           {[1, 2, 3].map((i) => (
             <div key={i} className="flex items-center gap-4 p-4 border-b border-gray-100 dark:border-zinc-800/50 last:border-0">
-              <div className="w-14 h-14 rounded-xl bg-gray-200 dark:bg-zinc-800 animate-pulse flex-shrink-0"></div>
+              <div className="w-14 h-14 rounded-md bg-gray-200 dark:bg-zinc-800 animate-pulse flex-shrink-0"></div>
               <div className="flex-1 space-y-2 py-1">
                 <div className="w-3/4 h-4 bg-gray-200 dark:bg-zinc-800 rounded animate-pulse"></div>
                 <div className="flex gap-3">
@@ -52,7 +52,7 @@ const RecentProductForOverview = () => {
   }
 
   return (
-    <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl overflow-hidden bg-white dark:bg-zinc-950">
+    <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md overflow-hidden bg-white dark:bg-zinc-950">
       <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800 pb-4 flex flex-row items-center justify-between">
         <div className="flex items-center gap-2.5">
           <div className="p-1.5 bg-[#1BAE70]/10 rounded-lg">
@@ -66,7 +66,7 @@ const RecentProductForOverview = () => {
           </Button>
         </Link>
       </CardHeader>
-      
+
       <CardContent className="p-0">
         {recentProducts.length === 0 ? (
           <div className="p-10 text-center flex flex-col items-center justify-center">
@@ -78,18 +78,18 @@ const RecentProductForOverview = () => {
         ) : (
           <div className="divide-y divide-gray-100 dark:divide-zinc-800/50">
             {recentProducts.map((product) => (
-              <div 
-                key={product._id} 
+              <div
+                key={product._id}
                 className="flex items-center justify-between p-4 hover:bg-gray-50 dark:hover:bg-zinc-900/50 transition-colors group"
               >
                 <div className="flex items-center gap-4 min-w-0 flex-1">
-                  
+
                   {/* Thumbnail with zoom effect */}
-                  <div className="w-14 h-14 rounded-xl border border-gray-200 dark:border-zinc-700 overflow-hidden flex-shrink-0 bg-white dark:bg-zinc-900 relative">
+                  <div className="w-14 h-14 rounded-md border border-gray-200 dark:border-zinc-700 overflow-hidden flex-shrink-0 bg-white dark:bg-zinc-900 relative">
                     {product.images && product.images.length > 0 ? (
-                      <img 
-                        src={product.images[0]} 
-                        alt={product.name} 
+                      <img
+                        src={product.images[0]}
+                        alt={product.name}
                         className="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal transform group-hover:scale-110 transition-transform duration-300"
                       />
                     ) : (

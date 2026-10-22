@@ -176,14 +176,14 @@ export default function EmployeeList() {
         {/* Action Controls: View Toggle, Print, Export, Add New */}
         <div className="flex items-center gap-2.5">
           {/* List / Grid View Toggle Button Group */}
-          <div className="flex items-center bg-white dark:bg-[#181b24] p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+          <div className="flex items-center bg-white dark:bg-[#181b24] p-1 rounded-md border border-slate-200 dark:border-slate-700 shadow-2xs">
             {/* List Icon Button */}
             <button
               type="button"
               onClick={() => setViewMode("list")}
               className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewMode === "list"
-                  ? "bg-[#1e2530] text-white dark:bg-[#0c6760] shadow-xs"
-                  : "text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                ? "bg-[#1e2530] text-white dark:bg-[#0c6760] shadow-xs"
+                : "text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                 }`}
               title="List View"
             >
@@ -195,8 +195,8 @@ export default function EmployeeList() {
               type="button"
               onClick={() => setViewMode("grid")}
               className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewMode === "grid"
-                  ? "bg-[#1e2530] text-white dark:bg-[#0c6760] shadow-xs"
-                  : "text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                ? "bg-[#1e2530] text-white dark:bg-[#0c6760] shadow-xs"
+                : "text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                 }`}
               title="Grid View"
             >
@@ -227,7 +227,7 @@ export default function EmployeeList() {
             {isExportOpen && (
               <>
                 <div className="fixed inset-0 z-20" onClick={() => setIsExportOpen(false)} />
-                <div className="absolute right-0 mt-1.5 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-30 text-xs">
+                <div className="absolute right-0 mt-1.5 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1.5 z-30 text-xs">
                   <button
                     onClick={handleExportPDF}
                     className="w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-200 cursor-pointer"
@@ -262,14 +262,14 @@ export default function EmployeeList() {
       {viewMode === "grid" && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-in fade-in duration-200">
           {processedEmployees.length === 0 ? (
-            <div className="col-span-full py-16 text-center bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80">
+            <div className="col-span-full py-16 text-center bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80">
               <p className="text-slate-400 text-sm">No employees match your search criteria.</p>
             </div>
           ) : (
             processedEmployees.map((emp) => (
               <div
                 key={emp.id}
-                className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 text-center shadow-xs hover:shadow-md transition-all group relative flex flex-col justify-between"
+                className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-6 text-center shadow-xs hover:shadow-md transition-all group relative flex flex-col justify-between"
               >
                 {/* Top Corner Action Menu */}
                 <div className="absolute top-4 right-4">
@@ -285,7 +285,7 @@ export default function EmployeeList() {
                     {activeMenuId === emp.id && (
                       <>
                         <div className="fixed inset-0 z-20" onClick={() => setActiveMenuId(null)} />
-                        <div className="absolute right-0 mt-1 w-32 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1 z-30 text-xs">
+                        <div className="absolute right-0 mt-1 w-32 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1 z-30 text-xs">
                           <button
                             onClick={() => {
                               setActiveMenuId(null);
@@ -380,7 +380,7 @@ export default function EmployeeList() {
           VIEW 2: LIST / TABLE VIEW (Image 2)
           ========================================================================= */}
       {viewMode === "list" && (
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-xs overflow-hidden animate-in fade-in duration-200">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md shadow-xs overflow-hidden animate-in fade-in duration-200">
           {/* Top Filter Toolbar (Matching Image 2) */}
           <div className="p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800/80">
             {/* Left: Search input + Date Range Picker */}
@@ -395,7 +395,7 @@ export default function EmployeeList() {
                     setCurrentPage(1);
                   }}
                   placeholder="Search"
-                  className="w-full pl-3 pr-8 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] transition-all"
+                  className="w-full pl-3 pr-8 py-2 text-xs rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0c6760]/30 focus:border-[#0c6760] transition-all"
                 />
                 <Search className="w-3.5 h-3.5 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
@@ -404,7 +404,7 @@ export default function EmployeeList() {
               <button
                 type="button"
                 onClick={() => toast.info(`Current Date Range: ${dateRangeText}`)}
-                className="flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
               >
                 <Calendar className="w-3.5 h-3.5 text-slate-400" />
                 <span>{dateRangeText}</span>
@@ -418,7 +418,7 @@ export default function EmployeeList() {
                 <button
                   type="button"
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
                 >
                   <Filter className="w-3.5 h-3.5 text-slate-500" />
                   <span>Filter</span>
@@ -428,7 +428,7 @@ export default function EmployeeList() {
                 {isFilterOpen && (
                   <>
                     <div className="fixed inset-0 z-20" onClick={() => setIsFilterOpen(false)} />
-                    <div className="absolute right-0 mt-1.5 w-56 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl p-3 z-30 text-xs space-y-3">
+                    <div className="absolute right-0 mt-1.5 w-56 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl p-3 z-30 text-xs space-y-3">
                       <div>
                         <label className="block text-[11px] font-bold text-slate-400 uppercase mb-1">
                           Department
@@ -492,7 +492,7 @@ export default function EmployeeList() {
                 <button
                   type="button"
                   onClick={() => setIsSortOpen(!isSortOpen)}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
                 >
                   <ArrowUpDown className="w-3.5 h-3.5 text-slate-500" />
                   <span>Sort By</span>
@@ -502,7 +502,7 @@ export default function EmployeeList() {
                 {isSortOpen && (
                   <>
                     <div className="fixed inset-0 z-20" onClick={() => setIsSortOpen(false)} />
-                    <div className="absolute right-0 mt-1.5 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-30 text-xs">
+                    <div className="absolute right-0 mt-1.5 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1.5 z-30 text-xs">
                       <button
                         onClick={() => {
                           setSortBy("default");
@@ -552,7 +552,7 @@ export default function EmployeeList() {
               <button
                 type="button"
                 onClick={() => toast.info("Displaying standard columns")}
-                className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="p-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
                 title="Column View"
               >
                 <SlidersHorizontal className="w-3.5 h-3.5" />
@@ -565,7 +565,7 @@ export default function EmployeeList() {
                   loadData();
                   toast.success("Employees refreshed");
                 }}
-                className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="p-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors"
                 title="Refresh"
               >
                 <RotateCw className="w-3.5 h-3.5" />
@@ -648,8 +648,8 @@ export default function EmployeeList() {
                       <td className="py-4 px-4">
                         <span
                           className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${emp.status === "Active"
-                              ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
-                              : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60"
+                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60"
+                            : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60"
                             }`}
                         >
                           {emp.status}
@@ -673,7 +673,7 @@ export default function EmployeeList() {
                                 className="fixed inset-0 z-20"
                                 onClick={() => setActiveMenuId(null)}
                               />
-                              <div className="absolute right-0 mt-1 w-32 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1 z-30 text-xs">
+                              <div className="absolute right-0 mt-1 w-32 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-xl py-1 z-30 text-xs">
                                 <button
                                   type="button"
                                   onClick={() => {
@@ -753,8 +753,8 @@ export default function EmployeeList() {
                   type="button"
                   onClick={() => setCurrentPage(p)}
                   className={`w-7 h-7 rounded-lg text-xs font-bold flex items-center justify-center cursor-pointer transition-colors ${currentPage === p
-                      ? "bg-[#0c6760] text-white shadow-xs"
-                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60"
+                    ? "bg-[#0c6760] text-white shadow-xs"
+                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60"
                     }`}
                 >
                   {p}
@@ -779,7 +779,7 @@ export default function EmployeeList() {
           ========================================================================= */}
       {viewDetailsEmp && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-5">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-lg w-full shadow-2xl space-y-5">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
                 Employee Profile
@@ -807,8 +807,8 @@ export default function EmployeeList() {
                 </p>
                 <span
                   className={`inline-block mt-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${viewDetailsEmp.status === "Active"
-                      ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400"
-                      : "bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400"
+                    ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400"
+                    : "bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400"
                     }`}
                 >
                   {viewDetailsEmp.status}
@@ -817,30 +817,30 @@ export default function EmployeeList() {
             </div>
 
             <div className="grid grid-cols-2 gap-4 text-xs pt-2">
-              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl space-y-1">
+              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-md space-y-1">
                 <span className="text-slate-400 block text-[10px] uppercase font-bold">Emp ID</span>
                 <span className="font-semibold text-slate-900 dark:text-white">{viewDetailsEmp.empId}</span>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl space-y-1">
+              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-md space-y-1">
                 <span className="text-slate-400 block text-[10px] uppercase font-bold">Shift</span>
                 <span className="font-semibold text-slate-900 dark:text-white">{viewDetailsEmp.shift}</span>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl space-y-1">
+              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-md space-y-1">
                 <span className="text-slate-400 block text-[10px] uppercase font-bold">Email</span>
                 <span className="font-semibold text-slate-900 dark:text-white truncate block">{viewDetailsEmp.email}</span>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl space-y-1">
+              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-md space-y-1">
                 <span className="text-slate-400 block text-[10px] uppercase font-bold">Phone</span>
                 <span className="font-semibold text-slate-900 dark:text-white">{viewDetailsEmp.phone}</span>
               </div>
               {viewDetailsEmp.joinDate && (
-                <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl space-y-1">
+                <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-md space-y-1">
                   <span className="text-slate-400 block text-[10px] uppercase font-bold">Join Date</span>
                   <span className="font-semibold text-slate-900 dark:text-white">{viewDetailsEmp.joinDate}</span>
                 </div>
               )}
               {viewDetailsEmp.salary && (
-                <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl space-y-1">
+                <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-md space-y-1">
                   <span className="text-slate-400 block text-[10px] uppercase font-bold">Salary</span>
                   <span className="font-semibold text-slate-900 dark:text-white">${viewDetailsEmp.salary}</span>
                 </div>
@@ -855,7 +855,7 @@ export default function EmployeeList() {
                   setViewDetailsEmp(null);
                   navigate(`/hrm/employees/edit/${id}`);
                 }}
-                className="px-4 py-2 rounded-xl bg-[#0c6760] hover:bg-[#09544e] text-white text-xs font-semibold cursor-pointer transition-colors"
+                className="px-4 py-2 rounded-md bg-[#0c6760] hover:bg-[#09544e] text-white text-xs font-semibold cursor-pointer transition-colors"
               >
                 Edit Employee
               </button>
@@ -869,7 +869,7 @@ export default function EmployeeList() {
           ========================================================================= */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-xl space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-md w-full shadow-xl space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-600 flex items-center justify-center shrink-0">
                 <AlertCircle className="w-5 h-5" />
@@ -892,14 +892,14 @@ export default function EmployeeList() {
               <button
                 type="button"
                 onClick={() => setDeleteTarget(null)}
-                className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={confirmDelete}
-                className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-md bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
               >
                 Delete
               </button>

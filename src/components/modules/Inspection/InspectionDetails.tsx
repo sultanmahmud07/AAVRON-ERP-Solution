@@ -131,14 +131,14 @@ const ViewInspectDetails = () => {
         <div className="flex items-center gap-2">
           <a
             href={`tel:${inspection.phone}`}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors shadow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors shadow-sm"
           >
             <Phone className="w-4 h-4" />
             <span>Call Customer</span>
           </a>
           <a
             href={`mailto:${inspection.email}`}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold text-sm transition-colors shadow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-sky-600 hover:bg-sky-700 text-white font-semibold text-sm transition-colors shadow-sm"
           >
             <Mail className="w-4 h-4" />
             <span>Send Email</span>
@@ -148,7 +148,7 @@ const ViewInspectDetails = () => {
 
       {/* Unscheduled Follow-up Alert Banner */}
       {isUnscheduled && (
-        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 rounded-2xl p-4 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 rounded-md p-4 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
           <div className="flex items-center gap-3">
             <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0" />
             <div>
@@ -164,7 +164,7 @@ const ViewInspectDetails = () => {
             {inspection.status === "Unscheduled" && (
               <Button
                 onClick={() => handleStatusChange("Contacted")}
-                className="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold h-9 rounded-xl"
+                className="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold h-9 rounded-md"
               >
                 <CheckCircle2 className="w-3.5 h-3.5 mr-1.5" /> Mark as Contacted
               </Button>
@@ -172,7 +172,7 @@ const ViewInspectDetails = () => {
             {inspection.status !== "Confirmed" && (
               <Button
                 onClick={() => handleStatusChange("Confirmed")}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold h-9 rounded-xl"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold h-9 rounded-md"
               >
                 <CheckCircle2 className="w-3.5 h-3.5 mr-1.5" /> Mark as Confirmed
               </Button>
@@ -187,7 +187,7 @@ const ViewInspectDetails = () => {
         {/* ================= LEFT COLUMN: CLIENT & CONTACT INFO ================= */}
         <div className="lg:col-span-1 flex flex-col gap-6">
 
-          <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden">
+          <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden">
             <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800 py-4">
               <CardTitle className="text-lg flex items-center gap-2">
                 <User className="w-5 h-5 text-[#1BAE70]" /> Client Information
@@ -230,7 +230,7 @@ const ViewInspectDetails = () => {
           </Card>
 
           {/* Submission Meta Data */}
-          <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden">
+          <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden">
             <CardContent className="p-5 space-y-4 text-sm">
               <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-zinc-800/50">
                 <span className="text-gray-500 font-medium">Requested On</span>
@@ -253,7 +253,7 @@ const ViewInspectDetails = () => {
         <div className="lg:col-span-2 flex flex-col gap-6">
 
           {/* Primary Schedule Card */}
-          <Card className="border-blue-100 dark:border-blue-900 shadow-sm rounded-2xl bg-blue-50/30 dark:bg-blue-950/10 overflow-hidden">
+          <Card className="border-blue-100 dark:border-blue-900 shadow-sm rounded-md bg-blue-50/30 dark:bg-blue-950/10 overflow-hidden">
             <CardHeader className="bg-blue-50 dark:bg-blue-900/20 border-b border-blue-100 dark:border-blue-900 py-4">
               <CardTitle className="text-lg flex items-center gap-2 text-blue-900 dark:text-blue-300">
                 <CalendarDays className="w-5 h-5" /> Appointment Schedule
@@ -264,7 +264,7 @@ const ViewInspectDetails = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-white dark:bg-zinc-900 rounded-xl shadow-sm border border-blue-100 dark:border-blue-900 shrink-0">
+                    <div className="p-3 bg-white dark:bg-zinc-900 rounded-md shadow-sm border border-blue-100 dark:border-blue-900 shrink-0">
                       <CalendarDays className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
@@ -276,7 +276,7 @@ const ViewInspectDetails = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-white dark:bg-zinc-900 rounded-xl shadow-sm border border-blue-100 dark:border-blue-900 shrink-0">
+                    <div className="p-3 bg-white dark:bg-zinc-900 rounded-md shadow-sm border border-blue-100 dark:border-blue-900 shrink-0">
                       <Clock className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
@@ -289,7 +289,7 @@ const ViewInspectDetails = () => {
 
                 </div>
               ) : (
-                <div className="p-4 bg-amber-50 dark:bg-amber-950/20 rounded-xl border border-amber-200 dark:border-amber-900/30 flex items-center gap-3">
+                <div className="p-4 bg-amber-50 dark:bg-amber-950/20 rounded-md border border-amber-200 dark:border-amber-900/30 flex items-center gap-3">
                   <Clock className="w-5 h-5 text-amber-600" />
                   <div>
                     <p className="text-sm font-bold text-amber-900 dark:text-amber-200">No Scheduled Appointment Slot</p>
@@ -301,7 +301,7 @@ const ViewInspectDetails = () => {
           </Card>
 
           {/* Service & Location Details */}
-          <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden">
+          <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden">
             <CardHeader className="bg-gray-50/50 dark:bg-zinc-900/50 border-b border-gray-100 dark:border-zinc-800 py-4">
               <CardTitle className="text-lg flex items-center gap-2">
                 <Building className="w-5 h-5 text-[#1BAE70]" /> Service Location
@@ -321,7 +321,7 @@ const ViewInspectDetails = () => {
               {/* Address */}
               <div className="pt-2 border-t border-gray-100 dark:border-zinc-800/50">
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Property Address</p>
-                <div className="flex items-start gap-3 bg-gray-50 dark:bg-zinc-900/50 p-4 rounded-xl border border-gray-100 dark:border-zinc-800/50">
+                <div className="flex items-start gap-3 bg-gray-50 dark:bg-zinc-900/50 p-4 rounded-md border border-gray-100 dark:border-zinc-800/50">
                   <MapPin className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-base font-bold text-gray-900 dark:text-white leading-relaxed">
@@ -339,7 +339,7 @@ const ViewInspectDetails = () => {
 
           {/* Customer Notes */}
           {inspection.notes && (
-            <Card className="border-amber-100 dark:border-amber-900/50 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden">
+            <Card className="border-amber-100 dark:border-amber-900/50 shadow-sm rounded-md bg-white dark:bg-zinc-950 overflow-hidden">
               <CardHeader className="bg-amber-50/50 dark:bg-amber-900/10 border-b border-amber-100 dark:border-amber-900/30 py-4">
                 <CardTitle className="text-lg flex items-center gap-2 text-amber-800 dark:text-amber-500">
                   <FileText className="w-5 h-5" /> Form Survey & Customer Notes

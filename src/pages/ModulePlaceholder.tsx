@@ -33,8 +33,8 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
     (pathParts[1]
       ? pathParts[1].replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
       : pathParts[0]
-      ? pathParts[0].replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
-      : "Overview");
+        ? pathParts[0].replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
+        : "Overview");
 
   // Realistic sample records
   const sampleData = [
@@ -106,7 +106,7 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
         <div className="flex items-center gap-3">
           <button
             onClick={() => toast.success(`Creating new item in ${displayTitle}`)}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs shadow-xs transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs shadow-xs transition-colors"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create {displayTitle}</span>
@@ -116,7 +116,7 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
 
       {/* KPI Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <div className="p-4 rounded-2xl bg-white dark:bg-[#161821] border border-slate-200/80 dark:border-slate-800 shadow-xs">
+        <div className="p-4 rounded-md bg-white dark:bg-[#161821] border border-slate-200/80 dark:border-slate-800 shadow-xs">
           <p className="text-xs font-semibold text-slate-400">Total Entries</p>
           <p className="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">1,482</p>
           <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
@@ -124,7 +124,7 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
           </span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white dark:bg-[#161821] border border-slate-200/80 dark:border-slate-800 shadow-xs">
+        <div className="p-4 rounded-md bg-white dark:bg-[#161821] border border-slate-200/80 dark:border-slate-800 shadow-xs">
           <p className="text-xs font-semibold text-slate-400">Active Records</p>
           <p className="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">1,390</p>
           <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
@@ -132,7 +132,7 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
           </span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white dark:bg-[#161821] border border-slate-200/80 dark:border-slate-800 shadow-xs">
+        <div className="p-4 rounded-md bg-white dark:bg-[#161821] border border-slate-200/80 dark:border-slate-800 shadow-xs">
           <p className="text-xs font-semibold text-slate-400">Monthly Volume</p>
           <p className="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">$482,900</p>
           <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
@@ -140,7 +140,7 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
           </span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white dark:bg-[#161821] border border-slate-200/80 dark:border-slate-800 shadow-xs">
+        <div className="p-4 rounded-md bg-white dark:bg-[#161821] border border-slate-200/80 dark:border-slate-800 shadow-xs">
           <p className="text-xs font-semibold text-slate-400">Pending Actions</p>
           <p className="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">14</p>
           <span className="text-[11px] font-semibold text-amber-600 dark:text-amber-400">
@@ -150,7 +150,7 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
       </div>
 
       {/* Main Data Table Card */}
-      <div className="bg-white dark:bg-[#161821] rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#161821] rounded-md border border-slate-200/80 dark:border-slate-800 shadow-xs overflow-hidden">
         {/* Table controls */}
         <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="relative w-full sm:w-72">
@@ -160,21 +160,21 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
               placeholder={`Search ${displayTitle.toLowerCase()}...`}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/20"
+              className="w-full pl-9 pr-4 py-1.5 text-xs rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/20"
             />
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
             <button
               onClick={() => toast.info("Filter applied")}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 rounded-md border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
             >
               <Filter className="w-3.5 h-3.5" />
               <span>Filter</span>
             </button>
             <button
               onClick={() => toast.success(`Exporting ${displayTitle} dataset...`)}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 rounded-md border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Export</span>
@@ -214,13 +214,12 @@ export const ModulePlaceholder: React.FC<ModulePlaceholderProps> = ({
                   </td>
                   <td className="py-3 px-4">
                     <span
-                      className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                        row.status === "Completed"
-                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
-                          : row.status === "In Progress"
+                      className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold ${row.status === "Completed"
+                        ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
+                        : row.status === "In Progress"
                           ? "bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400"
                           : "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400"
-                      }`}
+                        }`}
                     >
                       {row.status}
                     </span>

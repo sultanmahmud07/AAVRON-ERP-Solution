@@ -168,7 +168,7 @@ export default function AvailabilitiesList() {
 
 
   return (
-    <div className="w-full bg-white dark:bg-zinc-950 md:p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800/50">
+    <div className="w-full bg-white dark:bg-zinc-950 md:p-5 rounded-md shadow-sm border border-gray-100 dark:border-zinc-800/50">
 
       {/* Header & Controls */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
@@ -187,7 +187,7 @@ export default function AvailabilitiesList() {
           <div className="relative w-full sm:w-[250px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
-              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl border-gray-200 dark:border-zinc-800 focus-visible:ring-primary"
+              className="w-full pl-9 bg-gray-50 dark:bg-zinc-900 h-11 rounded-md border-gray-200 dark:border-zinc-800 focus-visible:ring-primary"
               type="text"
               placeholder="Search locations..."
               value={searchTerm}
@@ -197,7 +197,7 @@ export default function AvailabilitiesList() {
 
           {/* Sort Dropdown */}
           <Select onValueChange={handleSortChange} value={sortOrder}>
-            <SelectTrigger className="w-full md:py-5 sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-11 rounded-xl border-gray-200 dark:border-zinc-800 focus:ring-primary">
+            <SelectTrigger className="w-full md:py-5 sm:w-[160px] bg-gray-50 dark:bg-zinc-900 h-11 rounded-md border-gray-200 dark:border-zinc-800 focus:ring-primary">
               <SelectValue placeholder="Sort order" />
             </SelectTrigger>
             <SelectContent>
@@ -212,7 +212,7 @@ export default function AvailabilitiesList() {
           {activeTab === "LOCATIONS" ? (
             <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
               <DialogTrigger asChild>
-                <Button className="w-full sm:w-auto bg-primary hover:bg-[#16965f] text-white h-11 rounded-xl px-6 cursor-pointer">
+                <Button className="w-full sm:w-auto bg-primary hover:bg-[#16965f] text-white h-11 rounded-md px-6 cursor-pointer">
                   <Plus className="w-4 h-4 mr-2" />
                   Add Location
                 </Button>
@@ -301,7 +301,7 @@ export default function AvailabilitiesList() {
             <>
               <Button
                 onClick={handleAddStateClick}
-                className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-white h-11 rounded-xl px-6 cursor-pointer animate-in fade-in duration-200"
+                className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-white h-11 rounded-md px-6 cursor-pointer animate-in fade-in duration-200"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Add State
@@ -351,14 +351,14 @@ export default function AvailabilitiesList() {
       ) : activeTab === "LOCATIONS" ? (
         <>
           {data?.data?.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-gray-200 dark:border-zinc-800 rounded-2xl">
+            <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-gray-200 dark:border-zinc-800 rounded-md">
               <MapPinned className="w-12 h-12 text-gray-300 dark:text-zinc-700 mb-4" />
               <p className="text-gray-500 dark:text-gray-400 font-medium">No locations found.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
               {data?.data.map((location: ILocation) => (
-                <Card key={location._id} className="border border-gray-200 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-secondary/60 hover:shadow-md transition-all gap-0 md:gap-2 group overflow-hidden flex flex-col">
+                <Card key={location._id} className="border border-gray-200 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-secondary/60 hover:shadow-md transition-all gap-0 md:gap-2 group overflow-hidden flex flex-col">
 
                   {/* Header: Title, Badge, and Address */}
                   <CardHeader className="p-3 md:px-5  flex flex-row items-start justify-between gap-2">
@@ -417,14 +417,14 @@ export default function AvailabilitiesList() {
       ) : (
         <>
           {statesData?.data?.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-gray-200 dark:border-zinc-800 rounded-2xl animate-in fade-in duration-200">
+            <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-gray-200 dark:border-zinc-800 rounded-md animate-in fade-in duration-200">
               <MapPinned className="w-12 h-12 text-gray-300 dark:text-zinc-700 mb-4" />
               <p className="text-gray-500 dark:text-gray-400 font-medium">No available states found.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 animate-in fade-in duration-200">
               {statesData?.data.map((stateItem: IState) => (
-                <Card key={stateItem._id} className="border border-green-200 dark:border-green-900/40 shadow-sm rounded-2xl bg-white dark:bg-secondary/60 hover:shadow-md transition-all gap-0 md:gap-2 group overflow-hidden flex flex-col">
+                <Card key={stateItem._id} className="border border-green-200 dark:border-green-900/40 shadow-sm rounded-md bg-white dark:bg-secondary/60 hover:shadow-md transition-all gap-0 md:gap-2 group overflow-hidden flex flex-col">
 
                   {/* Header: Title, Badge, and Details */}
                   <CardHeader className="p-3 md:px-5 flex flex-row items-start justify-between gap-2">
@@ -491,7 +491,7 @@ export default function AvailabilitiesList() {
                   className={
                     currentPage === 1
                       ? "pointer-events-none opacity-50"
-                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl"
+                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md"
                   }
                 />
               </PaginationItem>
@@ -503,7 +503,7 @@ export default function AvailabilitiesList() {
                   >
                     <PaginationLink
                       className={cn(
-                        "cursor-pointer rounded-xl transition-colors",
+                        "cursor-pointer rounded-md transition-colors",
                         currentPage === page
                           ? "bg-primary text-white hover:bg-[#16965f] hover:text-white border-transparent"
                           : "hover:bg-gray-100 dark:hover:bg-zinc-800"
@@ -521,7 +521,7 @@ export default function AvailabilitiesList() {
                   className={
                     currentPage === totalPage
                       ? "pointer-events-none opacity-50"
-                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl"
+                      : "cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-md"
                   }
                 />
               </PaginationItem>

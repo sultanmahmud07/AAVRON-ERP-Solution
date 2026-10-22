@@ -118,7 +118,7 @@ export const DeleteRequestsPage: React.FC = () => {
       </div>
 
       {/* Main Table Card */}
-      <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-xs overflow-hidden">
         {/* Toolbar */}
         <div className="p-3.5 sm:p-4 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2.5 flex-1">
@@ -151,7 +151,7 @@ export const DeleteRequestsPage: React.FC = () => {
               </button>
 
               {isFilterOpen && (
-                <div className="absolute right-0 mt-1 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-2 z-20 space-y-1 text-xs">
+                <div className="absolute right-0 mt-1 w-40 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-md shadow-lg p-2 z-20 space-y-1 text-xs">
                   <button
                     onClick={() => {
                       setStatusFilter("all");
@@ -250,13 +250,12 @@ export const DeleteRequestsPage: React.FC = () => {
                     </td>
                     <td className="py-3 px-4">
                       <span
-                        className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${
-                          item.status === "Approved"
-                            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50"
-                            : item.status === "Rejected"
+                        className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${item.status === "Approved"
+                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50"
+                          : item.status === "Rejected"
                             ? "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/50"
                             : "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50"
-                        }`}
+                          }`}
                       >
                         {item.status}
                       </span>

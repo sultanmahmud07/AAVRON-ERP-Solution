@@ -290,7 +290,7 @@ export default function ProductList() {
           {/* Print Button */}
           <button
             onClick={handlePrint}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-xs shadow-2xs transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-xs shadow-2xs transition-colors cursor-pointer"
             title="Print product catalog"
           >
             <Printer className="w-3.5 h-3.5" />
@@ -301,7 +301,7 @@ export default function ProductList() {
           <div className="relative">
             <button
               onClick={() => setIsExportOpen(!isExportOpen)}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-xs shadow-2xs transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#181b24] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-xs shadow-2xs transition-colors cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Export</span>
@@ -314,7 +314,7 @@ export default function ProductList() {
                   className="fixed inset-0 z-20"
                   onClick={() => setIsExportOpen(false)}
                 />
-                <div className="absolute right-0 mt-1.5 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg py-1.5 z-30 text-xs">
+                <div className="absolute right-0 mt-1.5 w-44 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg py-1.5 z-30 text-xs">
                   <button
                     onClick={handleExportCSV}
                     className="w-full text-left px-3.5 py-2 hover:bg-slate-100 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-200 flex items-center gap-2 cursor-pointer"
@@ -335,7 +335,7 @@ export default function ProductList() {
           {/* + Add New Button */}
           <Link
             to="/inventory/products/add"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 text-white font-semibold text-xs shadow-xs transition-colors cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 rounded-md bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 text-white font-semibold text-xs shadow-xs transition-colors cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Add New</span>
@@ -346,7 +346,7 @@ export default function ProductList() {
       {/* 2. Four KPI Metric Cards Matching Reference Design */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Products */}
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 flex items-center justify-between shadow-2xs">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 flex items-center justify-between shadow-2xs">
           <div className="space-y-1">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Total Products
@@ -359,13 +359,13 @@ export default function ProductList() {
               <span>5.62</span>
             </div>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-md bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
             <Package className="w-5 h-5" />
           </div>
         </div>
 
         {/* In Stock */}
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 flex items-center justify-between shadow-2xs">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 flex items-center justify-between shadow-2xs">
           <div className="space-y-1">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               In Stock
@@ -378,13 +378,13 @@ export default function ProductList() {
               <span>2.25</span>
             </div>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-md bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0">
             <CheckCircle2 className="w-5 h-5" />
           </div>
         </div>
 
         {/* Low Stock */}
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 flex items-center justify-between shadow-2xs">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 flex items-center justify-between shadow-2xs">
           <div className="space-y-1">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               Low Stock
@@ -396,13 +396,13 @@ export default function ProductList() {
               3 new alerts
             </span>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-md bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
             <AlertTriangle className="w-5 h-5" />
           </div>
         </div>
 
         {/* No Stock */}
-        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 flex items-center justify-between shadow-2xs">
+        <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-5 flex items-center justify-between shadow-2xs">
           <div className="space-y-1">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               No Stock
@@ -414,14 +414,14 @@ export default function ProductList() {
               Needs reorder
             </span>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-md bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
             <PackageX className="w-5 h-5" />
           </div>
         </div>
       </div>
 
       {/* 3. Filter Toolbar & Search Bar Matching Reference Design */}
-      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-4 shadow-2xs space-y-4">
+      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md p-4 shadow-2xs space-y-4">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           {/* Left: Search Input & Date Range */}
           <div className="flex flex-wrap items-center gap-2.5 flex-1">
@@ -436,7 +436,7 @@ export default function ProductList() {
                   setCurrentPage(1);
                 }}
                 placeholder="Search products by name, SKU, or category..."
-                className="w-full pl-9 pr-3.5 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-400/50 transition-all"
+                className="w-full pl-9 pr-3.5 py-2 text-xs rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-400/50 transition-all"
               />
               {searchQuery && (
                 <button
@@ -452,7 +452,7 @@ export default function ProductList() {
             <div className="relative">
               <button
                 onClick={() => setIsDateFilterOpen(!isDateFilterOpen)}
-                className="flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors cursor-pointer"
               >
                 <Calendar className="w-3.5 h-3.5 text-slate-400" />
                 <span>{dateRangeText}</span>
@@ -464,7 +464,7 @@ export default function ProductList() {
                     className="fixed inset-0 z-20"
                     onClick={() => setIsDateFilterOpen(false)}
                   />
-                  <div className="absolute left-0 mt-1.5 w-60 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-2.5 z-30 text-xs space-y-1">
+                  <div className="absolute left-0 mt-1.5 w-60 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg p-2.5 z-30 text-xs space-y-1">
                     <div className="text-[11px] font-bold uppercase text-slate-400 px-2 py-1">
                       Quick Ranges
                     </div>
@@ -503,7 +503,7 @@ export default function ProductList() {
             <div className="relative">
               <button
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-medium transition-colors cursor-pointer ${selectedCategory !== "All" ||
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-md border text-xs font-medium transition-colors cursor-pointer ${selectedCategory !== "All" ||
                   selectedStatus !== "All" ||
                   selectedBrand !== "All"
                   ? "border-teal-500 bg-teal-50/40 text-teal-700 dark:border-teal-600 dark:bg-teal-950/30 dark:text-teal-400"
@@ -521,7 +521,7 @@ export default function ProductList() {
                     className="fixed inset-0 z-20"
                     onClick={() => setIsFilterOpen(false)}
                   />
-                  <div className="absolute right-0 mt-1.5 w-64 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg p-3 z-30 text-xs space-y-3">
+                  <div className="absolute right-0 mt-1.5 w-64 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg p-3 z-30 text-xs space-y-3">
                     <div className="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800">
                       <span className="font-bold text-slate-800 dark:text-slate-200">
                         Filter Clothing
@@ -601,7 +601,7 @@ export default function ProductList() {
             <div className="relative">
               <button
                 onClick={() => setIsSortOpen(!isSortOpen)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors cursor-pointer"
               >
                 <ArrowUpDown className="w-3.5 h-3.5" />
                 <span>Sort By</span>
@@ -614,7 +614,7 @@ export default function ProductList() {
                     className="fixed inset-0 z-20"
                     onClick={() => setIsSortOpen(false)}
                   />
-                  <div className="absolute right-0 mt-1.5 w-48 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg py-1.5 z-30 text-xs">
+                  <div className="absolute right-0 mt-1.5 w-48 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md shadow-lg py-1.5 z-30 text-xs">
                     {[
                       { label: "Default (Newest)", value: "default" },
                       { label: "Price: Low to High", value: "price-asc" },
@@ -645,7 +645,7 @@ export default function ProductList() {
             {/* Column visibility placeholder icon */}
             <button
               onClick={() => toast.info("All columns currently displayed")}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs transition-colors cursor-pointer"
+              className="p-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs transition-colors cursor-pointer"
               title="Column visibility"
             >
               <Columns className="w-3.5 h-3.5" />
@@ -654,7 +654,7 @@ export default function ProductList() {
             {/* Refresh Button */}
             <button
               onClick={handleRefresh}
-              className={`p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs transition-colors cursor-pointer ${isRefreshing ? "animate-spin text-teal-600" : ""
+              className={`p-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#12141c] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs transition-colors cursor-pointer ${isRefreshing ? "animate-spin text-teal-600" : ""
                 }`}
               title="Refresh Products"
             >
@@ -724,7 +724,7 @@ export default function ProductList() {
       </div>
 
       {/* 4. Products Table: Product Image prominently shown, Code de-emphasized */}
-      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-2xs overflow-hidden">
+      <div className="bg-white dark:bg-[#181b24] border border-slate-200/80 dark:border-slate-800/80 rounded-md shadow-2xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
@@ -751,7 +751,7 @@ export default function ProductList() {
                     {/* Product Name with Prominent Image */}
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden shrink-0 shadow-2xs">
+                        <div className="w-12 h-12 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden shrink-0 shadow-2xs">
                           {product.image ? (
                             <img
                               src={product.image}
@@ -945,17 +945,12 @@ export default function ProductList() {
         </div>
       </div>
 
-      {/* Footer Branding */}
-      <div className="text-center text-xs text-slate-400 dark:text-slate-500 pt-2">
-        2026 © NEXORA ERP. All Rights Reserved
-      </div>
-
       {/* ----------------- MODALS ----------------- */}
 
       {/* 1. Delete Confirmation Modal */}
       {deleteProductTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-xl space-y-4">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md p-6 max-w-md w-full shadow-xl space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-600 flex items-center justify-center shrink-0">
                 <AlertCircle className="w-5 h-5" />
@@ -970,7 +965,7 @@ export default function ProductList() {
               </div>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900/60 p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 text-xs space-y-1">
+            <div className="bg-slate-50 dark:bg-slate-900/60 p-3.5 rounded-md border border-slate-100 dark:border-slate-800 text-xs space-y-1">
               <div className="font-bold text-slate-800 dark:text-slate-200">
                 {deleteProductTarget.name}
               </div>
@@ -988,14 +983,14 @@ export default function ProductList() {
               <button
                 type="button"
                 onClick={() => setDeleteProductTarget(null)}
-                className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={confirmDelete}
-                className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-md bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
               >
                 Delete Product
               </button>
@@ -1007,7 +1002,7 @@ export default function ProductList() {
       {/* 2. Quick View Modal */}
       {viewProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-2xl max-w-2xl w-full shadow-2xl overflow-hidden">
+          <div className="bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-800 rounded-md max-w-2xl w-full shadow-2xl overflow-hidden">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2.5">
@@ -1034,8 +1029,8 @@ export default function ProductList() {
             {/* Modal Body */}
             <div className="p-6 space-y-5 max-h-[75vh] overflow-y-auto text-xs">
               {/* Product Basic Info Banner */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
-                <div className="w-20 h-20 rounded-xl bg-white dark:bg-slate-800 overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50 dark:bg-slate-900/60 p-4 rounded-md border border-slate-100 dark:border-slate-800">
+                <div className="w-20 h-20 rounded-md bg-white dark:bg-slate-800 overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
                   <img
                     src={viewProduct.image}
                     alt={viewProduct.name}
@@ -1062,7 +1057,7 @@ export default function ProductList() {
 
               {/* Grid of Key Info */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12141c]">
+                <div className="p-3 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12141c]">
                   <span className="text-[11px] text-slate-400 font-semibold block uppercase">
                     Selling Price
                   </span>
@@ -1070,7 +1065,7 @@ export default function ProductList() {
                     ৳ {viewProduct.sellingPrice.toLocaleString()}
                   </span>
                 </div>
-                <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12141c]">
+                <div className="p-3 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12141c]">
                   <span className="text-[11px] text-slate-400 font-semibold block uppercase">
                     Purchase Price
                   </span>
@@ -1078,7 +1073,7 @@ export default function ProductList() {
                     ৳ {viewProduct.purchasePrice.toLocaleString()}
                   </span>
                 </div>
-                <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12141c]">
+                <div className="p-3 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12141c]">
                   <span className="text-[11px] text-slate-400 font-semibold block uppercase">
                     Quantity
                   </span>
@@ -1086,7 +1081,7 @@ export default function ProductList() {
                     {viewProduct.quantity} {viewProduct.unit}
                   </span>
                 </div>
-                <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12141c]">
+                <div className="p-3 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12141c]">
                   <span className="text-[11px] text-slate-400 font-semibold block uppercase">
                     VAT / Tax Rate
                   </span>
@@ -1102,14 +1097,14 @@ export default function ProductList() {
                   <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
                     Product Description
                   </span>
-                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-900/40 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-900/40 p-3 rounded-md border border-slate-100 dark:border-slate-800">
                     {viewProduct.description}
                   </p>
                 </div>
               )}
 
               {/* Details table */}
-              <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+              <div className="border border-slate-200 dark:border-slate-800 rounded-md overflow-hidden">
                 <div className="grid grid-cols-2 divide-x divide-slate-100 dark:divide-slate-800 bg-slate-50/50 dark:bg-slate-900/30 p-2.5">
                   <span className="text-slate-500 font-medium">Barcode / EAN</span>
                   <span className="font-mono text-slate-800 dark:text-slate-200 font-semibold">
@@ -1140,7 +1135,7 @@ export default function ProductList() {
                     setViewProduct(null);
                     setBarcodeProduct(target);
                   }}
-                  className="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-md border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-1.5"
                 >
                   <Barcode className="w-3.5 h-3.5" />
                   <span>Barcode Sticker</span>
@@ -1151,14 +1146,14 @@ export default function ProductList() {
                     setViewProduct(null);
                     navigate(`/inventory/products/edit/${target.id}`);
                   }}
-                  className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 text-white text-xs font-semibold cursor-pointer"
+                  className="px-4 py-2 rounded-md bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 text-white text-xs font-semibold cursor-pointer"
                 >
                   Edit Product
                 </button>
               </div>
               <button
                 onClick={() => setViewProduct(null)}
-                className="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                className="px-4 py-2 rounded-md border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
               >
                 Close
               </button>

@@ -541,7 +541,7 @@ export default function AddSale() {
 
         <div className="flex items-center gap-2 self-start sm:self-auto">
           {/* Currency Toggle ($ or ৳) */}
-          <div className="inline-flex items-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181b24] p-1 text-xs shadow-2xs">
+          <div className="inline-flex items-center rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#181b24] p-1 text-xs shadow-2xs">
             <button
               type="button"
               onClick={() => setCurrencySymbol("৳")}
@@ -566,7 +566,7 @@ export default function AddSale() {
 
           <Link
             to="/sales/orders"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-md bg-white dark:bg-[#181b24] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-2xs"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Sales Orders</span>
@@ -588,7 +588,7 @@ export default function AddSale() {
                 <select
                   value={selectedCustomerId}
                   onChange={(e) => setSelectedCustomerId(e.target.value)}
-                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2 text-xs font-medium text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760] transition"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3.5 py-2 text-xs font-medium text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760] transition"
                 >
                   <option value="" disabled>
                     Select client / customer...
@@ -605,7 +605,7 @@ export default function AddSale() {
               <button
                 type="button"
                 onClick={() => setIsAddClientModalOpen(true)}
-                className="p-2.5 rounded-xl bg-[#0c6760] hover:bg-[#09544e] text-white shadow-xs transition-colors shrink-0 cursor-pointer"
+                className="p-2.5 rounded-md bg-[#0c6760] hover:bg-[#09544e] text-white shadow-xs transition-colors shrink-0 cursor-pointer"
                 title="Add New Client"
               >
                 <Plus className="w-4 h-4" />
@@ -624,7 +624,7 @@ export default function AddSale() {
                 value={invoiceDate}
                 onChange={(e) => setInvoiceDate(e.target.value)}
                 placeholder="MM/DD/YYYY"
-                className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl pl-3.5 pr-10 py-2 text-xs font-medium text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760] transition"
+                className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md pl-3.5 pr-10 py-2 text-xs font-medium text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760] transition"
               />
               <Calendar className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
@@ -632,7 +632,7 @@ export default function AddSale() {
         </div>
 
         {/* Items Table (Exact Layout from Image 1) */}
-        <div className="overflow-x-auto rounded-xl border border-slate-200/80 dark:border-slate-800/80">
+        <div className="overflow-x-auto rounded-md border border-slate-200/80 dark:border-slate-800/80">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
               <tr className="border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
@@ -699,7 +699,7 @@ export default function AddSale() {
 
                       {/* Autocomplete Dropdown */}
                       {isSearching && (
-                        <div className="absolute left-3.5 right-3.5 top-full mt-1 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl z-30 max-h-56 overflow-y-auto p-1.5 space-y-1">
+                        <div className="absolute left-3.5 right-3.5 top-full mt-1 bg-white dark:bg-[#181b24] border border-slate-200 dark:border-slate-700 rounded-md shadow-xl z-30 max-h-56 overflow-y-auto p-1.5 space-y-1">
                           <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-2 py-1">
                             Available Inventory Products
                           </div>
@@ -828,7 +828,7 @@ export default function AddSale() {
           <button
             type="button"
             onClick={handleAddItemRow}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold border border-emerald-600 dark:border-teal-500 text-emerald-600 dark:text-teal-400 hover:bg-emerald-50 dark:hover:bg-teal-950/30 transition-colors shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-xs font-bold border border-emerald-600 dark:border-teal-500 text-emerald-600 dark:text-teal-400 hover:bg-emerald-50 dark:hover:bg-teal-950/30 transition-colors shadow-2xs cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Add Item</span>
@@ -932,7 +932,7 @@ export default function AddSale() {
                 <select
                   value={singleAccount}
                   onChange={(e) => setSingleAccount(e.target.value)}
-                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                 >
                   <option value="">Select Account</option>
                   <option value="Cash">Cash Account</option>
@@ -953,7 +953,7 @@ export default function AddSale() {
                   value={singleTransactionId}
                   onChange={(e) => setSingleTransactionId(e.target.value)}
                   placeholder="Reference / Transaction ID"
-                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                  className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                 />
               </div>
 
@@ -968,7 +968,7 @@ export default function AddSale() {
                     value={singleAmountPaid}
                     onChange={(e) => setSingleAmountPaid(e.target.value)}
                     placeholder="0.00"
-                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                    className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                   />
                   <button
                     type="button"
@@ -992,7 +992,7 @@ export default function AddSale() {
                     <select
                       value={p.account}
                       onChange={(e) => handleUpdatePayment(pIdx, "account", e.target.value)}
-                      className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                      className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                     >
                       <option value="Bkash">Bkash</option>
                       <option value="Cash">Cash</option>
@@ -1011,7 +1011,7 @@ export default function AddSale() {
                       value={p.transactionId}
                       onChange={(e) => handleUpdatePayment(pIdx, "transactionId", e.target.value)}
                       placeholder="Reference / Transaction ID"
-                      className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                      className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                     />
                   </div>
 
@@ -1026,13 +1026,13 @@ export default function AddSale() {
                         value={p.amount}
                         onChange={(e) => handleUpdatePayment(pIdx, "amount", e.target.value)}
                         placeholder="500"
-                        className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+                        className="w-full bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
                       />
                     </div>
                     <button
                       type="button"
                       onClick={() => handleRemovePayment(pIdx)}
-                      className="p-2.5 rounded-xl border border-rose-200 dark:border-rose-900/40 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition shrink-0 cursor-pointer"
+                      className="p-2.5 rounded-md border border-rose-200 dark:border-rose-900/40 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition shrink-0 cursor-pointer"
                       title="Remove payment"
                     >
                       <X className="w-4 h-4" />
@@ -1082,7 +1082,7 @@ export default function AddSale() {
               value={note}
               onChange={(e) => setNote(e.target.value)}
               placeholder="Optional note for this invoice"
-              className="w-full min-w-[200px] md:w-full lg:min-w-[600px] bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
+              className="w-full min-w-[200px] md:w-full lg:min-w-[600px] bg-white dark:bg-[#12141c] border border-slate-200 dark:border-slate-700 rounded-md p-3 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0c6760]/20 focus:border-[#0c6760]"
             />
           </div>
 
@@ -1091,7 +1091,7 @@ export default function AddSale() {
             <button
               type="button"
               onClick={handleCreateInvoice}
-              className="px-6 py-2.5 rounded-xl font-bold text-xs bg-[#0c6760] hover:bg-[#09544e] text-white shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-2"
+              className="px-6 py-2.5 rounded-md font-bold text-xs bg-[#0c6760] hover:bg-[#09544e] text-white shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-2"
             >
               <CheckCircle2 className="w-4 h-4" />
               <span>Create Invoice</span>
@@ -1103,7 +1103,7 @@ export default function AddSale() {
       {/* Quick Add Client Modal */}
       {isAddClientModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-          <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <UserPlus className="w-4 h-4 text-[#0c6760]" />
@@ -1229,7 +1229,7 @@ export default function AddSale() {
       {/* View Invoice Modal / Confirmation Screen (Matching Image 3 & 4) */}
       {createdOrder && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-xs overflow-y-auto">
-          <div className="bg-white dark:bg-[#181b24] rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-4xl max-h-[92vh] overflow-y-auto">
+          <div className="bg-white dark:bg-[#181b24] rounded-md border border-slate-200/80 dark:border-slate-800/80 shadow-2xl w-full max-w-4xl max-h-[92vh] overflow-y-auto">
             {/* View Invoice Header from Image 3 */}
             <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 sticky top-0 bg-white dark:bg-[#181b24] z-20">
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">
@@ -1318,12 +1318,12 @@ export default function AddSale() {
             <div className="p-6 sm:p-8">
               {invoiceViewMode === "default" ? (
                 /* ================= Default A4 Invoice View (Image 3) ================= */
-                <div className="bg-white dark:bg-[#12141c] rounded-xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 space-y-6 text-slate-800 dark:text-slate-100 shadow-sm">
+                <div className="bg-white dark:bg-[#12141c] rounded-md border border-slate-200 dark:border-slate-800 p-6 sm:p-10 space-y-6 text-slate-800 dark:text-slate-100 shadow-sm">
                   {/* Company Header & Barcode */}
                   <div className="flex flex-col sm:flex-row items-start justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <div className="w-9 h-9 rounded-xl bg-[#0c6760] flex items-center justify-center text-white font-black text-lg">
+                        <div className="w-9 h-9 rounded-md bg-[#0c6760] flex items-center justify-center text-white font-black text-lg">
                           N
                         </div>
                         <div>
@@ -1490,7 +1490,7 @@ export default function AddSale() {
                 </div>
               ) : (
                 /* ================= POS Thermal Receipt View (Image 4) ================= */
-                <div className="max-w-xs mx-auto bg-white text-slate-900 p-6 rounded-xl border border-slate-300 shadow-md font-mono text-[11px] leading-relaxed select-text">
+                <div className="max-w-xs mx-auto bg-white text-slate-900 p-6 rounded-md border border-slate-300 shadow-md font-mono text-[11px] leading-relaxed select-text">
                   <div className="text-center space-y-0.5">
                     <p className="font-bold text-xs uppercase tracking-wider">REDION IT SOLUTION</p>
                     <p className="text-[10px] text-slate-600">industrial Area2 Sharjah UAE</p>

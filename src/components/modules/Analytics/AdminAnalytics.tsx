@@ -10,8 +10,8 @@ import { useGetDashboardAnalyticsQuery } from "@/redux/features/product/product.
 
 const AdminAnalytics = () => {
   // Update this hook call based on where your query is defined
-  const { data: response, isLoading } = useGetDashboardAnalyticsQuery(undefined); 
-  
+  const { data: response, isLoading } = useGetDashboardAnalyticsQuery(undefined);
+
   if (isLoading) {
     return <AnalyticsSkeleton />;
   }
@@ -39,7 +39,7 @@ const AdminAnalytics = () => {
 
   return (
     <div className="w-full space-y-6 md:p-4">
-      
+
       {/* Header */}
       <div className="space-y-1 mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
@@ -53,9 +53,9 @@ const AdminAnalytics = () => {
 
       {/* ================= KPI CARDS ================= */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        
+
         {/* Total Inspections */}
-        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 transition-all hover:shadow-md">
+        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 transition-all hover:shadow-md">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Inspections</CardTitle>
             <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
@@ -72,7 +72,7 @@ const AdminAnalytics = () => {
         </Card>
 
         {/* Address Leads */}
-        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 transition-all hover:shadow-md">
+        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 transition-all hover:shadow-md">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">Address Leads</CardTitle>
             <div className="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
@@ -89,7 +89,7 @@ const AdminAnalytics = () => {
         </Card>
 
         {/* Total Users */}
-        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 transition-all hover:shadow-md">
+        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 transition-all hover:shadow-md">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Users</CardTitle>
             <div className="p-2 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
@@ -106,7 +106,7 @@ const AdminAnalytics = () => {
         </Card>
 
         {/* Scheduled Availability Days */}
-        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950 transition-all hover:shadow-md">
+        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950 transition-all hover:shadow-md">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">Active Calendar Days</CardTitle>
             <div className="p-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
@@ -124,9 +124,9 @@ const AdminAnalytics = () => {
 
       {/* ================= CHARTS ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
+
         {/* Area Chart: Inspection Timeline */}
-        <Card className="lg:col-span-2 border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+        <Card className="lg:col-span-2 border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950">
           <CardHeader className="border-b border-gray-100 dark:border-zinc-800/50 pb-4">
             <CardTitle className="text-lg">Inspections Booked (Last 30 Days)</CardTitle>
           </CardHeader>
@@ -136,35 +136,35 @@ const AdminAnalytics = () => {
                 <AreaChart data={formattedSeriesData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorInspections" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#ea580c" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#ea580c" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#ea580c" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#ea580c" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" className="dark:stroke-zinc-800" />
-                  <XAxis 
-                    dataKey="formattedDate" 
-                    axisLine={false} 
-                    tickLine={false} 
-                    tick={{ fontSize: 12, fill: '#6b7280' }} 
+                  <XAxis
+                    dataKey="formattedDate"
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 12, fill: '#6b7280' }}
                     minTickGap={30}
                   />
-                  <YAxis 
-                    axisLine={false} 
-                    tickLine={false} 
+                  <YAxis
+                    axisLine={false}
+                    tickLine={false}
                     tick={{ fontSize: 12, fill: '#6b7280' }}
                     allowDecimals={false}
                   />
-                  <Tooltip 
+                  <Tooltip
                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                   />
-                  <Area 
-                    type="monotone" 
-                    dataKey="total" 
+                  <Area
+                    type="monotone"
+                    dataKey="total"
                     name="Bookings"
-                    stroke="#ea580c" 
+                    stroke="#ea580c"
                     strokeWidth={3}
-                    fillOpacity={1} 
-                    fill="url(#colorInspections)" 
+                    fillOpacity={1}
+                    fill="url(#colorInspections)"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -173,7 +173,7 @@ const AdminAnalytics = () => {
         </Card>
 
         {/* Donut Chart: Inspection Statuses */}
-        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-2xl bg-white dark:bg-zinc-950">
+        <Card className="border-gray-100 dark:border-zinc-800/60 shadow-sm rounded-md bg-white dark:bg-zinc-950">
           <CardHeader className="border-b border-gray-100 dark:border-zinc-800/50 pb-4">
             <CardTitle className="text-lg">Inspection Status</CardTitle>
           </CardHeader>
@@ -195,7 +195,7 @@ const AdminAnalytics = () => {
                       <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip 
+                  <Tooltip
                     contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                     itemStyle={{ color: '#1f2937', fontWeight: 500 }}
                   />
@@ -207,7 +207,7 @@ const AdminAnalytics = () => {
         </Card>
 
       </div>
-      
+
     </div>
   );
 };
