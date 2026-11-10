@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { IApiError } from "@/types";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router";
 import { toast } from "sonner";
 import { Eye, EyeOff, Lock, RotateCw } from "lucide-react";
 import DreamsLogo from "@/components/common/DreamsLogo";
@@ -21,8 +21,12 @@ export function LoginForm({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
   const [login, { isLoading }] = useLoginMutation();
+
+  const isSessionExpired = searchParams.get("session_expired") === "true";
 
   const form = useForm({
     defaultValues: {
@@ -36,7 +40,10 @@ export function LoginForm({
       const res = await login(data).unwrap();
       if (res?.success || res?.data) {
         toast.success(res?.message || "Logged in successfully");
-        navigate("/");
+        const redirectParam = searchParams.get("redirect");
+        const locationStateFrom = (location.state as any)?.from?.pathname;
+        const target = redirectParam || locationStateFrom || "/";
+        navigate(target, { replace: true });
       }
     } catch (err) {
       const error = err as IApiError;
@@ -67,6 +74,13 @@ export function LoginForm({
         <p className="text-[13px] sm:text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 mb-7 font-normal">
           Sign in to your NEXORA ERP account
         </p>
+
+        {isSessionExpired && (
+          <div className="w-full mb-5 p-3 rounded-md bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs flex items-center gap-2 text-left">
+            <Lock className="w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400" />
+            <span>Your session expired. Please sign in again to continue.</span>
+          </div>
+        )}
       </div>
 
       <Form {...form}>

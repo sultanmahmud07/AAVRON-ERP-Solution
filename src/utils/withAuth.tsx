@@ -1,6 +1,6 @@
 import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { TRole } from "@/types";
-import { ComponentType } from "react";
+import { ComponentType, useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router";
 
 export const withAuth = <P extends object>(
@@ -11,9 +11,22 @@ export const withAuth = <P extends object>(
     const location = useLocation();
     // Uses HTTP-only cookie automatically via credentials
     const { data, isLoading, isError } = useUserInfoQuery(undefined);
+    const [hasTimedOut, setHasTimedOut] = useState(false);
+
+    // Safeguard: Never hang in verifying session forever if backend stalls or drops connection
+    useEffect(() => {
+      if (!isLoading) {
+        setHasTimedOut(false);
+        return;
+      }
+      const timer = setTimeout(() => {
+        setHasTimedOut(true);
+      }, 6000);
+      return () => clearTimeout(timer);
+    }, [isLoading]);
 
     // 1. Loading state: Never render protected component while verifying credentials
-    if (isLoading) {
+    if (isLoading && !hasTimedOut) {
       return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#0f1117] transition-colors">
           <div className="flex flex-col items-center gap-3">
@@ -26,8 +39,8 @@ export const withAuth = <P extends object>(
       );
     }
 
-    // 2. Unauthenticated: If query failed or no user email in cookie session, redirect to /login
-    if (isError || !data?.data?.email) {
+    // 2. Unauthenticated: If query failed, timed out, or no user email in cookie session, redirect to /login
+    if (isError || hasTimedOut || !data?.data?.email) {
       return <Navigate to="/login" state={{ from: location }} replace />;
     }
 

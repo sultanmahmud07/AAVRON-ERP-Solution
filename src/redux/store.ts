@@ -12,6 +12,13 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
+// Global session expiry listener to reset all cached query states on auto-logout
+if (typeof window !== "undefined") {
+  window.addEventListener("nexora_session_expired", () => {
+    store.dispatch(baseApi.util.resetApiState());
+  });
+}
+
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
